@@ -33,10 +33,17 @@ const cardImg = (c) => c.image || cardThumb(c.id);
 const thumbTag = (c, cls = 'thumb') => `<img class="${cls}" loading="lazy" alt="" src="${esc(cardImg(c))}" data-fallback="${esc(cardThumb(c.id))}">`;
 const sourceUrl = (c) => c.source || `https://dokkan.fyi/characters/${c.page}`;
 
+// Small rarity + type label over a card image (filled = Super, outlined = Extreme).
+function rtTag(c) {
+  if (!c?.rarity && !c?.type) return '';
+  const t = (c.type || '').toLowerCase();
+  return `<span class="rt">${c.rarity ? `<i class="r-${esc(c.rarity.toLowerCase())}">${esc(c.rarity)}</i>` : ''}${c.type ? `<i class="ty-${esc(t)}${c.cls === 'Extreme' ? ' ex' : ''}" title="${esc(`${c.cls || ''} ${c.type}`.trim())}">${esc(c.type)}</i>` : ''}</span>`;
+}
+
 function tile(c) {
   const isNew = c.firstSeen && Date.now() - Date.parse(c.firstSeen) < 7 * 864e5;
   return `<a class="tile" href="#/card/${enc(c.page)}">
-    ${thumbTag(c)}
+    <span class="pic">${thumbTag(c)}${rtTag(c)}</span>
     ${isNew ? '<span class="flag">NUEVA</span>' : ''}
     ${c.seza ? '<span class="flag eza">SEZA</span>' : c.eza ? '<span class="flag eza">EZA</span>' : ''}
     <div class="nm">${esc(c.name)}</div></a>`;
@@ -418,7 +425,7 @@ function tierTile(u) {
   const img = c ? cardImg(c) : `https://assets.dokkanstats.com/assets/global/en/character/thumb/card_${u.cardId}_thumb/card_${u.cardId}_thumb.png`;
   const href = c ? `#/card/${enc(c.page)}` : `https://dokkanstats.com/en/cards/${u.id}/`;
   return `<a class="tile" href="${esc(href)}" ${c ? '' : 'target="_blank" rel="noopener"'} title="${esc(u.title)}">
-    <img class="thumb" loading="lazy" alt="" src="${esc(img)}" data-fallback="${esc(c?.image || '')}">${TREND[u.trend] || ''}
+    <span class="pic"><img class="thumb" loading="lazy" alt="" src="${esc(img)}" data-fallback="${esc(c?.image || '')}">${rtTag(c)}</span>${TREND[u.trend] || ''}
     <div class="nm">${esc(u.name)}</div></a>`;
 }
 
@@ -555,7 +562,7 @@ views.team = (params, which) => {
     const role = slotIdx === 0 ? '<span class="role l">L</span>' : slotIdx === T.SLOTS - 1 ? '<span class="role f">A</span>' : '';
     if (!c) return `<button class="fcell empty" data-pos="${pos}" style="grid-area:p${pos}"><span class="plus">+</span></button>`;
     return `<button class="fcell tb-${c.type.toLowerCase()}" data-pos="${pos}" style="grid-area:p${pos}">
-      <span class="fimg"><img alt="" src="${esc(cardImg(c))}">${role}</span>
+      <span class="fimg"><img alt="" src="${esc(cardImg(c))}">${role}${rtTag(c)}</span>
       <span class="fbadges">
         <i class="${lv?.covered ? 'b-ok' : 'b-no'}">L ${lv?.covered ? lv.pct + '%' : '—'}</i>
         <i class="${fv?.covered ? 'b-ok' : 'b-no'}">A ${fv?.covered ? fv.pct + '%' : '—'}</i>

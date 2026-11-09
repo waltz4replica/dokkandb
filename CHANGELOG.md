@@ -8,6 +8,9 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 
+## 2.6.0 — 2026-11-10
+- **Rareza y tipo sobre cada carta:** etiqueta pequeña en la esquina de la imagen (LR / UR / SSR y AGL, TEQ, INT, STR, PHY con su color). Relleno de color = Super; solo borde de color = Extreme. Sale en Inicio, Cartas, Banners, Tier list y en la formación de Equipos.
+
 ## 2.5.0 — 2026-11-09
 - **Banners por bloques:** al entrar en un banner, las cartas salen separadas en **★ Principales** (las protagonistas, más grandes y con brillo), **Featured** (SSR con probabilidad aumentada) y **Secundarios** (SR y R), más cuántas cartas pueden salir sin probabilidad aumentada.
 - En la lista de banners, las cartas principales llevan un borde naranja.
