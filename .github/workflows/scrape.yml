@@ -1,4 +1,7 @@
 name: Actualizar eventos, tier list y noticias
+# Desde GitHub solo funcionan las noticias (DOKKAN.FYI): DokkanStats bloquea estos servidores.
+# La tier list y los eventos los sube el PC con scripts/update-from-pc.ps1.
+# Si una web falla, se conservan sus datos anteriores.
 
 on:
   schedule:

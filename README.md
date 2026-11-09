@@ -9,6 +9,21 @@ Se actualiza sola con la [Dokkan Wiki](https://dbz-dokkanbattle.fandom.com/) y f
 - Después, cada vez que se abre (y cada 30 min mientras está abierta) pregunta a la wiki qué páginas han cambiado y descarga **solo esas**. Las cartas nuevas salen con la etiqueta **NUEVA**.
 - No hace falta servidor: el móvil habla directamente con la wiki.
 
+## Tier list, eventos y noticias
+
+Vienen de webs de fans y se guardan en `data/extra.json`, que la app descarga al sincronizar:
+
+| Datos | Web | Quién lo actualiza |
+|---|---|---|
+| Noticias del juego | DOKKAN.FYI | GitHub, cada 3 h (`.github/workflows/scrape.yml`) |
+| Tier list y eventos activos | DokkanStats | **Este PC**, cada 3 h y al iniciar sesión (tarea de Windows "DokkanDB - actualizar datos") |
+
+DokkanStats bloquea los servidores de GitHub, por eso esa parte va desde el PC. Si el PC está apagado, la app sigue mostrando los últimos datos subidos.
+
+- Instalar o reinstalar la tarea: `powershell -ExecutionPolicy Bypass -File scripts\install-task.ps1`
+- Registro de lo que hace: `logs/update.log`
+- Si una web cambia su diseño, el lector a corregir está en `scripts/scrapers.mjs`.
+
 ## Estructura
 
 | Archivo | Qué hace |
