@@ -8,7 +8,7 @@
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseDokkanStatsSummons, parseFyiNews } from './scrapers.mjs';
+import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseDokkanStatsSummons, parseDokkanStatsSummonDetail, parseFyiNews } from './scrapers.mjs';
 
 const OUT = fileURLToPath(new URL('../data/extra.json', import.meta.url));
 const UA = 'DokkanDB-fan-app/1.0 (+https://github.com/waltz4replica/dokkandb)';
@@ -35,13 +35,30 @@ const SOURCES = {
   summons: {
     url: 'https://dokkanstats.com/en/summons/',
     site: 'DokkanStats',
-    read: (html, prev) => {
+    read: async (html, prev) => {
       const current = parseDokkanStatsSummons(html);
       if (current.length < 3) throw new Error('summons list looks empty');
       // The page only lists current and upcoming banners: keep older ones as history.
       const byId = new Map((prev?.items || []).map((b) => [b.id, b]));
-      for (const b of current) byId.set(b.id, b);
+      for (const b of current) {
+        const old = byId.get(b.id);
+        // Keep the main / featured / secondary split read earlier, unless the card list changed.
+        const keep = old?.groups && old.cards.join() === b.cards.join() ? { groups: old.groups } : {};
+        byId.set(b.id, { ...b, ...keep });
+      }
       const items = [...byId.values()].sort((a, b) => (b.start || '').localeCompare(a.start || '')).slice(0, 300);
+      // Read each banner's own page once to split its cards (newest first, a few per run, slowly).
+      const todo = items.filter((b) => !b.groups && b.cards.length > 1 && b.url && !(b.end && Date.parse(b.end) < Date.now())).slice(0, 25);
+      for (const b of todo) {
+        try {
+          const groups = parseDokkanStatsSummonDetail(await fetchHtml(b.url));
+          if (groups) b.groups = groups;
+        } catch (err) {
+          console.error(`  banner ${b.id}: ${err.message}`);
+        }
+        await new Promise((r) => setTimeout(r, 1500));
+      }
+      if (todo.length) console.log(`  banner pages read: ${todo.filter((b) => b.groups).length}/${todo.length}`);
       return { items };
     },
   },
@@ -69,7 +86,7 @@ const next = { ...previous };
 let ok = 0;
 for (const [key, src] of Object.entries(SOURCES)) {
   try {
-    const data = src.read(await fetchHtml(src.url), previous[key]);
+    const data = await src.read(await fetchHtml(src.url), previous[key]);
     const changed = JSON.stringify(data) !== JSON.stringify(stripMeta(previous[key]));
     next[key] = { ...data, source: src.site, url: src.url, updated: changed ? new Date().toISOString() : previous[key]?.updated };
     console.log(`${key}: ok${changed ? ' (changed)' : ''}`);

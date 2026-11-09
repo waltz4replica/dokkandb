@@ -289,7 +289,8 @@ function bannerCardImg(id) {
 
 function bannerRow(b) {
   const [label, cls] = STATUS[bannerStatus(b)];
-  const minis = b.cards.slice(0, 6).map((id) => `<img loading="lazy" alt="" src="${esc(bannerCardImg(id))}">`).join('');
+  const main = new Set(b.groups?.main || []);
+  const minis = b.cards.slice(0, 6).map((id) => `<img loading="lazy" alt=""${main.has(id) ? ' class="hl"' : ''} src="${esc(bannerCardImg(id))}">`).join('');
   const dates = isPermanent(b) ? 'Permanente' : `${shortDate(b.start)} – ${shortDate(b.end)}`;
   return `<a class="row" href="#/banner/${enc(b.id)}">
     <img class="banner-img" loading="lazy" alt="" src="${esc(b.image)}">
@@ -315,6 +316,18 @@ views.banners = () => {
   };
 };
 
+// A banner's cards in three blocks: headline units, other rate-up SSRs, rate-up SR/R.
+function bannerGroups(g, cardTile) {
+  const block = (cls, label, hint, ids) => (ids.length ? `<section class="bgroup ${cls}">
+    <h2><span class="gtag ${cls}">${label}</span> <span class="muted small">${ids.length}</span></h2>
+    <p class="muted small">${hint}</p>
+    <div class="grid">${ids.map(cardTile).join('')}</div></section>` : '');
+  return block('main', '★ Principales', 'Las cartas protagonistas del banner.', g.main)
+    + block('feat', 'Featured', 'SSR con probabilidad aumentada.', g.featured)
+    + block('sec', 'Secundarios', 'SR y R con probabilidad aumentada: se usan para despertar o como relleno.', g.secondary)
+    + (g.unfeatured ? `<p class="muted small">Además pueden salir otras ${g.unfeatured} cartas con la probabilidad normal.</p>` : '');
+}
+
 views.banner = (params, id) => {
   const b = bannerList().find((x) => x.id === id);
   if (!b) return { title: 'Banner', back: true, html: '<div class="empty">Banner no encontrado.</div>' };
@@ -322,7 +335,7 @@ views.banner = (params, id) => {
   const cardTile = (cid) => {
     const c = cardById(cid);
     if (c) return tile(c);
-    return `<a class="tile" href="https://dokkanstats.com/en/cards/${+cid + 1}/" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(bannerCardImg(cid))}"><div class="nm">Ver en DokkanStats</div></a>`;
+    return `<a class="tile" href="https://dokkanstats.com/en/cards/${+cid + 1}/" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(bannerCardImg(cid))}"><div class="nm muted">DokkanStats ↗</div></a>`;
   };
   return {
     title: esc(b.name),
@@ -331,7 +344,8 @@ views.banner = (params, id) => {
       <p><span class="status ${cls}">${label}</span>
         <span class="muted small">${isPermanent(b) ? 'Permanente' : `${fmtDate(b.start)} – ${fmtDate(b.end)}`}</span></p>
       ${b.desc ? `<p class="small">${esc(b.desc)}</p>` : ''}
-      ${b.cards.length ? `<h2>Cartas destacadas <span class="muted small">${b.cards.length}</span></h2><div class="grid">${b.cards.map(cardTile).join('')}</div>` : ''}
+      ${b.groups ? bannerGroups(b.groups, cardTile)
+        : b.cards.length ? `<h2>Cartas destacadas <span class="muted small">${b.cards.length}</span></h2><div class="grid">${b.cards.map(cardTile).join('')}</div>` : ''}
       <p class="small" style="margin-top:20px"><a href="${esc(b.url)}" target="_blank" rel="noopener">Ver en DokkanStats ↗</a></p>`,
   };
 };

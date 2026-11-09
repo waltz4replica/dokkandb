@@ -106,6 +106,38 @@ export function parseDokkanStatsSummons(html, base = 'https://dokkanstats.com/')
 }
 
 /**
+ * DokkanStats banner page (https://dokkanstats.com/en/summons/<id>/).
+ * Splits the "Featured Characters" section into three groups:
+ *   main      — the banner's headline units (marked NEW or highlighted by the site)
+ *   featured  — the other rate-up SSR units
+ *   secondary — rate-up SR / R units
+ * plus how many units can come out without a rate-up ("Unfeatured (N)").
+ * Returns null when the page has no featured section.
+ */
+export function parseDokkanStatsSummonDetail(html) {
+  const heads = [...html.matchAll(/<h2 class="summon-section-title"[^>]*>([\s\S]*?)<\/h2>/g)];
+  const feat = heads.find((h) => /^featured/i.test(text(h[1])));
+  if (!feat) return null;
+  const from = feat.index + feat[0].length;
+  const next = heads.find((h) => h.index > feat.index);
+  const section = html.slice(from, next ? next.index : html.indexOf('summon-courses', from) >>> 0);
+  const out = { main: [], featured: [], secondary: [], unfeatured: 0 };
+  const seen = new Set();
+  for (const item of section.split('class="summon-chargrid-item"').slice(1)) {
+    const id = /card_(\d{7})_thumb/.exec(item)?.[1];
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    const rarity = /cha_rare_sm_(\w+)\.png/.exec(item)?.[1] || '';
+    if (/cha_icon_new\.png/.test(item) || item.includes('<canvas')) out.main.push(id);
+    else if (/^(ssr|ur|lr)$/i.test(rarity)) out.featured.push(id);
+    else out.secondary.push(id);
+  }
+  const unf = heads.find((h) => /^unfeatured/i.test(text(h[1])));
+  out.unfeatured = unf ? +(/\((\d+)\)/.exec(text(unf[1]))?.[1] || 0) : 0;
+  return out.main.length + out.featured.length + out.secondary.length ? out : null;
+}
+
+/**
  * DOKKAN.FYI in-game news (https://dokkan.fyi/news).
  * Returns [{ id, title, url, image, tags, date }] — `date` as written on the page.
  */

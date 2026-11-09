@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-09T14:01:51.975Z"
  },
- "generated": "2026-11-09T20:07:56.934Z",
+ "generated": "2026-11-09T22:47:13.354Z",
  "summons": {
   "items": [
    {
@@ -5236,7 +5236,36 @@
      "1001430",
      "1000160"
     ],
-    "url": "https://dokkanstats.com/en/summons/12600/"
+    "url": "https://dokkanstats.com/en/summons/12600/",
+    "groups": {
+     "main": [
+      "1034720",
+      "1034940"
+     ],
+     "featured": [
+      "1033830",
+      "1032060",
+      "1032250",
+      "1031070",
+      "1031290",
+      "1029560",
+      "1026740",
+      "1024050"
+     ],
+     "secondary": [
+      "1000820",
+      "1001010",
+      "1000240",
+      "1000260",
+      "1000860",
+      "1000040",
+      "1003870",
+      "1002140",
+      "1001430",
+      "1000160"
+     ],
+     "unfeatured": 546
+    }
    },
    {
     "id": "12598",
@@ -5267,7 +5296,36 @@
      "1001430",
      "1000160"
     ],
-    "url": "https://dokkanstats.com/en/summons/12598/"
+    "url": "https://dokkanstats.com/en/summons/12598/",
+    "groups": {
+     "main": [
+      "1034720",
+      "1034940"
+     ],
+     "featured": [
+      "1033830",
+      "1032060",
+      "1032250",
+      "1031070",
+      "1031290",
+      "1029560",
+      "1026740",
+      "1024050"
+     ],
+     "secondary": [
+      "1000820",
+      "1001010",
+      "1000240",
+      "1000260",
+      "1000860",
+      "1000040",
+      "1003870",
+      "1002140",
+      "1001430",
+      "1000160"
+     ],
+     "unfeatured": 546
+    }
    },
    {
     "id": "12588",
@@ -5298,7 +5356,36 @@
      "1001430",
      "1000160"
     ],
-    "url": "https://dokkanstats.com/en/summons/12588/"
+    "url": "https://dokkanstats.com/en/summons/12588/",
+    "groups": {
+     "main": [
+      "1034720",
+      "1034940"
+     ],
+     "featured": [
+      "1033830",
+      "1032060",
+      "1032250",
+      "1031070",
+      "1031290",
+      "1029560",
+      "1026740",
+      "1024050"
+     ],
+     "secondary": [
+      "1000820",
+      "1001010",
+      "1000240",
+      "1000260",
+      "1000860",
+      "1000040",
+      "1003870",
+      "1002140",
+      "1001430",
+      "1000160"
+     ],
+     "unfeatured": 546
+    }
    },
    {
     "id": "12398",
@@ -5319,7 +5406,24 @@
      "1031660",
      "1031990"
     ],
-    "url": "https://dokkanstats.com/en/summons/12398/"
+    "url": "https://dokkanstats.com/en/summons/12398/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1032900",
+      "1032560",
+      "1032100",
+      "1031900",
+      "1031450",
+      "1031410",
+      "1033920",
+      "1033740",
+      "1031660",
+      "1031990"
+     ],
+     "secondary": [],
+     "unfeatured": 0
+    }
    },
    {
     "id": "12396",
@@ -5342,7 +5446,26 @@
      "1032250",
      "1031950"
     ],
-    "url": "https://dokkanstats.com/en/summons/12396/"
+    "url": "https://dokkanstats.com/en/summons/12396/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1032860",
+      "1032530",
+      "1033040",
+      "1033570",
+      "1031700",
+      "1033540",
+      "1033000",
+      "1032350",
+      "1032320",
+      "1032060",
+      "1032250",
+      "1031950"
+     ],
+     "secondary": [],
+     "unfeatured": 0
+    }
    },
    {
     "id": "11394",
@@ -5360,7 +5483,21 @@
      "1003600",
      "1003670"
     ],
-    "url": "https://dokkanstats.com/en/summons/11394/"
+    "url": "https://dokkanstats.com/en/summons/11394/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1019800",
+      "1010150",
+      "1014480",
+      "1007860",
+      "1009530",
+      "1003600",
+      "1003670"
+     ],
+     "secondary": [],
+     "unfeatured": 59
+    }
    },
    {
     "id": "11392",
@@ -5378,7 +5515,21 @@
      "1003600",
      "1003670"
     ],
-    "url": "https://dokkanstats.com/en/summons/11392/"
+    "url": "https://dokkanstats.com/en/summons/11392/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1019800",
+      "1010150",
+      "1014480",
+      "1007860",
+      "1009530",
+      "1003600",
+      "1003670"
+     ],
+     "secondary": [],
+     "unfeatured": 71
+    }
    },
    {
     "id": "11126",
@@ -5399,7 +5550,25 @@
      "1008770",
      "1003730"
     ],
-    "url": "https://dokkanstats.com/en/summons/11126/"
+    "url": "https://dokkanstats.com/en/summons/11126/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1003970",
+      "1012230",
+      "1012240",
+      "1012250",
+      "1012260",
+      "1012270"
+     ],
+     "secondary": [
+      "1013400",
+      "1013360",
+      "1008770",
+      "1003730"
+     ],
+     "unfeatured": 259
+    }
    },
    {
     "id": "11046",
@@ -5417,7 +5586,21 @@
      "1012670",
      "1023560"
     ],
-    "url": "https://dokkanstats.com/en/summons/11046/"
+    "url": "https://dokkanstats.com/en/summons/11046/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1018470",
+      "1026270",
+      "1022150",
+      "1026080",
+      "1003670",
+      "1012670",
+      "1023560"
+     ],
+     "secondary": [],
+     "unfeatured": 46
+    }
    },
    {
     "id": "11044",
@@ -5435,7 +5618,21 @@
      "1012670",
      "1023560"
     ],
-    "url": "https://dokkanstats.com/en/summons/11044/"
+    "url": "https://dokkanstats.com/en/summons/11044/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1018470",
+      "1026270",
+      "1022150",
+      "1026080",
+      "1003670",
+      "1012670",
+      "1023560"
+     ],
+     "secondary": [],
+     "unfeatured": 60
+    }
    },
    {
     "id": "10868",
@@ -5453,7 +5650,21 @@
      "1012980",
      "1014200"
     ],
-    "url": "https://dokkanstats.com/en/summons/10868/"
+    "url": "https://dokkanstats.com/en/summons/10868/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1018230",
+      "1012640",
+      "1019270",
+      "1026080",
+      "1024590",
+      "1012980",
+      "1014200"
+     ],
+     "secondary": [],
+     "unfeatured": 34
+    }
    },
    {
     "id": "10866",
@@ -5471,7 +5682,21 @@
      "1012980",
      "1014200"
     ],
-    "url": "https://dokkanstats.com/en/summons/10866/"
+    "url": "https://dokkanstats.com/en/summons/10866/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1018230",
+      "1012640",
+      "1019270",
+      "1026080",
+      "1024590",
+      "1012980",
+      "1014200"
+     ],
+     "secondary": [],
+     "unfeatured": 36
+    }
    },
    {
     "id": "10784",
@@ -5489,7 +5714,21 @@
      "1003610",
      "1005150"
     ],
-    "url": "https://dokkanstats.com/en/summons/10784/"
+    "url": "https://dokkanstats.com/en/summons/10784/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1013750",
+      "1024940",
+      "1018090",
+      "1026060",
+      "1009120",
+      "1003610",
+      "1005150"
+     ],
+     "secondary": [],
+     "unfeatured": 44
+    }
    },
    {
     "id": "10782",
@@ -5507,7 +5746,21 @@
      "1003610",
      "1005150"
     ],
-    "url": "https://dokkanstats.com/en/summons/10782/"
+    "url": "https://dokkanstats.com/en/summons/10782/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1013750",
+      "1024940",
+      "1018090",
+      "1026060",
+      "1009120",
+      "1003610",
+      "1005150"
+     ],
+     "secondary": [],
+     "unfeatured": 58
+    }
    },
    {
     "id": "10652",
@@ -5525,7 +5778,21 @@
      "1006710",
      "1011990"
     ],
-    "url": "https://dokkanstats.com/en/summons/10652/"
+    "url": "https://dokkanstats.com/en/summons/10652/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1011620",
+      "1007890",
+      "1007880",
+      "1005410",
+      "1015090",
+      "1006710",
+      "1011990"
+     ],
+     "secondary": [],
+     "unfeatured": 69
+    }
    },
    {
     "id": "10024",
@@ -5543,7 +5810,21 @@
      "1012980",
      "1017010"
     ],
-    "url": "https://dokkanstats.com/en/summons/10024/"
+    "url": "https://dokkanstats.com/en/summons/10024/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1018140",
+      "1012950",
+      "1019270",
+      "1008880",
+      "1024590",
+      "1012980",
+      "1017010"
+     ],
+     "secondary": [],
+     "unfeatured": 66
+    }
    },
    {
     "id": "9520",
@@ -5561,7 +5842,21 @@
      "1003610",
      "1008650"
     ],
-    "url": "https://dokkanstats.com/en/summons/9520/"
+    "url": "https://dokkanstats.com/en/summons/9520/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1022460",
+      "1017210",
+      "1014380",
+      "1010690",
+      "1004090",
+      "1003610",
+      "1008650"
+     ],
+     "secondary": [],
+     "unfeatured": 26
+    }
    },
    {
     "id": "9518",
@@ -5579,7 +5874,21 @@
      "1003610",
      "1008650"
     ],
-    "url": "https://dokkanstats.com/en/summons/9518/"
+    "url": "https://dokkanstats.com/en/summons/9518/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1022460",
+      "1017210",
+      "1014380",
+      "1010690",
+      "1004090",
+      "1003610",
+      "1008650"
+     ],
+     "secondary": [],
+     "unfeatured": 64
+    }
    },
    {
     "id": "9498",
@@ -5597,7 +5906,21 @@
      "1007780",
      "1004480"
     ],
-    "url": "https://dokkanstats.com/en/summons/9498/"
+    "url": "https://dokkanstats.com/en/summons/9498/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1016060",
+      "1016020",
+      "1016040",
+      "1019030",
+      "1002620",
+      "1007780",
+      "1004480"
+     ],
+     "secondary": [],
+     "unfeatured": 49
+    }
    },
    {
     "id": "9458",
@@ -5615,7 +5938,21 @@
      "1010550",
      "1010540"
     ],
-    "url": "https://dokkanstats.com/en/summons/9458/"
+    "url": "https://dokkanstats.com/en/summons/9458/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1013920",
+      "1010130",
+      "1008660",
+      "1008690",
+      "1020960",
+      "1010550",
+      "1010540"
+     ],
+     "secondary": [],
+     "unfeatured": 24
+    }
    },
    {
     "id": "9408",
@@ -5633,7 +5970,21 @@
      "1010550",
      "1010540"
     ],
-    "url": "https://dokkanstats.com/en/summons/9408/"
+    "url": "https://dokkanstats.com/en/summons/9408/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1013920",
+      "1010130",
+      "1008660",
+      "1008690",
+      "1020960",
+      "1010550",
+      "1010540"
+     ],
+     "secondary": [],
+     "unfeatured": 37
+    }
    },
    {
     "id": "9406",
@@ -5651,7 +6002,21 @@
      "1007780",
      "1004480"
     ],
-    "url": "https://dokkanstats.com/en/summons/9406/"
+    "url": "https://dokkanstats.com/en/summons/9406/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1016060",
+      "1016020",
+      "1016040",
+      "1019030",
+      "1002620",
+      "1007780",
+      "1004480"
+     ],
+     "secondary": [],
+     "unfeatured": 63
+    }
    },
    {
     "id": "9132",
@@ -5669,7 +6034,21 @@
      "1007860",
      "1013200"
     ],
-    "url": "https://dokkanstats.com/en/summons/9132/"
+    "url": "https://dokkanstats.com/en/summons/9132/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1007380",
+      "1003230",
+      "1001790",
+      "1013180",
+      "1016040",
+      "1007860",
+      "1013200"
+     ],
+     "secondary": [],
+     "unfeatured": 24
+    }
    },
    {
     "id": "8920",
@@ -5687,7 +6066,21 @@
      "1018140",
      "1018090"
     ],
-    "url": "https://dokkanstats.com/en/summons/8920/"
+    "url": "https://dokkanstats.com/en/summons/8920/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1020270",
+      "1020020",
+      "1019270",
+      "1019030",
+      "1018570",
+      "1018140",
+      "1018090"
+     ],
+     "secondary": [],
+     "unfeatured": 350
+    }
    },
    {
     "id": "902",
@@ -5705,7 +6098,21 @@
      "1003190",
      "1013190"
     ],
-    "url": "https://dokkanstats.com/en/summons/902/"
+    "url": "https://dokkanstats.com/en/summons/902/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1007370",
+      "1004070",
+      "1002080",
+      "1016020",
+      "1013170",
+      "1003190",
+      "1013190"
+     ],
+     "secondary": [],
+     "unfeatured": 33
+    }
    },
    {
     "id": "569",
@@ -5723,7 +6130,21 @@
      "1013190",
      "1003030"
     ],
-    "url": "https://dokkanstats.com/en/summons/569/"
+    "url": "https://dokkanstats.com/en/summons/569/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1016020",
+      "1009530",
+      "1003690",
+      "1001920",
+      "1013170",
+      "1013190",
+      "1003030"
+     ],
+     "secondary": [],
+     "unfeatured": 30
+    }
    },
    {
     "id": "7010",
@@ -5737,11 +6158,20 @@
      "1005480",
      "1011481"
     ],
-    "url": "https://dokkanstats.com/en/summons/7010/"
+    "url": "https://dokkanstats.com/en/summons/7010/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1002630",
+      "1005480"
+     ],
+     "secondary": [],
+     "unfeatured": 0
+    }
    }
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/summons/",
-  "updated": "2026-11-09T17:29:00.350Z"
+  "updated": "2026-11-09T22:47:13.034Z"
  }
 }

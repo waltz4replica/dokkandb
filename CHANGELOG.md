@@ -8,6 +8,11 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 
+## 2.5.0 — 2026-11-09
+- **Banners por bloques:** al entrar en un banner, las cartas salen separadas en **★ Principales** (las protagonistas, más grandes y con brillo), **Featured** (SSR con probabilidad aumentada) y **Secundarios** (SR y R), más cuántas cartas pueden salir sin probabilidad aumentada.
+- En la lista de banners, las cartas principales llevan un borde naranja.
+- Los datos salen de la página de cada banner en DokkanStats (se leen desde el PC, una vez por banner).
+
 ## 2.4.0 — 2026-11-09
 Creador de equipos rehecho siguiendo el de DokkanStats:
 - **Formación como en el juego:** Rotación 1 y Rotación 2 (2 cartas cada una, siempre juntas) y 3 floaters. Las cartas se unen con **líneas de colores, una por cada link** compartido.

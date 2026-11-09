@@ -2,7 +2,7 @@
 // Run: node tests/scrapers-check.mjs <folder with ds-tier.html, ds-events.html, fyi-news.html>
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseFyiNews } from '../scripts/scrapers.mjs';
+import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseDokkanStatsSummonDetail, parseFyiNews } from '../scripts/scrapers.mjs';
 
 const dir = process.argv[2];
 const load = (f) => readFile(join(dir, f), 'utf8');
@@ -29,5 +29,12 @@ console.log(`News: ${news.length}`);
 console.log('  first:', JSON.stringify(news[0]));
 check('news found', news.length >= 6);
 check('news dates', news.every((n) => n.iso));
+
+// Saved from https://dokkanstats.com/en/summons/12600/ (Great Saiyaman 2 Dokkan Festival).
+const g = parseDokkanStatsSummonDetail(await load('ds-summon-12600.html'));
+console.log('Banner groups:', g && [g.main.length, g.featured.length, g.secondary.length, g.unfeatured].join('/'));
+check('banner main units', g?.main.join() === '1034720,1034940');
+check('banner featured / secondary', g?.featured.length === 8 && g?.secondary.length === 10);
+check('banner unfeatured count', g?.unfeatured === 546);
 
 process.exit(fail ? 1 : 0);
