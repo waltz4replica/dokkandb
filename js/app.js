@@ -424,27 +424,55 @@ views.tierlist = () => {
 // ----- Team builder -----
 // The team being edited lives in `editing` while you move between the editor and the card picker.
 
-let editing = null; // { id, name, ids: [7 card ids or null] }
+let editing = null; // { id, name, ids: [7 card ids or null], history: [previous ids], fromList }
 const teamCards = () => editing.ids.map((id) => (id ? store.cards.get(id) || null : null));
-const newTeam = () => ({ id: String(Date.now()), name: 'Equipo nuevo', ids: Array(T.SLOTS).fill(null) });
+const newTeam = () => ({ id: String(Date.now()), name: 'Equipo nuevo', ids: Array(T.SLOTS).fill(null), history: [] });
+let allCats = null;
+const knownCategories = () => (allCats ||= new Set([...store.cards.values()].flatMap((c) => c.categories)));
+
+// Every change goes through here so it can be undone.
+function changeTeam(fn) {
+  (editing.history ||= []).push([...editing.ids]);
+  if (editing.history.length > 30) editing.history.shift();
+  fn(editing.ids);
+  route();
+}
+
+function deleteTeam(id) {
+  T.saveTeams(T.loadTeams().filter((t) => t.id !== id));
+  if (editing?.id === id) editing = null;
+}
 
 views.teams = () => {
   if (!store.cards.size) return firstRunView();
   const list = T.loadTeams();
   const row = (t, i) => {
     const cards = t.ids.map((id) => (id ? store.cards.get(id) : null));
-    return `<a class="row team-row" href="#/team/${i}">
-      <div class="info"><b>${esc(t.name)}</b>
-        <span class="muted small">${cards.filter(Boolean).length}/7 cartas · coste ${T.summary(cards).cost}</span>
-        <div class="minis">${cards.map((c) => c ? `<img loading="lazy" alt="" src="${esc(cardImg(c))}">` : '<span class="mini-empty"></span>').join('')}</div>
-      </div></a>`;
+    const leader = cards[0];
+    return `<div class="team-row">
+      <a class="row" href="#/team/${i}">
+        ${leader ? `<img class="banner-img sq" alt="" src="${esc(cardImg(leader))}">` : '<span class="mini-empty big"></span>'}
+        <div class="info"><b>${esc(t.name)}</b>
+          <span class="muted small">${cards.filter(Boolean).length}/7 cartas · coste ${T.summary(cards).cost} · ${T.rotationScore(cards)} links</span>
+          <div class="minis">${cards.slice(1).map((c) => c ? `<img loading="lazy" alt="" src="${esc(cardImg(c))}">` : '<span class="mini-empty"></span>').join('')}</div>
+        </div></a>
+      <button class="icon-btn danger" data-del="${esc(t.id)}" aria-label="Borrar ${esc(t.name)}">🗑</button>
+    </div>`;
   };
   return {
     title: 'Equipos',
     html: `<div class="btns" style="margin-top:0"><a class="btn primary" href="#/team/new?fresh">+ Nuevo equipo</a></div>
       ${list.length ? `<h2>Mis equipos <span class="muted small">${list.length}</span></h2>${list.map(row).join('')}`
-        : '<div class="empty">Todavía no tienes equipos. Crea uno: elige un líder y la app te sugiere las mejores cartas para él.</div>'}
+        : '<div class="empty">Todavía no tienes equipos.<br>Crea uno: elige un líder y la app te recomienda las mejores cartas para él, o pulsa «Completar» y lo monta ella.</div>'}
       <p class="muted small">Los equipos se guardan en este móvil. Usa «Compartir» para pasarlos a otro dispositivo.</p>`,
+    mount(el) {
+      el.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-del]');
+        if (!b) return;
+        const t = T.loadTeams().find((x) => x.id === b.dataset.del);
+        if (t && confirm(`¿Borrar el equipo «${t.name}»? No se puede deshacer.`)) { deleteTeam(t.id); toast('Equipo borrado'); route(); }
+      });
+    },
   };
 };
 
@@ -457,78 +485,129 @@ views.team = (params, which) => {
     editing = params.get('c') ? { ...newTeam(), name: 'Equipo compartido', ids: T.decodeTeam(params.get('c')) } : newTeam();
     history.replaceState(null, '', '#/team/new');
   } else if (/^\d+$/.test(which) && saved[+which] && (!editing || editing.id !== saved[+which].id)) {
-    editing = { ...saved[+which], ids: [...saved[+which].ids], fromList: true };
+    editing = { ...saved[+which], ids: [...saved[+which].ids], history: [], fromList: true };
   }
   if (!editing) editing = newTeam();
+  const all = [...store.cards.values()];
   const team = teamCards();
   const leader = team[0], friend = team[T.SLOTS - 1];
   const lc = leader ? T.leaderClauses(leader) : [];
   const fc = friend ? T.leaderClauses(friend) : [];
+  const filled = team.filter(Boolean).length;
+  const members = team.slice(1, T.SLOTS - 1);
+  const rot = T.rotation(team);
+  const totalLinks = rot.reduce((n, t) => n + t.links, 0);
+  const sum = T.summary(team);
+  const cats = T.sharedCategories(team).slice(0, 10);
+  const covered = leader ? team.filter((c, i) => c && i > 0 && i < T.SLOTS - 1 && T.coverage(leader, c, lc).covered).length : 0;
+  const own = team.slice(0, T.SLOTS - 1).filter(Boolean).map((c) => c.name);
+  const dupes = [...new Set(own.filter((n, k) => own.indexOf(n) !== k))];
+  const known = knownCategories();
 
+  // --- slots ---
   const slot = (c, i) => {
     const lv = c && leader ? T.coverage(leader, c, lc) : null;
     const fv = c && friend ? T.coverage(friend, c, fc) : null;
-    return `<button class="slot ${i === 0 ? 'lead' : i === T.SLOTS - 1 ? 'friend' : ''} ${c ? '' : 'empty'}" data-slot="${i}">
+    const links = c ? team.reduce((n, m, k) => (m && k !== i ? n + T.sharedLinks(c, m).length : n), 0) : 0;
+    return `<button class="slot ${i === 0 ? 'lead' : i === T.SLOTS - 1 ? 'friend' : ''} ${c ? 'tb-' + c.type.toLowerCase() : 'empty'}" data-slot="${i}">
       <span class="slot-label">${T.SLOT_NAMES[i]}</span>
       ${c ? `<img alt="" src="${esc(cardImg(c))}">` : '<span class="plus">+</span>'}
-      ${c ? `<span class="slot-name">${esc(c.name)}</span>` : ''}
-      ${c && (leader || friend) ? `<span class="cov"><i class="${lv?.covered ? 'y' : 'n'}">L</i><i class="${fv?.covered ? 'y' : 'n'}">A</i></span>` : ''}
+      ${c ? `<span class="slot-name">${esc(c.name)}</span><span class="slot-links">${links} links</span>` : ''}
+      ${c && (leader || friend) && i > 0 && i < T.SLOTS - 1 ? `<span class="cov"><i class="${lv?.covered ? 'y' : 'n'}" title="Líder">L</i><i class="${fv?.covered ? 'y' : 'n'}" title="Amigo">A</i></span>` : ''}
     </button>`;
   };
 
-  const rot = T.rotation(team);
-  const totalLinks = rot.reduce((n, t) => n + t.links, 0);
-  const cats = T.sharedCategories(team).slice(0, 12);
-  const sum = T.summary(team);
-  const filled = team.filter(Boolean).length;
-  const uncovered = leader ? team.filter((c, i) => c && i > 0 && !T.coverage(leader, c, lc).covered) : [];
-  const own = team.slice(0, T.SLOTS - 1).filter(Boolean).map((c) => c.name);
-  const dupes = [...new Set(own.filter((n, k) => own.indexOf(n) !== k))];
+  // --- leader skills ---
+  const targets = (clauses) => [...new Set(clauses.filter((c) => !c.extra).flatMap((c) => [
+    ...c.categories.filter((x) => known.has(x)), ...c.types.map((t) => (c.cls ? c.cls + ' ' : '') + t),
+    ...(c.classOnly ? [`Clase ${c.cls}`] : []), ...(c.all ? ['Todos'] : [])]))];
+  const leaderBox = (c, clauses, label) => c ? `<div class="lead-box">
+      <img alt="" src="${esc(cardImg(c))}">
+      <div><span class="muted small">${label}</span>
+        <div class="lead-pct">${clauses[0] ? `+${Math.max(...clauses.filter((x) => !x.extra).map((x) => x.pct))}%` : '—'}</div>
+        ${clauses[0]?.ki ? `<div class="small">Ki +${clauses[0].ki}</div>` : ''}
+        <div class="lead-targets">${targets(clauses).map((t) => `<span>${esc(t)}</span>`).join('')}</div></div>
+    </div>` : '';
 
-  const coverageRows = team.map((c, i) => {
+  // --- assistant panel ---
+  let assist = '';
+  const emptySlot = team.findIndex((c, k) => !c && k > 0 && k < T.SLOTS - 1);
+  if (!leader && members.some(Boolean)) {
+    const sug = T.suggestLeaders(members, all, 6);
+    const n = members.filter(Boolean).length;
+    assist = sug.length ? `<h2>Líderes para estas cartas</h2><div class="reco">${sug.map((s) => `
+      <button class="reco-card" data-lead="${esc(s.card.page)}"><img alt="" src="${esc(cardImg(s.card))}">
+        <b>${esc(s.card.name)}</b><span class="ok">Cubre ${s.covered}/${n}</span><span class="muted">${leaderStrength(s.card)}%</span></button>`).join('')}</div>` : '';
+  } else if (!leader) {
+    assist = '<div class="hint">👉 Empieza tocando <b>Líder</b>. Después te recomiendo las cartas que mejor encajan, o pulsa <b>Completar</b> y monto el equipo entero.</div>';
+  } else if (emptySlot >= 0) {
+    const rec = T.recommend(team, all, 10, emptySlot);
+    assist = rec.length ? `<h2>Recomendadas para tu equipo <span class="muted small">toca para añadir</span></h2><div class="reco">${rec.map((r) => `
+      <button class="reco-card" data-add="${esc(r.card.page)}"><img alt="" src="${esc(cardImg(r.card))}">
+        <b>${esc(r.card.name)}</b>
+        <span class="ok">+${r.lead?.covered ? r.lead.pct : r.friend?.pct || 0}%</span>
+        <span class="muted">${r.links} links${r.helps ? ' · ✓ pasiva' : ''}</span></button>`).join('')}</div>` : '';
+  }
+
+  // --- rotation ---
+  const linkChip = (a, b) => {
+    const n = a && b ? T.sharedLinks(a, b).length : 0;
+    return `<span class="lk ${n >= 4 ? 'hi' : n ? 'mid' : ''}">${n}</span>`;
+  };
+  const turnHtml = rot.map((t, n) => {
+    // Put the best "middle" unit in the centre, as you would in battle.
+    const order = [t.units.find((i) => i !== t.middle), t.middle, t.units.filter((i) => i !== t.middle)[1]];
+    const [a, m, b] = order.map((i) => team[i]);
+    const names = [...new Set([...T.sharedLinks(m, a), ...T.sharedLinks(m, b)])];
+    const img = (c) => (c ? `<img alt="" src="${esc(cardImg(c))}">` : '<span class="mini-empty"></span>');
+    return `<details class="turn"><summary><span class="tn">T${n + 1}</span>${img(a)}${linkChip(a, m)}${img(m)}${linkChip(m, b)}${img(b)}
+        <span class="tl ${t.links ? 'ok' : 'muted'}">${t.links}</span></summary>
+      <div class="tags small">${names.length ? names.map((l) => `<span>${esc(l)}</span>`).join('') : '<span class="muted">Sin links compartidos</span>'}</div></details>`;
+  }).join('');
+
+  // --- unit details ---
+  const unitHtml = team.map((c, i) => {
     if (!c) return '';
     const l = leader ? T.coverage(leader, c, lc) : null;
     const f = friend ? T.coverage(friend, c, fc) : null;
-    const cell = (v) => (v ? (v.covered ? `<span class="ok">+${v.pct}%${v.ki ? ` · Ki +${v.ki}` : ''}</span>` : '<span class="no">—</span>') : '<span class="muted">·</span>');
-    return `<tr><td>${esc(T.SLOT_NAMES[i])}</td><td class="nm-cell">${esc(c.name)}</td><td>${cell(l)}</td><td>${cell(f)}</td></tr>`;
+    const checks = T.passiveCategoryChecks(team, c, known);
+    const support = T.supportLines(c);
+    const pctTxt = (v) => (v ? (v.covered ? `<span class="ok">+${v.pct}%${v.ki ? ` Ki +${v.ki}` : ''}</span>` : '<span class="no">no</span>') : '—');
+    return `<details class="unit"><summary><img alt="" src="${esc(cardImg(c))}">
+        <span class="u-main"><b>${esc(c.name)}</b><span class="small muted">${T.SLOT_NAMES[i]} · ${c.rarity} ${c.cls} ${c.type}</span></span>
+        <span class="u-cov small">L ${pctTxt(l)}<br>A ${pctTxt(f)}</span></summary>
+      ${checks.length ? `<div class="small"><b>Su pasiva pide aliados de:</b><div class="tags">${checks.map((k) => `<span class="${k.allies ? 'chk-y' : 'chk-n'}">${k.allies ? '✓' : '✗'} ${esc(k.name)}${k.allies ? ` (${k.allies})` : ''}</span>`).join('')}</div></div>` : ''}
+      ${support.length ? `<div class="small"><b>Apoyo al equipo:</b><ul>${support.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>` : ''}
+      <a class="small" href="#/card/${enc(c.page)}">Ver ficha completa →</a></details>`;
   }).join('');
-
-  const turnHtml = rot.map((t, n) => `<div class="turn"><span class="muted small">T${n + 1}</span>
-    ${t.units.map((i) => { const c = team[i]; return `<span class="tu ${i === t.middle && t.links ? 'mid' : ''}">${c ? `<img alt="" src="${esc(cardImg(c))}">` : '<span class="mini-empty"></span>'}</span>`; }).join('')}
-    <span class="small ${t.links ? 'ok' : 'muted'}">${t.links} links</span></div>`).join('');
 
   return {
     title: 'Equipo',
     back: true,
     html: `
       <input class="search team-name" id="tname" value="${esc(editing.name)}" maxlength="40" aria-label="Nombre del equipo">
+      <div class="toolbar-btns">
+        <button class="tbtn" id="undo" ${editing.history?.length ? '' : 'disabled'}>↶<span>Deshacer</span></button>
+        <button class="tbtn accent" id="fill" ${filled < T.SLOTS ? '' : 'disabled'}>✨<span>Completar</span></button>
+        <button class="tbtn" id="opt" ${filled >= 4 ? '' : 'disabled'}>⇅<span>Optimizar</span></button>
+        <button class="tbtn" id="save">💾<span>Guardar</span></button>
+        <button class="tbtn" id="share" ${filled ? '' : 'disabled'}>↗<span>Compartir</span></button>
+        ${editing.fromList ? '<button class="tbtn danger" id="del">🗑<span>Borrar</span></button>' : ''}
+      </div>
+      ${leader || friend ? `<div class="leads">${leaderBox(leader, lc, 'Líder')}${leaderBox(friend, fc, 'Amigo')}</div>` : ''}
       <div class="slots">${team.map(slot).join('')}</div>
-      ${dupes.length ? `<p class="small warn">No se pueden llevar dos cartas con el mismo nombre: ${dupes.map(esc).join(', ')}</p>` : ''}
       <div id="slot-actions"></div>
-      <div class="btns">
-        <button class="btn primary" id="save">Guardar</button>
-        <button class="btn" id="share" ${filled ? '' : 'disabled'}>Compartir</button>
-        <button class="btn" id="opt" ${filled >= 4 ? '' : 'disabled'}>Optimizar orden</button>
-        <button class="btn" id="sugg" ${filled - (leader ? 1 : 0) - (friend ? 1 : 0) > 0 ? '' : 'disabled'}>Sugerir líder</button>
-      </div>
-      <div id="sugg-box"></div>
-      ${filled ? `
-      <h2>Resumen</h2>
-      <div class="box kv">
-        <b>Cartas</b><span>${sum.count}/7</span>
-        <b>Coste total</b><span>${sum.cost}</span>
-        <b>Tipos</b><span>${Object.entries(sum.types).filter(([, n]) => n).map(([t, n]) => `<span class="type t-${t.toLowerCase()}">${t}</span> ${n}`).join(' &nbsp;')}</span>
-        <b>Links activos</b><span>${totalLinks} en una vuelta completa (7 turnos)</span>
-      </div>
-      ${leader ? `<h2>Habilidad de líder</h2>
-        <div class="box small"><b>Líder:</b> ${leader.leader.seza || leader.leader.eza || leader.leader.base}
-        ${friend ? `<br><br><b>Amigo:</b> ${friend.leader.seza || friend.leader.eza || friend.leader.base}` : ''}</div>
-        ${uncovered.length ? `<p class="small warn">El líder no cubre a: ${uncovered.map((c) => esc(c.name)).join(', ')}</p>` : '<p class="small ok">El líder cubre a todo el equipo.</p>'}
-        <div class="box"><table class="stats cov-table"><tr><th></th><th></th><th>Líder</th><th>Amigo</th></tr>${coverageRows}</table></div>` : ''}
-      <h2>Rotación <span class="muted small">la carta resaltada va en medio</span></h2>
-      <div class="box turns">${turnHtml}</div>
-      ${cats.length ? `<h2>Categorías compartidas</h2><div class="tags">${cats.map((c) => `<a href="#/cards?category=${enc(c.name)}">${esc(c.name)} <b>${c.count}</b></a>`).join('')}</div>` : ''}
-      ${editing.fromList ? '<div class="btns"><button class="btn danger" id="del">Borrar equipo</button></div>' : ''}` : ''}`,
+      ${dupes.length ? `<p class="small warn">⚠ No se pueden llevar dos cartas con el mismo nombre: ${dupes.map(esc).join(', ')}</p>` : ''}
+      ${filled ? `<div class="stat-strip">
+        ${leader ? `<span><b class="${covered === members.filter(Boolean).length ? 'ok' : 'warn'}">${covered}/${members.filter(Boolean).length}</b> bajo el líder</span>` : ''}
+        <span><b>${totalLinks}</b> links / vuelta</span><span><b>${sum.cost}</b> coste</span>
+        <span>${Object.entries(sum.types).filter(([, n]) => n).map(([t, n]) => `<i class="type t-${t.toLowerCase()}">${t} ${n}</i>`).join(' ')}</span></div>` : ''}
+      ${assist}
+      ${filled >= 2 ? `<h2>Rotación <span class="muted small">el del centro enlaza con los dos · toca un turno</span></h2><div class="box turns">${turnHtml}</div>` : ''}
+      ${filled ? `<h2>Unidades <span class="muted small">toca para ver detalles</span></h2><div class="units">${unitHtml}</div>` : ''}
+      ${cats.length ? `<h2>Categorías compartidas</h2><div class="box bars">${cats.map((c) => `
+        <a class="bar" href="#/cards?category=${enc(c.name)}"><span class="bar-name">${esc(c.name)}</span>
+        <span class="bar-track"><span style="width:${Math.round((c.count / T.SLOTS) * 100)}%"></span></span><b>${c.count}</b></a>`).join('')}</div>` : ''}`,
     mount(el) {
       let moving = null;
       const actions = $('#slot-actions', el);
@@ -538,8 +617,9 @@ views.team = (params, which) => {
         if (!b) return;
         const i = +b.dataset.slot;
         if (moving !== null) { // second tap of "Mover": swap the two slots
-          [editing.ids[moving], editing.ids[i]] = [editing.ids[i], editing.ids[moving]];
-          moving = null; route(); return;
+          const from = moving; moving = null;
+          changeTeam((ids) => { [ids[from], ids[i]] = [ids[i], ids[from]]; });
+          return;
         }
         if (!editing.ids[i]) { location.hash = `#/team-pick/${i}`; return; }
         el.querySelectorAll('.slot').forEach((s) => s.classList.toggle('sel', s === b));
@@ -551,9 +631,31 @@ views.team = (params, which) => {
         actions.onclick = (ev) => {
           const a = ev.target.closest('[data-a]')?.dataset.a;
           if (a === 'pick') location.hash = `#/team-pick/${i}`;
-          if (a === 'del') { editing.ids[i] = null; route(); }
+          if (a === 'del') changeTeam((ids) => { ids[i] = null; });
           if (a === 'move') { moving = i; actions.innerHTML = '<p class="small ok">Toca el hueco con el que quieres intercambiarla.</p>'; }
         };
+      });
+      // Recommendations: add a unit to the first free slot, or set the leader.
+      el.addEventListener('click', (e) => {
+        const add = e.target.closest('[data-add]');
+        const lead = e.target.closest('[data-lead]');
+        if (add) {
+          const k = editing.ids.findIndex((x, n) => !x && n > 0 && n < T.SLOTS - 1);
+          if (k >= 0) changeTeam((ids) => { ids[k] = add.dataset.add; });
+        }
+        if (lead) changeTeam((ids) => { ids[0] = lead.dataset.lead; if (!ids[T.SLOTS - 1]) ids[T.SLOTS - 1] = lead.dataset.lead; });
+      });
+      $('#undo', el).addEventListener('click', () => { const prev = editing.history?.pop(); if (prev) { editing.ids = prev; route(); } });
+      $('#fill', el).addEventListener('click', () => {
+        const done = T.autoFill(teamCards(), all);
+        changeTeam((ids) => done.forEach((c, k) => { ids[k] = c?.page || null; }));
+        toast('Equipo completado. Puedes deshacerlo con ↶');
+      });
+      $('#opt', el).addEventListener('click', () => {
+        const before = T.rotationScore(teamCards());
+        const best = T.optimizeOrder(teamCards());
+        if (best.score > before) changeTeam((ids) => best.order.forEach((c, k) => { ids[k] = c?.page || null; }));
+        toast(best.score > before ? `Orden mejorado: ${before} → ${best.score} links` : 'El orden ya era el mejor');
       });
       $('#save', el).addEventListener('click', () => {
         const list = T.loadTeams();
@@ -561,7 +663,7 @@ views.team = (params, which) => {
         const data = { id: editing.id, name: editing.name, ids: editing.ids };
         if (k >= 0) list[k] = data; else list.unshift(data);
         toast(T.saveTeams(list) ? 'Equipo guardado' : 'No se pudo guardar en este dispositivo');
-        editing.fromList = true;
+        if (!editing.fromList) { editing.fromList = true; route(); }
       });
       $('#share', el).addEventListener('click', async () => {
         const url = `${location.origin}${location.pathname}#/team/new?c=${T.encodeTeam(editing.ids)}`;
@@ -570,38 +672,16 @@ views.team = (params, which) => {
           else { await navigator.clipboard.writeText(url); toast('Enlace copiado'); }
         } catch { /* cancelled */ }
       });
-      $('#opt', el).addEventListener('click', () => {
-        const before = T.rotationScore(teamCards());
-        const best = T.optimizeOrder(teamCards());
-        editing.ids = best.order.map((c) => c?.page || null);
-        toast(best.score > before ? `Orden mejorado: ${before} → ${best.score} links` : 'El orden ya era el mejor');
-        route();
-      });
-      $('#sugg', el).addEventListener('click', () => {
-        const members = teamCards().slice(1, T.SLOTS - 1);
-        const list = T.suggestLeaders(members, [...store.cards.values()], 8);
-        const n = members.filter(Boolean).length;
-        $('#sugg-box', el).innerHTML = list.length ? `<h2>Líderes recomendados</h2>${list.map((s) => `
-          <button class="row sugg" data-id="${esc(s.card.page)}"><img class="banner-img sq" alt="" src="${esc(cardImg(s.card))}">
-            <span class="info"><b>${esc(s.card.name)}</b><span class="muted small">${esc(s.card.title)}</span>
-            <span class="small ok">Cubre ${s.covered}/${n} · ${T.leaderClauses(s.card)[0]?.pct || 0}%</span></span></button>`).join('')}` : '<p class="muted small">No hay líderes que cubran a estas cartas.</p>';
-        $('#sugg-box', el).onclick = (e) => {
-          const b = e.target.closest('.sugg');
-          if (!b) return;
-          editing.ids[0] = b.dataset.id;
-          if (!editing.ids[T.SLOTS - 1]) editing.ids[T.SLOTS - 1] = b.dataset.id;
-          route();
-        };
-      });
       $('#del', el)?.addEventListener('click', () => {
-        if (!confirm('¿Borrar este equipo?')) return;
-        T.saveTeams(T.loadTeams().filter((t) => t.id !== editing.id));
-        editing = null;
+        if (!confirm(`¿Borrar el equipo «${editing.name}»? No se puede deshacer.`)) return;
+        deleteTeam(editing.id);
+        toast('Equipo borrado');
         location.hash = '#/teams';
       });
     },
   };
 };
+
 
 // Best boost of a Leader Skill, ignoring ones aimed at names rather than real categories/types.
 let knownCats = null;
@@ -683,6 +763,7 @@ views['team-pick'] = (params, slotStr) => {
       box.addEventListener('click', (e) => {
         const b = e.target.closest('.pick');
         if (!b) return;
+        (editing.history ||= []).push([...editing.ids]);
         editing.ids[i] = b.dataset.id;
         // A leader is usually also brought as the friend.
         if (i === 0 && !editing.ids[T.SLOTS - 1]) editing.ids[T.SLOTS - 1] = b.dataset.id;
@@ -757,7 +838,10 @@ function route() {
   }
   cleanup?.(); cleanup = null;
   const out = views[view](params, arg);
-  const main = $('main');
+  // A fresh <main> for every screen, so click handlers from the previous screen don't pile up.
+  const old = $('main');
+  const main = old.cloneNode(false);
+  old.replaceWith(main);
   $('#title').innerHTML = out.title;
   $('#back').hidden = !out.back;
   main.innerHTML = out.html;

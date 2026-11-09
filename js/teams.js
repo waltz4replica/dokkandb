@@ -163,6 +163,89 @@ export function candidateScorer(team) {
   };
 }
 
+// ---------- the assistant ----------
+
+/** Name rule of the game: your own 6 units can't share a name (the friend can). */
+export function nameAllowed(team, slot, card) {
+  if (slot === SLOTS - 1) return true;
+  return !team.some((c, k) => c && k !== slot && k !== SLOTS - 1 && c.name === card.name);
+}
+
+/**
+ * Why a card fits the team: { score, lead, friend, links, cats } — used to rank and to explain
+ * recommendations ("+220% líder · 9 links · 5 categorías").
+ */
+export function fit(team, card) {
+  const leader = team[0], friend = team[SLOTS - 1];
+  const lead = leader ? coverage(leader, card) : null;
+  const fr = friend ? coverage(friend, card) : null;
+  const members = team.filter((m) => m && m.page !== card.page);
+  const links = members.reduce((n, m) => n + sharedLinks(card, m).length, 0);
+  const leaderCats = new Set([...(leader ? leaderClauses(leader) : []), ...(friend ? leaderClauses(friend) : [])].flatMap((c) => c.categories));
+  const cats = card.categories.filter((c) => leaderCats.has(c)).length;
+  // Categories the other units' passives ask allies for ("…another "Planet Namek Saga" Category ally").
+  const wanted = new Set(members.flatMap((m) => [...plain(m.passive?.seza || m.passive?.eza || m.passive?.base || '').matchAll(/"([^"]+)"/g)].map((x) => x[1])));
+  const helps = card.categories.filter((c) => wanted.has(c)).length;
+  let score = links * 10 + cats * 15 + helps * 30 + (card.rarity === 'LR' ? 20 : card.rarity === 'UR' ? 10 : 0) + (card.seza ? 15 : card.eza ? 8 : 0);
+  if (lead?.covered) score += 1000 + lead.pct;
+  if (fr?.covered && friend !== leader) score += 500 + fr.pct / 2;
+  // Newer units are usually stronger.
+  if (card.released) score += Math.max(0, +card.released.slice(0, 4) - 2015) * 6;
+  return { score, lead, friend: fr, links, cats, helps };
+}
+
+/** Best cards to add next, best first: [{ card, ...fit }]. */
+export function recommend(team, allCards, limit = 8, slot = team.findIndex((c, k) => !c && k > 0 && k < SLOTS - 1)) {
+  if (slot < 0) return [];
+  const taken = new Set(team.filter(Boolean).map((c) => c.page));
+  const hasLeader = !!(team[0] || team[SLOTS - 1]);
+  const out = [];
+  for (const card of allCards) {
+    if (taken.has(card.page) || !nameAllowed(team, slot, card)) continue;
+    const f = fit(team, card);
+    if (hasLeader && !f.lead?.covered && !f.friend?.covered) continue;
+    out.push({ card, ...f });
+  }
+  return out.sort((a, b) => b.score - a.score).slice(0, limit);
+}
+
+/** Fills every empty slot (best leader first if missing), then optimises the order. */
+export function autoFill(team, allCards) {
+  const t = [...team];
+  if (!t[0]) {
+    const best = suggestLeaders(t.slice(1, SLOTS - 1), allCards, 1)[0];
+    if (best) t[0] = best.card;
+  }
+  if (!t[SLOTS - 1] && t[0]) t[SLOTS - 1] = t[0];
+  for (let k = 1; k < SLOTS - 1; k++) {
+    if (t[k]) continue;
+    const [best] = recommend(t, allCards, 1, k);
+    if (best) t[k] = best.card;
+  }
+  return t.every(Boolean) ? optimizeOrder(t).order : t;
+}
+
+// ---------- passive conditions and support ----------
+
+const plainLines = (html = '') => html.replace(/<span class="tag[^"]*">[^<]*<\/span>/g, '')
+  .split(/<br>|<hr>/).map(plain).filter(Boolean);
+
+/**
+ * Categories a unit's Passive Skill asks allies for, and whether the team has them:
+ * [{ name, allies }] where `allies` = how many other team members belong to it.
+ */
+export function passiveCategoryChecks(team, card, knownCategories) {
+  const text = plain(card.passive?.seza || card.passive?.eza || card.passive?.base || '');
+  const names = [...new Set([...text.matchAll(/"([^"]+)"/g)].map((m) => m[1]).filter((n) => knownCategories.has(n)))];
+  return names.map((name) => ({ name, allies: team.filter((m) => m && m.page !== card.page && m.categories.includes(name)).length }));
+}
+
+/** Lines of a unit's Passive Skill that boost allies ("Super Class allies' DEF 70%"). */
+export function supportLines(card) {
+  const html = card.passive?.seza || card.passive?.eza || card.passive?.base || '';
+  return plainLines(html).map((l) => l.replace(/^- /, '')).filter((l) => /\ballies'|\ball allies\b|\bally\b.*\+/i.test(l) && !/^When|^For every|^Starting/i.test(l)).slice(0, 4);
+}
+
 /** Totals for the summary box. */
 export function summary(team) {
   const units = team.filter(Boolean);

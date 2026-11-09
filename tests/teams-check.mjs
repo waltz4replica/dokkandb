@@ -46,4 +46,23 @@ check('suggest leaders', sug.length > 0 && sug[0].covered >= 3);
 check('shared categories', sharedCategories(team).length > 0);
 check('share code round trip', decodeTeam(encodeTeam(['1034031', null, '1034201'])).join() === '1034031,,1034201,,,,');
 
+// Assistant
+const { recommend, autoFill, passiveCategoryChecks, supportLines, nameAllowed } = await import('../js/teams.js');
+const partial = [goku, null, null, null, null, null, goku];
+const rec = recommend(partial, cards, 5);
+console.log('recommend:', rec.map((r) => `${r.card.name} (${r.lead.pct}%, ${r.links} links, ${r.cats} cats)`).join(' | '));
+check('recommend covered units', rec.length === 5 && rec.every((r) => r.lead.covered));
+const full = autoFill(partial, cards);
+console.log('autoFill:', full.map((c) => c?.name).join(' / '));
+check('autoFill fills 7', full.every(Boolean));
+const own = full.slice(0, 6).map((c) => c.name);
+check('autoFill respects name rule', new Set(own).size === own.length);
+check('nameAllowed blocks dupes', !nameAllowed([goku, goku, null, null, null, null, null], 2, goku));
+const fromUnits = autoFill([null, ...full.slice(1, 6), null], cards);
+check('autoFill picks a leader', !!fromUnits[0]);
+const known = new Set(cards.flatMap((c) => c.categories));
+console.log('passive checks (Goku):', JSON.stringify(passiveCategoryChecks(full, goku, known)));
+console.log('support (Goku):', supportLines(goku));
+check('support lines', supportLines(goku).length > 0);
+
 process.exit(fail ? 1 : 0);

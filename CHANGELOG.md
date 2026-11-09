@@ -8,6 +8,17 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 
+## 2.3.0 — 2026-11-09
+- **Asistente de equipos:**
+  - «Recomendadas para tu equipo»: tarjetas que se actualizan con cada carta que eliges (cobertura del líder, links con el equipo y si ayuda a cumplir pasivas). Un toque las añade.
+  - Botón **Completar**: monta el resto del equipo (y elige líder si falta) y optimiza el orden.
+  - Sin líder pero con cartas: muestra solo los líderes que mejor las cubren.
+- **Editor más gráfico:** recuadros de Líder y Amigo con su % y a quién afectan, borde de color por tipo, barra de resumen, rotación dibujada con los links entre cada pareja (toca un turno para ver sus nombres), barras de categorías compartidas.
+- **Detalle por unidad:** cobertura de líder y amigo, categorías que pide su pasiva (✓/✗ según tu equipo) y apoyo que da al equipo.
+- **Deshacer** cualquier cambio.
+- **Borrar equipos** desde la lista (🗑) y desde el editor.
+- Corregido: al volver a una pantalla, los toques se registraban varias veces (cartas añadidas dos veces, filtros de Cartas que no respondían).
+
 ## 2.2.0 — 2026-11-09
 - **Nuevo apartado Equipos** (creador de equipos):
   - 7 huecos: Líder, 5 unidades y Amigo. Al poner un líder, el amigo se rellena con el mismo.
