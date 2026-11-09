@@ -1,12 +1,18 @@
-name: Actualizar eventos, tier list y noticias
-# Desde GitHub solo funcionan las noticias (DOKKAN.FYI): DokkanStats bloquea estos servidores.
-# La tier list y los eventos los sube el PC con scripts/update-from-pc.ps1.
-# Si una web falla, se conservan sus datos anteriores.
+name: Actualizar cartas, noticias, eventos y tier list
+# Cartas: DOKKAN.FYI (datos sacados del juego) -> data/cards.json
+# Noticias: DOKKAN.FYI -> data/extra.json
+# La tier list y los eventos (DokkanStats) los sube el PC con scripts/update-from-pc.ps1,
+# porque DokkanStats bloquea los servidores de GitHub. Si una web falla, se conservan sus datos anteriores.
 
 on:
   schedule:
     - cron: '17 */3 * * *'   # cada 3 horas
   workflow_dispatch:          # botón "Run workflow" para lanzarlo a mano
+    inputs:
+      full:
+        description: 'Volver a leer todas las cartas (tarda ~30 min)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -18,20 +24,26 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Leer las webs
+      - name: Cartas (DOKKAN.FYI)
+        run: node scripts/build-cards.mjs ${{ inputs.full && '--full' || '' }}
+        continue-on-error: true
+      - name: Noticias, eventos y tier list
         run: node scripts/scrape.mjs
+        continue-on-error: true
       - name: Guardar cambios
         run: |
           if [ -n "$(git status --porcelain data/)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/
-            git commit -m "Datos actualizados: eventos, tier list y noticias"
+            git commit -m "Datos actualizados"
+            git pull --rebase
             git push
           else
             echo "Sin cambios"
