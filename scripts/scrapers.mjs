@@ -13,9 +13,12 @@ const attr = (tag, name) => { const m = new RegExp(`\\s${name}="([^"]*)"`).exec(
 const absolute = (url, base) => { try { return new URL(url, base).href; } catch { return ''; } };
 
 /** Splits "[Title] Name" into its two parts. */
+// Dual units have two "[Title] Name" parts joined by "+"; keep the first title and both names.
 function splitTitle(full) {
-  const m = /^\[(.+?)\]\s*(.+)$/.exec(full);
-  return m ? { title: m[1], name: m[2] } : { title: '', name: full };
+  const clean = full.replace(/\s+/g, ' ').trim();
+  const title = /^\[([^\]]+)\]/.exec(clean)?.[1] || '';
+  const name = clean.replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').replace(/\s*\+\s*/g, ' + ').trim();
+  return { title, name: name || clean };
 }
 
 /**
