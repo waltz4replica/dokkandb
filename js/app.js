@@ -1,0 +1,409 @@
+// Screens and navigation. Each screen is a function in `views` that returns HTML,
+// and can optionally return a `mount(el)` function to wire up interactions.
+// To add a new feature: add a view, a route in ROUTES and (optionally) a tab in index.html.
+
+import { store, loadLocal, sync, onChange, isSyncing } from './sync.js';
+import { cardThumb, fileUrl, pageUrl } from './wiki.js';
+
+const $ = (sel, el = document) => el.querySelector(sel);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const enc = encodeURIComponent;
+const AUTO_SYNC_MIN = 30;
+
+// ---------- helpers ----------
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso.length === 10 ? iso + 'T00:00:00' : iso);
+  return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+function ago(iso) {
+  if (!iso) return 'nunca';
+  const m = Math.round((Date.now() - Date.parse(iso)) / 60000);
+  if (m < 1) return 'ahora mismo';
+  if (m < 60) return `hace ${m} min`;
+  const h = Math.round(m / 60);
+  if (h < 24) return `hace ${h} h`;
+  return `hace ${Math.round(h / 24)} d`;
+}
+const cardImg = (c) => cardThumb(c.id) || c.image;
+const thumbTag = (c, cls = 'thumb') => `<img class="${cls}" loading="lazy" alt="" src="${esc(cardImg(c))}" data-fallback="${esc(c.image)}">`;
+
+function tile(c) {
+  const isNew = c.firstSeen && Date.now() - Date.parse(c.firstSeen) < 7 * 864e5;
+  return `<a class="tile" href="#/card/${enc(c.page)}">
+    ${thumbTag(c)}
+    ${isNew ? '<span class="flag">NUEVA</span>' : ''}
+    ${c.seza ? '<span class="flag eza">SEZA</span>' : c.eza ? '<span class="flag eza">EZA</span>' : ''}
+    <div class="nm">${esc(c.name)}</div></a>`;
+}
+
+// Newest first: cards not yet released globally (JP-only / upcoming) go on top.
+function byRelease(a, b) {
+  return (b.released || '9999') .localeCompare(a.released || '9999') || (b.updated || '').localeCompare(a.updated || '');
+}
+
+let toastTimer;
+function toast(msg) {
+  let el = $('.toast');
+  if (!el) { el = document.createElement('div'); el.className = 'toast'; document.body.append(el); }
+  el.textContent = msg;
+  el.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { el.hidden = true; }, 3500);
+}
+
+// ---------- views ----------
+
+const views = {};
+
+views.home = () => {
+  if (!store.cards.size) return firstRunView();
+  const cards = [...store.cards.values()];
+  const latest = cards.filter((c) => c.rarity !== 'SSR').sort(byRelease).slice(0, 12);
+  const recentlyAdded = cards.filter((c) => c.firstSeen).sort((a, b) => b.firstSeen.localeCompare(a.firstSeen)).slice(0, 12);
+  const eza = cards.filter((c) => c.dates.glbSeza || c.dates.glbEza || c.dates.jpSeza || c.dates.jpEza)
+    .sort((a, b) => lastEza(b).localeCompare(lastEza(a))).slice(0, 12);
+  const banners = [...store.banners.values()].sort(byAdded).slice(0, 4);
+  return {
+    title: '<span class="logo">Dokkan</span>DB',
+    html: `
+      ${recentlyAdded.length ? `<h2>Añadidas a la base de datos</h2><div class="grid">${recentlyAdded.map(tile).join('')}</div>` : ''}
+      <h2>Últimas cartas <a href="#/cards">Ver todas</a></h2>
+      <div class="grid">${latest.map(tile).join('')}</div>
+      <h2>Últimos banners <a href="#/banners">Ver todos</a></h2>
+      ${banners.map(bannerRow).join('')}
+      <h2>Últimos EZA / SEZA</h2>
+      <div class="grid">${eza.map(tile).join('')}</div>`,
+  };
+};
+const lastEza = (c) => [c.dates.glbSeza, c.dates.jpSeza, c.dates.glbEza, c.dates.jpEza].filter(Boolean).sort().pop() || '';
+const byAdded = (a, b) => (b.added || '').localeCompare(a.added || '');
+
+function firstRunView() {
+  return {
+    title: '<span class="logo">Dokkan</span>DB',
+    html: `<div class="box" style="margin-top:20px">
+      <h2 style="margin-top:0">Bienvenido</h2>
+      <p>La primera vez la app descarga toda la base de datos de la Dokkan Wiki (unas 2.300 cartas y sus banners). Tarda unos minutos; después solo descarga lo nuevo.</p>
+      <p class="muted small" id="sync-msg">${isSyncing() ? 'Descargando…' : 'Pulsa el botón para empezar.'}</p>
+      ${isSyncing() ? '<div class="progress"><i></i></div>' : '<div class="btns"><button class="btn primary" id="start">Descargar datos</button></div>'}
+    </div>`,
+    mount(el) {
+      $('#start', el)?.addEventListener('click', () => runSync({ full: true }));
+    },
+  };
+}
+
+// Filters live here so they survive moving between screens.
+const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, sort: 'new', category: '' };
+
+views.cards = (params) => {
+  if (!store.cards.size) return firstRunView();
+  if (params.get('category') != null) { filters.category = params.get('category'); filters.q = ''; }
+  const chip = (group, val, label, extra = '') => `<button class="chip ${extra} ${filters[group].has(val) ? 'on' : ''}" data-g="${group}" data-v="${val}">${label}</button>`;
+  return {
+    title: 'Cartas',
+    html: `
+      <input class="search" type="search" placeholder="Buscar por nombre, categoría, link…" value="${esc(filters.q)}" id="q" autocomplete="off">
+      <div class="chips">
+        ${['LR', 'UR', 'SSR'].map((r) => chip('rarity', r, r)).join('')}
+        ${['AGL', 'TEQ', 'INT', 'STR', 'PHY'].map((t) => chip('type', t, t, 't-' + t.toLowerCase())).join('')}
+        ${chip('cls', 'Super', 'Super')}${chip('cls', 'Extreme', 'Extreme')}
+        <button class="chip ${filters.eza ? 'on' : ''}" data-g="eza">EZA</button>
+      </div>
+      ${filters.category ? `<div class="chips"><button class="chip on" data-g="category">Categoría: ${esc(filters.category)} ✕</button></div>` : ''}
+      <div class="toolbar"><span id="count"></span>
+        <select id="sort">
+          <option value="new">Más recientes</option>
+          <option value="old">Más antiguas</option>
+          <option value="atk">Mayor ATK</option>
+          <option value="hp">Mayor HP</option>
+          <option value="def">Mayor DEF</option>
+          <option value="name">Nombre</option>
+        </select></div>
+      <div class="grid" id="grid"></div><div class="sentinel" id="more"></div>`,
+    mount(el) {
+      $('#sort', el).value = filters.sort;
+      let list = [], shown = 0;
+      const grid = $('#grid', el);
+      const renderMore = () => {
+        const next = list.slice(shown, shown + 60);
+        grid.insertAdjacentHTML('beforeend', next.map(tile).join(''));
+        shown += next.length;
+      };
+      const refresh = () => {
+        list = filterCards();
+        shown = 0;
+        grid.innerHTML = list.length ? '' : '<div class="empty" style="grid-column:1/-1">No hay cartas con esos filtros.</div>';
+        $('#count', el).textContent = `${list.length} cartas`;
+        renderMore();
+      };
+      let t;
+      $('#q', el).addEventListener('input', (e) => { clearTimeout(t); t = setTimeout(() => { filters.q = e.target.value; refresh(); }, 150); });
+      $('#sort', el).addEventListener('change', (e) => { filters.sort = e.target.value; refresh(); });
+      el.addEventListener('click', (e) => {
+        const b = e.target.closest('.chip');
+        if (!b) return;
+        const g = b.dataset.g;
+        if (g === 'eza') filters.eza = !filters.eza;
+        else if (g === 'category') { filters.category = ''; b.parentElement.remove(); }
+        else filters[g].has(b.dataset.v) ? filters[g].delete(b.dataset.v) : filters[g].add(b.dataset.v);
+        b.classList.toggle('on', g === 'eza' ? filters.eza : g === 'category' ? false : filters[g].has(b.dataset.v));
+        refresh();
+      });
+      const io = new IntersectionObserver((entries) => { if (entries[0].isIntersecting && shown < list.length) renderMore(); }, { rootMargin: '600px' });
+      io.observe($('#more', el));
+      refresh();
+      return () => io.disconnect();
+    },
+  };
+};
+
+function filterCards() {
+  const words = filters.q.toLowerCase().split(/\s+/).filter(Boolean);
+  const out = [...store.cards.values()].filter((c) =>
+    (!filters.rarity.size || filters.rarity.has(c.rarity)) &&
+    (!filters.type.size || filters.type.has(c.type)) &&
+    (!filters.cls.size || filters.cls.has(c.cls)) &&
+    (!filters.eza || c.eza || c.seza) &&
+    (!filters.category || c.categories.includes(filters.category) || c.links.includes(filters.category)) &&
+    words.every((w) => c.search.includes(w)));
+  const stat = (k) => (c) => c.stats[k][1] || c.stats[k][0] || 0;
+  const sorters = {
+    new: byRelease,
+    old: (a, b) => -byRelease(a, b),
+    atk: (a, b) => stat('atk')(b) - stat('atk')(a),
+    hp: (a, b) => stat('hp')(b) - stat('hp')(a),
+    def: (a, b) => stat('def')(b) - stat('def')(a),
+    name: (a, b) => a.name.localeCompare(b.name),
+  };
+  return out.sort(sorters[filters.sort] || byRelease);
+}
+
+views.card = (params, page) => {
+  const c = store.cards.get(page);
+  if (!c) return { title: 'Carta', back: true, html: `<div class="empty">Esta carta no está en la base de datos.<br><br><a href="${esc(pageUrl(page))}" target="_blank" rel="noopener">Abrir en la wiki</a></div>` };
+  const levels = [['base', 'Base'], ...(c.eza ? [['eza', 'EZA']] : []), ...(c.seza ? [['seza', 'SEZA']] : [])];
+  const t = c.type.toLowerCase();
+  const skill = (label, name, body, cond) => body ? `<div class="box skill"><h3>${label}</h3>${name ? `<div class="sn">${esc(name)}</div>` : ''}<div class="desc">${body}</div>${cond ? `<div class="cond">${cond}</div>` : ''}</div>` : '';
+  const render = (lv) => {
+    const pick = (o) => (o ? o[lv] || (lv === 'seza' ? o.eza : '') || o.base : '');
+    return `
+      ${skill('Habilidad de líder', '', pick(c.leader))}
+      ${skill('Súper ataque', c.superAttack.name, pick(c.superAttack))}
+      ${c.ultraSuperAttack ? skill('Ultra súper ataque', c.ultraSuperAttack.name, pick(c.ultraSuperAttack)) : ''}
+      ${c.exSuperAttack ? skill('EX súper ataque', c.exSuperAttack.name, c.exSuperAttack.desc, c.exSuperAttack.condition) : ''}
+      ${skill('Habilidad pasiva', c.passive.name, pick(c.passive))}
+      ${c.active ? skill('Habilidad activa', c.active.name, c.active.desc, c.active.condition) : ''}
+      ${c.transformation ? skill('Transformación', '', c.transformation) : ''}`;
+  };
+  const d = c.dates;
+  const dateRows = [['Lanzamiento', d.glb, d.jp], ['EZA', d.glbEza, d.jpEza], ['SEZA', d.glbSeza, d.jpSeza]].filter((r) => r[1] || r[2]);
+  return {
+    title: esc(c.name),
+    back: true,
+    html: `
+      <div class="hero">${thumbTag(c, '')}
+        <div><div class="t">${esc(c.title)}</div><div class="n">${esc(c.name)}</div>
+        <div class="badges"><span class="badge ${c.rarity.toLowerCase()}">${esc(c.rarity)}</span><span class="badge t-${t}">${esc(c.cls)} ${esc(c.type)}</span>
+        ${c.cost ? `<span class="badge">Coste ${c.cost}</span>` : ''}${c.seza ? '<span class="badge">SEZA</span>' : c.eza ? '<span class="badge">EZA</span>' : ''}</div></div>
+      </div>
+      ${levels.length > 1 ? `<div class="seg" id="lv">${levels.map(([k, l], i) => `<button data-lv="${k}" class="${i === levels.length - 1 ? 'on' : ''}">${l}</button>`).join('')}</div>` : ''}
+      <div id="skills" style="margin-top:10px">${render(levels[levels.length - 1][0])}</div>
+      <div class="box"><table class="stats"><tr><th></th><th>Base</th><th>Máx.</th></tr>
+        <tr><td>HP</td><td>${c.stats.hp[0] ?? '–'}</td><td>${c.stats.hp[1] ?? '–'}</td></tr>
+        <tr><td>ATK</td><td>${c.stats.atk[0] ?? '–'}</td><td>${c.stats.atk[1] ?? '–'}</td></tr>
+        <tr><td>DEF</td><td>${c.stats.def[0] ?? '–'}</td><td>${c.stats.def[1] ?? '–'}</td></tr></table>
+        ${c.ki12 ? `<div class="small muted" style="margin-top:8px">Multiplicador a 12 de ki: ${esc(c.ki12)}</div>` : ''}</div>
+      <h2>Links (${c.links.length})</h2><div class="tags">${c.links.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>
+      <h2>Categorías (${c.categories.length})</h2><div class="tags">${c.categories.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>
+      ${dateRows.length ? `<h2>Fechas</h2><div class="box dates"><span></span><b>Global</b><b>Japón</b>${dateRows.map(([l, g, j]) => `<b>${l}</b><span>${fmtDate(g) || '–'}</span><span>${fmtDate(j) || '–'}</span>`).join('')}</div>` : '<p class="muted small">Sin fecha de lanzamiento todavía (próximamente o solo en Japón).</p>'}
+      <p class="small"><a href="${esc(pageUrl(c.page))}" target="_blank" rel="noopener">Ver en la Dokkan Wiki ↗</a></p>`,
+    mount(el) {
+      $('#lv', el)?.addEventListener('click', (e) => {
+        const b = e.target.closest('button');
+        if (!b) return;
+        el.querySelectorAll('#lv button').forEach((x) => x.classList.toggle('on', x === b));
+        $('#skills', el).innerHTML = render(b.dataset.lv);
+      });
+    },
+  };
+};
+
+function bannerRow(b) {
+  const minis = b.newCards.slice(0, 6).map((x) => `<img loading="lazy" alt="" src="${esc(cardThumb(x.id))}">`).join('');
+  return `<a class="row" href="#/banner/${enc(b.page)}">
+    <img class="banner-img" loading="lazy" alt="" src="${esc(fileUrl(b.image, 360))}">
+    <div class="info"><b>${esc(b.name)}</b><span class="muted small">${esc(b.kind)}${b.added ? ' · ' + fmtDate(b.added) : ''}</span>
+    ${minis ? `<div class="minis">${minis}</div>` : ''}</div></a>`;
+}
+
+views.banners = () => {
+  if (!store.cards.size) return firstRunView();
+  const kinds = [...new Set([...store.banners.values()].map((b) => b.category))].sort();
+  return {
+    title: 'Banners',
+    html: `<div class="chips"><button class="chip on" data-k="">Todos</button>${kinds.map((k) => `<button class="chip" data-k="${esc(k)}">${esc(k)}</button>`).join('')}</div>
+      <div id="list" style="margin-top:8px"></div><div class="sentinel" id="more"></div>`,
+    mount(el) {
+      let list = [], shown = 0;
+      const box = $('#list', el);
+      const more = () => { box.insertAdjacentHTML('beforeend', list.slice(shown, shown + 25).map(bannerRow).join('')); shown += 25; };
+      const show = (k) => { list = [...store.banners.values()].filter((b) => !k || b.category === k).sort(byAdded); shown = 0; box.innerHTML = ''; more(); };
+      el.addEventListener('click', (e) => {
+        const c = e.target.closest('.chip');
+        if (!c) return;
+        el.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x === c));
+        show(c.dataset.k);
+      });
+      const io = new IntersectionObserver((en) => { if (en[0].isIntersecting && shown < list.length) more(); }, { rootMargin: '600px' });
+      io.observe($('#more', el));
+      show('');
+      return () => io.disconnect();
+    },
+  };
+};
+
+views.banner = (params, page) => {
+  const b = store.banners.get(page);
+  if (!b) return { title: 'Banner', back: true, html: '<div class="empty">Banner no encontrado.</div>' };
+  const cardTile = (x) => {
+    const c = store.cards.get(x.page);
+    if (c) return tile(c);
+    return `<a class="tile" href="${esc(pageUrl(x.page))}" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(cardThumb(x.id))}"><div class="nm">${esc(x.page)}</div></a>`;
+  };
+  return {
+    title: esc(b.name),
+    back: true,
+    html: `<img alt="" src="${esc(fileUrl(b.image, 800))}" style="width:100%;border-radius:12px;background:var(--bg2)">
+      <p class="muted small">${esc(b.kind)}${b.added ? ' · añadido a la wiki el ' + fmtDate(b.added) : ''}${b.coins ? ' · ' + esc(b.coins) : ''}</p>
+      ${b.newCards.length ? `<h2>Cartas nuevas</h2><div class="grid">${b.newCards.map(cardTile).join('')}</div>` : ''}
+      ${b.featured.length ? `<h2>Destacadas</h2><div class="grid">${b.featured.map(cardTile).join('')}</div>` : ''}
+      <p class="small" style="margin-top:20px"><a href="${esc(pageUrl(b.page))}" target="_blank" rel="noopener">Ver en la Dokkan Wiki ↗</a></p>`,
+  };
+};
+
+views.settings = () => ({
+  title: 'Ajustes',
+  html: `
+    <h2>Base de datos</h2>
+    <div class="box kv">
+      <b>Cartas</b><span>${store.cards.size}</span>
+      <b>Banners</b><span>${store.banners.size}</span>
+      <b>Última actualización</b><span id="last">${store.lastSync ? `${fmtDate(store.lastSync)} (${ago(store.lastSync)})` : 'nunca'}</span>
+    </div>
+    <p class="muted small">La app busca novedades en la wiki cada vez que la abres y cada ${AUTO_SYNC_MIN} minutos mientras está abierta. Solo descarga las páginas que han cambiado.</p>
+    <div class="btns">
+      <button class="btn primary" id="sync-now" ${isSyncing() ? 'disabled' : ''}>Buscar novedades ahora</button>
+      <button class="btn" id="sync-full" ${isSyncing() ? 'disabled' : ''}>Volver a descargar todo</button>
+    </div>
+    <p class="muted small" id="sync-msg"></p>
+    <h2>Fuentes</h2>
+    <div class="box small">Datos de la <a href="https://dbz-dokkanbattle.fandom.com/" target="_blank" rel="noopener">Dokkan Wiki</a> (Fandom), con licencia CC BY-SA. Los textos del juego están en inglés.<br><br>
+    App de fans, sin relación con Bandai Namco ni Akatsuki.</div>`,
+  mount(el) {
+    $('#sync-now', el).addEventListener('click', () => runSync({ manual: true }));
+    $('#sync-full', el).addEventListener('click', () => { if (confirm('¿Volver a descargar toda la base de datos? Tarda unos minutos.')) runSync({ full: true }); });
+  },
+});
+
+// ---------- router ----------
+
+const ROUTES = [
+  [/^#?\/?$/, 'home', 'home'],
+  [/^#\/cards$/, 'cards', 'cards'],
+  [/^#\/card\/(.+)$/, 'card', 'cards'],
+  [/^#\/banners$/, 'banners', 'banners'],
+  [/^#\/banner\/(.+)$/, 'banner', 'banners'],
+  [/^#\/settings$/, 'settings', 'settings'],
+];
+
+let cleanup = null;
+const scrollPos = new Map();
+
+function route() {
+  const [path, query = ''] = location.hash.split('?');
+  const params = new URLSearchParams(query);
+  let view = 'home', tab = 'home', arg;
+  for (const [re, v, t] of ROUTES) {
+    const m = re.exec(path || '');
+    if (m) { view = v; tab = t; arg = m[1] && decodeURIComponent(m[1]); break; }
+  }
+  cleanup?.(); cleanup = null;
+  const out = views[view](params, arg);
+  const main = $('main');
+  $('#title').innerHTML = out.title;
+  $('#back').hidden = !out.back;
+  main.innerHTML = out.html;
+  cleanup = out.mount?.(main) || null;
+  document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', a.dataset.tab === tab));
+  window.scrollTo(0, scrollPos.get(location.hash) || 0);
+}
+
+addEventListener('hashchange', route);
+addEventListener('scroll', () => scrollPos.set(location.hash, scrollY), { passive: true });
+
+// Broken card image -> fall back to the page image from the wiki.
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (img.tagName === 'IMG' && img.dataset.fallback && img.src !== img.dataset.fallback) {
+    img.src = img.dataset.fallback;
+    img.dataset.fallback = '';
+  }
+}, true);
+
+// ---------- syncing ----------
+
+function setPill(state, text) {
+  const pill = $('#pill');
+  pill.className = 'sync-pill ' + state;
+  $('#pill-text').textContent = text;
+}
+
+async function runSync(opts = {}) {
+  setPill('busy', 'Actualizando…');
+  const msg = () => $('#sync-msg');
+  const job = sync({ ...opts, onProgress: (m) => { if (msg()) msg().textContent = m; } });
+  if (location.hash.startsWith('#/settings') || !store.cards.size) route();
+  try {
+    const r = await job;
+    setPill('', 'Al día');
+    const parts = [];
+    if (r.newCards.length) parts.push(`${r.newCards.length} carta${r.newCards.length > 1 ? 's' : ''} nueva${r.newCards.length > 1 ? 's' : ''}`);
+    if (r.newBanners.length) parts.push(`${r.newBanners.length} banner${r.newBanners.length > 1 ? 's' : ''} nuevo${r.newBanners.length > 1 ? 's' : ''}`);
+    if (parts.length) toast('Novedades: ' + parts.join(' y '));
+    else if (opts.manual || opts.full) toast(r.full ? `Base de datos descargada: ${store.cards.size} cartas` : 'Todo está al día');
+    // Refresh the screen unless the user is reading a detail page.
+    if (!/^#\/(card|banner)\//.test(location.hash)) route();
+  } catch (err) {
+    console.error(err);
+    setPill('err', 'Sin conexión');
+    if (msg()) msg().textContent = 'No se pudo actualizar: ' + err.message;
+    if (opts.manual || opts.full) toast('No se pudo conectar con la wiki');
+    if (location.hash.startsWith('#/settings') || !store.cards.size) route();
+  }
+}
+
+function autoSync() {
+  if (isSyncing() || !navigator.onLine) return;
+  if (!store.cards.size) return; // first download waits for the user to press the button
+  if (store.lastSync && Date.now() - Date.parse(store.lastSync) < AUTO_SYNC_MIN * 60000) return;
+  runSync();
+}
+
+// ---------- start ----------
+
+(async function start() {
+  await loadLocal();
+  setPill('', store.lastSync ? 'Al día' : 'Sin datos');
+  route();
+  if (!store.cards.size && navigator.onLine) runSync({ full: true });
+  else autoSync();
+  setInterval(autoSync, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) autoSync(); });
+  addEventListener('online', autoSync);
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
+})();
+
+onChange((ev) => { if (ev.type === 'sync-done' && location.hash.startsWith('#/settings')) { const l = $('#last'); if (l) l.textContent = `${fmtDate(store.lastSync)} (${ago(store.lastSync)})`; } });
