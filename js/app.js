@@ -453,7 +453,7 @@ views.teams = () => {
       <a class="row" href="#/team/${i}">
         ${leader ? `<img class="banner-img sq" alt="" src="${esc(cardImg(leader))}">` : '<span class="mini-empty big"></span>'}
         <div class="info"><b>${esc(t.name)}</b>
-          <span class="muted small">${cards.filter(Boolean).length}/7 cartas · coste ${T.summary(cards).cost} · ${T.rotationScore(cards)} links</span>
+          <span class="muted small">${cards.filter(Boolean).length}/7 cartas · coste ${T.summary(cards).cost}${cards.some(Boolean) ? ` · sinergia ${T.synergy(cards, T.arrange(cards, t.order), { known: knownCategories(), tierOf }).total}` : ''}</span>
           <div class="minis">${cards.slice(1).map((c) => c ? `<img loading="lazy" alt="" src="${esc(cardImg(c))}">` : '<span class="mini-empty"></span>').join('')}</div>
         </div></a>
       <button class="icon-btn danger" data-del="${esc(t.id)}" aria-label="Borrar ${esc(t.name)}">🗑</button>
@@ -476,6 +476,17 @@ views.teams = () => {
   };
 };
 
+// Tier list position -> 0..1 rating, for the synergy score.
+const TIER_SCORE = { 'S++': 1, 'S+': 0.95, S: 0.9, 'S-': 0.85, 'A+': 0.8, A: 0.75, 'A-': 0.7, 'B+': 0.65, B: 0.6, 'B-': 0.55 };
+function tierOf(card) {
+  for (const t of store.extra?.tierlist?.tiers || []) {
+    if (t.units.some((u) => u.cardId === card.id || (card.awakensFrom || []).includes(u.cardId))) return TIER_SCORE[t.tier] ?? 0.6;
+  }
+  return null;
+}
+
+const shareUrl = () => `${location.origin}${location.pathname}#/team/new?c=${T.encodeTeam(editing.ids)}&o=${(editing.order || T.DEFAULT_ORDER).join('')}`;
+
 views.team = (params, which) => {
   if (!store.cards.size) return firstRunView();
   const saved = T.loadTeams();
@@ -483,90 +494,106 @@ views.team = (params, which) => {
   // the address so coming back from the card picker keeps the team being edited.
   if (params.get('c') || params.has('fresh')) {
     editing = params.get('c') ? { ...newTeam(), name: 'Equipo compartido', ids: T.decodeTeam(params.get('c')) } : newTeam();
+    const o = (params.get('o') || '').split('').map(Number);
+    if (o.length === T.SLOTS && new Set(o).size === T.SLOTS) editing.order = o;
     history.replaceState(null, '', '#/team/new');
   } else if (/^\d+$/.test(which) && saved[+which] && (!editing || editing.id !== saved[+which].id)) {
-    editing = { ...saved[+which], ids: [...saved[+which].ids], history: [], fromList: true };
+    editing = { ...saved[+which], ids: [...saved[+which].ids], order: saved[+which].order ? [...saved[+which].order] : null, history: [], fromList: true };
   }
   if (!editing) editing = newTeam();
+  editing.order ||= [...T.DEFAULT_ORDER];
+
   const all = [...store.cards.values()];
   const team = teamCards();
+  const order = editing.order;
+  const units = T.arrange(team, order);
   const leader = team[0], friend = team[T.SLOTS - 1];
   const lc = leader ? T.leaderClauses(leader) : [];
   const fc = friend ? T.leaderClauses(friend) : [];
   const filled = team.filter(Boolean).length;
   const members = team.slice(1, T.SLOTS - 1);
-  const rot = T.rotation(team);
-  const totalLinks = rot.reduce((n, t) => n + t.links, 0);
-  const sum = T.summary(team);
-  const cats = T.sharedCategories(team).slice(0, 10);
-  const covered = leader ? team.filter((c, i) => c && i > 0 && i < T.SLOTS - 1 && T.coverage(leader, c, lc).covered).length : 0;
+  const known = knownCategories();
+  const view = T.unitLinkView(units, store.linkFx);
+  const syn = T.synergy(team, units, { known, tierOf });
+  const lStats = T.leaderStats(leader, team), fStats = T.leaderStats(friend, team);
   const own = team.slice(0, T.SLOTS - 1).filter(Boolean).map((c) => c.name);
   const dupes = [...new Set(own.filter((n, k) => own.indexOf(n) !== k))];
-  const known = knownCategories();
+  const hasFx = Object.keys(store.linkFx || {}).length > 0;
+  const tab = editing.tab || 'summary';
 
-  // --- slots ---
-  const slot = (c, i) => {
-    const lv = c && leader ? T.coverage(leader, c, lc) : null;
-    const fv = c && friend ? T.coverage(friend, c, fc) : null;
-    const links = c ? team.reduce((n, m, k) => (m && k !== i ? n + T.sharedLinks(c, m).length : n), 0) : 0;
-    return `<button class="slot ${i === 0 ? 'lead' : i === T.SLOTS - 1 ? 'friend' : ''} ${c ? 'tb-' + c.type.toLowerCase() : 'empty'}" data-slot="${i}">
-      <span class="slot-label">${T.SLOT_NAMES[i]}</span>
-      ${c ? `<img alt="" src="${esc(cardImg(c))}">` : '<span class="plus">+</span>'}
-      ${c ? `<span class="slot-name">${esc(c.name)}</span><span class="slot-links">${links} links</span>` : ''}
-      ${c && (leader || friend) && i > 0 && i < T.SLOTS - 1 ? `<span class="cov"><i class="${lv?.covered ? 'y' : 'n'}" title="Líder">L</i><i class="${fv?.covered ? 'y' : 'n'}" title="Amigo">A</i></span>` : ''}
-    </button>`;
-  };
-
-  // --- leader skills ---
+  // --- leader / friend boxes ---
   const targets = (clauses) => [...new Set(clauses.filter((c) => !c.extra).flatMap((c) => [
     ...c.categories.filter((x) => known.has(x)), ...c.types.map((t) => (c.cls ? c.cls + ' ' : '') + t),
     ...(c.classOnly ? [`Clase ${c.cls}`] : []), ...(c.all ? ['Todos'] : [])]))];
-  const leaderBox = (c, clauses, label) => c ? `<div class="lead-box">
-      <img alt="" src="${esc(cardImg(c))}">
-      <div><span class="muted small">${label}</span>
-        <div class="lead-pct">${clauses[0] ? `+${Math.max(...clauses.filter((x) => !x.extra).map((x) => x.pct))}%` : '—'}</div>
-        ${clauses[0]?.ki ? `<div class="small">Ki +${clauses[0].ki}</div>` : ''}
-        <div class="lead-targets">${targets(clauses).map((t) => `<span>${esc(t)}</span>`).join('')}</div></div>
-    </div>` : '';
+  const leadBox = (c, clauses, stats, slotIdx, label) => `<button class="lead-box2" data-slot="${slotIdx}">
+      <span class="lb-label">${label}</span>
+      ${c ? `<img alt="" src="${esc(cardImg(c))}"><span class="lb-team">Equipo: +${stats?.total || 0}%</span>
+        <span class="lb-targets">${targets(clauses).slice(0, 3).map((t) => `<i>${esc(t)}</i>`).join('')}</span>` : '<span class="plus">+</span>'}
+    </button>`;
 
-  // --- assistant panel ---
-  let assist = '';
-  const emptySlot = team.findIndex((c, k) => !c && k > 0 && k < T.SLOTS - 1);
-  if (!leader && members.some(Boolean)) {
-    const sug = T.suggestLeaders(members, all, 6);
-    const n = members.filter(Boolean).length;
-    assist = sug.length ? `<h2>Líderes para estas cartas</h2><div class="reco">${sug.map((s) => `
-      <button class="reco-card" data-lead="${esc(s.card.page)}"><img alt="" src="${esc(cardImg(s.card))}">
-        <b>${esc(s.card.name)}</b><span class="ok">Cubre ${s.covered}/${n}</span><span class="muted">${leaderStrength(s.card)}%</span></button>`).join('')}</div>` : '';
-  } else if (!leader) {
-    assist = '<div class="hint">👉 Empieza tocando <b>Líder</b>. Después te recomiendo las cartas que mejor encajan, o pulsa <b>Completar</b> y monto el equipo entero.</div>';
-  } else if (emptySlot >= 0) {
-    const rec = T.recommend(team, all, 10, emptySlot);
-    assist = rec.length ? `<h2>Recomendadas para tu equipo <span class="muted small">toca para añadir</span></h2><div class="reco">${rec.map((r) => `
-      <button class="reco-card" data-add="${esc(r.card.page)}"><img alt="" src="${esc(cardImg(r.card))}">
-        <b>${esc(r.card.name)}</b>
-        <span class="ok">+${r.lead?.covered ? r.lead.pct : r.friend?.pct || 0}%</span>
-        <span class="muted">${r.links} links${r.helps ? ' · ✓ pasiva' : ''}</span></button>`).join('')}</div>` : '';
-  }
-
-  // --- rotation ---
-  const linkChip = (a, b) => {
-    const n = a && b ? T.sharedLinks(a, b).length : 0;
-    return `<span class="lk ${n >= 4 ? 'hi' : n ? 'mid' : ''}">${n}</span>`;
+  // --- formation board ---
+  const cell = (pos) => {
+    const c = units[pos];
+    const slotIdx = order[pos];
+    const v = view[pos];
+    const lv = c && leader ? T.coverage(leader, c, lc) : null;
+    const fv = c && friend ? T.coverage(friend, c, fc) : null;
+    const role = slotIdx === 0 ? '<span class="role l">L</span>' : slotIdx === T.SLOTS - 1 ? '<span class="role f">A</span>' : '';
+    if (!c) return `<button class="fcell empty" data-pos="${pos}" style="grid-area:p${pos}"><span class="plus">+</span></button>`;
+    return `<button class="fcell tb-${c.type.toLowerCase()}" data-pos="${pos}" style="grid-area:p${pos}">
+      <span class="fimg"><img alt="" src="${esc(cardImg(c))}">${role}</span>
+      <span class="fbadges">
+        <i class="${lv?.covered ? 'b-ok' : 'b-no'}">L ${lv?.covered ? lv.pct + '%' : '—'}</i>
+        <i class="${fv?.covered ? 'b-ok' : 'b-no'}">A ${fv?.covered ? fv.pct + '%' : '—'}</i>
+      </span>
+      <span class="fbadges">${hasFx ? `<i class="b-atk">ATK ${v.atk}%</i><i class="b-def">DEF ${v.def}%</i><i class="b-ki">Ki +${v.ki}</i>` : `<i class="b-lk">${v.names.length} links</i>`}</span>
+    </button>`;
   };
-  const turnHtml = rot.map((t, n) => {
-    // Put the best "middle" unit in the centre, as you would in battle.
-    const order = [t.units.find((i) => i !== t.middle), t.middle, t.units.filter((i) => i !== t.middle)[1]];
-    const [a, m, b] = order.map((i) => team[i]);
-    const names = [...new Set([...T.sharedLinks(m, a), ...T.sharedLinks(m, b)])];
-    const img = (c) => (c ? `<img alt="" src="${esc(cardImg(c))}">` : '<span class="mini-empty"></span>');
-    return `<details class="turn"><summary><span class="tn">T${n + 1}</span>${img(a)}${linkChip(a, m)}${img(m)}${linkChip(m, b)}${img(b)}
-        <span class="tl ${t.links ? 'ok' : 'muted'}">${t.links}</span></summary>
-      <div class="tags small">${names.length ? names.map((l) => `<span>${esc(l)}</span>`).join('') : '<span class="muted">Sin links compartidos</span>'}</div></details>`;
+
+  // --- tabs ---
+  const ring = (n) => `<svg class="ring" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" class="ring-bg"/>
+    <circle cx="40" cy="40" r="34" class="ring-fg ${n >= 85 ? 'hi' : n >= 65 ? 'mid' : 'lo'}" stroke-dasharray="${(n / 100) * 213.6} 213.6" transform="rotate(-90 40 40)"/>
+    <text x="40" y="47" text-anchor="middle">${n}</text></svg>`;
+  const bar = (label, n) => `<div class="sbar"><span>${label}</span><span class="bar-track"><span class="${n >= 85 ? 'hi' : n >= 65 ? 'mid' : 'lo'}" style="width:${n}%"></span></span><b>${n}</b></div>`;
+  const mk = T.teamMakeup(team);
+  const sum = T.summary(team);
+  const tl = T.teamLinks(team);
+  const cats = T.sharedCategories(team);
+  const thumbs = (list) => list.map((u) => `<img alt="" loading="lazy" src="${esc(cardImg(u))}">`).join('');
+  const summaryTab = !filled ? '<p class="muted">Añade cartas para ver el resumen.</p>' : `
+    <div class="box syn">${ring(syn.total)}<div class="syn-bars">
+      ${bar('Cobertura del líder', syn.parts.coverage)}${bar('Calidad de links', syn.parts.links)}
+      ${bar('Condiciones de pasiva', syn.parts.passive)}${bar('Apoyo', syn.parts.support)}${bar('Valoración (tier list)', syn.parts.rating)}</div></div>
+    <p class="muted small">Sinergia calculada con la cobertura de líder y amigo, los links activos en cada turno, las categorías que piden las pasivas, el apoyo entre unidades y la tier list.</p>
+    ${leader || friend ? `<h3 class="sec">Habilidades de líder</h3>
+      ${[[leader, lStats, 'L'], [friend, fStats, 'A']].filter(([c]) => c).map(([c, s, k]) => `<div class="box lb-row"><span class="role ${k === 'L' ? 'l' : 'f'}">${k}</span>
+        <div><b>mín ${s.min}% · media ${s.avg}%</b><div class="small muted">${c.leader.seza || c.leader.eza || c.leader.base}</div></div></div>`).join('')}` : ''}
+    <div class="mk-grid">
+      <div class="box"><span class="muted small">Coste</span><b>${sum.cost}</b></div>
+      <div class="box"><span class="muted small">Tipos</span><span>${Object.entries(sum.types).filter(([, n]) => n).map(([t, n]) => `<i class="type t-${t.toLowerCase()}">${t} ${n}</i>`).join(' ')}</span></div>
+      <div class="box"><span class="muted small">Rareza</span><span>${Object.entries(mk.rarity).map(([r, n]) => `<i class="badge ${r.toLowerCase()}">${r} ${n}</i>`).join(' ')}</span></div>
+      <div class="box"><span class="muted small">Despertar</span><span>EZA ${mk.eza}/${mk.count} · SEZA ${mk.seza}/${mk.count}</span></div>
+    </div>
+    <div class="seg sub" id="subtab"><button data-s="links" class="${editing.sub !== 'cats' ? 'on' : ''}">Links (${tl.shared.length})</button><button data-s="cats" class="${editing.sub === 'cats' ? 'on' : ''}">Categorías (${cats.length})</button></div>
+    ${editing.sub === 'cats'
+      ? `<div class="box bars">${cats.map((c) => `<a class="bar" href="#/cards?category=${enc(c.name)}"><span class="bar-name">${esc(c.name)}</span><span class="bar-track"><span style="width:${Math.round((c.count / T.SLOTS) * 100)}%"></span></span><b>${c.count}/7</b></a>`).join('')}</div>`
+      : `<h3 class="sec">Links compartidos (${tl.shared.length})</h3>${tl.shared.map((l) => `<div class="box link-row"><div class="lr-head"><span class="lv">Lv10</span><b>${esc(l.name)}</b><span class="${l.count >= 6 ? 'ok' : l.count >= 4 ? 'warn' : 'muted'}">${l.count}/7</span></div>
+          ${store.linkFx[l.name] ? `<div class="small muted">${esc(store.linkFx[l.name])}</div>` : ''}<div class="lr-units">${thumbs(l.units)}</div></div>`).join('')}
+        ${tl.unused.length ? `<h3 class="sec">Links sin usar (${tl.unused.length})</h3><div class="tags">${tl.unused.map((l) => `<span title="${esc(store.linkFx[l.name] || '')}">${esc(l.name)}</span>`).join('')}</div>` : ''}`}`;
+
+  const rotTab = filled < 2 ? '<p class="muted">Añade más cartas para ver las rotaciones.</p>' : T.combos(units).map((c) => {
+    const chip = (a, b) => { const n = a && b ? T.sharedLinks(a, b).length : 0; return `<span class="lk ${n >= 4 ? 'hi' : n ? 'mid' : ''}">${n}</span>`; };
+    const unitBox = (u) => {
+      if (!u) return '<span class="rc"><span class="mini-empty"></span></span>';
+      const t = T.linkTotals(c.active.get(u) || [], store.linkFx);
+      return `<span class="rc"><img alt="" src="${esc(cardImg(u))}">${hasFx ? `<i class="b-atk">ATK ${t.atk}%</i><i class="b-def">DEF ${t.def}%</i><i class="b-ki">Ki +${t.ki}</i>` : `<i class="b-lk">${(c.active.get(u) || []).length}</i>`}</span>`;
+    };
+    const [a, m, b] = c.line;
+    return `<div class="box rot"><div class="rot-head"><b>Rotación ${c.rotation} · Floater ${c.floater}</b><span class="ok">${c.total} links</span></div>
+      <div class="rot-line">${unitBox(a)}${chip(a, m)}${unitBox(m)}${chip(m, b)}${unitBox(b)}</div></div>`;
   }).join('');
 
-  // --- unit details ---
-  const unitHtml = team.map((c, i) => {
+  const unitsTab = !filled ? '' : team.map((c, i) => {
     if (!c) return '';
     const l = leader ? T.coverage(leader, c, lc) : null;
     const f = friend ? T.coverage(friend, c, fc) : null;
@@ -581,6 +608,26 @@ views.team = (params, which) => {
       <a class="small" href="#/card/${enc(c.page)}">Ver ficha completa →</a></details>`;
   }).join('');
 
+  // --- assistant panel ---
+  let assist = '';
+  const emptySlot = team.findIndex((c, k) => !c && k > 0 && k < T.SLOTS - 1);
+  if (!leader && members.some(Boolean)) {
+    const sug = T.suggestLeaders(members, all, 6);
+    const n = members.filter(Boolean).length;
+    assist = sug.length ? `<h2>Líderes para estas cartas</h2><div class="reco">${sug.map((s) => `
+      <button class="reco-card" data-lead="${esc(s.card.page)}"><img alt="" src="${esc(cardImg(s.card))}">
+        <b>${esc(s.card.name)}</b><span class="ok">Cubre ${s.covered}/${n}</span><span class="muted">${leaderStrength(s.card)}%</span></button>`).join('')}</div>` : '';
+  } else if (!leader) {
+    assist = '<div class="hint">👉 Toca <b>Líder</b> para empezar. Después te recomiendo las cartas que mejor encajan, o pulsa <b>Completar</b> y monto el equipo entero. <b>Aleatorio</b> crea uno al azar.</div>';
+  } else if (emptySlot >= 0) {
+    const rec = T.recommend(team, all, 10, emptySlot);
+    assist = rec.length ? `<h2>Recomendadas para tu equipo <span class="muted small">toca para añadir</span></h2><div class="reco">${rec.map((r) => `
+      <button class="reco-card" data-add="${esc(r.card.page)}"><img alt="" src="${esc(cardImg(r.card))}">
+        <b>${esc(r.card.name)}</b>
+        <span class="ok">+${r.lead?.covered ? r.lead.pct : r.friend?.pct || 0}%</span>
+        <span class="muted">${r.links} links${r.helps ? ' · ✓ pasiva' : ''}</span></button>`).join('')}</div>` : '';
+  }
+
   return {
     title: 'Equipo',
     back: true,
@@ -589,84 +636,149 @@ views.team = (params, which) => {
       <div class="toolbar-btns">
         <button class="tbtn" id="undo" ${editing.history?.length ? '' : 'disabled'}>↶<span>Deshacer</span></button>
         <button class="tbtn accent" id="fill" ${filled < T.SLOTS ? '' : 'disabled'}>✨<span>Completar</span></button>
-        <button class="tbtn" id="opt" ${filled >= 4 ? '' : 'disabled'}>⇅<span>Optimizar</span></button>
+        <button class="tbtn" id="opt" ${filled >= 4 ? '' : 'disabled'}>⚙<span>Optimizar</span></button>
+        <button class="tbtn" id="rand">🎲<span>Aleatorio</span></button>
         <button class="tbtn" id="save">💾<span>Guardar</span></button>
         <button class="tbtn" id="share" ${filled ? '' : 'disabled'}>↗<span>Compartir</span></button>
         ${editing.fromList ? '<button class="tbtn danger" id="del">🗑<span>Borrar</span></button>' : ''}
       </div>
-      ${leader || friend ? `<div class="leads">${leaderBox(leader, lc, 'Líder')}${leaderBox(friend, fc, 'Amigo')}</div>` : ''}
-      <div class="slots">${team.map(slot).join('')}</div>
+      <div class="leads2">${leadBox(leader, lc, lStats, 0, 'LÍDER')}${leadBox(friend, fc, fStats, T.SLOTS - 1, 'AMIGO')}</div>
+      <div class="board-wrap">
+        <div class="board">
+          <span class="blabel" style="grid-area:h1">ROTACIÓN 1</span>
+          <span class="blabel" style="grid-area:h2">ROTACIÓN 2</span>
+          <span class="blabel fl" style="grid-area:hf">FLOATERS</span>
+          ${[0, 1, 2, 3, 4, 5, 6].map(cell).join('')}
+        </div>
+        <svg class="board-lines" aria-hidden="true"></svg>
+      </div>
       <div id="slot-actions"></div>
       ${dupes.length ? `<p class="small warn">⚠ No se pueden llevar dos cartas con el mismo nombre: ${dupes.map(esc).join(', ')}</p>` : ''}
-      ${filled ? `<div class="stat-strip">
-        ${leader ? `<span><b class="${covered === members.filter(Boolean).length ? 'ok' : 'warn'}">${covered}/${members.filter(Boolean).length}</b> bajo el líder</span>` : ''}
-        <span><b>${totalLinks}</b> links / vuelta</span><span><b>${sum.cost}</b> coste</span>
-        <span>${Object.entries(sum.types).filter(([, n]) => n).map(([t, n]) => `<i class="type t-${t.toLowerCase()}">${t} ${n}</i>`).join(' ')}</span></div>` : ''}
+      ${!hasFx && filled ? '<p class="muted small">El ATK/DEF/Ki de los links aparecerá cuando se actualice la base de datos de cartas.</p>' : ''}
       ${assist}
-      ${filled >= 2 ? `<h2>Rotación <span class="muted small">el del centro enlaza con los dos · toca un turno</span></h2><div class="box turns">${turnHtml}</div>` : ''}
-      ${filled ? `<h2>Unidades <span class="muted small">toca para ver detalles</span></h2><div class="units">${unitHtml}</div>` : ''}
-      ${cats.length ? `<h2>Categorías compartidas</h2><div class="box bars">${cats.map((c) => `
-        <a class="bar" href="#/cards?category=${enc(c.name)}"><span class="bar-name">${esc(c.name)}</span>
-        <span class="bar-track"><span style="width:${Math.round((c.count / T.SLOTS) * 100)}%"></span></span><b>${c.count}</b></a>`).join('')}</div>` : ''}`,
+      ${filled ? `<div class="seg tabs" id="tabs">
+        <button data-t="summary" class="${tab === 'summary' ? 'on' : ''}">Resumen</button>
+        <button data-t="rot" class="${tab === 'rot' ? 'on' : ''}">Rotaciones</button>
+        <button data-t="units" class="${tab === 'units' ? 'on' : ''}">Unidades</button></div>
+        <div class="tab-body">${tab === 'rot' ? rotTab : tab === 'units' ? `<div class="units">${unitsTab}</div>` : summaryTab}</div>` : ''}`,
     mount(el) {
       let moving = null;
       const actions = $('#slot-actions', el);
       $('#tname', el).addEventListener('input', (e) => { editing.name = e.target.value || 'Equipo'; });
-      el.querySelector('.slots').addEventListener('click', (e) => {
-        const b = e.target.closest('.slot');
-        if (!b) return;
-        const i = +b.dataset.slot;
-        if (moving !== null) { // second tap of "Mover": swap the two slots
-          const from = moving; moving = null;
-          changeTeam((ids) => { [ids[from], ids[i]] = [ids[i], ids[from]]; });
-          return;
+
+      // Link lines between the cards that attack together.
+      const drawLines = () => {
+        const svg = el.querySelector('.board-lines');
+        const wrap = el.querySelector('.board-wrap');
+        if (!svg || !wrap) return;
+        const box = wrap.getBoundingClientRect();
+        svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+        const at = (pos) => { const r = el.querySelector(`.fcell[data-pos="${pos}"] img`)?.getBoundingClientRect(); return r && { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2, w: r.width / 2 }; };
+        const colors = ['#ffcf4a', '#ff9d1f', '#39c27a', '#2f8cff', '#9b5cff', '#ff4d4d', '#5ad1e6'];
+        let out = '';
+        const pairs = [[0, 1], [2, 3], [1, 4], [1, 5], [1, 6], [3, 4], [3, 5], [3, 6]];
+        for (const [a, b] of pairs) {
+          const A = at(a), B = at(b);
+          if (!A || !B || !units[a] || !units[b]) continue;
+          const n = T.sharedLinks(units[a], units[b]).length;
+          for (let k = 0; k < n; k++) {
+            const off = (k - (n - 1) / 2) * 3;
+            const x1 = A.x + A.w * 0.8, x2 = B.x - B.w * 0.8;
+            const mx = (x1 + x2) / 2;
+            out += `<path d="M${x1},${A.y + off} C${mx},${A.y + off} ${mx},${B.y + off} ${x2},${B.y + off}" stroke="${colors[k % colors.length]}" />`;
+          }
         }
-        if (!editing.ids[i]) { location.hash = `#/team-pick/${i}`; return; }
-        el.querySelectorAll('.slot').forEach((s) => s.classList.toggle('sel', s === b));
+        svg.innerHTML = out;
+      };
+      requestAnimationFrame(drawLines);
+      el.querySelectorAll('.board img').forEach((img) => img.addEventListener('load', drawLines, { once: true }));
+      addEventListener('resize', drawLines);
+
+      const openSlot = (slotIdx) => { location.hash = `#/team-pick/${slotIdx}`; };
+      el.querySelector('.leads2').addEventListener('click', (e) => {
+        const b = e.target.closest('[data-slot]');
+        if (b) openSlot(+b.dataset.slot);
+      });
+      el.querySelector('.board').addEventListener('click', (e) => {
+        const b = e.target.closest('.fcell');
+        if (!b) return;
+        const pos = +b.dataset.pos;
+        if (moving !== null) { // second tap of "Mover": swap the two positions in the formation
+          const from = moving; moving = null;
+          (editing.history ||= []).push([...editing.ids]);
+          [editing.order[from], editing.order[pos]] = [editing.order[pos], editing.order[from]];
+          route(); return;
+        }
+        const slotIdx = editing.order[pos];
+        if (!editing.ids[slotIdx]) { openSlot(slotIdx); return; }
+        el.querySelectorAll('.fcell').forEach((s) => s.classList.toggle('sel', s === b));
         actions.innerHTML = `<div class="slot-menu">
           <button class="btn" data-a="pick">Cambiar</button>
           <button class="btn" data-a="move">Mover</button>
-          <a class="btn" href="#/card/${enc(editing.ids[i])}">Ficha</a>
+          <a class="btn" href="#/card/${enc(editing.ids[slotIdx])}">Ficha</a>
           <button class="btn" data-a="del">Quitar</button></div>`;
         actions.onclick = (ev) => {
           const a = ev.target.closest('[data-a]')?.dataset.a;
-          if (a === 'pick') location.hash = `#/team-pick/${i}`;
-          if (a === 'del') changeTeam((ids) => { ids[i] = null; });
-          if (a === 'move') { moving = i; actions.innerHTML = '<p class="small ok">Toca el hueco con el que quieres intercambiarla.</p>'; }
+          if (a === 'pick') openSlot(slotIdx);
+          if (a === 'del') changeTeam((ids) => { ids[slotIdx] = null; });
+          if (a === 'move') { moving = pos; actions.innerHTML = '<p class="small ok">Toca la posición con la que quieres intercambiarla.</p>'; }
         };
       });
-      // Recommendations: add a unit to the first free slot, or set the leader.
       el.addEventListener('click', (e) => {
         const add = e.target.closest('[data-add]');
         const lead = e.target.closest('[data-lead]');
+        const t = e.target.closest('#tabs [data-t]');
+        const s = e.target.closest('#subtab [data-s]');
         if (add) {
           const k = editing.ids.findIndex((x, n) => !x && n > 0 && n < T.SLOTS - 1);
           if (k >= 0) changeTeam((ids) => { ids[k] = add.dataset.add; });
         }
         if (lead) changeTeam((ids) => { ids[0] = lead.dataset.lead; if (!ids[T.SLOTS - 1]) ids[T.SLOTS - 1] = lead.dataset.lead; });
+        if (t) { editing.tab = t.dataset.t; route(); }
+        if (s) { editing.sub = s.dataset.s; route(); }
       });
       $('#undo', el).addEventListener('click', () => { const prev = editing.history?.pop(); if (prev) { editing.ids = prev; route(); } });
+      const optimize = () => {
+        const best = T.optimizeFormation(teamCards(), editing.order);
+        const before = T.formationScore(T.arrange(teamCards(), editing.order));
+        editing.order = best.order;
+        return [before, best.score];
+      };
       $('#fill', el).addEventListener('click', () => {
         const done = T.autoFill(teamCards(), all);
-        changeTeam((ids) => done.forEach((c, k) => { ids[k] = c?.page || null; }));
-        toast('Equipo completado. Puedes deshacerlo con ↶');
+        (editing.history ||= []).push([...editing.ids]);
+        done.forEach((c, k) => { editing.ids[k] = c?.page || null; });
+        if (editing.ids.every(Boolean)) optimize();
+        toast('Equipo completado y ordenado. Puedes deshacerlo con ↶');
+        route();
       });
       $('#opt', el).addEventListener('click', () => {
-        const before = T.rotationScore(teamCards());
-        const best = T.optimizeOrder(teamCards());
-        if (best.score > before) changeTeam((ids) => best.order.forEach((c, k) => { ids[k] = c?.page || null; }));
-        toast(best.score > before ? `Orden mejorado: ${before} → ${best.score} links` : 'El orden ya era el mejor');
+        const [before, after] = optimize();
+        toast(after > before ? `Formación mejorada: ${before} → ${after} links` : 'La formación ya era la mejor');
+        route();
+      });
+      $('#rand', el).addEventListener('click', () => {
+        const leaders = all.filter((c) => c.rarity !== 'SSR' && leaderStrength(c) >= 150);
+        const pickL = leaders[Math.floor(Math.random() * leaders.length)];
+        if (!pickL) return;
+        (editing.history ||= []).push([...editing.ids]);
+        const done = T.autoFill([pickL, null, null, null, null, null, pickL], all);
+        done.forEach((c, k) => { editing.ids[k] = c?.page || null; });
+        editing.order = [...T.DEFAULT_ORDER];
+        optimize();
+        toast(`Equipo aleatorio con ${pickL.name} de líder`);
+        route();
       });
       $('#save', el).addEventListener('click', () => {
         const list = T.loadTeams();
         const k = list.findIndex((t) => t.id === editing.id);
-        const data = { id: editing.id, name: editing.name, ids: editing.ids };
+        const data = { id: editing.id, name: editing.name, ids: editing.ids, order: editing.order };
         if (k >= 0) list[k] = data; else list.unshift(data);
         toast(T.saveTeams(list) ? 'Equipo guardado' : 'No se pudo guardar en este dispositivo');
         if (!editing.fromList) { editing.fromList = true; route(); }
       });
       $('#share', el).addEventListener('click', async () => {
-        const url = `${location.origin}${location.pathname}#/team/new?c=${T.encodeTeam(editing.ids)}`;
+        const url = shareUrl();
         try {
           if (navigator.share) await navigator.share({ title: editing.name, url });
           else { await navigator.clipboard.writeText(url); toast('Enlace copiado'); }
@@ -678,6 +790,7 @@ views.team = (params, which) => {
         toast('Equipo borrado');
         location.hash = '#/teams';
       });
+      return () => removeEventListener('resize', drawLines);
     },
   };
 };

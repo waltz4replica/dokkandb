@@ -19,7 +19,7 @@ const SCHEMA = 3;            // bump to force a fresh download on every phone (2
 const FULL_AFTER_DAYS = 80;  // the wiki only keeps ~90 days of change history
 
 // In-memory copy used by the screens.
-export const store = { cards: new Map(), banners: new Map(), extra: null, lastSync: null, cardsVersion: null, loaded: false };
+export const store = { cards: new Map(), banners: new Map(), extra: null, linkFx: {}, lastSync: null, cardsVersion: null, loaded: false };
 
 let byId = null, byEarlier = null, byName = null;
 const nameKey = (title, name) => `${title}|${name}`.toLowerCase().replace(/[^a-z0-9|]+/g, '');
@@ -55,9 +55,10 @@ export async function loadLocal() {
     await Promise.all([db.clear('cards'), db.clear('banners'), db.setMeta('lastSync', null), db.setMeta('cardsVersion', null)]);
     await db.setMeta('schema', SCHEMA);
   }
-  const [cards, banners, lastSync, extra, cardsVersion] = await Promise.all([
-    db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync'), db.getMeta('extra'), db.getMeta('cardsVersion'),
+  const [cards, banners, lastSync, extra, cardsVersion, linkFx] = await Promise.all([
+    db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync'), db.getMeta('extra'), db.getMeta('cardsVersion'), db.getMeta('linkFx'),
   ]);
+  store.linkFx = linkFx || {};
   store.cards = new Map(cards.map((c) => [c.page, c]));
   store.banners = new Map(banners.map((b) => [b.page, b]));
   store.extra = extra;
@@ -115,6 +116,8 @@ async function syncCards(force, onProgress) {
   await db.putMany('cards', data.cards);
   store.cards = new Map(data.cards.map((c) => [c.page, c]));
   store.cardsVersion = data.generated;
+  store.linkFx = data.links || {};
+  await db.setMeta('linkFx', store.linkFx);
   await db.setMeta('cardsVersion', data.generated);
   return newCards;
 }

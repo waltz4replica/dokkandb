@@ -8,6 +8,18 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 
+## 2.4.0 — 2026-11-09
+Creador de equipos rehecho siguiendo el de DokkanStats:
+- **Formación como en el juego:** Rotación 1 y Rotación 2 (2 cartas cada una, siempre juntas) y 3 floaters. Las cartas se unen con **líneas de colores, una por cada link** compartido.
+- Bajo cada carta: L/A (% de líder y amigo) y **ATK, DEF y Ki que le dan sus links** activos.
+- Recuadros grandes de **Líder y Amigo** con el total que dan al equipo («Equipo: +1540%»).
+- **Optimizar** busca la mejor formación entre todas las posibles.
+- Pestaña **Resumen**: **sinergia 0-100** con barras (cobertura del líder, calidad de links, condiciones de pasiva, apoyo y valoración según la tier list), mínimo y media de cada líder, coste, tipos, rarezas, EZA/SEZA, **links compartidos** (con su efecto a nivel 10, las cartas que lo tienen y «x/7»), **links sin usar** y categorías.
+- Pestaña **Rotaciones**: las 6 combinaciones (cada rotación con cada floater) con los números de cada carta.
+- Pestaña **Unidades**: condiciones de pasiva y apoyo de cada carta.
+- Botón **Aleatorio**: crea un equipo con un líder al azar.
+- Los datos de cartas incluyen ahora el efecto de cada link a nivel 10.
+
 ## 2.3.0 — 2026-11-09
 - **Asistente de equipos:**
   - «Recomendadas para tu equipo»: tarjetas que se actualizan con cada carta que eliges (cobertura del líder, links con el equipo y si ayuda a cumplir pasivas). Un toque las añade.

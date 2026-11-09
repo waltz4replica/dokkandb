@@ -40,18 +40,18 @@
       "trend": "same"
      },
      {
-      "id": "1034121",
-      "cardId": "1034120",
-      "title": "Mastery of Perfected Power",
-      "name": "Perfect Cell",
-      "trend": "up"
-     },
-     {
       "id": "1034151",
       "cardId": "1034150",
       "title": "Transcendent Existence",
       "name": "Buu (Kid)",
-      "trend": "down"
+      "trend": "same"
+     },
+     {
+      "id": "1034121",
+      "cardId": "1034120",
+      "title": "Mastery of Perfected Power",
+      "name": "Perfect Cell",
+      "trend": "same"
      }
     ]
    },
@@ -191,18 +191,18 @@
       "trend": "down"
      },
      {
-      "id": "1026431",
-      "cardId": "1026430",
-      "title": "Destructive Scattershot Strike",
-      "name": "Buu (Super)",
-      "trend": "up"
-     },
-     {
       "id": "1033821",
       "cardId": "1033820",
       "title": "Epic Battle of Divine Scale",
       "name": "Super Saiyan God Goku",
       "trend": "down"
+     },
+     {
+      "id": "1026431",
+      "cardId": "1026430",
+      "title": "Destructive Scattershot Strike",
+      "name": "Buu (Super)",
+      "trend": "up"
      },
      {
       "id": "1025731",
@@ -648,18 +648,18 @@
       "trend": "up"
      },
      {
+      "id": "1026751",
+      "cardId": "1026750",
+      "title": "Demonic Fighter Wielding Forbidden Power",
+      "name": "Turles",
+      "trend": "up"
+     },
+     {
       "id": "1034241",
       "cardId": "1034240",
       "title": "Solitary Duty",
       "name": "Piccolo (Red Ribbon Army)",
       "trend": "down"
-     },
-     {
-      "id": "1026751",
-      "cardId": "1026750",
-      "title": "Demonic Fighter Wielding Forbidden Power",
-      "name": "Turles",
-      "trend": "same"
      },
      {
       "id": "1030941",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-09T17:07:56.319Z"
+  "updated": "2026-11-09T20:07:56.180Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-09T14:01:51.975Z"
  },
- "generated": "2026-11-09T17:29:01.021Z",
+ "generated": "2026-11-09T20:07:56.934Z",
  "summons": {
   "items": [
    {

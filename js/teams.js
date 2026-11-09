@@ -1,7 +1,7 @@
 // Team builder logic (no screen code): leader coverage, links, rotations, suggestions.
-// A team is 7 card ids in team order: [leader, unit 2, 3, 4, 5, 6, friend].
-// In battle the units come in that order, 3 per turn (1-2-3, 4-5-6, 7-1-2…), and on each turn
-// the unit in the middle shares its Link Skills with both neighbours.
+// A team is 7 card ids: [leader, unit 2, 3, 4, 5, 6, friend], plus a formation `order` that places
+// them in 2 rotations (2 units each, always together) and 3 floaters (see "formation" below).
+// The older 3-per-turn `rotation()` helpers are kept for reference but the screens use the formation.
 
 export const SLOTS = 7;
 export const SLOT_NAMES = ['Líder', 'Unidad 2', 'Unidad 3', 'Unidad 4', 'Unidad 5', 'Unidad 6', 'Amigo'];
@@ -118,6 +118,175 @@ export function optimizeOrder(team) {
   return best;
 }
 
+// ---------- formation: 2 rotations of 2 units + 3 floaters ----------
+// As in the game: the two units of a rotation always attack together, and one of the three
+// floaters joins them each turn. `order` maps the 7 positions to team slots (0 = leader, 6 = friend).
+
+export const POSITIONS = ['Rotación 1', 'Rotación 1', 'Rotación 2', 'Rotación 2', 'Floater', 'Floater', 'Floater'];
+export const DEFAULT_ORDER = [0, 1, 2, 3, 4, 5, 6];
+export const arrange = (team, order = DEFAULT_ORDER) => order.map((i) => team[i] || null);
+
+/** ATK / DEF / Ki a Link Skill gives at level 10, from its text ("Ki +2 and ATK & DEF +5%"). */
+export function linkEffect(text = '') {
+  const fx = { atk: 0, def: 0, ki: 0 };
+  for (const part of text.split(/;|,? and |, /)) {
+    if (/enem/i.test(part)) continue;
+    const ki = /Ki \+(\d+)/.exec(part);
+    if (ki) fx.ki += +ki[1];
+    const both = /ATK & DEF \+(\d+)%/.exec(part);
+    if (both) { fx.atk += +both[1]; fx.def += +both[1]; continue; }
+    const atk = /ATK \+(\d+)%/.exec(part);
+    if (atk) fx.atk += +atk[1];
+    const def = /DEF \+(\d+)%/.exec(part);
+    if (def) fx.def += +def[1];
+  }
+  return fx;
+}
+
+/**
+ * One turn with three units: picks who goes in the middle (linking with both sides) and returns
+ * { line: [left, middle, right], active: Map(card -> [link names]), total }.
+ */
+export function trio(units) {
+  const present = units.filter(Boolean);
+  let best = null;
+  for (const mid of present) {
+    const sides = present.filter((u) => u !== mid);
+    const active = new Map();
+    const midLinks = new Set();
+    for (const s of sides) {
+      const shared = sharedLinks(mid, s);
+      active.set(s, shared);
+      shared.forEach((l) => midLinks.add(l));
+    }
+    active.set(mid, [...midLinks]);
+    const total = [...active.values()].reduce((n, l) => n + l.length, 0);
+    if (!best || total > best.total) best = { line: [sides[0] || null, mid, sides[1] || null], active, total };
+  }
+  return best || { line: [null, null, null], active: new Map(), total: 0 };
+}
+
+/** The 6 turn combinations (each rotation with each floater). */
+export function combos(units) {
+  const out = [];
+  for (const [r, pair] of [[1, [units[0], units[1]]], [2, [units[2], units[3]]]]) {
+    for (let f = 0; f < 3; f++) out.push({ rotation: r, floater: f + 1, ...trio([pair[0], pair[1], units[4 + f]]) });
+  }
+  return out;
+}
+
+export const formationScore = (units) => combos(units).reduce((n, c) => n + c.total, 0);
+
+/** Best `order` for the team (most Link Skills active over all 6 turn combinations). */
+export function optimizeFormation(team, order = DEFAULT_ORDER) {
+  let best = { score: formationScore(arrange(team, order)), order: [...order] };
+  const idx = [...DEFAULT_ORDER];
+  const permute = (k) => {
+    if (k === idx.length) {
+      // Skip mirror images: swapping the two units of a rotation or reordering floaters changes nothing.
+      if (idx[0] > idx[1] || idx[2] > idx[3] || idx[4] > idx[5] || idx[5] > idx[6]) return;
+      const score = formationScore(arrange(team, idx));
+      if (score > best.score) best = { score, order: [...idx] };
+      return;
+    }
+    for (let i = k; i < idx.length; i++) {
+      [idx[k], idx[i]] = [idx[i], idx[k]];
+      permute(k + 1);
+      [idx[k], idx[i]] = [idx[i], idx[k]];
+    }
+  };
+  permute(0);
+  return best;
+}
+
+/** Sum of the effects of a unit's active links: { atk, def, ki }. */
+export function linkTotals(names, fxMap) {
+  const t = { atk: 0, def: 0, ki: 0 };
+  for (const n of names) {
+    const fx = linkEffect(fxMap?.[n] || '');
+    t.atk += fx.atk; t.def += fx.def; t.ki += fx.ki;
+  }
+  return t;
+}
+
+/**
+ * Per-unit numbers shown under each card: links active with its rotation partner (always
+ * together) plus the floater that links best with them; floaters use their best rotation.
+ */
+export function unitLinkView(units, fxMap) {
+  const all = combos(units);
+  return units.map((u, pos) => {
+    if (!u) return null;
+    const mine = all.filter((c) => [...c.active.keys()].includes(u));
+    let best = { names: [] };
+    for (const c of mine) { const names = c.active.get(u) || []; if (names.length > best.names.length) best = { names }; }
+    return { names: best.names, ...linkTotals(best.names, fxMap) };
+  });
+}
+
+// ---------- team summary ----------
+
+/** Every Link Skill on the team: shared ones (2+ units) and unused ones (1 unit). */
+export function teamLinks(team) {
+  const map = new Map();
+  for (const u of team) if (u) for (const l of u.links) { if (!map.has(l)) map.set(l, []); if (!map.get(l).includes(u)) map.get(l).push(u); }
+  const list = [...map].map(([name, units]) => ({ name, units, count: units.length }));
+  return {
+    shared: list.filter((l) => l.count >= 2).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)),
+    unused: list.filter((l) => l.count === 1).sort((a, b) => a.name.localeCompare(b.name)),
+  };
+}
+
+/** Leader numbers: total boost over the 7 units, minimum and average. */
+export function leaderStats(leader, team) {
+  if (!leader) return null;
+  const clauses = leaderClauses(leader);
+  const vals = team.filter(Boolean).map((u) => coverage(leader, u, clauses).pct);
+  if (!vals.length) return { total: 0, min: 0, avg: 0 };
+  return { total: vals.reduce((a, b) => a + b, 0), min: Math.min(...vals), avg: Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) };
+}
+
+/**
+ * Synergy score 0-100 and its parts (each 0-100):
+ * leader coverage, link quality, passive conditions, support and unit rating (tier list).
+ */
+export function synergy(team, units, { known = new Set(), tierOf = () => null } = {}) {
+  const members = team.filter(Boolean);
+  if (!members.length) return null;
+  const leader = team[0], friend = team[SLOTS - 1];
+  const lc = leader ? leaderClauses(leader) : null, fc = friend ? leaderClauses(friend) : null;
+  const cov = members.reduce((n, u) => n + (lc && coverage(leader, u, lc).covered ? 0.5 : 0) + (fc && coverage(friend, u, fc).covered ? 0.5 : 0), 0) / members.length;
+
+  // Links: share of each unit's Link Skills that are active, averaged over all turn combinations.
+  let ratio = 0, samples = 0;
+  for (const c of combos(units)) for (const [u, names] of c.active) { if (u.links.length) { ratio += names.length / u.links.length; samples++; } }
+  const links = samples ? Math.min(1, (ratio / samples) / 0.75) : 0; // 75% of links active counts as perfect
+
+  let asked = 0, met = 0;
+  for (const u of members) for (const chk of passiveCategoryChecks(team, u, known)) { asked++; if (chk.allies) met++; }
+  const passive = asked ? met / asked : 1;
+
+  const supporters = members.filter((u) => supportLines(u).length).length;
+  const support = Math.min(1, supporters / 3);
+
+  const ratings = members.map((u) => tierOf(u)).map((r) => (r == null ? 0.45 : r));
+  const rating = ratings.reduce((a, b) => a + b, 0) / ratings.length;
+
+  const parts = { coverage: cov, links, passive, support, rating };
+  const weights = { coverage: 0.3, links: 0.25, passive: 0.15, support: 0.1, rating: 0.2 };
+  const total = Object.entries(weights).reduce((n, [k, w]) => n + parts[k] * w, 0);
+  const pct = (x) => Math.round(x * 100);
+  return { total: pct(total), parts: Object.fromEntries(Object.entries(parts).map(([k, v]) => [k, pct(v)])) };
+}
+
+/** Counts by rarity and how many units have EZA / SEZA. */
+export function teamMakeup(team) {
+  const units = team.filter(Boolean);
+  const rarity = {};
+  for (const u of units) rarity[u.rarity] = (rarity[u.rarity] || 0) + 1;
+  return { rarity, eza: units.filter((u) => u.eza || u.seza).length, seza: units.filter((u) => u.seza).length, count: units.length };
+}
+
 /** Categories shared by at least two units, most common first: [{ name, count }]. */
 export function sharedCategories(units) {
   const count = new Map();
@@ -222,7 +391,7 @@ export function autoFill(team, allCards) {
     const [best] = recommend(t, allCards, 1, k);
     if (best) t[k] = best.card;
   }
-  return t.every(Boolean) ? optimizeOrder(t).order : t;
+  return t;
 }
 
 // ---------- passive conditions and support ----------
