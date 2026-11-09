@@ -1,0 +1,31 @@
+# Historial de versiones
+
+Cada versión está marcada en Git con su número (`v1.0.0`, `v2.0.0`…).
+Formato: **MAYOR.MENOR.CORRECCIÓN**
+- **MAYOR**: cambio grande (por ejemplo, cambiar de dónde salen los datos).
+- **MENOR**: función nueva.
+- **CORRECCIÓN**: arreglos pequeños.
+
+Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
+
+## 2.0.1 — 2026-11-09
+- Número de versión visible en Ajustes y aviso al actualizarse la app.
+- Este historial de versiones.
+- Las fichas que se abren antes de terminar la descarga se actualizan solas.
+
+## 2.0.0 — 2026-11-09
+- **Las cartas salen de DOKKAN.FYI** (datos sacados del juego) en lugar de la Dokkan Wiki, que iba con meses de retraso.
+- 1.152 cartas LR, UR y SSR con su texto exacto, EZA, SEZA y fechas.
+- Las transformaciones se muestran dentro de cada carta.
+- GitHub actualiza las cartas cada 3 horas; la app solo descarga el archivo cuando cambia.
+- La wiki se usa solo para los banners.
+
+## 1.1.0 — 2026-11-09
+- Pestañas nuevas: **Eventos** (eventos activos y noticias del juego) y **Tier list**.
+- Ajustes pasa al icono del engranaje.
+- Noticias desde DOKKAN.FYI (GitHub, cada 3 horas).
+- Tier list y eventos desde DokkanStats, actualizados por una tarea de Windows en el PC.
+
+## 1.0.0 — 2026-11-09
+- Primera versión: app web instalable para Android.
+- Cartas y banners de la Dokkan Wiki, con búsqueda, filtros, fichas con EZA/SEZA y modo sin conexión.

@@ -27,6 +27,17 @@ Se actualiza sola y funciona sin conexión. Publicada en https://waltz4replica.g
 
 Para relanzar la carga completa: GitHub → Actions → "Actualizar cartas…" → *Run workflow* → marcar "Volver a leer todas las cartas".
 
+## Versiones
+
+El historial está en [CHANGELOG.md](CHANGELOG.md) y cada versión tiene su etiqueta en Git (`v2.0.1`…).
+Para publicar una versión nueva:
+
+1. Sube el número en `js/version.js`, `sw.js` y `package.json` (los tres iguales).
+2. Añade lo que cambia al principio de `CHANGELOG.md`.
+3. Haz commit, crea la etiqueta (`git tag v2.1.0`) y sube todo (`git push --follow-tags`).
+
+Para ver o recuperar una versión anterior: `git checkout v1.1.0` (vuelve con `git checkout main`).
+
 ## Estructura
 
 | Archivo | Qué hace |

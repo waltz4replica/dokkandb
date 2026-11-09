@@ -4,6 +4,7 @@
 
 import { store, loadLocal, sync, onChange, isSyncing, cardById } from './sync.js';
 import { cardThumb, fileUrl, pageUrl } from './wiki.js';
+import { APP_VERSION, CHANGELOG_URL } from './version.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -393,6 +394,10 @@ views.tierlist = () => {
 views.settings = () => ({
   title: 'Ajustes',
   html: `
+    <h2>App</h2>
+    <div class="box kv">
+      <b>Versión</b><span>${APP_VERSION} · <a href="${CHANGELOG_URL}" target="_blank" rel="noopener">Ver cambios</a></span>
+    </div>
     <h2>Base de datos</h2>
     <div class="box kv">
       <b>Cartas</b><span>${store.cards.size}</span>
@@ -512,6 +517,12 @@ function autoSync() {
   await loadLocal();
   setPill('', store.lastSync ? 'Al día' : 'Sin datos');
   route();
+  // Tell the user when the app itself was updated.
+  try {
+    const seen = localStorage.getItem('appVersion');
+    if (seen && seen !== APP_VERSION) toast(`App actualizada a la versión ${APP_VERSION}`);
+    localStorage.setItem('appVersion', APP_VERSION);
+  } catch { /* storage unavailable: skip the notice */ }
   if (!store.cards.size && navigator.onLine) runSync({ full: true });
   else autoSync();
   setInterval(autoSync, 60000);
