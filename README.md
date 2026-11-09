@@ -1,28 +1,31 @@
 # DokkanDB (móvil)
 
 App web instalable (PWA) para Android con la base de datos de **Dragon Ball Z Dokkan Battle**.
-Se actualiza sola con la [Dokkan Wiki](https://dbz-dokkanbattle.fandom.com/) y funciona sin conexión.
+Se actualiza sola y funciona sin conexión. Publicada en https://waltz4replica.github.io/dokkandb/
 
-## Cómo funciona
+## De dónde salen los datos
 
-- La primera vez descarga todas las cartas (LR, UR, SSR) y los banners desde la API pública de la wiki y los guarda en el móvil.
-- Después, cada vez que se abre (y cada 30 min mientras está abierta) pregunta a la wiki qué páginas han cambiado y descarga **solo esas**. Las cartas nuevas salen con la etiqueta **NUEVA**.
-- No hace falta servidor: el móvil habla directamente con la wiki.
+| Datos | Fuente | Quién lo actualiza | Archivo |
+|---|---|---|---|
+| Cartas LR / UR / SSR (con EZA, SEZA y transformaciones) | [DOKKAN.FYI](https://dokkan.fyi) — datos sacados del juego | GitHub, cada 3 h | `data/cards.json` |
+| Banners | [Dokkan Wiki](https://dbz-dokkanbattle.fandom.com/) | El propio móvil, al abrir la app | — |
+| Noticias del juego | DOKKAN.FYI | GitHub, cada 3 h | `data/extra.json` |
+| Tier list y eventos activos | [DokkanStats](https://dokkanstats.com) | **Este PC**, cada 3 h y al iniciar sesión | `data/extra.json` |
 
-## Tier list, eventos y noticias
+- DokkanStats bloquea los servidores de GitHub, por eso esa parte va desde el PC (tarea de Windows "DokkanDB - actualizar datos"). Si el PC está apagado, la app sigue mostrando los últimos datos subidos.
+- Todas las fuentes permiten la lectura automática en su `robots.txt`. Se lee despacio (1 página por segundo).
+- DokkanDB.com y dokkaninfo.com no se usan: la primera solo tiene una API privada y la segunda bloquea los programas automáticos.
 
-Vienen de webs de fans y se guardan en `data/extra.json`, que la app descarga al sincronizar:
+## Cómo se mantienen las cartas al día
 
-| Datos | Web | Quién lo actualiza |
-|---|---|---|
-| Noticias del juego | DOKKAN.FYI | GitHub, cada 3 h (`.github/workflows/scrape.yml`) |
-| Tier list y eventos activos | DokkanStats | **Este PC**, cada 3 h y al iniciar sesión (tarea de Windows "DokkanDB - actualizar datos") |
+`scripts/build-cards.mjs` (lo ejecuta `.github/workflows/scrape.yml`):
 
-DokkanStats bloquea los servidores de GitHub, por eso esa parte va desde el PC. Si el PC está apagado, la app sigue mostrando los últimos datos subidos.
+- **Primera vez / `--full`:** recorre el listado de personajes de DOKKAN.FYI, lee la ficha (`.md`) de cada LR/UR/SSR y sus transformaciones, y toma las fechas de EZA/SEZA de su línea temporal. ~30 min.
+- **Cada 3 horas:** mira las primeras páginas del listado y la línea temporal, lee solo las cartas nuevas o con EZA/SEZA nuevo, y repasa 60 cartas antiguas para recoger correcciones (todas cada 2-3 días).
+- Si se corta a medias, guarda lo pendiente en `data/cards-state.json` y sigue en la siguiente ejecución.
+- La app solo descarga `cards.json` cuando cambia `data/cards-meta.json`.
 
-- Instalar o reinstalar la tarea: `powershell -ExecutionPolicy Bypass -File scripts\install-task.ps1`
-- Registro de lo que hace: `logs/update.log`
-- Si una web cambia su diseño, el lector a corregir está en `scripts/scrapers.mjs`.
+Para relanzar la carga completa: GitHub → Actions → "Actualizar cartas…" → *Run workflow* → marcar "Volver a leer todas las cartas".
 
 ## Estructura
 
@@ -30,11 +33,16 @@ DokkanStats bloquea los servidores de GitHub, por eso esa parte va desde el PC. 
 |---|---|
 | `index.html`, `css/app.css` | Interfaz |
 | `js/app.js` | Pantallas y navegación. Para añadir una función nueva: crea una vista en `views`, añade su ruta en `ROUTES` y, si quieres, una pestaña en `index.html`. |
-| `js/sync.js` | Sincronización (completa la primera vez, incremental después) |
-| `js/wiki.js` | Llamadas a la API de la wiki |
-| `js/parse.js` | Convierte el texto de la wiki en datos (cartas, banners) |
+| `js/sync.js` | Sincronización en el móvil (cartas, banners, extra) |
+| `js/wiki.js`, `js/parse.js` | API de la wiki y lector de banners |
 | `js/db.js` | Base de datos local del móvil (IndexedDB) |
-| `sw.js` | Modo sin conexión y caché de imágenes. **Sube `VERSION` cada vez que cambies archivos.** |
+| `sw.js` | Modo sin conexión y caché de imágenes. **Sube `VERSION` cada vez que cambies archivos de la app.** |
+| `scripts/fyi.mjs` | Lector de DOKKAN.FYI (fichas, listado, línea temporal) |
+| `scripts/build-cards.mjs` | Genera `data/cards.json` |
+| `scripts/scrapers.mjs`, `scripts/scrape.mjs` | Tier list, eventos y noticias → `data/extra.json` |
+| `scripts/update-from-pc.ps1`, `scripts/install-task.ps1` | Tarea de Windows que sube la tier list y los eventos |
+
+Si una web cambia su diseño, el lector a corregir está en `scripts/fyi.mjs` o `scripts/scrapers.mjs`.
 
 ## Probar en el PC
 
@@ -44,16 +52,15 @@ npm start
 
 Abre http://localhost:5173
 
-Para comprobar que el lector sigue entendiendo el formato de la wiki:
+Comprobaciones de los lectores (con páginas guardadas):
 
 ```bash
-npm run check
+node tests/fyi-check.mjs <carpeta-con-paginas>
 ```
 
-## Publicar (para instalarla en el móvil)
+## Tarea de Windows
 
-La app tiene que estar en una dirección `https://`. Lo más sencillo es GitHub Pages: sube esta carpeta a un repositorio y activa *Settings → Pages → Deploy from branch → main*. Luego abre la dirección en Chrome del móvil y pulsa *Añadir a pantalla de inicio*.
+- Instalar o reinstalar: `powershell -ExecutionPolicy Bypass -File scripts\install-task.ps1`
+- Registro: `logs/update.log`
 
-## Fuentes
-
-Datos de la Dokkan Wiki (Fandom), licencia CC BY-SA. App de fans, sin relación con Bandai Namco ni Akatsuki.
+App de fans, sin relación con Bandai Namco ni Akatsuki.

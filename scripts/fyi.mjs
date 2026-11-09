@@ -233,6 +233,9 @@ export function parseCharacterMd(md, id) {
     image: thumbUrl(id),
     source: `https://dokkan.fyi/characters/${id}`,
   };
+  // Earlier forms of this card (what banners and the wiki usually show), by image id.
+  card.awakensFrom = [...new Set([...(top['Awakening Path'] || '').matchAll(/characters\/(\d{7})\)/g)]
+    .map((m) => thumbId(m[1])))].filter((t) => t !== card.id);
   card.released = card.dates.glb;
   card.search = [card.title, card.name, card.rarity, card.type, card.cls, ...card.categories, ...card.links].join(' ').toLowerCase();
   return card;

@@ -1,51 +1,68 @@
-// Keeps the local database in step with the Dokkan Wiki.
-// First run: downloads everything. Afterwards: only pages changed since the last sync.
+// Keeps the phone's local database up to date.
+//
+//   Cards        -> data/cards.json, built every 3 h on GitHub from DOKKAN.FYI (data from the game).
+//                   The app checks the small data/cards-meta.json first and only downloads the
+//                   big file when it has changed.
+//   Banners      -> straight from the Dokkan Wiki API (only the pages changed since last time).
+//   Tier list, events, news -> data/extra.json (fan sites, collected by scripts/scrape.mjs).
 
 import * as db from './db.js';
 import { pagesInCategory, categoryAddedTimes, pagesByTitle, changedSince } from './wiki.js';
-import { parseCard, parseBanner } from './parse.js';
+import { parseBanner } from './parse.js';
 
-export const CARD_CATEGORIES = ['LR', 'UR', 'SSR'];
 export const BANNER_CATEGORIES = [
   'Dokkan Festivals', 'Extreme Z Dokkan Festivals', 'Step-Up Dokkan Festivals', 'Carnivals',
   'Legendary Summons', 'Type, Class and Category Summons', 'Crossover/Collaboration Summons',
   'Ticket Summons', 'Miscellaneous Summons',
 ];
-const SCHEMA = 1;            // bump when parse.js output changes, to force a full re-download
+const SCHEMA = 2;            // bump to force a fresh download on every phone (2 = cards from DOKKAN.FYI)
 const FULL_AFTER_DAYS = 80;  // the wiki only keeps ~90 days of change history
 
 // In-memory copy used by the screens.
-// `extra` = tier list, events and news collected from the fan sites by scripts/scrape.mjs.
-export const store = { cards: new Map(), banners: new Map(), extra: null, lastSync: null, loaded: false };
+export const store = { cards: new Map(), banners: new Map(), extra: null, lastSync: null, cardsVersion: null, loaded: false };
 
-let byId = null, byName = null;
+let byId = null, byEarlier = null, byName = null;
 const nameKey = (title, name) => `${title}|${name}`.toLowerCase().replace(/[^a-z0-9|]+/g, '');
 /**
- * Finds the wiki card for a unit from another site: by image id (ending in 0, like 1034030),
- * or by "[title] name" for very new cards the wiki hasn't given an id yet.
+ * Finds a card from another site's reference: by image id (ending in 0, like 1034030),
+ * then by an earlier awakening form's id (banners show the card as you summon it),
+ * then by "[title] name".
  */
 export function cardById(id, title = '', name = '') {
   if (!byId) {
     byId = new Map();
+    byEarlier = new Map();
     byName = new Map();
     for (const c of store.cards.values()) {
       if (c.id && !byId.has(c.id)) byId.set(c.id, c);
+      for (const e of c.awakensFrom || []) if (!byEarlier.has(e)) byEarlier.set(e, c);
       const k = nameKey(c.title, c.name);
       if (!byName.has(k)) byName.set(k, c);
     }
   }
-  return byId.get(id) || (name ? byName.get(nameKey(title, name)) : null) || null;
+  id = String(id);
+  return byId.get(id) || byEarlier.get(id) || (name ? byName.get(nameKey(title, name)) : null) || null;
 }
+
 const listeners = new Set();
 export const onChange = (fn) => (listeners.add(fn), () => listeners.delete(fn));
 const emit = (info) => listeners.forEach((fn) => fn(info));
 
 export async function loadLocal() {
-  const [cards, banners, lastSync, extra] = await Promise.all([db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync'), db.getMeta('extra')]);
+  const schema = await db.getMeta('schema');
+  if (schema !== SCHEMA) {
+    // Data from an older version of the app: start clean.
+    await Promise.all([db.clear('cards'), db.clear('banners'), db.setMeta('lastSync', null), db.setMeta('cardsVersion', null)]);
+    await db.setMeta('schema', SCHEMA);
+  }
+  const [cards, banners, lastSync, extra, cardsVersion] = await Promise.all([
+    db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync'), db.getMeta('extra'), db.getMeta('cardsVersion'),
+  ]);
   store.cards = new Map(cards.map((c) => [c.page, c]));
   store.banners = new Map(banners.map((b) => [b.page, b]));
   store.extra = extra;
   store.lastSync = lastSync;
+  store.cardsVersion = cardsVersion;
   byId = null;
   store.loaded = true;
   emit({ type: 'loaded' });
@@ -63,16 +80,19 @@ export function sync(opts = {}) {
 async function doSync({ full = false, onProgress = () => {} }) {
   const startedAt = new Date().toISOString();
   const last = await db.getMeta('lastSync');
-  const schema = await db.getMeta('schema');
-  const tooOld = last && (Date.now() - Date.parse(last)) / 864e5 > FULL_AFTER_DAYS;
-  const doFull = full || !last || tooOld || schema !== SCHEMA;
-  emit({ type: 'sync-start', full: doFull });
+  emit({ type: 'sync-start', full });
   try {
-    const result = doFull ? await fullSync(onProgress) : await incrementalSync(last, onProgress);
+    const result = { full, newCards: [], newBanners: [], newNews: [] };
+    result.newCards = await syncCards(full, onProgress);
     byId = null;
+
+    const tooOld = last && (Date.now() - Date.parse(last)) / 864e5 > FULL_AFTER_DAYS;
+    result.newBanners = full || !last || tooOld || !store.banners.size
+      ? await fullBanners(onProgress)
+      : await changedBanners(last, onProgress);
+
     result.newNews = await syncExtra().catch((err) => { console.warn('extra data:', err); return []; });
     await db.setMeta('lastSync', startedAt);
-    await db.setMeta('schema', SCHEMA);
     store.lastSync = startedAt;
     emit({ type: 'sync-done', ...result });
     return result;
@@ -82,22 +102,34 @@ async function doSync({ full = false, onProgress = () => {} }) {
   }
 }
 
-async function fullSync(onProgress) {
-  const firstEver = store.cards.size === 0;
-  const now = new Date().toISOString();
-  const cards = [];
-  const seen = new Set();
-  for (const cat of CARD_CATEGORIES) {
-    for await (const batch of pagesInCategory(cat)) {
-      for (const p of batch) {
-        if (seen.has(p.title)) continue;
-        seen.add(p.title);
-        const c = parseCard(p);
-        if (c) cards.push(withFirstSeen(c, firstEver ? '' : now));
-      }
-      onProgress(`Descargando cartas ${cat}… (${cards.length})`);
-    }
-  }
+// ---------- cards (data/cards.json) ----------
+
+async function syncCards(force, onProgress) {
+  onProgress('Comprobando cartas…');
+  const meta = await getJson('data/cards-meta.json');
+  if (!force && meta.generated === store.cardsVersion && store.cards.size) return [];
+  onProgress(`Descargando ${meta.count} cartas…`);
+  const data = await getJson('data/cards.json');
+  if (!Array.isArray(data.cards) || data.cards.length < 20) throw new Error('El archivo de cartas está incompleto; se mantiene la base de datos anterior.');
+  const hadCards = store.cards.size > 0;
+  const newCards = hadCards ? data.cards.filter((c) => !store.cards.has(c.page)) : [];
+  await db.clear('cards');
+  await db.putMany('cards', data.cards);
+  store.cards = new Map(data.cards.map((c) => [c.page, c]));
+  store.cardsVersion = data.generated;
+  await db.setMeta('cardsVersion', data.generated);
+  return newCards;
+}
+
+async function getJson(url) {
+  const res = await fetch(url, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
+  return res.json();
+}
+
+// ---------- banners (Dokkan Wiki) ----------
+
+async function fullBanners(onProgress) {
   const banners = [];
   for (const cat of BANNER_CATEGORIES) {
     const added = await categoryAddedTimes(cat);
@@ -109,62 +141,42 @@ async function fullSync(onProgress) {
       onProgress(`Descargando banners… (${banners.length})`);
     }
   }
-  if (cards.length < 100) throw new Error('La wiki devolvió muy pocas cartas; se mantiene la base de datos anterior.');
-  const newCards = firstEver ? [] : cards.filter((c) => !store.cards.has(c.page));
-  const newBanners = store.banners.size === 0 ? [] : banners.filter((b) => !store.banners.has(b.page));
-  await db.clear('cards');
-  await db.putMany('cards', cards);
+  if (banners.length < 20) throw new Error('La wiki devolvió muy pocos banners; se mantienen los anteriores.');
+  const newBanners = store.banners.size ? banners.filter((b) => !store.banners.has(b.page)) : [];
   await db.clear('banners');
   await db.putMany('banners', banners);
-  store.cards = new Map(cards.map((c) => [c.page, c]));
   store.banners = new Map(banners.map((b) => [b.page, b]));
-  return { full: true, newCards, newBanners, updated: cards.length + banners.length };
+  return newBanners;
 }
 
-async function incrementalSync(since, onProgress) {
-  onProgress('Buscando cambios en la wiki…');
+async function changedBanners(since, onProgress) {
+  onProgress('Buscando banners nuevos…');
   const titles = await changedSince(since);
-  if (!titles.length) return { full: false, newCards: [], newBanners: [], updated: 0 };
-  onProgress(`Revisando ${titles.length} páginas cambiadas…`);
+  if (!titles.length) return [];
   const now = new Date().toISOString();
-  const pages = await pagesByTitle(titles, [...CARD_CATEGORIES, ...BANNER_CATEGORIES]);
-  const cards = [], banners = [];
+  const pages = await pagesByTitle(titles, BANNER_CATEGORIES);
+  const banners = [];
   for (const p of pages) {
-    if (p.categories.some((c) => CARD_CATEGORIES.includes(c))) {
-      const c = parseCard(p);
-      if (c) cards.push(withFirstSeen(c, now));
-    }
-    const bannerCat = p.categories.find((c) => BANNER_CATEGORIES.includes(c));
-    if (bannerCat) {
-      const prev = store.banners.get(p.title);
-      const b = parseBanner({ ...p, category: bannerCat, added: prev?.added || now });
-      if (b) banners.push(b);
-    }
+    const cat = p.categories.find((c) => BANNER_CATEGORIES.includes(c));
+    if (!cat) continue;
+    const prev = store.banners.get(p.title);
+    const b = parseBanner({ ...p, category: cat, added: prev?.added || now });
+    if (b) banners.push(b);
   }
-  const newCards = cards.filter((c) => !store.cards.has(c.page));
   const newBanners = banners.filter((b) => !store.banners.has(b.page));
-  await db.putMany('cards', cards);
   await db.putMany('banners', banners);
-  cards.forEach((c) => store.cards.set(c.page, c));
   banners.forEach((b) => store.banners.set(b.page, b));
-  return { full: false, newCards, newBanners, updated: cards.length + banners.length };
+  return newBanners;
 }
 
-// Downloads the tier list / events / news file that the GitHub job keeps up to date.
+// ---------- tier list / events / news (data/extra.json) ----------
+
 // Returns the news items that weren't there before.
 async function syncExtra() {
-  const res = await fetch('data/extra.json', { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const extra = await res.json();
+  const extra = await getJson('data/extra.json');
   const known = new Set((store.extra?.news?.items || []).map((n) => n.id));
   const fresh = store.extra ? (extra.news?.items || []).filter((n) => !known.has(n.id)) : [];
   await db.setMeta('extra', extra);
   store.extra = extra;
   return fresh;
-}
-
-// Keeps the date we first saw a card, so "new" badges survive later edits.
-function withFirstSeen(card, fallback) {
-  card.firstSeen = store.cards.get(card.page)?.firstSeen ?? fallback;
-  return card;
 }

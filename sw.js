@@ -1,6 +1,6 @@
 // Service worker: makes the app open offline and caches card images.
 // Bump VERSION whenever app files change so phones pick up the new version.
-const VERSION = 'v2';
+const VERSION = 'v3';
 const SHELL = `shell-${VERSION}`;
 const IMAGES = 'images-v1';
 const MAX_IMAGES = 3000;

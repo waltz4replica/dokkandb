@@ -26,8 +26,10 @@ function ago(iso) {
   if (h < 24) return `hace ${h} h`;
   return `hace ${Math.round(h / 24)} d`;
 }
-const cardImg = (c) => cardThumb(c.id) || c.image;
-const thumbTag = (c, cls = 'thumb') => `<img class="${cls}" loading="lazy" alt="" src="${esc(cardImg(c))}" data-fallback="${esc(c.image)}">`;
+// Card art from DOKKAN.FYI's image server, with the wiki's copy as a backup.
+const cardImg = (c) => c.image || cardThumb(c.id);
+const thumbTag = (c, cls = 'thumb') => `<img class="${cls}" loading="lazy" alt="" src="${esc(cardImg(c))}" data-fallback="${esc(cardThumb(c.id))}">`;
+const sourceUrl = (c) => c.source || `https://dokkan.fyi/characters/${c.page}`;
 
 function tile(c) {
   const isNew = c.firstSeen && Date.now() - Date.parse(c.firstSeen) < 7 * 864e5;
@@ -38,9 +40,9 @@ function tile(c) {
     <div class="nm">${esc(c.name)}</div></a>`;
 }
 
-// Newest first: cards not yet released globally (JP-only / upcoming) go on top.
+// Newest first (cards without a date yet go on top).
 function byRelease(a, b) {
-  return (b.released || '9999') .localeCompare(a.released || '9999') || (b.updated || '').localeCompare(a.updated || '');
+  return (b.released || '9999').localeCompare(a.released || '9999') || b.page.localeCompare(a.page);
 }
 
 let toastTimer;
@@ -89,7 +91,7 @@ function firstRunView() {
     title: '<span class="logo">Dokkan</span>DB',
     html: `<div class="box" style="margin-top:20px">
       <h2 style="margin-top:0">Bienvenido</h2>
-      <p>La primera vez la app descarga toda la base de datos de la Dokkan Wiki (unas 2.300 cartas y sus banners). Tarda unos minutos; después solo descarga lo nuevo.</p>
+      <p>La primera vez la app descarga toda la base de datos: unas 1.150 cartas LR, UR y SSR (datos sacados del juego) y los banners. Tarda menos de un minuto con Wi-Fi; después solo descarga lo nuevo.</p>
       <p class="muted small" id="sync-msg">${isSyncing() ? 'Descargando…' : 'Pulsa el botón para empezar.'}</p>
       ${isSyncing() ? '<div class="progress"><i></i></div>' : '<div class="btns"><button class="btn primary" id="start">Descargar datos</button></div>'}
     </div>`,
@@ -187,7 +189,7 @@ function filterCards() {
 
 views.card = (params, page) => {
   const c = store.cards.get(page);
-  if (!c) return { title: 'Carta', back: true, html: `<div class="empty">Esta carta no está en la base de datos.<br><br><a href="${esc(pageUrl(page))}" target="_blank" rel="noopener">Abrir en la wiki</a></div>` };
+  if (!c) return { title: 'Carta', back: true, html: `<div class="empty">Esta carta no está en la base de datos.<br><br><a href="https://dokkan.fyi/characters/${enc(page)}" target="_blank" rel="noopener">Buscar en DOKKAN.FYI</a></div>` };
   const levels = [['base', 'Base'], ...(c.eza ? [['eza', 'EZA']] : []), ...(c.seza ? [['seza', 'SEZA']] : [])];
   const t = c.type.toLowerCase();
   const skill = (label, name, body, cond) => body ? `<div class="box skill"><h3>${label}</h3>${name ? `<div class="sn">${esc(name)}</div>` : ''}<div class="desc">${body}</div>${cond ? `<div class="cond">${cond}</div>` : ''}</div>` : '';
@@ -200,7 +202,22 @@ views.card = (params, page) => {
       ${c.exSuperAttack ? skill('EX súper ataque', c.exSuperAttack.name, c.exSuperAttack.desc, c.exSuperAttack.condition) : ''}
       ${skill('Habilidad pasiva', c.passive.name, pick(c.passive))}
       ${c.active ? skill('Habilidad activa', c.active.name, c.active.desc, c.active.condition) : ''}
-      ${c.transformation ? skill('Transformación', '', c.transformation) : ''}`;
+      ${c.transformation ? skill('Transformación', '', c.transformation) : ''}
+      ${(c.forms || []).map((f) => formBox(f, lv)).join('')}`;
+  };
+  // A transformation / exchange form, shown inside its base card.
+  const formBox = (f, lv) => {
+    const pick = (o) => (o ? o[lv] || (lv === 'seza' ? o.eza : '') || o.base : '');
+    return `<details class="box form"><summary>
+        ${f.image ? `<img alt="" loading="lazy" src="${esc(f.image)}">` : ''}
+        <span><span class="muted small">${f.how === 'Active Skill' ? 'Se transforma (habilidad activa)' : /exchange/i.test(f.how || '') ? 'Intercambio' : 'Se transforma'}</span><br><b>${esc(f.name || '')}</b>
+        ${f.type ? ` <span class="type t-${esc(f.type.toLowerCase())}">${esc(f.type)}</span>` : ''}</span></summary>
+      ${f.condition ? `<div class="cond">${f.condition}</div>` : ''}
+      ${f.superAttack?.base ? `<div class="skill"><h3>Súper ataque</h3><div class="sn">${esc(f.superAttack.name)}</div><div class="desc">${pick(f.superAttack)}</div></div>` : ''}
+      ${f.ultraSuperAttack?.base ? `<div class="skill"><h3>Ultra súper ataque</h3><div class="sn">${esc(f.ultraSuperAttack.name)}</div><div class="desc">${pick(f.ultraSuperAttack)}</div></div>` : ''}
+      ${f.passive?.base ? `<div class="skill"><h3>Habilidad pasiva</h3><div class="sn">${esc(f.passive.name)}</div><div class="desc">${pick(f.passive)}</div></div>` : ''}
+      ${f.active ? `<div class="skill"><h3>Habilidad activa</h3><div class="sn">${esc(f.active.name)}</div><div class="desc">${f.active.desc}</div>${f.active.condition ? `<div class="cond">${f.active.condition}</div>` : ''}</div>` : ''}
+    </details>`;
   };
   const d = c.dates;
   const dateRows = [['Lanzamiento', d.glb, d.jp], ['EZA', d.glbEza, d.jpEza], ['SEZA', d.glbSeza, d.jpSeza]].filter((r) => r[1] || r[2]);
@@ -223,7 +240,7 @@ views.card = (params, page) => {
       <h2>Links (${c.links.length})</h2><div class="tags">${c.links.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>
       <h2>Categorías (${c.categories.length})</h2><div class="tags">${c.categories.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>
       ${dateRows.length ? `<h2>Fechas</h2><div class="box dates"><span></span><b>Global</b><b>Japón</b>${dateRows.map(([l, g, j]) => `<b>${l}</b><span>${fmtDate(g) || '–'}</span><span>${fmtDate(j) || '–'}</span>`).join('')}</div>` : '<p class="muted small">Sin fecha de lanzamiento todavía (próximamente o solo en Japón).</p>'}
-      <p class="small"><a href="${esc(pageUrl(c.page))}" target="_blank" rel="noopener">Ver en la Dokkan Wiki ↗</a></p>`,
+      <p class="small"><a href="${esc(sourceUrl(c))}" target="_blank" rel="noopener">Ver en DOKKAN.FYI ↗</a></p>`,
     mount(el) {
       $('#lv', el)?.addEventListener('click', (e) => {
         const b = e.target.closest('button');
@@ -236,7 +253,7 @@ views.card = (params, page) => {
 };
 
 function bannerRow(b) {
-  const minis = b.newCards.slice(0, 6).map((x) => `<img loading="lazy" alt="" src="${esc(cardThumb(x.id))}">`).join('');
+  const minis = b.newCards.slice(0, 6).map((x) => `<img loading="lazy" alt="" src="${esc(cardById(x.id)?.image || cardThumb(x.id))}">`).join('');
   return `<a class="row" href="#/banner/${enc(b.page)}">
     <img class="banner-img" loading="lazy" alt="" src="${esc(fileUrl(b.image, 360))}">
     <div class="info"><b>${esc(b.name)}</b><span class="muted small">${esc(b.kind)}${b.added ? ' · ' + fmtDate(b.added) : ''}</span>
@@ -273,7 +290,7 @@ views.banner = (params, page) => {
   const b = store.banners.get(page);
   if (!b) return { title: 'Banner', back: true, html: '<div class="empty">Banner no encontrado.</div>' };
   const cardTile = (x) => {
-    const c = store.cards.get(x.page);
+    const c = cardById(x.id);
     if (c) return tile(c);
     return `<a class="tile" href="${esc(pageUrl(x.page))}" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(cardThumb(x.id))}"><div class="nm">${esc(x.page)}</div></a>`;
   };
@@ -382,7 +399,7 @@ views.settings = () => ({
       <b>Banners</b><span>${store.banners.size}</span>
       <b>Última actualización</b><span id="last">${store.lastSync ? `${fmtDate(store.lastSync)} (${ago(store.lastSync)})` : 'nunca'}</span>
     </div>
-    <p class="muted small">La app busca novedades en la wiki cada vez que la abres y cada ${AUTO_SYNC_MIN} minutos mientras está abierta. Solo descarga las páginas que han cambiado.</p>
+    <p class="muted small">La app busca novedades cada vez que la abres y cada ${AUTO_SYNC_MIN} minutos mientras está abierta. Solo descarga lo que ha cambiado.</p>
     <div class="btns">
       <button class="btn primary" id="sync-now" ${isSyncing() ? 'disabled' : ''}>Buscar novedades ahora</button>
       <button class="btn" id="sync-full" ${isSyncing() ? 'disabled' : ''}>Volver a descargar todo</button>
@@ -390,7 +407,8 @@ views.settings = () => ({
     <p class="muted small" id="sync-msg"></p>
     <h2>Fuentes</h2>
     <div class="box small">
-      <b>Cartas y banners:</b> <a href="https://dbz-dokkanbattle.fandom.com/" target="_blank" rel="noopener">Dokkan Wiki</a> (Fandom, licencia CC BY-SA). La app la consulta directamente.<br><br>
+      <b>Cartas:</b> <a href="https://dokkan.fyi/" target="_blank" rel="noopener">DOKKAN.FYI</a>, con datos sacados directamente del juego. Se recogen cada 3 horas en GitHub${store.cardsVersion ? ` (última versión: ${fmtDate(store.cardsVersion)}, ${ago(store.cardsVersion)})` : ''}.<br>
+      <b>Banners:</b> <a href="https://dbz-dokkanbattle.fandom.com/" target="_blank" rel="noopener">Dokkan Wiki</a> (Fandom, licencia CC BY-SA). La app la consulta directamente.<br><br>
       <b>Tier list y eventos activos:</b> <a href="https://dokkanstats.com/en/" target="_blank" rel="noopener">DokkanStats</a>.<br>
       <b>Noticias del juego:</b> <a href="https://dokkan.fyi/news" target="_blank" rel="noopener">DOKKAN.FYI</a>.<br>
       Estos se recogen cada 3 horas en GitHub${store.extra?.generated ? ` (última vez con cambios: ${fmtDate(store.extra.generated)}, ${ago(store.extra.generated)})` : ''}.<br><br>
@@ -471,7 +489,7 @@ async function runSync(opts = {}) {
     if (parts.length) toast('Novedades: ' + parts.join(' y '));
     else if (opts.manual || opts.full) toast(r.full ? `Base de datos descargada: ${store.cards.size} cartas` : 'Todo está al día');
     // Refresh the screen unless the user is reading a detail page.
-    if (!/^#\/(card|banner)\//.test(location.hash)) route();
+    if (!/^#\/(card|banner)\//.test(location.hash) || $('main .empty')) route();
   } catch (err) {
     console.error(err);
     setPill('err', 'Sin conexión');
