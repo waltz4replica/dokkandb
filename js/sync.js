@@ -15,16 +15,38 @@ const SCHEMA = 1;            // bump when parse.js output changes, to force a fu
 const FULL_AFTER_DAYS = 80;  // the wiki only keeps ~90 days of change history
 
 // In-memory copy used by the screens.
-export const store = { cards: new Map(), banners: new Map(), lastSync: null, loaded: false };
+// `extra` = tier list, events and news collected from the fan sites by scripts/scrape.mjs.
+export const store = { cards: new Map(), banners: new Map(), extra: null, lastSync: null, loaded: false };
+
+let byId = null, byName = null;
+const nameKey = (title, name) => `${title}|${name}`.toLowerCase().replace(/[^a-z0-9|]+/g, '');
+/**
+ * Finds the wiki card for a unit from another site: by image id (ending in 0, like 1034030),
+ * or by "[title] name" for very new cards the wiki hasn't given an id yet.
+ */
+export function cardById(id, title = '', name = '') {
+  if (!byId) {
+    byId = new Map();
+    byName = new Map();
+    for (const c of store.cards.values()) {
+      if (c.id && !byId.has(c.id)) byId.set(c.id, c);
+      const k = nameKey(c.title, c.name);
+      if (!byName.has(k)) byName.set(k, c);
+    }
+  }
+  return byId.get(id) || (name ? byName.get(nameKey(title, name)) : null) || null;
+}
 const listeners = new Set();
 export const onChange = (fn) => (listeners.add(fn), () => listeners.delete(fn));
 const emit = (info) => listeners.forEach((fn) => fn(info));
 
 export async function loadLocal() {
-  const [cards, banners, lastSync] = await Promise.all([db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync')]);
+  const [cards, banners, lastSync, extra] = await Promise.all([db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync'), db.getMeta('extra')]);
   store.cards = new Map(cards.map((c) => [c.page, c]));
   store.banners = new Map(banners.map((b) => [b.page, b]));
+  store.extra = extra;
   store.lastSync = lastSync;
+  byId = null;
   store.loaded = true;
   emit({ type: 'loaded' });
 }
@@ -47,6 +69,8 @@ async function doSync({ full = false, onProgress = () => {} }) {
   emit({ type: 'sync-start', full: doFull });
   try {
     const result = doFull ? await fullSync(onProgress) : await incrementalSync(last, onProgress);
+    byId = null;
+    result.newNews = await syncExtra().catch((err) => { console.warn('extra data:', err); return []; });
     await db.setMeta('lastSync', startedAt);
     await db.setMeta('schema', SCHEMA);
     store.lastSync = startedAt;
@@ -124,6 +148,19 @@ async function incrementalSync(since, onProgress) {
   cards.forEach((c) => store.cards.set(c.page, c));
   banners.forEach((b) => store.banners.set(b.page, b));
   return { full: false, newCards, newBanners, updated: cards.length + banners.length };
+}
+
+// Downloads the tier list / events / news file that the GitHub job keeps up to date.
+// Returns the news items that weren't there before.
+async function syncExtra() {
+  const res = await fetch('data/extra.json', { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const extra = await res.json();
+  const known = new Set((store.extra?.news?.items || []).map((n) => n.id));
+  const fresh = store.extra ? (extra.news?.items || []).filter((n) => !known.has(n.id)) : [];
+  await db.setMeta('extra', extra);
+  store.extra = extra;
+  return fresh;
 }
 
 // Keeps the date we first saw a card, so "new" badges survive later edits.

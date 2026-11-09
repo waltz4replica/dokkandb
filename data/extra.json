@@ -1,0 +1,5196 @@
+{
+ "tierlist": {
+  "tiers": [
+   {
+    "tier": "S++",
+    "ranks": "1-2",
+    "units": [
+     {
+      "id": "1034031",
+      "cardId": "1034030",
+      "title": "Furious Fighter's Immense Power",
+      "name": "Super Saiyan Goku",
+      "trend": "same"
+     },
+     {
+      "id": "1034201",
+      "cardId": "1034200",
+      "title": "Pinnacle of the Fierce Battle",
+      "name": "Super Saiyan 3 Goku",
+      "trend": "same"
+     }
+    ]
+   },
+   {
+    "tier": "S+",
+    "ranks": "3-6",
+    "units": [
+     {
+      "id": "1033971",
+      "cardId": "1033970",
+      "title": "Supreme Ruler's Vicious Power",
+      "name": "Frieza (Final Form)",
+      "trend": "same"
+     },
+     {
+      "id": "1032921",
+      "cardId": "1032920",
+      "title": "",
+      "name": "[Challenging the Strongest of the Strong] Goku (Ultra Instinct -Sign-) + \nSuper Saiyan God SS Evolved Vegeta",
+      "trend": "same"
+     },
+     {
+      "id": "1034121",
+      "cardId": "1034120",
+      "title": "Mastery of Perfected Power",
+      "name": "Perfect Cell",
+      "trend": "up"
+     },
+     {
+      "id": "1034151",
+      "cardId": "1034150",
+      "title": "Transcendent Existence",
+      "name": "Buu (Kid)",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "S",
+    "ranks": "7-12",
+    "units": [
+     {
+      "id": "1034071",
+      "cardId": "1034070",
+      "title": "Release of Mighty Power",
+      "name": "Super Saiyan Gohan (Youth)",
+      "trend": "same"
+     },
+     {
+      "id": "1033061",
+      "cardId": "1033060",
+      "title": "Fated Showdown",
+      "name": "Majin Vegeta + Super Saiyan 2 Goku (Angel)",
+      "trend": "same"
+     },
+     {
+      "id": "1033841",
+      "cardId": "1033840",
+      "title": "Earth-Blanketing Army",
+      "name": "Metal Cooler Army",
+      "trend": "same"
+     },
+     {
+      "id": "1012931",
+      "cardId": "1012930",
+      "title": "",
+      "name": "[Fused Fighting Force] Super Saiyan Goku (Angel) & \nSuper Saiyan Vegeta (Angel)",
+      "trend": "same"
+     },
+     {
+      "id": "1026611",
+      "cardId": "1026610",
+      "title": "A Quest That Makes Wishes Come True",
+      "name": "Bulma (Youth)",
+      "trend": "up"
+     },
+     {
+      "id": "1032311",
+      "cardId": "1032310",
+      "title": "Threat of the Third Eye",
+      "name": "Third Eye Gomah",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "S-",
+    "ranks": "13-20",
+    "units": [
+     {
+      "id": "1012901",
+      "cardId": "1012900",
+      "title": "Fused Super Power",
+      "name": "Super Saiyan Goku & Super Saiyan Vegeta",
+      "trend": "same"
+     },
+     {
+      "id": "1032551",
+      "cardId": "1032550",
+      "title": "Maximum-Power Battle",
+      "name": "Super Saiyan 4 Goku (DAIMA)",
+      "trend": "down"
+     },
+     {
+      "id": "1034301",
+      "cardId": "1034300",
+      "title": "Grand Assault Leading Allies",
+      "name": "Super Saiyan 3 Goku (Mini) (DAIMA)",
+      "trend": "down"
+     },
+     {
+      "id": "1024931",
+      "cardId": "1024930",
+      "title": "Infinite Terror",
+      "name": "Metal Cooler",
+      "trend": "down"
+     },
+     {
+      "id": "1032881",
+      "cardId": "1032880",
+      "title": "Final Showdown Against the Shadow Dragons",
+      "name": "Super Saiyan 4 Vegeta + Super Saiyan 4 Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1031391",
+      "cardId": "1031390",
+      "title": "",
+      "name": "[Furious Final Battle in the Future] Super Saiyan God SS Goku + \nSuper Saiyan God SS Vegeta",
+      "trend": "same"
+     },
+     {
+      "id": "1033011",
+      "cardId": "1033010",
+      "title": "Battle to Resurrect the Majin",
+      "name": "Dabura",
+      "trend": "down"
+     },
+     {
+      "id": "1024861",
+      "cardId": "1024860",
+      "title": "Extraordinary Super Warrior",
+      "name": "Super Saiyan Goku",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "A+",
+    "ranks": "21-30",
+    "units": [
+     {
+      "id": "1032121",
+      "cardId": "1032120",
+      "title": "",
+      "name": "[Bonds Leading to the Future] Super Saiyan Gohan (Future)/\nSuper Saiyan Trunks (Youth) (Future)",
+      "trend": "down"
+     },
+     {
+      "id": "1027001",
+      "cardId": "1027000",
+      "title": "Super Power Counterattack",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
+     },
+     {
+      "id": "1033941",
+      "cardId": "1033940",
+      "title": "Supreme Tree of Might",
+      "name": "Turles",
+      "trend": "down"
+     },
+     {
+      "id": "1026431",
+      "cardId": "1026430",
+      "title": "Destructive Scattershot Strike",
+      "name": "Buu (Super)",
+      "trend": "up"
+     },
+     {
+      "id": "1033821",
+      "cardId": "1033820",
+      "title": "Epic Battle of Divine Scale",
+      "name": "Super Saiyan God Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1025731",
+      "cardId": "1025730",
+      "title": "Universe's Last Hope",
+      "name": "Super Saiyan 3 Goku & Super Saiyan 2 Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1034341",
+      "cardId": "1034340",
+      "title": "Blinding Radiance of the Decisive Strike",
+      "name": "Gohan (Beast)",
+      "trend": "down"
+     },
+     {
+      "id": "1031471",
+      "cardId": "1031470",
+      "title": "Fighter of Ultimate Radiance",
+      "name": "Super Saiyan 4 Gogeta",
+      "trend": "down"
+     },
+     {
+      "id": "1026161",
+      "cardId": "1026160",
+      "title": "A Soul Pumped Up in Battle",
+      "name": "Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1024831",
+      "cardId": "1024830",
+      "title": "Planet-Crushing Blow",
+      "name": "Cooler (Final Form)",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "A",
+    "ranks": "31-42",
+    "units": [
+     {
+      "id": "1034221",
+      "cardId": "1034220",
+      "title": "Overwhelming Force of Destruction",
+      "name": "Beerus",
+      "trend": "down"
+     },
+     {
+      "id": "1034381",
+      "cardId": "1034380",
+      "title": "Cataclysmic Calamity",
+      "name": "Cell Max",
+      "trend": "down"
+     },
+     {
+      "id": "1034091",
+      "cardId": "1034090",
+      "title": "Opportunity to Rebuild",
+      "name": "Super Saiyan Trunks (Future)",
+      "trend": "up"
+     },
+     {
+      "id": "1027621",
+      "cardId": "1027620",
+      "title": "Exploding Fist",
+      "name": "Super Saiyan 3 Goku",
+      "trend": "up"
+     },
+     {
+      "id": "1032361",
+      "cardId": "1032360",
+      "title": "Cooperation for Justice",
+      "name": "Ultimate Gohan + Gamma 1",
+      "trend": "down"
+     },
+     {
+      "id": "1026251",
+      "cardId": "1026250",
+      "title": "Fighter Entrusted with Allies' Wishes",
+      "name": "Super Saiyan God Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1013541",
+      "cardId": "1013540",
+      "title": "Transdimensional Instinct",
+      "name": "Goku (Ultra Instinct -Sign-)",
+      "trend": "down"
+     },
+     {
+      "id": "1034431",
+      "cardId": "1034430",
+      "title": "Ambition for the Future of the Demon Realm",
+      "name": "Dr. Arinsu",
+      "trend": "down"
+     },
+     {
+      "id": "1024351",
+      "cardId": "1024350",
+      "title": "Universe-Shaking Strike",
+      "name": "Super Saiyan Goku & Super Saiyan Gohan (Youth)",
+      "trend": "same"
+     },
+     {
+      "id": "1028061",
+      "cardId": "1028060",
+      "title": "",
+      "name": "[All-Out Ultimate Battle] Super Saiyan Goku & \nSuper Saiyan Vegeta & Super Saiyan Trunks (Teen)",
+      "trend": "down"
+     },
+     {
+      "id": "1010901",
+      "cardId": "1010900",
+      "title": "Extraordinary Friendship",
+      "name": "Hercule",
+      "trend": "up"
+     },
+     {
+      "id": "1025771",
+      "cardId": "1025770",
+      "title": "Miracle-Making Final Showdown",
+      "name": "Goku (GT) & Super Saiyan 4 Vegeta",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "A-",
+    "ranks": "43-54",
+    "units": [
+     {
+      "id": "1024891",
+      "cardId": "1024890",
+      "title": "Full-Power Final Showdown",
+      "name": "Super Saiyan Goku & Super Saiyan Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1034411",
+      "cardId": "1034410",
+      "title": "Key Figure of the Demon Realm Journey",
+      "name": "Panzy",
+      "trend": "down"
+     },
+     {
+      "id": "1009381",
+      "cardId": "1009380",
+      "title": "Reign of Terror",
+      "name": "Frieza (1st Form)",
+      "trend": "same"
+     },
+     {
+      "id": "1032261",
+      "cardId": "1032260",
+      "title": "Spirited Showdown",
+      "name": "Super Saiyan 4 Goku (Mini) (DAIMA)",
+      "trend": "same"
+     },
+     {
+      "id": "1034171",
+      "cardId": "1034170",
+      "title": "Unleashed Ferocity",
+      "name": "Majin Buu (South Supreme Kai)",
+      "trend": "up"
+     },
+     {
+      "id": "1020531",
+      "cardId": "1020530",
+      "title": "Power Taken From Others",
+      "name": "Majin Buu (Piccolo)",
+      "trend": "up"
+     },
+     {
+      "id": "1031721",
+      "cardId": "1031720",
+      "title": "Stirred Battle Instincts",
+      "name": "Golden Frieza + Gogeta",
+      "trend": "down"
+     },
+     {
+      "id": "1031501",
+      "cardId": "1031500",
+      "title": "World Shrouded in Evil Power",
+      "name": "Omega Shenron",
+      "trend": "down"
+     },
+     {
+      "id": "1034701",
+      "cardId": "1034700",
+      "title": "Force of Diverse Techniques",
+      "name": "Recoome + Guldo",
+      "trend": "down"
+     },
+     {
+      "id": "1034001",
+      "cardId": "1034000",
+      "title": "Devastating Strike to Hell",
+      "name": "Frieza (2nd Form)",
+      "trend": "up"
+     },
+     {
+      "id": "1028161",
+      "cardId": "1028160",
+      "title": "Terrifying Phantom Majin",
+      "name": "Hirudegarn",
+      "trend": "down"
+     },
+     {
+      "id": "1032581",
+      "cardId": "1032580",
+      "title": "Earth-Shattering Climax",
+      "name": "Super Saiyan 3 Vegeta (DAIMA)",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "B+",
+    "ranks": "55-66",
+    "units": [
+     {
+      "id": "1020281",
+      "cardId": "1020280",
+      "title": "Risky Covering Fire",
+      "name": "Tien",
+      "trend": "up"
+     },
+     {
+      "id": "1034861",
+      "cardId": "1034860",
+      "title": "Valor Etched into History",
+      "name": "Hercule",
+      "trend": "up"
+     },
+     {
+      "id": "1025561",
+      "cardId": "1025560",
+      "title": "Awakened Super Hero",
+      "name": "Ultimate Gohan",
+      "trend": "down"
+     },
+     {
+      "id": "1022471",
+      "cardId": "1022470",
+      "title": "Eerie Sense of Despair",
+      "name": "Frieza (3rd Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1019361",
+      "cardId": "1019360",
+      "title": "Best Measure",
+      "name": "Whis",
+      "trend": "down"
+     },
+     {
+      "id": "1031591",
+      "cardId": "1031590",
+      "title": "",
+      "name": "[Spirited New Generation] Super Saiyan Gohan (Teen) + \nSuper Saiyan Trunks (Kid) & Super Saiyan Goten (Kid)",
+      "trend": "same"
+     },
+     {
+      "id": "1033551",
+      "cardId": "1033550",
+      "title": "Inconceivable Saiyan Power",
+      "name": "Vegeta + Nappa",
+      "trend": "same"
+     },
+     {
+      "id": "1014371",
+      "cardId": "1014370",
+      "title": "Determined to Fight",
+      "name": "Goku (Kaioken)",
+      "trend": "up"
+     },
+     {
+      "id": "1030341",
+      "cardId": "1030340",
+      "title": "Ultimate Saiyan Power Roar",
+      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
+      "trend": "same"
+     },
+     {
+      "id": "1031431",
+      "cardId": "1031430",
+      "title": "Terrifying Zero Mortals Plan",
+      "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
+      "trend": "down"
+     },
+     {
+      "id": "1030431",
+      "cardId": "1030430",
+      "title": "Incomparable Radiance",
+      "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
+      "trend": "down"
+     },
+     {
+      "id": "1022451",
+      "cardId": "1022450",
+      "title": "Exceptional Wisdom",
+      "name": "Piccolo",
+      "trend": "down"
+     }
+    ]
+   },
+   {
+    "tier": "B",
+    "ranks": "67-78",
+    "units": [
+     {
+      "id": "1034731",
+      "cardId": "1034730",
+      "title": "Magnificent Act of Justice",
+      "name": "Great Saiyaman 2",
+      "trend": "up"
+     },
+     {
+      "id": "1022701",
+      "cardId": "1022700",
+      "title": "Wicked Life Form's Superiority Complex",
+      "name": "Cell (2nd Form)",
+      "trend": "up"
+     },
+     {
+      "id": "1022421",
+      "cardId": "1022420",
+      "title": "Saiyan Warriors with Ultimate Power",
+      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1024991",
+      "cardId": "1024990",
+      "title": "Stamina to Attack Evil",
+      "name": "Pan (GT)",
+      "trend": "down"
+     },
+     {
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1020311",
+      "cardId": "1020310",
+      "title": "True Ultra Instinct",
+      "name": "Goku (Ultra Instinct)",
+      "trend": "up"
+     },
+     {
+      "id": "1030481",
+      "cardId": "1030480",
+      "title": "Unprecedented Miracle",
+      "name": "Super Saiyan Vegeta (Angel) + Super Saiyan Goku (Angel)",
+      "trend": "down"
+     },
+     {
+      "id": "1013391",
+      "cardId": "1013390",
+      "title": "Blazing Love and Burning Justice",
+      "name": "Great Saiyaman 1 & 2",
+      "trend": "up"
+     },
+     {
+      "id": "1025591",
+      "cardId": "1025590",
+      "title": "Exploding Latent Power",
+      "name": "Piccolo (Power Awakening)",
+      "trend": "down"
+     },
+     {
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
+      "trend": "same"
+     },
+     {
+      "id": "1034691",
+      "cardId": "1034690",
+      "title": "Chaos-Bringing Secret Technique",
+      "name": "Ginyu (Goku)",
+      "trend": "up"
+     },
+     {
+      "id": "1033761",
+      "cardId": "1033760",
+      "title": "Breakthrough Amidst Adversity",
+      "name": "Piccolo",
+      "trend": "up"
+     }
+    ]
+   },
+   {
+    "tier": "B-",
+    "ranks": "79-90",
+    "units": [
+     {
+      "id": "1013771",
+      "cardId": "1013770",
+      "title": "Global Harmony Through Destruction",
+      "name": "Beerus & Whis",
+      "trend": "down"
+     },
+     {
+      "id": "1033871",
+      "cardId": "1033870",
+      "title": "Overhead Surprise Attack",
+      "name": "King Cold",
+      "trend": "same"
+     },
+     {
+      "id": "1032331",
+      "cardId": "1032330",
+      "title": "Alliance of Justice",
+      "name": "Gamma 2 + Piccolo (Power Awakening)",
+      "trend": "down"
+     },
+     {
+      "id": "1033591",
+      "cardId": "1033590",
+      "title": "Super Saiyan God of Successive Mutations",
+      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
+      "trend": "down"
+     },
+     {
+      "id": "1022381",
+      "cardId": "1022380",
+      "title": "",
+      "name": "[Divine Warriors with Infinite Power] Super Saiyan God Goku & \nSuper Saiyan God Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1024141",
+      "cardId": "1024140",
+      "title": "Desperate Onslaught",
+      "name": "Goku & Piccolo/Piccolo",
+      "trend": "up"
+     },
+     {
+      "id": "1034241",
+      "cardId": "1034240",
+      "title": "Solitary Duty",
+      "name": "Piccolo (Red Ribbon Army)",
+      "trend": "down"
+     },
+     {
+      "id": "1026751",
+      "cardId": "1026750",
+      "title": "Demonic Fighter Wielding Forbidden Power",
+      "name": "Turles",
+      "trend": "same"
+     },
+     {
+      "id": "1030941",
+      "cardId": "1030940",
+      "title": "Final Battle at the Highest Level",
+      "name": "Cell (Perfect Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1023981",
+      "cardId": "1023980",
+      "title": "Brief Paternal Moment",
+      "name": "Majin Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1027651",
+      "cardId": "1027650",
+      "title": "Genius Scientist's Courage and Resolve",
+      "name": "Android #21 (Normal)",
+      "trend": "up"
+     },
+     {
+      "id": "1009591",
+      "cardId": "1009590",
+      "title": "Passion of the Warrior Race",
+      "name": "Super Saiyan God SS Vegeta",
+      "trend": "down"
+     }
+    ]
+   }
+  ],
+  "source": "DokkanStats",
+  "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
+  "updated": "2026-11-09T13:59:13.985Z"
+ },
+ "events": {
+  "items": [
+   {
+    "title": "Curse of the Blood Rubies",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/352",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_352.png",
+    "stones": 24
+   },
+   {
+    "title": "A Turbulent Start! World Tournament Reborn",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/374",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_374.png",
+    "stones": 24
+   },
+   {
+    "title": "Go Forth!! Hero of Justice",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/381",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_381.png",
+    "stones": 14
+   },
+   {
+    "title": "Videl's Flying Technique Tutorial",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/351",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_351.png",
+    "stones": 15
+   },
+   {
+    "title": "Tale of Super Warriors [Dragon Ball Edition]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1309",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1309_2.png",
+    "stones": 36
+   },
+   {
+    "title": "Tale of Super Warriors [Dragon Ball GT Edition]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1311",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1311_1.png",
+    "stones": 34
+   },
+   {
+    "title": "Tale of Super Warriors [Dragon Ball Super Edition]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1312",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1312_1.png",
+    "stones": 34
+   },
+   {
+    "title": "Tale of Super Warriors [Dragon Ball Z Edition]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1313",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1313_2.png",
+    "stones": 33
+   },
+   {
+    "title": "Super Warrior Memorial [Vegeta, the Proud Warrior]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1314",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1314.png",
+    "stones": 21
+   },
+   {
+    "title": "Dragon Ball DAIMA",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1308",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1308_4.png",
+    "stones": 36
+   },
+   {
+    "title": "Demonic Attack! Legendary Super Saiyan Broly",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1307",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1307_2.png",
+    "stones": 18
+   },
+   {
+    "title": "Super Warrior Memorial \n[Goku and the God of Destruction]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1306",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1306_2.png",
+    "stones": 22
+   },
+   {
+    "title": "Frieza's Endless Ambitions",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1305",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1305_2.png",
+    "stones": 18
+   },
+   {
+    "title": "Super Warrior Memorial [Trunks, Fighter of Hope]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1304",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1304_2.png",
+    "stones": 18
+   },
+   {
+    "title": "Dreaded Majin and a Soul Reborn",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1303",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1303_B.png",
+    "stones": 20
+   },
+   {
+    "title": "Super Warrior Memorial [Goku and Rivals]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1302",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1302_1.png",
+    "stones": 20
+   },
+   {
+    "title": "Super Warrior Memorial [Goku and Friends]",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1301",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1301_1.png",
+    "stones": 19
+   },
+   {
+    "title": "Peril Looms! The Mysterious Snake Way",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1204",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1204.png",
+    "stones": 4
+   },
+   {
+    "title": "The Path to Power",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/398",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_398.png",
+    "stones": 13
+   },
+   {
+    "title": "Fight! Battle for the Strongest in the Universe",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/397",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_397.png",
+    "stones": 23
+   },
+   {
+    "title": "Inherited Fate! Warriors a Century Later",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/396",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_396.png",
+    "stones": 11
+   },
+   {
+    "title": "Legacies of Remarkable Fathers",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/395",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_395_2.png",
+    "stones": 18
+   },
+   {
+    "title": "All Fired Up! Marriage, Showdown, Grand Finale",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/394",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_394_2.png",
+    "stones": 15
+   },
+   {
+    "title": "A Fateful Encounter?! Bulma and Vegeta",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/393",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_393_2.png",
+    "stones": 15
+   },
+   {
+    "title": "Ruler of the Universe and the Warrior Race: \nEmperor's Intentions",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/392",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_392_B.png",
+    "stones": 18
+   },
+   {
+    "title": "Fated History! The Saiyan in Rebellion",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/391",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_391.png",
+    "stones": 13
+   },
+   {
+    "title": "Ruler of the Universe and the Warrior Race: \nLegend of the Super Saiyan",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/389",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_389_B.png",
+    "stones": 18
+   },
+   {
+    "title": "Demonic Threat! Garlic Jr. Attacks",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/388",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_388.png",
+    "stones": 23
+   },
+   {
+    "title": "Fusion Reborn",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/387",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_387.png",
+    "stones": 17
+   },
+   {
+    "title": "The Power of Trust! The Miracle of Universe 7",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/386",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_386_2.png",
+    "stones": 26
+   },
+   {
+    "title": "Master Roshi's New Challenge",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/385",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_385_2.png",
+    "stones": 18
+   },
+   {
+    "title": "The Emperor Returns! Training for Vengeance",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/384",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_384.png",
+    "stones": 9
+   },
+   {
+    "title": "Surpass Goku! The Reinvention of Vegeta",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/383",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_383.png",
+    "stones": 13
+   },
+   {
+    "title": "Showdown! The Ultimate Final Battle",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/382",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_382_A1.png",
+    "stones": 24
+   },
+   {
+    "title": "Proud Justice! Pride Troopers",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/379",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_379.png",
+    "stones": 9
+   },
+   {
+    "title": "Evil Revived! The Most Fearsome Majin",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/378",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_378.png",
+    "stones": 19
+   },
+   {
+    "title": "Zero Mortals Plan",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/376",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_376_2.png",
+    "stones": 18
+   },
+   {
+    "title": "Saiyan Trio Led by Fate",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/375",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_375.png",
+    "stones": 13
+   },
+   {
+    "title": "Super Android 13!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/372",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_372.png",
+    "stones": 16
+   },
+   {
+    "title": "Fight Against Despair!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/371",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_371.png",
+    "stones": 27
+   },
+   {
+    "title": "Assemble! Warriors of Universe 6",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/363",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_363_1.png",
+    "stones": 21
+   },
+   {
+    "title": "Vegeta's Demise?! The Secret of Planet Potaufeu",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/361",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_361.png",
+    "stones": 14
+   },
+   {
+    "title": "Dragon Ball GT: 7 Shadow Dragons Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/357",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_357_A2.png",
+    "stones": 26
+   },
+   {
+    "title": "Desert Rescue! Giru Saves the Day!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/356",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_356.png",
+    "stones": 4
+   },
+   {
+    "title": "Dragon Ball Super: Broly",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/355",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_355.png",
+    "stones": 29
+   },
+   {
+    "title": "Mystical Adventure",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/354",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_354.png",
+    "stones": 30
+   },
+   {
+    "title": "Sleeping Princess in Devil's Castle",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/353",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_353.png",
+    "stones": 22
+   },
+   {
+    "title": "The Unknown Battle of Gods and Majin",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/348",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_348.png",
+    "stones": 14
+   },
+   {
+    "title": "Dragon Ball GT: Ultimate Android Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/345",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_345_2.png",
+    "stones": 26
+   },
+   {
+    "title": "Final Battle of the Tournament of Power",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/344",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_344.png",
+    "stones": 22
+   },
+   {
+    "title": "Tournament of Power Commencement",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/341",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_341.png",
+    "stones": 16
+   },
+   {
+    "title": "Epic Battle! The Mighty Ones of the Otherworld",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/340",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_340.png",
+    "stones": 9
+   },
+   {
+    "title": "Vegeta the Indomitable Warrior",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/337",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_337.png",
+    "stones": 8
+   },
+   {
+    "title": "The Low-Class Warrior: Raditz's Pride",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/336",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_336.png",
+    "stones": 13
+   },
+   {
+    "title": "Dragon Ball Super: Universe Survival Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/335",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_335.png",
+    "stones": 28
+   },
+   {
+    "title": "Goku and Friends Are Back!!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/334",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_334.png",
+    "stones": 12
+   },
+   {
+    "title": "Dragon Ball GT: A Hero's Legacy",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/332",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_332.png",
+    "stones": 9
+   },
+   {
+    "title": "Dragon Ball Super: Future Trunks Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/328",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_328.png",
+    "stones": 23
+   },
+   {
+    "title": "Penguin Village Adventure",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/327",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_327.png",
+    "stones": 14
+   },
+   {
+    "title": "Dragon Ball Super: Universe 6 Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/325",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_325.png",
+    "stones": 17
+   },
+   {
+    "title": "Scorching Serious Showdown",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/297",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_297.png",
+    "stones": 6
+   },
+   {
+    "title": "Transcendent Embodiment of Fury",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/296",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_296.png",
+    "stones": 6
+   },
+   {
+    "title": "Surprise Reunion! The Dragon Family",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/284",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_284.png",
+    "stones": 4
+   },
+   {
+    "title": "Super Dragon Ball Heroes: New Space-Time War Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/283",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_283.png",
+    "stones": 4
+   },
+   {
+    "title": "Glorious Feats of Hercule the Savior",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/273",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_273.png",
+    "stones": 6
+   },
+   {
+    "title": "Super Dragon Ball Heroes: Universe Creation Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/266",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_266.png",
+    "stones": 6
+   },
+   {
+    "title": "Grand Deception?! Skirmish at Kame House",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/264",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_264.png",
+    "stones": 4
+   },
+   {
+    "title": "Looking For Mr. Right!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/255",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_255.png",
+    "stones": 1
+   },
+   {
+    "title": "Brief Breather! Fighters Rejuvenated",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/251",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_251_B.png",
+    "stones": 5
+   },
+   {
+    "title": "Super Dragon Ball Heroes: Universal Conflict Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/242",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_242.png",
+    "stones": 6
+   },
+   {
+    "title": "Dabura's All-Out Effort in Heaven",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/239",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_239.png",
+    "stones": 6
+   },
+   {
+    "title": "Dance and Attack! The Para Para Brothers",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/234",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_234.png",
+    "stones": 7
+   },
+   {
+    "title": "Dragon Ball Fusions: The Fused World",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/232",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_232.png",
+    "stones": 4
+   },
+   {
+    "title": "On the Verge of Crisis?! Two Androids",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/224",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_224.png",
+    "stones": 6
+   },
+   {
+    "title": "Mass Revival and Mass Chaos! Parade of the Dead",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/215",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_215.png",
+    "stones": 6
+   },
+   {
+    "title": "SDBH: Dark Empire Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/212",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_212.png",
+    "stones": 11
+   },
+   {
+    "title": "Pan, Gohan and the Full Moon Monster",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/211",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_211.png",
+    "stones": 6
+   },
+   {
+    "title": "Accelerate! Bulma's Wild Chase!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/201",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_201_2.png",
+    "stones": 18
+   },
+   {
+    "title": "SDBH World Mission: Prison Planet Saga",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/189",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_189.png",
+    "stones": 6
+   },
+   {
+    "title": "Perfect Disguise?! SOS to the Fortune-Teller",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/188",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_188_B.png",
+    "stones": 7
+   },
+   {
+    "title": "Super Dragon Ball Heroes World Mission",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/181",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_181.png",
+    "stones": 20
+   },
+   {
+    "title": "Clash! Dokkan Butoden",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/179",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_179_B.png",
+    "stones": 13
+   },
+   {
+    "title": "Universe's Strongest?! Challenge the \"Great Pontas\"!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/175",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_175_1.png",
+    "stones": 10
+   },
+   {
+    "title": "Ghostly Prank",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/171",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_171.png",
+    "stones": 8
+   },
+   {
+    "title": "DRAGON BALL FighterZ: Super Warrior Arc",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/162",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_162.png",
+    "stones": 24
+   },
+   {
+    "title": "Leave It to Us! Little Rangers!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/161",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_161.png",
+    "stones": 4
+   },
+   {
+    "title": "Spread Love! Magical Girl Fighters!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/160",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_160_2.png",
+    "stones": 22
+   },
+   {
+    "title": "Majin Buu's Candy Mischief!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/152",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_152.png",
+    "stones": 17
+   },
+   {
+    "title": "Captain Yamcha's Grand Slam!",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/139",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_139.png",
+    "stones": 1
+   },
+   {
+    "title": "Adventure of Gratitude",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/133",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_133.png",
+    "stones": 2
+   },
+   {
+    "title": "Transformation of Justice! Great Saiyaman",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/1208",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1208.png",
+    "stones": 51
+   },
+   {
+    "title": "Tricks? Power? Secrets of \"Ki\"",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/1228",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1228.png",
+    "stones": 7
+   },
+   {
+    "title": "In Search of Greater Power! \nGod-Level Intensive Training",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/1211",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1211.png",
+    "stones": 6
+   },
+   {
+    "title": "Pan's Secret Adventure",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/1202",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1202.png",
+    "stones": 1
+   },
+   {
+    "title": "Big Bucks Hercule Challenge",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/116",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_116.png",
+    "stones": 3
+   },
+   {
+    "title": "Activate Your Hidden Potential",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/293",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_293.png",
+    "stones": 1
+   },
+   {
+    "title": "Study Hard, Play Hard! \nTurtle School's Intensive Training",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/223",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_223.png",
+    "stones": 107
+   },
+   {
+    "title": "Master It! Special Technique of Hope",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/267",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_267.png",
+    "stones": 1
+   },
+   {
+    "title": "The Genius Bulma's Battle Prep",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/253",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_253.png",
+    "stones": 5
+   },
+   {
+    "title": "Battle for Awakening Medals",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/111",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_111.png",
+    "stones": 5
+   },
+   {
+    "title": "Training at Korin Tower",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/120",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_120.png",
+    "stones": 3
+   },
+   {
+    "title": "Astonishing Power-Up! Grand Elder Guru's Guidance",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/1222",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1222.png",
+    "stones": 2
+   },
+   {
+    "title": "Hero Extermination Plan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/319",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_319_5.png",
+    "stones": 48
+   },
+   {
+    "title": "Hero Extermination Plan \nEvil Powers Strike Back",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/320",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_320_5.png",
+    "stones": 50
+   },
+   {
+    "title": "Extreme Z-Area Hero Extermination Plan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/716",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_716_2.png",
+    "stones": 54
+   },
+   {
+    "title": "Extreme Z-Area Majin Buu Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/725",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_725_A8.png",
+    "stones": 48
+   },
+   {
+    "title": "Extreme Z-Area Blazing Love and Burning Justice",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/737",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_737_A.png",
+    "stones": 9
+   },
+   {
+    "title": "Extreme Z-Area Type Characters Special Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/782",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_782_2.png",
+    "stones": 15
+   },
+   {
+    "title": "On the Scene! Magnificent Justice",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1524",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1524.png",
+    "stones": 17
+   },
+   {
+    "title": "Protector of Future Peace",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/614",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_614.png",
+    "stones": 4
+   },
+   {
+    "title": "Return of the Sinister Scientist",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/610",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_610.png",
+    "stones": 3
+   },
+   {
+    "title": "Extreme Z-Area GT Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/736",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_736_A5.png",
+    "stones": 26
+   },
+   {
+    "title": "Adventurers in the Demon Realm",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1511",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1511_2.png",
+    "stones": 19
+   },
+   {
+    "title": "Extreme Peril! Menace of Infinite Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/546",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_546_2.png",
+    "stones": 19
+   },
+   {
+    "title": "7th Universe's God of Destruction",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/511",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_511_4_A.png",
+    "stones": 17
+   },
+   {
+    "title": "Legendary Savior! Super Saiyan God",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/592",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_592_2.png",
+    "stones": 4
+   },
+   {
+    "title": "Evil-Stained Divine Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1523",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1523.png",
+    "stones": 17
+   },
+   {
+    "title": "The Ferocious Warrior Race",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1521",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1521.png",
+    "stones": 17
+   },
+   {
+    "title": "Proud Prince of the Saiyans",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/557",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_557_3.png",
+    "stones": 21
+   },
+   {
+    "title": "King of the Demon Realm Strikes",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1520",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1520.png",
+    "stones": 2
+   },
+   {
+    "title": "Crimson Blaze of Glory! The Invincible Saiyan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/526",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_526_3.png",
+    "stones": 21
+   },
+   {
+    "title": "Fighter Awakened to New Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1518",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1518_2.png",
+    "stones": 19
+   },
+   {
+    "title": "Super Hero of Justice! Confidence of Gamma 2",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/584",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_584_2.png",
+    "stones": 4
+   },
+   {
+    "title": "Awakening Beyond Ultimate Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/588",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_588_4.png",
+    "stones": 23
+   },
+   {
+    "title": "Battle Begins! The Quiet Android",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1519",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1519.png",
+    "stones": 2
+   },
+   {
+    "title": "Vengeful Bringer of Doom",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1517",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1517.png",
+    "stones": 2
+   },
+   {
+    "title": "Absolute Fierce Battle! Chaos-Conquering Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1516",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1516.png",
+    "stones": 2
+   },
+   {
+    "title": "Righteous New-Generation Fighters",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1515",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1515.png",
+    "stones": 2
+   },
+   {
+    "title": "The Shadow Dragons of Despair",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/517",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_517_4.png",
+    "stones": 29
+   },
+   {
+    "title": "Showdown! Furious Saiyan Fighters",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1514",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1514.png",
+    "stones": 14
+   },
+   {
+    "title": "Cold-Hearted Assassin",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1513",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1513.png",
+    "stones": 2
+   },
+   {
+    "title": "Beyond God - The Ultimate Secret",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/514",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_514_3.png",
+    "stones": 6
+   },
+   {
+    "title": "Split-Second Assassin",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/547",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_547_2.png",
+    "stones": 4
+   },
+   {
+    "title": "The Horrific Cell Games",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/502",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_502_5.png",
+    "stones": 9
+   },
+   {
+    "title": "Super Evolution! Saiyan Shining in the Galaxy",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/567",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_567.png",
+    "stones": 11
+   },
+   {
+    "title": "Out of This World! Globetrotting Boy",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/582",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_582_2.png",
+    "stones": 4
+   },
+   {
+    "title": "Battle-Smart Brawlers! Team Bardock",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/291",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_291.png",
+    "stones": 11
+   },
+   {
+    "title": "Ginyu Force Special Training",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/292",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_292.png",
+    "stones": 11
+   },
+   {
+    "title": "Limit-Challenging Fighter",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1512",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1512.png",
+    "stones": 2
+   },
+   {
+    "title": "The Ultimate Pair (The Otherworld)",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/536",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_536_3.png",
+    "stones": 6
+   },
+   {
+    "title": "The Ultimate Pair (Present World)",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/537",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_537_3.png",
+    "stones": 6
+   },
+   {
+    "title": "Berserker of Destruction",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/501",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_501_5.png",
+    "stones": 18
+   },
+   {
+    "title": "The Inimitable Fusion",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/505",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_505_2.png",
+    "stones": 5
+   },
+   {
+    "title": "A Fiend Possessed",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/506",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_506_4.png",
+    "stones": 16
+   },
+   {
+    "title": "The Evil Emperor of the Universe",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/507",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_507_4_A.png",
+    "stones": 32
+   },
+   {
+    "title": "Ultimate Awakened Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/508",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_508_4.png",
+    "stones": 16
+   },
+   {
+    "title": "Power at the Pinnacle",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/510",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_510.png",
+    "stones": 4
+   },
+   {
+    "title": "Supreme Fusion! Blazing Potara",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/512",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_512_1.png",
+    "stones": 6
+   },
+   {
+    "title": "The Golden Emperor's Vengeance",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/516",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_516.png",
+    "stones": 2
+   },
+   {
+    "title": "The Darkness Shrouding the Future",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/518",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_518_1.png",
+    "stones": 5
+   },
+   {
+    "title": "Blazing Blue Fusion",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/519",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_519_4.png",
+    "stones": 17
+   },
+   {
+    "title": "Beautiful Rose-Colored Terror",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/520",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_520_3.png",
+    "stones": 6
+   },
+   {
+    "title": "Miracle Sword of Light",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/522",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_522_1.png",
+    "stones": 4
+   },
+   {
+    "title": "Eternal God, Distorter of Worlds",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/523",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_523_4.png",
+    "stones": 7
+   },
+   {
+    "title": "Surpassing Even the Gods",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/524",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_524_3.png",
+    "stones": 6
+   },
+   {
+    "title": "Scarlet Flames of the Ultimate Saiyan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/525",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_525.png",
+    "stones": 4
+   },
+   {
+    "title": "The Ultimate Transformation",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/527",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_527_3.png",
+    "stones": 6
+   },
+   {
+    "title": "Mystery Warrior Born of Darkness",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/529",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_529.png",
+    "stones": 2
+   },
+   {
+    "title": "Ultimate Android, Incarnation of Ambitions",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/530",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_530_2.png",
+    "stones": 13
+   },
+   {
+    "title": "Wreaking Havoc! Demon Over the Edge",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/531",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_531.png",
+    "stones": 2
+   },
+   {
+    "title": "Unrivaled Ultimate Fusion",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/532",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_532_3.png",
+    "stones": 6
+   },
+   {
+    "title": "True Evil Resurrected from Hell",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/533",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_533_2.png",
+    "stones": 14
+   },
+   {
+    "title": "Super Awakening in the Gap of History",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/534",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_534.png",
+    "stones": 2
+   },
+   {
+    "title": "Phantom Majin of Smoke and Flame",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/535",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_535_2.png",
+    "stones": 8
+   },
+   {
+    "title": "Sinister Destroyer of the Universe",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/539",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_539_2R.png",
+    "stones": 13
+   },
+   {
+    "title": "Beacon of Hope in the War-Stricken Future",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/541",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_541_1.png",
+    "stones": 4
+   },
+   {
+    "title": "Battle-Hardened Saiyan Power Explodes!",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/542",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_542_2.png",
+    "stones": 4
+   },
+   {
+    "title": "Defender of Beliefs and Dreams",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/543",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_543.png",
+    "stones": 11
+   },
+   {
+    "title": "Earth-Shaking Showdown (vs. Goku)",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/544",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_544.png",
+    "stones": 2
+   },
+   {
+    "title": "Earth-Shaking Showdown (vs. Frieza)",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/545",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_545.png",
+    "stones": 2
+   },
+   {
+    "title": "The Greatest Adversary of All",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/548",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_548_2.png",
+    "stones": 4
+   },
+   {
+    "title": "Advent of Omnipotence",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/549",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_549_1.png",
+    "stones": 13
+   },
+   {
+    "title": "Penetrate! Full-Throttle Throwdown",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/550",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_550.png",
+    "stones": 2
+   },
+   {
+    "title": "Blast! The Miracle of Bonds!",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/552",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_552.png",
+    "stones": 2
+   },
+   {
+    "title": "Warrior of Fury! Super Saiyan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/553",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_553_2.png",
+    "stones": 13
+   },
+   {
+    "title": "Unified as a Super Namekian",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/554",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_554.png",
+    "stones": 2
+   },
+   {
+    "title": "Transcendent Awakening Surpassing the Strongest",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/555",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_555.png",
+    "stones": 2
+   },
+   {
+    "title": "Fusion Android Born of Hatred",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/556",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_556.png",
+    "stones": 2
+   },
+   {
+    "title": "Heroic Transformation! Vengeful Saiyan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/558",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_558.png",
+    "stones": 2
+   },
+   {
+    "title": "Unearthly Ki! Powerful Potara Fusion Fighter",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/559",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_559.png",
+    "stones": 13
+   },
+   {
+    "title": "Tyrannical Galactic Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/562",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_562.png",
+    "stones": 11
+   },
+   {
+    "title": "Otherworld's Dominant Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/563",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_563.png",
+    "stones": 2
+   },
+   {
+    "title": "Playing With Mischief-Makers! \nNext-Generation Rising Stars",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/564",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_564.png",
+    "stones": 2
+   },
+   {
+    "title": "Super Evolution! Saiyan Soaring Through the Galaxy",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/566",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_566.png",
+    "stones": 2
+   },
+   {
+    "title": "Young Warrior's Resolve",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/568",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_568.png",
+    "stones": 11
+   },
+   {
+    "title": "No Holds Barred! Radiant Super Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/569",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_569.png",
+    "stones": 2
+   },
+   {
+    "title": "Clean Cleave! Super Saiyan from the Future",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/570",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_570.png",
+    "stones": 2
+   },
+   {
+    "title": "Androids from a Hellish Future",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/572",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_572.png",
+    "stones": 11
+   },
+   {
+    "title": "Saiyans Forged in Battle",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/573",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_573.png",
+    "stones": 2
+   },
+   {
+    "title": "Body Change?! The Ever-Adapting Captain",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/574",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_574.png",
+    "stones": 2
+   },
+   {
+    "title": "Cold-Hearted Alien Warrior Attacks!",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/575",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_575.png",
+    "stones": 2
+   },
+   {
+    "title": "Invincible Father and Son, Protectors of Earth",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/576",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_576_2.png",
+    "stones": 19
+   },
+   {
+    "title": "Becoming the Ultimate Perfect Form",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/577",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_577.png",
+    "stones": 11
+   },
+   {
+    "title": "Divine Combat! Blue Super Saiyans",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/578",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_578.png",
+    "stones": 11
+   },
+   {
+    "title": "Saiyan Father and Son Protecting the Future",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/579",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_579.png",
+    "stones": 11
+   },
+   {
+    "title": "It's My Time to Shine! Thrill-Packed Adventure",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/580",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_580.png",
+    "stones": 2
+   },
+   {
+    "title": "Destructive Power! Super Saiyan Duo",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/581",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_581.png",
+    "stones": 2
+   },
+   {
+    "title": "Super Hero of Justice! Mission of Gamma 1",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/583",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_583.png",
+    "stones": 2
+   },
+   {
+    "title": "Fate-Defying Fighter",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/585",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_585.png",
+    "stones": 2
+   },
+   {
+    "title": "Focused Ki-Manipulating Technique",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/587",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_587.png",
+    "stones": 11
+   },
+   {
+    "title": "Extreme Release of Latent Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/589",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_589.png",
+    "stones": 2
+   },
+   {
+    "title": "Radiance of Victory! Spirit Bomb of Hope",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/590",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_590.png",
+    "stones": 2
+   },
+   {
+    "title": "Everyone's Wish! Spirit Bomb Miracle",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/591",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_591.png",
+    "stones": 2
+   },
+   {
+    "title": "Rampage?! Hidden Power of Determination",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/593",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_593.png",
+    "stones": 2
+   },
+   {
+    "title": "Strongest Martial Artist in the World",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/594",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_594.png",
+    "stones": 2
+   },
+   {
+    "title": "Demon King Who Shook the World",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/595",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_595.png",
+    "stones": 2
+   },
+   {
+    "title": "Training Complete! Destructive Super Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/596",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_596.png",
+    "stones": 2
+   },
+   {
+    "title": "Sister and Brother with Strong Beliefs",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/597",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_597.png",
+    "stones": 2
+   },
+   {
+    "title": "Master and Disciple Led by Fate",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/598",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_598.png",
+    "stones": 2
+   },
+   {
+    "title": "Conflicted Genius Scientist",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1501",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1501.png",
+    "stones": 2
+   },
+   {
+    "title": "Horrifying Authority and Atrocity",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1502",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1502.png",
+    "stones": 2
+   },
+   {
+    "title": "Shocking Evolution of the Genius Saiyan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1503",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1503.png",
+    "stones": 2
+   },
+   {
+    "title": "Justice-Forsaking Power of Destruction",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1504",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1504.png",
+    "stones": 2
+   },
+   {
+    "title": "The Innocent and Invincible Ferocious Majin",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1505",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1505.png",
+    "stones": 2
+   },
+   {
+    "title": "The Great and Mighty Master Roshi",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1506",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1506.png",
+    "stones": 2
+   },
+   {
+    "title": "Miraculous Strike! Super Power of Burning Spirit",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1507",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1507.png",
+    "stones": 11
+   },
+   {
+    "title": "Rebel Plotting for Dominance",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1508",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1508.png",
+    "stones": 2
+   },
+   {
+    "title": "Pure Evil Namekian",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1509",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1509.png",
+    "stones": 2
+   },
+   {
+    "title": "Earth-Shaking Showdown (vs. Vegeta)",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/551",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_551.png",
+    "stones": 2
+   },
+   {
+    "title": "The Adorable Flying Martial Artist",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/565",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_565.png",
+    "stones": 11
+   },
+   {
+    "title": "Pure Destruction and Carnage",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/503",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_503_5.png",
+    "stones": 33
+   },
+   {
+    "title": "The Unparalleled Paragon of Hope",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/513",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_513_4.png",
+    "stones": 17
+   },
+   {
+    "title": "The One Beyond God Descends! Ultra Instinct",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/538",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_538_3.png",
+    "stones": 15
+   },
+   {
+    "title": "The Invincible Strongest of the Strong",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/540",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_540.png",
+    "stones": 12
+   },
+   {
+    "title": "Body, Soul and Power Unleashed! \nWarriors Aiming for the Top",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/560",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_560.png",
+    "stones": 2
+   },
+   {
+    "title": "Warrior Returned from Otherworld",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/528",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_528_3.png",
+    "stones": 6
+   },
+   {
+    "title": "The Terrifying Transforming Majin",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/515",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_515_6.png",
+    "stones": 12
+   },
+   {
+    "title": "Extreme Z-Area Ginyu Force Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/792",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_738_A_2.png",
+    "stones": 22
+   },
+   {
+    "title": "Extreme Z-Area Team Bardock Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/789",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_789_2.png",
+    "stones": 25
+   },
+   {
+    "title": "An Epic Showdown",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/403",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_403_3.png",
+    "stones": 2
+   },
+   {
+    "title": "Surpassing All",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/504",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_504_4.png",
+    "stones": 8
+   },
+   {
+    "title": "Fearsome Super Elite",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/401",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_401_R2.png",
+    "stones": 23
+   },
+   {
+    "title": "The Full-Hearted Fighter",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/417",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_417_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Best Fighter of West Quadrant",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/412",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_412_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "Prodigy Prince",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/421",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_421_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "Extreme Z-Area DAIMA Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1734",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1734.png",
+    "stones": 6
+   },
+   {
+    "title": "Rampaging Combat Life Forms",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1522",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1522.png",
+    "stones": 2
+   },
+   {
+    "title": "Shimmering Possibilities of a Universe",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/1510",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1510.png",
+    "stones": 2
+   },
+   {
+    "title": "Extreme Z-Area Movie Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/780",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_780_A2_2.png",
+    "stones": 45
+   },
+   {
+    "title": "Extreme Z-Area DB Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/757",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_757_2.png",
+    "stones": 6
+   },
+   {
+    "title": "Extreme Z-Area Universe Survival Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/755",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_755_2.png",
+    "stones": 6
+   },
+   {
+    "title": "Extreme Z-Area Dragon Ball Heroes Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/754",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_754_A2_2.png",
+    "stones": 21
+   },
+   {
+    "title": "Extreme Z-Area Goku and Friends Are Back!!",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/751",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_751_2.png",
+    "stones": 6
+   },
+   {
+    "title": "Extreme Z-Area Fated Bloodline Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/749",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_749_3.png",
+    "stones": 20
+   },
+   {
+    "title": "Extreme Z-Area Dragon Ball Fusions Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/747",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_747_2.png",
+    "stones": 9
+   },
+   {
+    "title": "Extreme Z-Area Universe 6 Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/744",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_744_2.png",
+    "stones": 9
+   },
+   {
+    "title": "Extreme Z-Area Planet Namek Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/739",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_739_2.png",
+    "stones": 9
+   },
+   {
+    "title": "Extreme Z-Area Universe 7 Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/729",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_729_A_2.png",
+    "stones": 23
+   },
+   {
+    "title": "Extreme Z-Area Special Characters Edition",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/726",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_726_R10.png",
+    "stones": 45
+   },
+   {
+    "title": "Extreme Z-Area Magical Girl Fighters",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/723",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_723_3.png",
+    "stones": 9
+   },
+   {
+    "title": "Extreme Z-Area Universe's Most Wicked Bloodline",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/721",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_721_A2_2.png",
+    "stones": 12
+   },
+   {
+    "title": "Extreme Z-Area Saiyan Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/719",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_719_2.png",
+    "stones": 3
+   },
+   {
+    "title": "Extreme Z-Area Zero Mortals Plan",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/718",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_718_A3_2.png",
+    "stones": 12
+   },
+   {
+    "title": "Extreme Z-Area Saiyan Trio Led by Fate",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/717",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_717_2.png",
+    "stones": 6
+   },
+   {
+    "title": "Extreme Z-Area Fight Against Despair!",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/715",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_715_R1_2.png",
+    "stones": 9
+   },
+   {
+    "title": "Extreme Z-Area Androids/Cell Saga",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/714",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_714_A2_2.png",
+    "stones": 15
+   },
+   {
+    "title": "Inherited Power",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/619",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_619.png",
+    "stones": 4
+   },
+   {
+    "title": "Bringer of Destruction and Nightmares",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/618",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_618.png",
+    "stones": 4
+   },
+   {
+    "title": "All-Out Earthling Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/617",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_617.png",
+    "stones": 4
+   },
+   {
+    "title": "Looming Menace",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/616",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_616.png",
+    "stones": 4
+   },
+   {
+    "title": "Pride-Staked Awakening",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/615",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_615.png",
+    "stones": 4
+   },
+   {
+    "title": "Summit of the Universe",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/613",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_613.png",
+    "stones": 5
+   },
+   {
+    "title": "Transcended Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/612",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_612.png",
+    "stones": 5
+   },
+   {
+    "title": "The Immortal Bio-Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/611",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_611.png",
+    "stones": 4
+   },
+   {
+    "title": "Howl! The Last Tri-Beam",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/609",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_609.png",
+    "stones": 4
+   },
+   {
+    "title": "Limit-Breaking Savior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/599",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_599.png",
+    "stones": 2
+   },
+   {
+    "title": "Transcend the Limits! Super Full Power Showdown",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/586",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_586.png",
+    "stones": 11
+   },
+   {
+    "title": "Divine Warrior with Crimson Ki",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/571",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_571.png",
+    "stones": 11
+   },
+   {
+    "title": "Transcendent Fusion of the Unknown Fighters",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/561",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_561.png",
+    "stones": 2
+   },
+   {
+    "title": "Yamcha's Epic Clash",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/509",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_509.png",
+    "stones": 2
+   },
+   {
+    "title": "The Space-Time Traveler",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/422",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_422_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Ancient Space Pirate",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/420",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_420_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "Success? Fail? A Fusion of Super Forces",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/418",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_418_R2.png",
+    "stones": 33
+   },
+   {
+    "title": "The Divine Demonic Namekian Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/416",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_416_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "Gentle Destroyer",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/415",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_415_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Time-Traveling Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/414",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_414_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Masked Martial Artist",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/413",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_413_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Mysterious Mask",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/411",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_411_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "Savage Sovereign",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/409",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_409_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "Cold-Blooded King",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/408",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_408_R2.png",
+    "stones": 23
+   },
+   {
+    "title": "Vicious Mechanical Monarch",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/406",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_406_R2.png",
+    "stones": 24
+   },
+   {
+    "title": "Master of Masters",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/405",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_405_R2.png",
+    "stones": 23
+   },
+   {
+    "title": "Mercenary Tao Strikes Back",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/404",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_404_R2.png",
+    "stones": 23
+   },
+   {
+    "title": "The Bizarre Rabbit Mob!",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/329",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_329.png",
+    "stones": 4
+   },
+   {
+    "title": "Supreme Kais' Grand Guidance",
+    "group": "Limited",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/limited/805",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_805.png",
+    "stones": 0
+   },
+   {
+    "title": "Universe-Wide Celebration! Meteor Survival",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1778",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1778.png",
+    "stones": 31
+   },
+   {
+    "title": "Ultimate Red Zone: RE \n[Greatest Sworn Enemies Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1782",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1782.png",
+    "stones": 44
+   },
+   {
+    "title": "Supreme Magnificent Battle: RE [The Cell Games]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1775",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1775.png",
+    "stones": 33
+   },
+   {
+    "title": "Perfect Cooperation! Team Battle",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1723",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1723_B.png",
+    "stones": 48
+   },
+   {
+    "title": "Special Battle 2026",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1768",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1768_C.png",
+    "stones": 72
+   },
+   {
+    "title": "Collection of Epic Battles",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1769",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1769.png",
+    "stones": 66
+   },
+   {
+    "title": "Supreme Magnificent Battle: RE [DAIMA Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1766",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1766.png",
+    "stones": 34
+   },
+   {
+    "title": "Ultimate Red Zone: RE [Super Hero Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1765",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1765.png",
+    "stones": 33
+   },
+   {
+    "title": "Who Dares?! Heated Throwdown",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1744",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1744_2.png",
+    "stones": 51
+   },
+   {
+    "title": "Ultimate Red Zone: RE [GT Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1745",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1745.png",
+    "stones": 33
+   },
+   {
+    "title": "Supreme Magnificent Battle: RE \n[Universe Survival Saga]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1746",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1746.png",
+    "stones": 33
+   },
+   {
+    "title": "Supreme Magnificent Battle: RE \n[vs. Five Great Super Saiyans]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1752",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1752.png",
+    "stones": 33
+   },
+   {
+    "title": "Behold! Support Memory Boost",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/767",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_767.png",
+    "stones": 133
+   },
+   {
+    "title": "Supreme Magnificent Battle: RE [The Tree of Might]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1762",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1762.png",
+    "stones": 34
+   },
+   {
+    "title": "Supreme Magnificent Battle: RE [Battle of Gods]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1761",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1761.png",
+    "stones": 34
+   },
+   {
+    "title": "Seriously Serious! All-Out Battles 2",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1751",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1751.png",
+    "stones": 143
+   },
+   {
+    "title": "11th Anniversary! Special Battle Part 2",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1743",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1743.png",
+    "stones": 24
+   },
+   {
+    "title": "11th Anniversary! Special Battle Part 1",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1742",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1742.png",
+    "stones": 24
+   },
+   {
+    "title": "Ultimate Red Zone",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1737",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1737.png",
+    "stones": 985
+   },
+   {
+    "title": "Supreme Magnificent Battle",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1738",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1738.png",
+    "stones": 351
+   },
+   {
+    "title": "Extreme Super Battle Road",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/720",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_720_1.png",
+    "stones": 701
+   },
+   {
+    "title": "Super Battle Road",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/710",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_710.png",
+    "stones": 540
+   },
+   {
+    "title": "Seriously Serious! All-Out Battles",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1716",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1716_2.png",
+    "stones": 90
+   },
+   {
+    "title": "Infinite Dragon Ball History",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/713",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_713.png",
+    "stones": 1069
+   },
+   {
+    "title": "Union Master",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1728",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1728.png",
+    "stones": 264
+   },
+   {
+    "title": "Intensifying Fights",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/779",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_779.png",
+    "stones": 176
+   },
+   {
+    "title": "Cataclysmic Impact! Giant Form Clash",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1732",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1732.png",
+    "stones": 56
+   },
+   {
+    "title": "Challenge the Limits! Festival of Battles",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1707",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1707.png",
+    "stones": 86
+   },
+   {
+    "title": "Heart-Pounding Heroine Battle",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/793",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_793.png",
+    "stones": 68
+   },
+   {
+    "title": "When Wishes Backfire! Birth of the Shadow Dragons",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/765",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_765.png",
+    "stones": 89
+   },
+   {
+    "title": "See Through It All! Gogeta's Clones",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1727",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1727.png",
+    "stones": 12
+   },
+   {
+    "title": "Special Battle 2025",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1722",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1722_2.png",
+    "stones": 53
+   },
+   {
+    "title": "Universe-Distorting Justice and Order",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1724",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1724.png",
+    "stones": 11
+   },
+   {
+    "title": "Divine Wrath and Mortal Will",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/781",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_781_A3.png",
+    "stones": 88
+   },
+   {
+    "title": "Battle-Hardened Formidable Foes",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1704",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1704_1.png",
+    "stones": 100
+   },
+   {
+    "title": "10th Anniv.! Anniversary Battle",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1705",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1705_A.png",
+    "stones": 117
+   },
+   {
+    "title": "Epic! Transcendent! Gods of Destruction Assemble",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/750",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_750_2.png",
+    "stones": 90
+   },
+   {
+    "title": "Dragon Ball Z: Memorable Battles [Movie Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/796",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_796_3.png",
+    "stones": 60
+   },
+   {
+    "title": "Tremble with Fear! The Devil Awakens",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/798",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_798_B.png",
+    "stones": 63
+   },
+   {
+    "title": "Fearsome Activation! Cell Max",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/761",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_761_2.png",
+    "stones": 97
+   },
+   {
+    "title": "Dragon Ball Super: Memorable Battles [Movie Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/786",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_786_2.png",
+    "stones": 40
+   },
+   {
+    "title": "Dokkan Event Boss Rush!!",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/701",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_701.png",
+    "stones": 650
+   },
+   {
+    "title": "Fighting Legend: Frieza",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/788",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_788.png",
+    "stones": 81
+   },
+   {
+    "title": "Mow 'em Down! Training with Saibaimen",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/768",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_768_2.png",
+    "stones": 34
+   },
+   {
+    "title": "Fighting Spirit of the Saiyans and \nPride of the Wicked Bloodline",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/762",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_762_A3.png",
+    "stones": 61
+   },
+   {
+    "title": "Fighting Legend: Goku [GT Edition]",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/741",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_741_A1.png",
+    "stones": 125
+   },
+   {
+    "title": "Fighting Legend: Vegeta",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/742",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_742.png",
+    "stones": 125
+   },
+   {
+    "title": "Give it a Dokkan! Punch Machine!",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/711",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_711.png",
+    "stones": 151
+   },
+   {
+    "title": "Fighting Legend: Goku",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/712",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_712.png",
+    "stones": 170
+   },
+   {
+    "title": "Extreme Z-Battle 215",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/215",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_215.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 75 - Super Saiyan Goku & Super Saiyan Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/75",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_075.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 74 - Super Saiyan Goku (Angel) & Super Saiyan Vegeta (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/74",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_074.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 214 - Buu (Super)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/214",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_214.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 212 - Super Saiyan Goku & Super Saiyan Gohan (Youth)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/212",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_212.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 213 - Super Saiyan Trunks (Teen)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/213",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_213.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 211 - Planet Namek Saga 2",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/211",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_211.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 210 - Super Saiyan Goku & \nSuper Saiyan Vegeta & Super Saiyan Trunks (Teen)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/210",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_210.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 207 - Wrath of the Dragon",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/207",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_207.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 206 - Fight! 10 Billion Power Warriors",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/206",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_206.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 205 - Turles",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/205",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_205.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 204 - The Strongest Rivals",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/204",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_204.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 203 - Super Saiyan God Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/203",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_203.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 202 - Goku & Piccolo/Piccolo",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/202",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_202.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 200 - Raditz",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/200",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_200.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 199 - Majin Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/199",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_199.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 198 - Super Saiyan 3 Goku & Super Saiyan 2 Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/198",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_198.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 197 - Goku (GT) & Super Saiyan 4 Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/197",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_197.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 196 - Super Saiyan God SS Goku/\nSuper Saiyan God SS Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/196",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_196.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 195 - Pan (GT)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/195",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_195.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 194 - Goku's Family Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/194",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_194.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 193 - Super Hero Edition 2",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/193",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_193.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 192 - Super Hero Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/192",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_192.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 191 - Super Saiyan Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/191",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_191.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 189 - Super Saiyan Gohan (Future) & Trunks (Youth) \n(Future)/Super Saiyan Gohan (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/189",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_189.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 188 - Trunks (Teen)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/188",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_188.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 187 - Androids #17 (Future) & #18 (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/187",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_187.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 186 - Gohan (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/186",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_186.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 185 - Super #17",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/185",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_185.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 184 - Golden Frieza",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/184",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_184.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 209 - Heroines Edition 6",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/209",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_209.png",
+    "stones": 32
+   },
+   {
+    "title": "Extreme Z-Battle 55 - Cooler (Final Form)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/55",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_055.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 109 - Beerus & Whis",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/109",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_109.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 201 - Dragon Ball Xenoverse Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/201",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_201.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 48 - Goku (Ultra Instinct -Sign-)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/48",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_048.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 36 - Super Saiyan God SS Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/36",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_036.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 67 - Super Saiyan Trunks (Teen)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/67",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_067.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 182 - Super Saiyan 2 Gohan (Youth)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/182",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_182.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 181 - Super Saiyan 4 Gogeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/181",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_181.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 180 - Super Saiyan God SS Vegeta & Super Saiyan Trunks (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/180",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_180.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 179 - Fusion Zamasu",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/179",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_179.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 178 - Yamcha",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/178",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_178.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 177 - Captain Ginyu",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/177",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_177.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 176 - Hit & Super Saiyan God Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/176",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_176.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 175 - Caulifla & Kale",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/175",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_175.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 174 - The Otherworld Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/174",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_174.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 173 - Androids/Cell Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/173",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_173.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 172 - Goku (Youth)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/172",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_172.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 60 - Majin Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/60",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_060.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 52 - Legendary Super Saiyan Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/52",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_052.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 183 - Heroines Edition 5",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/183",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_183.png",
+    "stones": 32
+   },
+   {
+    "title": "Extreme Z-Battle 71 - Trunks (Kid) & Goten (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/71",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_071.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 31 - Omega Shenron",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/31",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_031.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 54 - Destined Rivals Saga 3",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/54",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_054_A.png",
+    "stones": 48
+   },
+   {
+    "title": "Extreme Z-Battle 35 - Super Saiyan God SS Vegito",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/35",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_035.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 38 - Goku Black (Super Saiyan Rosé)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/38",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_038.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 171 - Destined Rivals Saga 8",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/171",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_171.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 170 - Super Saiyan Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/170",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_170.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 169 - Destined Rivals Saga 7",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/169",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_169.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 168 - Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/168",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_168.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 167 - Super Saiyan God Goku & Super Saiyan God Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/167",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_167.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 166 - Frieza (Full Power)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/166",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_166.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 165 - Super Saiyan 2 Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/165",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_165.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 164 - Buu (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/164",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_164.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 163 - Destined Rivals Saga 6",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/163",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_163.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 161 - Super Saiyan 2 Vegeta (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/161",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_161.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 159 - Boujack",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/159",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_159.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 158 - Vegeta/Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/158",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_158.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 156 - Krillin & Gohan (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/156",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_156.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 30 - Super Saiyan God SS Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/30",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_030.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 13 - Super Saiyan 3 Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/13",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_013.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 56 - Super Saiyan 2 Gohan (Youth)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/56",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_056.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 6 - Perfect Cell",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/6",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_006.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 14 - Super Janemba",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/14",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_014.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 16 - Super Gogeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/16",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_016.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 25 - Majin Buu (Ultimate Gohan)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/25",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_025.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 32 - Super Vegito",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/32",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_032.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 7 - Ultimate Gohan",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/7",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_007.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 12 - Beerus",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/12",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_012.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 4 - Frieza (Full Power)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/4",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_004.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 2 - Legendary Super Saiyan Broly ",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/2",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_002.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 23 - Goku Black",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/23",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_023.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 11 - Buu (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/11",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_011.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 20 - Super Saiyan 3 Gotenks",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/20",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_020.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 1 - Super Saiyan 3 Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/1",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_001.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 157 - Goku (Angel) & Vegeta (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/157",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_157.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 155 - Super Janemba",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/155",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_155.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 154 - Super Saiyan Trunks (Kid) & Super Saiyan Goten (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/154",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_154.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 153 - Super Saiyan Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/153",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_153.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 152 - Legendary Super Saiyan Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/152",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_152.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 151 - Team Turles",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/151",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_151.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 148 - Jiren (Full Power)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/148",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_148.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 146 - Golden Frieza (Angel) & Android #17",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/146",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_146.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 145 - Android #17 (Team Universe 7)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/145",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_145.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 144 - Gohan (Teen)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/144",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_144.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 142 - Majin Buu (Good)/Majin Buu (Pure Evil)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/142",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_142.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 141 - Majin Buu (Gotenks)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/141",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_141.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 140 - Goku & Vegeta (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/140",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_140.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 139 - Gotenks",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/139",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_139.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 138 - Bardock",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/138",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_138.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 137 - Super Saiyan God SS Goku (Kaioken) & \nSuper Saiyan God SS Evolved Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/137",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_137.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 136 - Super Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/136",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_136.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 135 - Super Saiyan God SS Evolved Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/135",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_135.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 134 - Goku (Ultra Instinct)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/134",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_134.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 133 - Broly & Cheelai & Lemo",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/133",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_133.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 132 - Kefla",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/132",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_132.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 131 - Goku (Ultra Instinct -Sign-)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/131",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_131.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 130 - Super Saiyan 3 Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/130",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_130.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 129 - Android #13",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/129",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_129.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 128 - Androids #17 & #18/Android #16",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/128",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_128.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 127 - Nappa/Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/127",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_127.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 125 - Jiren",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/125",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_125.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 124 - Goku Black (Super Saiyan Rosé)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/124",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_124.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 123 - Goku Black",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/123",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_123.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 121 - Gohan (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/121",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_121.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 120 - Zamasu",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/120",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_120.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 119 - Trunks (Teen) (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/119",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_119.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 118 - Super Baby 2 (Giant Ape)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/118",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_118.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 116 - Super Saiyan Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/116",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_116.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 114 - Beerus",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/114",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_114.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 113 - Super Saiyan Gohan (Teen) & \nSuper Saiyan Goten (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/113",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_113.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 112 - Piccolo",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/112",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_112.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 111 - Super Saiyan 2 Caulifla & Super Saiyan 2 Kale",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/111",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_111.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 110 - Android #17",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/110",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_110.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 108 - Vegito",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/108",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_108.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 107 - Gogeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/107",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_107.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 106 - Super Saiyan God SS Goku (Kaioken)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/106",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_106.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 105 - Super Saiyan Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/105",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_105.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 104 - Buu (Super)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/104",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_104.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 103 - Super Vegito",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/103",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_103.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 102 - Super Saiyan God Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/102",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_102.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 101 - Cell (Perfect Form)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/101",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_101.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 100 - Super Saiyan Gohan (Youth)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/100",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_100.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 98 - Super Saiyan Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/98",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_098.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 97 - Super Saiyan Gogeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/97",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_097.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 96 - Full Power Boujack (Galactic Warrior)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/96",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_096.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 94 - Super Saiyan 3 Bardock",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/94",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_094.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 93 - Goku (Youth)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/93",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_093.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 92 - Cooler",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/92",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_092.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 91 - Metal Cooler",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/91",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_091.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 90 - Frieza (Full Power)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/90",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_090.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 89 - Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/89",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_089.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 87 - Goku (GT) & Pan (GT) & Trunks (GT)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/87",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_087.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 86 - Super Full Power Saiyan 4 Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/86",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_086.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 85 - Goku Black (Super Saiyan Rosé) & Zamasu",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/85",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_085.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 84 - Trunks (Teen) (Future) & Mai (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/84",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_084.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 83 - Blue Fusion and Rose-Colored Super Saiyan",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/83",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_083.png",
+    "stones": 46
+   },
+   {
+    "title": "Extreme Z-Battle 82 - Golden Frieza (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/82",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_082.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 81 - Cell (Perfect Form) & Cell Jr.",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/81",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_081.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 80 - Ultimate Gohan",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/80",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_080.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 79 - Turles",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/79",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_079.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 77 - Super Saiyan God SS Vegeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/77",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_077.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 76 - Destined Rivals Saga 5",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/76",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_076.png",
+    "stones": 43
+   },
+   {
+    "title": "Extreme Z-Battle 73 - Super Saiyan 4 Gogeta vs. Omega Shenron",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/73",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_073.png",
+    "stones": 46
+   },
+   {
+    "title": "Extreme Z-Battle 68 - Super Saiyan Gohan (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/68",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_068.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 64 - Hit",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/64",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_064.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 62 - Bardock",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/62",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_062.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 61 - Super Saiyan Goku",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/61",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_061.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 58 - Frieza (1st Form)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/58",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_058.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 57 - Super Saiyan 3 Goku (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/57",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_057.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 51 - Super Saiyan 3 Gotenks",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/51",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_051.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 49 - Goku & Frieza (Final Form) (Angel)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/49",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_049.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 46 - Super Janemba",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/46",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_046.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 45 - Super Gogeta",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/45",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_045.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 43 - Buu (Kid)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/43",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_043.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 42 - Super #17",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/42",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_042.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 40 - Super Saiyan 3 Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/40",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_040.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 37 - Super Saiyan Trunks (Future)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/37",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_037.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 33 - Fusion Zamasu",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/33",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_033.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 28 - Perfect Cell",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/28",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_028.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 26 - Legendary Super Saiyan Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/26",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_026.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 24 - Frieza (2nd Form)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/24",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_024.png",
+    "stones": 32
+   },
+   {
+    "title": "Extreme Z-Battle 22 - Golden Frieza",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/22",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_022.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 18 - Super Saiyan Vegeta Jr.",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/18",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_018.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 17 - Super Saiyan Goku Jr.",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/17",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_017.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 9 - Piccolo",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/9",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_009.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 3 - Planet Namek Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/3",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_003.png",
+    "stones": 7
+   },
+   {
+    "title": "Extreme Z-Battle 149 - Videl",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/149",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_149.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 147 - Representatives of Universe 7",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/147",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_147.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 160 - Dragon Ball Heroes Edition 4",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/160",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_160.png",
+    "stones": 38
+   },
+   {
+    "title": "Extreme Z-Battle 126 - Dragon Ball Heroes Edition 3",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/126",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_126.png",
+    "stones": 38
+   },
+   {
+    "title": "Extreme Z-Battle 95 - Dragon Ball Heroes Edition 2",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/95",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_095.png",
+    "stones": 38
+   },
+   {
+    "title": "Extreme Z-Battle 66 - Dragon Ball Heroes Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/66",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_066.png",
+    "stones": 37
+   },
+   {
+    "title": "Extreme Z-Battle 150 - Heroines Edition 4",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/150",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_150.png",
+    "stones": 32
+   },
+   {
+    "title": "Extreme Z-Battle 115 - GT Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/115",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_115.png",
+    "stones": 33
+   },
+   {
+    "title": "Extreme Z-Battle 117 - Heroines Edition 3",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/117",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_117.png",
+    "stones": 32
+   },
+   {
+    "title": "Extreme Z-Battle 122 - Future Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/122",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_122.png",
+    "stones": 32
+   },
+   {
+    "title": "Extreme Z-Battle 99 - Divine Battle Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/99",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_099.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 88 - Heroines Edition 2",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/88",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_088.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 78 - Dokkan All-Stars",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/78",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_078.png",
+    "stones": 277
+   },
+   {
+    "title": "Extreme Z-Battle 72 - Destined Rivals Saga 4",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/72",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_072.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 44 - Masked Saiyan",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/44",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_044.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 19 - Omega Shenron",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/19",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_019.png",
+    "stones": 7
+   },
+   {
+    "title": "Extreme Z-Battle 70 - Dragon Ball Fusions Edition 2",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/70",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_070.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 69 - Dragon Ball Fusions Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/69",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_069.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 59 - Heroines Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/59",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_059.png",
+    "stones": 35
+   },
+   {
+    "title": "Extreme Z-Battle 65 - DRAGON BALL FighterZ Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/65",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_065.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 63 - Giant Ape Edition",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/63",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_063.png",
+    "stones": 39
+   },
+   {
+    "title": "Extreme Z-Battle 41 - Pride Troopers",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/41",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_041_R.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 39 - Warrioresses of Universe 6 Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/39",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_039.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 34 - Destined Rivals Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/34",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_034.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 53 - Tapion (Hirudegarn)",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/53",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_053.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 50 - Super Warriors' Downfall Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/50",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_050.png",
+    "stones": 39
+   },
+   {
+    "title": "Extreme Z-Battle 47 - Destined Rivals Saga 2",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/47",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_047.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 29 - Perfect Cell",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/29",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_029.png",
+    "stones": 30
+   },
+   {
+    "title": "Extreme Z-Battle 27 - Fierce Battle Saga",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/27",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_027.png",
+    "stones": 37
+   },
+   {
+    "title": "Extreme Z-Battle 21 - Father-Son Galick Gun",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/21",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_021.png",
+    "stones": 36
+   },
+   {
+    "title": "Extreme Z-Battle 15 - Broly",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/15",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_015_2_R.png",
+    "stones": 34
+   },
+   {
+    "title": "Extreme Z-Battle 5 - Family Kamehameha",
+    "group": "Z-Battles",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/z-battles/5",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_zbattle_005.png",
+    "stones": 39
+   }
+  ],
+  "source": "DokkanStats",
+  "url": "https://dokkanstats.com/en/events/",
+  "updated": "2026-11-09T13:59:14.122Z"
+ },
+ "news": {
+  "items": [
+   {
+    "id": "107381",
+    "title": "Information on Upcoming Content!",
+    "url": "https://dokkan.fyi/news/107381",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 9, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-09T08:00:00.000Z"
+   },
+   {
+    "id": "107380",
+    "title": "Burst Mode Is On!",
+    "url": "https://dokkan.fyi/news/107380",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_burst_01_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 5, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-05T05:00:00.000Z"
+   },
+   {
+    "id": "107517",
+    "title": "Regarding an Issue with a Campaign Mission",
+    "url": "https://dokkan.fyi/news/107517",
+    "image": "",
+    "tags": [
+     "Other",
+     "Check"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "107500",
+    "title": "Regarding an Issue with a Character's Passive Skill",
+    "url": "https://dokkan.fyi/news/107500",
+    "image": "",
+    "tags": [
+     "Other",
+     "Check"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "107379",
+    "title": "Extreme Z-Battle Is On!",
+    "url": "https://dokkan.fyi/news/107379",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_zbattle_215_small_A.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "107378",
+    "title": "Brimming with Courage! Autumn Dokkan Campaign!",
+    "url": "https://dokkan.fyi/news/107378",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261029_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "107374",
+    "title": "The 49th Pettan Battle Is On!",
+    "url": "https://dokkan.fyi/news/107374",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_pettan_small_49.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "107373",
+    "title": "The 106th Virtual Dokkan Ultimate Clash Ver. 3.0!",
+    "url": "https://dokkan.fyi/news/107373",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_dairansen_110_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "106882",
+    "title": "Transformation of Justice! Great Saiyaman!",
+    "url": "https://dokkan.fyi/news/106882",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1208_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "106017",
+    "title": "Perfect Cooperation! Team Battle!",
+    "url": "https://dokkan.fyi/news/106017",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_1723_B_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 2, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-02T08:00:00.000Z"
+   },
+   {
+    "id": "107377",
+    "title": "Information on Upcoming Content!",
+    "url": "https://dokkan.fyi/news/107377",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 1, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-01T08:00:00.000Z"
+   },
+   {
+    "id": "107499",
+    "title": "Pixel Character Updated!",
+    "url": "https://dokkan.fyi/news/107499",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_mydata_20261001_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 1, 2026, 12:00 AM GMT+0",
+    "iso": "2026-11-01T00:00:00.000Z"
+   }
+  ],
+  "source": "DOKKAN.FYI",
+  "url": "https://dokkan.fyi/news",
+  "updated": "2026-11-09T14:01:51.975Z"
+ },
+ "generated": "2026-11-09T14:01:51.976Z"
+}

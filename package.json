@@ -6,6 +6,7 @@
   "description": "App web instalable (PWA) con la base de datos de Dokkan Battle, sincronizada con la Dokkan Wiki.",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "check": "node tests/live-check.mjs"
+    "check": "node tests/live-check.mjs",
+    "scrape": "node scripts/scrape.mjs"
   }
 }

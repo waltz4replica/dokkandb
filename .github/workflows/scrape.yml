@@ -1,0 +1,35 @@
+name: Actualizar eventos, tier list y noticias
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'   # cada 3 horas
+  workflow_dispatch:          # botón "Run workflow" para lanzarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Leer las webs
+        run: node scripts/scrape.mjs
+      - name: Guardar cambios
+        run: |
+          if [ -n "$(git status --porcelain data/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/
+            git commit -m "Datos actualizados: eventos, tier list y noticias"
+            git push
+          else
+            echo "Sin cambios"
+          fi

@@ -1,0 +1,84 @@
+// Reads tier list, events and news from the fan sites and saves them to data/extra.json.
+// Runs on GitHub every few hours (.github/workflows/scrape.yml); you can also run it by hand: npm run scrape
+//
+// Sources (all allow automated reading for reference use in their robots.txt):
+//   - DokkanStats community tier list and events list
+//   - DOKKAN.FYI in-game news
+// dokkaninfo.com blocks automated requests, so it is not used.
+
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseFyiNews } from './scrapers.mjs';
+
+const OUT = fileURLToPath(new URL('../data/extra.json', import.meta.url));
+const UA = 'DokkanDB-fan-app/1.0 (+https://github.com/waltz4replica/dokkandb)';
+
+const SOURCES = {
+  tierlist: {
+    url: 'https://dokkanstats.com/en/tierlists/community-tierlist/',
+    site: 'DokkanStats',
+    read: (html) => {
+      const tiers = parseDokkanStatsTierList(html);
+      if (tiers.reduce((n, t) => n + t.units.length, 0) < 20) throw new Error('tier list looks empty');
+      return { tiers };
+    },
+  },
+  events: {
+    url: 'https://dokkanstats.com/en/events/',
+    site: 'DokkanStats',
+    read: (html) => {
+      const items = parseDokkanStatsEvents(html).filter((e) => e.active);
+      if (items.length < 5) throw new Error('events list looks empty');
+      return { items };
+    },
+  },
+  news: {
+    url: 'https://dokkan.fyi/news',
+    site: 'DOKKAN.FYI',
+    read: (html) => {
+      const items = parseFyiNews(html);
+      if (items.length < 3) throw new Error('news list looks empty');
+      return { items };
+    },
+  },
+};
+
+async function fetchHtml(url) {
+  const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'text/html' } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.text();
+}
+
+let previous = {};
+try { previous = JSON.parse(await readFile(OUT, 'utf8')); } catch { /* first run */ }
+
+const next = { ...previous };
+let ok = 0;
+for (const [key, src] of Object.entries(SOURCES)) {
+  try {
+    const data = src.read(await fetchHtml(src.url));
+    const changed = JSON.stringify(data) !== JSON.stringify(stripMeta(previous[key]));
+    next[key] = { ...data, source: src.site, url: src.url, updated: changed ? new Date().toISOString() : previous[key]?.updated };
+    console.log(`${key}: ok${changed ? ' (changed)' : ''}`);
+    ok++;
+  } catch (err) {
+    // Keep the last good copy so the app never loses data because one site is down.
+    console.error(`${key}: FAILED (${err.message}) — keeping previous data`);
+  }
+}
+
+if (JSON.stringify(next) !== JSON.stringify(previous)) {
+  next.generated = new Date().toISOString();
+  await mkdir(new URL('../data/', import.meta.url), { recursive: true });
+  await writeFile(OUT, JSON.stringify(next, null, 1) + '\n');
+  console.log('data/extra.json updated');
+} else {
+  console.log('no changes');
+}
+if (!ok) process.exit(1);
+
+function stripMeta(section) {
+  if (!section) return section;
+  const { source, url, updated, ...rest } = section;
+  return rest;
+}

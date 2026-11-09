@@ -2,7 +2,7 @@
 // and can optionally return a `mount(el)` function to wire up interactions.
 // To add a new feature: add a view, a route in ROUTES and (optionally) a tab in index.html.
 
-import { store, loadLocal, sync, onChange, isSyncing } from './sync.js';
+import { store, loadLocal, sync, onChange, isSyncing, cardById } from './sync.js';
 import { cardThumb, fileUrl, pageUrl } from './wiki.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -65,10 +65,14 @@ views.home = () => {
   const eza = cards.filter((c) => c.dates.glbSeza || c.dates.glbEza || c.dates.jpSeza || c.dates.jpEza)
     .sort((a, b) => lastEza(b).localeCompare(lastEza(a))).slice(0, 12);
   const banners = [...store.banners.values()].sort(byAdded).slice(0, 4);
+  const news = (store.extra?.news?.items || []).slice(0, 3);
+  const top = (store.extra?.tierlist?.tiers || []).flatMap((t) => t.units).slice(0, 6);
   return {
     title: '<span class="logo">Dokkan</span>DB',
     html: `
       ${recentlyAdded.length ? `<h2>Añadidas a la base de datos</h2><div class="grid">${recentlyAdded.map(tile).join('')}</div>` : ''}
+      ${news.length ? `<h2>Noticias del juego <a href="#/events?tab=news">Ver todas</a></h2>${news.map(newsRow).join('')}` : ''}
+      ${top.length ? `<h2>Top de la tier list <a href="#/tierlist">Ver completa</a></h2><div class="grid">${top.map(tierTile).join('')}</div>` : ''}
       <h2>Últimas cartas <a href="#/cards">Ver todas</a></h2>
       <div class="grid">${latest.map(tile).join('')}</div>
       <h2>Últimos banners <a href="#/banners">Ver todos</a></h2>
@@ -284,6 +288,91 @@ views.banner = (params, page) => {
   };
 };
 
+// ----- Events + news (from the fan sites, via data/extra.json) -----
+
+const EVENT_GROUPS = [
+  ['Limited', 'Limitados'], ['Challenge', 'Desafíos'], ['Bonus', 'Bonus'], ['Story', 'Historia'],
+  ['Z-Battles', 'Batallas Z extremas'], ['Growth', 'Entrenamiento'], ['Quests', 'Misiones'], ['DB Story', 'Historia DB'],
+];
+const groupName = (g) => (EVENT_GROUPS.find(([k]) => k === g) || [g, g || 'Otros'])[1];
+
+function newsRow(n) {
+  return `<a class="row" href="${esc(n.url)}" target="_blank" rel="noopener">
+    ${n.image ? `<img class="banner-img" loading="lazy" alt="" src="${esc(n.image)}">` : ''}
+    <div class="info"><b>${esc(n.title)}</b><span class="muted small">${esc(n.tags.join(' · '))}${n.iso ? ' · ' + fmtDate(n.iso) : ''}</span></div></a>`;
+}
+
+function noExtra() {
+  return '<div class="empty">Todavía no hay datos de eventos. Se descargan junto con la próxima actualización.</div>';
+}
+
+views.events = (params) => {
+  const ex = store.extra;
+  const tab = params.get('tab') === 'news' ? 'news' : 'events';
+  const items = ex?.events?.items || [];
+  const present = EVENT_GROUPS.map(([k]) => k).filter((k) => items.some((e) => e.group === k));
+  const others = [...new Set(items.map((e) => e.group))].filter((g) => !present.includes(g));
+  const groups = [...present, ...others];
+  const tabs = `<div class="seg" style="margin-top:0"><button data-tab="events" class="${tab === 'events' ? 'on' : ''}">Eventos activos</button><button data-tab="news" class="${tab === 'news' ? 'on' : ''}">Noticias del juego</button></div>`;
+  const eventsHtml = !items.length ? noExtra() : `
+    <div class="chips">${groups.map((g, i) => `<button class="chip ${i === 0 ? 'on' : ''}" data-g="${esc(g)}">${esc(groupName(g))} (${items.filter((e) => e.group === g).length})</button>`).join('')}</div>
+    <div class="ev-grid" id="ev"></div>
+    <p class="muted small">Fuente: <a href="${esc(ex.events.url)}" target="_blank" rel="noopener">${esc(ex.events.source)}</a>${ex.events.updated ? ' · cambios detectados ' + ago(ex.events.updated) : ''}</p>`;
+  const news = ex?.news?.items || [];
+  const newsHtml = !news.length ? noExtra() : `${news.map(newsRow).join('')}
+    <p class="muted small">Fuente: <a href="${esc(ex.news.url)}" target="_blank" rel="noopener">${esc(ex.news.source)}</a></p>`;
+  return {
+    title: 'Eventos',
+    html: `${tabs}<div id="tab-body" style="margin-top:12px">${tab === 'news' ? newsHtml : eventsHtml}</div>`,
+    mount(el) {
+      el.querySelector('.seg').addEventListener('click', (e) => {
+        const b = e.target.closest('button');
+        if (b) location.replace(`#/events${b.dataset.tab === 'news' ? '?tab=news' : ''}`);
+      });
+      const box = $('#ev', el);
+      if (!box) return;
+      const show = (g) => {
+        box.innerHTML = items.filter((e) => e.group === g).map((e) => `
+          <a class="ev" href="${esc(e.url)}" target="_blank" rel="noopener" title="${esc(e.title)}">
+            <img loading="lazy" alt="" src="${esc(e.image)}"><span>${esc(e.title)}</span></a>`).join('');
+      };
+      el.querySelector('.chips').addEventListener('click', (e) => {
+        const c = e.target.closest('.chip');
+        if (!c) return;
+        el.querySelectorAll('.chips .chip').forEach((x) => x.classList.toggle('on', x === c));
+        show(c.dataset.g);
+      });
+      show(groups[0]);
+    },
+  };
+};
+
+// ----- Tier list (DokkanStats community votes) -----
+
+const TREND = { up: '<span class="trend up" title="Sube">▲</span>', down: '<span class="trend down" title="Baja">▼</span>', same: '' };
+
+function tierTile(u) {
+  const c = cardById(u.cardId, u.title, u.name);
+  const img = c ? cardImg(c) : `https://assets.dokkanstats.com/assets/global/en/character/thumb/card_${u.cardId}_thumb/card_${u.cardId}_thumb.png`;
+  const href = c ? `#/card/${enc(c.page)}` : `https://dokkanstats.com/en/cards/${u.id}/`;
+  return `<a class="tile" href="${esc(href)}" ${c ? '' : 'target="_blank" rel="noopener"'} title="${esc(u.title)}">
+    <img class="thumb" loading="lazy" alt="" src="${esc(img)}" data-fallback="${esc(c?.image || '')}">${TREND[u.trend] || ''}
+    <div class="nm">${esc(u.name)}</div></a>`;
+}
+
+views.tierlist = () => {
+  const tl = store.extra?.tierlist;
+  if (!tl?.tiers?.length) return { title: 'Tier list', html: noExtra() };
+  return {
+    title: 'Tier list',
+    html: `<p class="muted small" style="margin-top:0">Las mejores cartas LR y UR según los votos de la comunidad de
+      <a href="${esc(tl.url)}" target="_blank" rel="noopener">${esc(tl.source)}</a>. ▲▼ = sube o baja respecto a la última vez.</p>
+      ${tl.tiers.map((t) => `<h2><span><span class="tier-badge">${esc(t.tier)}</span> <span class="muted small">puestos ${esc(t.ranks)}</span></span></h2>
+        <div class="grid">${t.units.map(tierTile).join('')}</div>`).join('')}
+      ${tl.updated ? `<p class="muted small">Última vez que cambió: ${fmtDate(tl.updated)}</p>` : ''}`,
+  };
+};
+
 views.settings = () => ({
   title: 'Ajustes',
   html: `
@@ -300,8 +389,12 @@ views.settings = () => ({
     </div>
     <p class="muted small" id="sync-msg"></p>
     <h2>Fuentes</h2>
-    <div class="box small">Datos de la <a href="https://dbz-dokkanbattle.fandom.com/" target="_blank" rel="noopener">Dokkan Wiki</a> (Fandom), con licencia CC BY-SA. Los textos del juego están en inglés.<br><br>
-    App de fans, sin relación con Bandai Namco ni Akatsuki.</div>`,
+    <div class="box small">
+      <b>Cartas y banners:</b> <a href="https://dbz-dokkanbattle.fandom.com/" target="_blank" rel="noopener">Dokkan Wiki</a> (Fandom, licencia CC BY-SA). La app la consulta directamente.<br><br>
+      <b>Tier list y eventos activos:</b> <a href="https://dokkanstats.com/en/" target="_blank" rel="noopener">DokkanStats</a>.<br>
+      <b>Noticias del juego:</b> <a href="https://dokkan.fyi/news" target="_blank" rel="noopener">DOKKAN.FYI</a>.<br>
+      Estos se recogen cada 3 horas en GitHub${store.extra?.generated ? ` (última vez con cambios: ${fmtDate(store.extra.generated)}, ${ago(store.extra.generated)})` : ''}.<br><br>
+      Los textos del juego están en inglés. App de fans, sin relación con Bandai Namco ni Akatsuki.</div>`,
   mount(el) {
     $('#sync-now', el).addEventListener('click', () => runSync({ manual: true }));
     $('#sync-full', el).addEventListener('click', () => { if (confirm('¿Volver a descargar toda la base de datos? Tarda unos minutos.')) runSync({ full: true }); });
@@ -316,6 +409,8 @@ const ROUTES = [
   [/^#\/card\/(.+)$/, 'card', 'cards'],
   [/^#\/banners$/, 'banners', 'banners'],
   [/^#\/banner\/(.+)$/, 'banner', 'banners'],
+  [/^#\/events$/, 'events', 'events'],
+  [/^#\/tierlist$/, 'tierlist', 'tierlist'],
   [/^#\/settings$/, 'settings', 'settings'],
 ];
 
@@ -372,6 +467,7 @@ async function runSync(opts = {}) {
     const parts = [];
     if (r.newCards.length) parts.push(`${r.newCards.length} carta${r.newCards.length > 1 ? 's' : ''} nueva${r.newCards.length > 1 ? 's' : ''}`);
     if (r.newBanners.length) parts.push(`${r.newBanners.length} banner${r.newBanners.length > 1 ? 's' : ''} nuevo${r.newBanners.length > 1 ? 's' : ''}`);
+    if (r.newNews?.length) parts.push(`${r.newNews.length} noticia${r.newNews.length > 1 ? 's' : ''}`);
     if (parts.length) toast('Novedades: ' + parts.join(' y '));
     else if (opts.manual || opts.full) toast(r.full ? `Base de datos descargada: ${store.cards.size} cartas` : 'Todo está al día');
     // Refresh the screen unless the user is reading a detail page.
@@ -388,7 +484,7 @@ async function runSync(opts = {}) {
 function autoSync() {
   if (isSyncing() || !navigator.onLine) return;
   if (!store.cards.size) return; // first download waits for the user to press the button
-  if (store.lastSync && Date.now() - Date.parse(store.lastSync) < AUTO_SYNC_MIN * 60000) return;
+  if (store.extra && store.lastSync && Date.now() - Date.parse(store.lastSync) < AUTO_SYNC_MIN * 60000) return;
   runSync();
 }
 

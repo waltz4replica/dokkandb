@@ -131,3 +131,19 @@ h2 a { font-size: 13px; font-weight: 600; }
 .kv { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
 .kv b { color: var(--muted); font-weight: 600; }
 .sentinel { height: 1px; }
+
+/* Settings gear in the header */
+.gear { display: flex; color: var(--muted); padding: 4px; margin-right: -4px; }
+.gear svg { width: 22px; height: 22px; }
+
+/* Events */
+.ev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 6px; }
+.ev { display: block; color: var(--text); font-size: 12px; line-height: 1.3; }
+.ev img { width: 100%; aspect-ratio: 2.5; object-fit: cover; border-radius: 8px; background: var(--bg2); margin-bottom: 4px; }
+.ev span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Tier list */
+.tier-badge { display: inline-block; min-width: 42px; text-align: center; padding: 3px 8px; border-radius: 8px; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #1a1000; font-weight: 900; }
+.trend { position: absolute; top: 4px; right: 4px; font-size: 10px; padding: 1px 4px; border-radius: 5px; background: rgba(0,0,0,.65); }
+.trend.up { color: var(--ok); }
+.trend.down { color: var(--str); }
