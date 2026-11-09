@@ -46,6 +46,7 @@ Para ver o recuperar una versión anterior: `git checkout v1.1.0` (vuelve con `g
 | `js/sync.js` | Sincronización en el móvil (cartas, banners, extra) |
 | `js/wiki.js`, `js/parse.js` | API de la wiki y lector de banners |
 | `js/db.js` | Base de datos local del móvil (IndexedDB) |
+| `js/teams.js` | Lógica del creador de equipos: habilidad de líder, links, rotación, sugerencias (pruebas en `tests/teams-check.mjs`) |
 | `sw.js` | Modo sin conexión y caché de imágenes. **Sube `VERSION` cada vez que cambies archivos de la app.** |
 | `scripts/fyi.mjs` | Lector de DOKKAN.FYI (fichas, listado, línea temporal) |
 | `scripts/build-cards.mjs` | Genera `data/cards.json` |

@@ -8,6 +8,16 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 
+## 2.2.0 — 2026-11-09
+- **Nuevo apartado Equipos** (creador de equipos):
+  - 7 huecos: Líder, 5 unidades y Amigo. Al poner un líder, el amigo se rellena con el mismo.
+  - Buscador para cada hueco: muestra primero las cartas que cubre el líder y que más links comparten con tu equipo. Para el hueco de líder, ordena por la fuerza de la habilidad.
+  - Sugerir líder a partir de las unidades que ya tienes.
+  - Análisis: qué cartas cubren el líder y el amigo (con % y Ki), rotación de 7 turnos con los links activos en cada turno, categorías compartidas, coste total y tipos.
+  - Optimizar orden: recoloca las unidades 2-6 para activar el máximo de links.
+  - Regla del juego: no deja repetir nombre en tus 6 cartas (el amigo sí puede).
+  - Guardar varios equipos en el móvil y compartirlos con un enlace.
+
 ## 2.1.0 — 2026-11-09
 - **Banners al día** desde DokkanStats (la wiki llevaba desde septiembre sin banners nuevos): fechas de inicio y fin, estado (Activo / Próximamente / Terminado) y cartas destacadas. Se actualizan desde el PC, como la tier list.
 - Pantalla de Banners ordenada en Activos ahora, Próximamente, Permanentes y Anteriores.
