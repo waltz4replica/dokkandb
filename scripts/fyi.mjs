@@ -227,6 +227,9 @@ export function parseCharacterMd(md, id) {
     transformation: '',
     forms: transformations(top['Transformation Path']),
     links: [...(top['Link Skills'] || '').matchAll(/^- \*\*(.+?)\*\*/gm)].map((m) => plain(m[1])),
+    // What each Link Skill does at level 10 (collected into one shared list by build-cards.mjs).
+    linkFx: Object.fromEntries([...(top['Link Skills'] || '').matchAll(/^- \*\*(.+?)\*\*[\s\S]*?Level 10:\s*(.+)$/gm)]
+      .map((m) => [plain(m[1]), plain(m[2])])),
     categories: [...(top.Categories || '').matchAll(/^- \[(.+?)\]\(/gm)].map((m) => plain(m[1])),
     stats: stats(top.Stats),
     ki12: '',

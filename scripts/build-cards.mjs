@@ -134,6 +134,9 @@ for (const id of queue) {
       }
       Object.assign(f, formCache.get(f.id) || {});
     }
+    // Link effects go into one shared list instead of being repeated on every card.
+    Object.assign(state.linkFx ||= {}, card.linkFx);
+    delete card.linkFx;
     cards.set(id, card);
     handled.add(id);
     state.fetched[id] = now;
@@ -168,13 +171,14 @@ async function save(final) {
     c.firstSeen = state.firstSeen[c.page] ?? '';
     return c;
   }).sort((a, b) => a.page.localeCompare(b.page));
-  const body = JSON.stringify({ schema: SCHEMA, cards: list });
-  const before = old && old.schema === SCHEMA ? JSON.stringify({ schema: SCHEMA, cards: old.cards }) : '';
+  const links = state.linkFx || {};
+  const body = JSON.stringify({ schema: SCHEMA, cards: list, links });
+  const before = old && old.schema === SCHEMA ? JSON.stringify({ schema: SCHEMA, cards: old.cards, links: old.links || {} }) : '';
   await mkdir(DATA, { recursive: true });
   await writeFile(STATE, JSON.stringify(state) + '\n');
   if (body === before) { if (final) console.log('Cards unchanged.'); return; }
   const generated = new Date().toISOString();
-  await writeFile(CARDS, JSON.stringify({ schema: SCHEMA, generated, count: list.length, cards: list }) + '\n');
+  await writeFile(CARDS, JSON.stringify({ schema: SCHEMA, generated, count: list.length, links, cards: list }) + '\n');
   await writeFile(META, JSON.stringify({ schema: SCHEMA, generated, count: list.length }) + '\n');
   if (final) console.log(`data/cards.json saved (${list.length} cards).`);
 }
