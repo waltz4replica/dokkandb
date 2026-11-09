@@ -3,7 +3,7 @@
 // To add a new feature: add a view, a route in ROUTES and (optionally) a tab in index.html.
 
 import { store, loadLocal, sync, onChange, isSyncing, cardById } from './sync.js';
-import { cardThumb, fileUrl, pageUrl } from './wiki.js';
+import { cardThumb } from './wiki.js';
 import { APP_VERSION, CHANGELOG_URL } from './version.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -63,29 +63,37 @@ const views = {};
 views.home = () => {
   if (!store.cards.size) return firstRunView();
   const cards = [...store.cards.values()];
-  const latest = cards.filter((c) => c.rarity !== 'SSR').sort(byRelease).slice(0, 12);
-  const recentlyAdded = cards.filter((c) => c.firstSeen).sort((a, b) => b.firstSeen.localeCompare(a.firstSeen)).slice(0, 12);
-  const eza = cards.filter((c) => c.dates.glbSeza || c.dates.glbEza || c.dates.jpSeza || c.dates.jpEza)
-    .sort((a, b) => lastEza(b).localeCompare(lastEza(a))).slice(0, 12);
-  const banners = [...store.banners.values()].sort(byAdded).slice(0, 4);
+  // Newest release batch: every LR/UR from the last 3 release dates.
+  const sorted = cards.filter((c) => c.rarity !== 'SSR').sort(byRelease);
+  const dates = [...new Set(sorted.map((c) => c.released))].slice(0, 3);
+  const latest = sorted.filter((c) => dates.includes(c.released)).slice(0, 15);
+  const eza = cards.filter((c) => lastEza(c)).sort((a, b) => lastEza(b).localeCompare(lastEza(a))).slice(0, 12);
+  const active = bannerList().filter((b) => bannerStatus(b) === 'live' && !isPermanent(b)).slice(0, 4);
   const news = (store.extra?.news?.items || []).slice(0, 3);
   const top = (store.extra?.tierlist?.tiers || []).flatMap((t) => t.units).slice(0, 6);
   return {
     title: '<span class="logo">Dokkan</span>DB',
     html: `
-      ${recentlyAdded.length ? `<h2>Añadidas a la base de datos</h2><div class="grid">${recentlyAdded.map(tile).join('')}</div>` : ''}
+      ${active.length ? `<h2>Banners activos <a href="#/banners">Ver todos</a></h2>${active.map(bannerRow).join('')}` : ''}
+      <h2>Cartas nuevas <a href="#/cards">Ver todas</a></h2>
+      ${groupByDate(latest, (c) => c.released, tile)}
+      ${eza.length ? `<h2>Últimos EZA / SEZA</h2>${groupByDate(eza, lastEza, tile)}` : ''}
       ${news.length ? `<h2>Noticias del juego <a href="#/events?tab=news">Ver todas</a></h2>${news.map(newsRow).join('')}` : ''}
-      ${top.length ? `<h2>Top de la tier list <a href="#/tierlist">Ver completa</a></h2><div class="grid">${top.map(tierTile).join('')}</div>` : ''}
-      <h2>Últimas cartas <a href="#/cards">Ver todas</a></h2>
-      <div class="grid">${latest.map(tile).join('')}</div>
-      <h2>Últimos banners <a href="#/banners">Ver todos</a></h2>
-      ${banners.map(bannerRow).join('')}
-      <h2>Últimos EZA / SEZA</h2>
-      <div class="grid">${eza.map(tile).join('')}</div>`,
+      ${top.length ? `<h2>Top de la tier list <a href="#/tierlist">Ver completa</a></h2><div class="grid">${top.map(tierTile).join('')}</div>` : ''}`,
   };
 };
-const lastEza = (c) => [c.dates.glbSeza, c.dates.jpSeza, c.dates.glbEza, c.dates.jpEza].filter(Boolean).sort().pop() || '';
-const byAdded = (a, b) => (b.added || '').localeCompare(a.added || '');
+const lastEza = (c) => [c.dates.glbSeza, c.dates.glbEza].filter(Boolean).sort().pop() || '';
+
+// Renders items in a grid with a small date heading each time the date changes.
+function groupByDate(items, dateOf, render) {
+  let html = '', last = null;
+  for (const it of items) {
+    const d = dateOf(it) || '';
+    if (d !== last) { html += `${last !== null ? '</div>' : ''}<div class="date-head">${d ? fmtDate(d) : 'Sin fecha'}</div><div class="grid">`; last = d; }
+    html += render(it);
+  }
+  return html ? html + '</div>' : '';
+}
 
 function firstRunView() {
   return {
@@ -134,14 +142,22 @@ views.cards = (params) => {
       $('#sort', el).value = filters.sort;
       let list = [], shown = 0;
       const grid = $('#grid', el);
+      // When sorted by date, a heading marks each release day.
+      let lastDate = null;
       const renderMore = () => {
         const next = list.slice(shown, shown + 60);
-        grid.insertAdjacentHTML('beforeend', next.map(tile).join(''));
+        const byDate = filters.sort === 'new' || filters.sort === 'old';
+        grid.insertAdjacentHTML('beforeend', next.map((c) => {
+          if (!byDate || c.released === lastDate) return tile(c);
+          lastDate = c.released;
+          return `<div class="date-head in-grid">${c.released ? fmtDate(c.released) : 'Sin fecha'}</div>${tile(c)}`;
+        }).join(''));
         shown += next.length;
       };
       const refresh = () => {
         list = filterCards();
         shown = 0;
+        lastDate = null;
         grid.innerHTML = list.length ? '' : '<div class="empty" style="grid-column:1/-1">No hay cartas con esos filtros.</div>';
         $('#count', el).textContent = `${list.length} cartas`;
         renderMore();
@@ -253,56 +269,69 @@ views.card = (params, page) => {
   };
 };
 
+// ----- Banners (DokkanStats summons, via data/extra.json) -----
+
+const bannerList = () => [...(store.extra?.summons?.items || [])].sort((a, b) => (b.start || '').localeCompare(a.start || ''));
+function bannerStatus(b, now = Date.now()) {
+  if (b.start && Date.parse(b.start) > now) return 'soon';
+  if (b.end && Date.parse(b.end) < now) return 'ended';
+  return 'live';
+}
+// Ticket / point summons that run for years.
+const isPermanent = (b) => b.end && Date.parse(b.end) - Date.now() > 365 * 864e5;
+const STATUS = { live: ['Activo', 'live'], soon: ['Próximamente', 'soon'], ended: ['Terminado', 'ended'] };
+const shortDate = (iso) => (iso ? new Date(iso).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) : '');
+
+function bannerCardImg(id) {
+  return cardById(id)?.image || `https://cdn.dokkan.fyi/assets/en/character/thumb/card_${id}_thumb/card_${id}_thumb.png`;
+}
+
 function bannerRow(b) {
-  const minis = b.newCards.slice(0, 6).map((x) => `<img loading="lazy" alt="" src="${esc(cardById(x.id)?.image || cardThumb(x.id))}">`).join('');
-  return `<a class="row" href="#/banner/${enc(b.page)}">
-    <img class="banner-img" loading="lazy" alt="" src="${esc(fileUrl(b.image, 360))}">
-    <div class="info"><b>${esc(b.name)}</b><span class="muted small">${esc(b.kind)}${b.added ? ' · ' + fmtDate(b.added) : ''}</span>
-    ${minis ? `<div class="minis">${minis}</div>` : ''}</div></a>`;
+  const [label, cls] = STATUS[bannerStatus(b)];
+  const minis = b.cards.slice(0, 6).map((id) => `<img loading="lazy" alt="" src="${esc(bannerCardImg(id))}">`).join('');
+  const dates = isPermanent(b) ? 'Permanente' : `${shortDate(b.start)} – ${shortDate(b.end)}`;
+  return `<a class="row" href="#/banner/${enc(b.id)}">
+    <img class="banner-img" loading="lazy" alt="" src="${esc(b.image)}">
+    <div class="info"><b>${esc(b.name)}</b>
+      <span class="small"><span class="status ${cls}">${label}</span> <span class="muted">${dates}</span></span>
+      ${minis ? `<div class="minis">${minis}</div>` : ''}</div></a>`;
 }
 
 views.banners = () => {
-  if (!store.cards.size) return firstRunView();
-  const kinds = [...new Set([...store.banners.values()].map((b) => b.category))].sort();
+  const all = bannerList();
+  if (!all.length) return { title: 'Banners', html: noExtra() };
+  const groups = [
+    ['Activos ahora', all.filter((b) => bannerStatus(b) === 'live' && !isPermanent(b))],
+    ['Próximamente', all.filter((b) => bannerStatus(b) === 'soon')],
+    ['Permanentes (tickets y puntos)', all.filter((b) => bannerStatus(b) === 'live' && isPermanent(b))],
+    ['Anteriores', all.filter((b) => bannerStatus(b) === 'ended')],
+  ].filter(([, list]) => list.length);
+  const src = store.extra.summons;
   return {
     title: 'Banners',
-    html: `<div class="chips"><button class="chip on" data-k="">Todos</button>${kinds.map((k) => `<button class="chip" data-k="${esc(k)}">${esc(k)}</button>`).join('')}</div>
-      <div id="list" style="margin-top:8px"></div><div class="sentinel" id="more"></div>`,
-    mount(el) {
-      let list = [], shown = 0;
-      const box = $('#list', el);
-      const more = () => { box.insertAdjacentHTML('beforeend', list.slice(shown, shown + 25).map(bannerRow).join('')); shown += 25; };
-      const show = (k) => { list = [...store.banners.values()].filter((b) => !k || b.category === k).sort(byAdded); shown = 0; box.innerHTML = ''; more(); };
-      el.addEventListener('click', (e) => {
-        const c = e.target.closest('.chip');
-        if (!c) return;
-        el.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x === c));
-        show(c.dataset.k);
-      });
-      const io = new IntersectionObserver((en) => { if (en[0].isIntersecting && shown < list.length) more(); }, { rootMargin: '600px' });
-      io.observe($('#more', el));
-      show('');
-      return () => io.disconnect();
-    },
+    html: `${groups.map(([title, list]) => `<h2>${title} <span class="muted small">${list.length}</span></h2>${list.map(bannerRow).join('')}`).join('')}
+      <p class="muted small">Fuente: <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.source)}</a>. Los banners anteriores se van guardando desde que la app empezó a recogerlos.</p>`,
   };
 };
 
-views.banner = (params, page) => {
-  const b = store.banners.get(page);
+views.banner = (params, id) => {
+  const b = bannerList().find((x) => x.id === id);
   if (!b) return { title: 'Banner', back: true, html: '<div class="empty">Banner no encontrado.</div>' };
-  const cardTile = (x) => {
-    const c = cardById(x.id);
+  const [label, cls] = STATUS[bannerStatus(b)];
+  const cardTile = (cid) => {
+    const c = cardById(cid);
     if (c) return tile(c);
-    return `<a class="tile" href="${esc(pageUrl(x.page))}" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(cardThumb(x.id))}"><div class="nm">${esc(x.page)}</div></a>`;
+    return `<a class="tile" href="https://dokkanstats.com/en/cards/${+cid + 1}/" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(bannerCardImg(cid))}"><div class="nm">Ver en DokkanStats</div></a>`;
   };
   return {
     title: esc(b.name),
     back: true,
-    html: `<img alt="" src="${esc(fileUrl(b.image, 800))}" style="width:100%;border-radius:12px;background:var(--bg2)">
-      <p class="muted small">${esc(b.kind)}${b.added ? ' · añadido a la wiki el ' + fmtDate(b.added) : ''}${b.coins ? ' · ' + esc(b.coins) : ''}</p>
-      ${b.newCards.length ? `<h2>Cartas nuevas</h2><div class="grid">${b.newCards.map(cardTile).join('')}</div>` : ''}
-      ${b.featured.length ? `<h2>Destacadas</h2><div class="grid">${b.featured.map(cardTile).join('')}</div>` : ''}
-      <p class="small" style="margin-top:20px"><a href="${esc(pageUrl(b.page))}" target="_blank" rel="noopener">Ver en la Dokkan Wiki ↗</a></p>`,
+    html: `<img alt="" src="${esc(b.image)}" style="width:100%;border-radius:12px;background:var(--bg2)">
+      <p><span class="status ${cls}">${label}</span>
+        <span class="muted small">${isPermanent(b) ? 'Permanente' : `${fmtDate(b.start)} – ${fmtDate(b.end)}`}</span></p>
+      ${b.desc ? `<p class="small">${esc(b.desc)}</p>` : ''}
+      ${b.cards.length ? `<h2>Cartas destacadas <span class="muted small">${b.cards.length}</span></h2><div class="grid">${b.cards.map(cardTile).join('')}</div>` : ''}
+      <p class="small" style="margin-top:20px"><a href="${esc(b.url)}" target="_blank" rel="noopener">Ver en DokkanStats ↗</a></p>`,
   };
 };
 
@@ -401,7 +430,7 @@ views.settings = () => ({
     <h2>Base de datos</h2>
     <div class="box kv">
       <b>Cartas</b><span>${store.cards.size}</span>
-      <b>Banners</b><span>${store.banners.size}</span>
+      <b>Banners</b><span>${bannerList().length}</span>
       <b>Última actualización</b><span id="last">${store.lastSync ? `${fmtDate(store.lastSync)} (${ago(store.lastSync)})` : 'nunca'}</span>
     </div>
     <p class="muted small">La app busca novedades cada vez que la abres y cada ${AUTO_SYNC_MIN} minutos mientras está abierta. Solo descarga lo que ha cambiado.</p>
@@ -413,8 +442,7 @@ views.settings = () => ({
     <h2>Fuentes</h2>
     <div class="box small">
       <b>Cartas:</b> <a href="https://dokkan.fyi/" target="_blank" rel="noopener">DOKKAN.FYI</a>, con datos sacados directamente del juego. Se recogen cada 3 horas en GitHub${store.cardsVersion ? ` (última versión: ${fmtDate(store.cardsVersion)}, ${ago(store.cardsVersion)})` : ''}.<br>
-      <b>Banners:</b> <a href="https://dbz-dokkanbattle.fandom.com/" target="_blank" rel="noopener">Dokkan Wiki</a> (Fandom, licencia CC BY-SA). La app la consulta directamente.<br><br>
-      <b>Tier list y eventos activos:</b> <a href="https://dokkanstats.com/en/" target="_blank" rel="noopener">DokkanStats</a>.<br>
+      <b>Banners, tier list y eventos activos:</b> <a href="https://dokkanstats.com/en/" target="_blank" rel="noopener">DokkanStats</a>, actualizados desde el PC.<br>
       <b>Noticias del juego:</b> <a href="https://dokkan.fyi/news" target="_blank" rel="noopener">DOKKAN.FYI</a>.<br>
       Estos se recogen cada 3 horas en GitHub${store.extra?.generated ? ` (última vez con cambios: ${fmtDate(store.extra.generated)}, ${ago(store.extra.generated)})` : ''}.<br><br>
       Los textos del juego están en inglés. App de fans, sin relación con Bandai Namco ni Akatsuki.</div>`,

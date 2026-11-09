@@ -175,10 +175,13 @@ function transformations(body = '') {
  */
 export function parseCharacterMd(md, id) {
   md = md.replace(/^﻿/, '').replace(/\r\n/g, '\n');
-  const titleLine = /^# (.+)$/m.exec(md)?.[1] || '';
+  // The title can wrap onto a second line ("... (Angel) &\nSuper Saiyan Vegeta (Angel)").
+  const titleLine = (/^# ([\s\S]+?)\n\s*\n/.exec(md)?.[1] || '').replace(/\s*\n\s*/g, ' ').trim();
   const tm = /^\\?\[(.+?)\\?\]\s*(.+)$/.exec(titleLine);
   const info = (label) => new RegExp(`^- ${label}:\\s*(.+)$`, 'm').exec(md)?.[1]?.trim() || '';
-  const rt = info('Rarity and Type').split(/\s+/); // "LR Super AGL"
+  // "LR Super AGL", or just "SSR TEQ" for cards without a class.
+  const rtWords = info('Rarity and Type').split(/\s+/);
+  const rt = rtWords.length === 2 ? [rtWords[0], '', rtWords[1]] : rtWords;
   const top = sections(md, '##');
   const eza = top['Extreme Z-Awakening'] ? sections(top['Extreme Z-Awakening'], '###') : null;
   const seza = top['Super Extreme Z-Awakening'] ? sections(top['Super Extreme Z-Awakening'], '###') : null;

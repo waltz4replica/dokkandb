@@ -75,6 +75,37 @@ export function parseDokkanStatsEvents(html, base = 'https://dokkanstats.com/') 
 }
 
 /**
+ * DokkanStats summons (https://dokkanstats.com/en/summons/): current and upcoming banners.
+ * Returns [{ id, name, desc, image, start, end, cards: [image ids ending in 0], url }].
+ */
+export function parseDokkanStatsSummons(html, base = 'https://dokkanstats.com/') {
+  const out = [];
+  const seen = new Set();
+  const re = /<a\s[^>]*class="summon-home-card"[^>]*>([\s\S]*?)<\/a>/g;
+  let m;
+  while ((m = re.exec(html))) {
+    const tag = m[0].slice(0, m[0].indexOf('>') + 1);
+    const href = attr(tag, 'href');
+    const id = /\/summons\/(\d+)/.exec(href)?.[1];
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    const times = [...m[1].matchAll(/<time\b[^>]*datetime="([^"]+)"/g)].map((t) => t[1]);
+    const img = /<div class="summon-banner">\s*<img\s[^>]*src="([^"]+)"/.exec(m[1])?.[1] || '';
+    out.push({
+      id,
+      name: text(/<h3 class="summon-home-name">([\s\S]*?)<\/h3>/.exec(m[1])?.[1] || ''),
+      desc: text(/<p class="summon-home-desc">([\s\S]*?)<\/p>/.exec(m[1])?.[1] || ''),
+      image: img ? absolute(decode(img), base) : '',
+      start: times[0] || '',
+      end: times[1] || '',
+      cards: attr(tag, 'data-cards').split(/\s+/).filter((x) => /^\d{7}$/.test(x)),
+      url: absolute(href, base),
+    });
+  }
+  return out;
+}
+
+/**
  * DOKKAN.FYI in-game news (https://dokkan.fyi/news).
  * Returns [{ id, title, url, image, tags, date }] — `date` as written on the page.
  */

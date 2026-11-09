@@ -132,6 +132,19 @@ h2 a { font-size: 13px; font-weight: 600; }
 .kv b { color: var(--muted); font-weight: 600; }
 .sentinel { height: 1px; }
 
+/* Date headings between groups of cards */
+.date-head { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin: 14px 0 8px; }
+.date-head:first-child { margin-top: 0; }
+.date-head.in-grid { grid-column: 1 / -1; margin: 8px 0 0; padding-top: 6px; border-top: 1px solid var(--line); }
+.date-head.in-grid:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+
+/* Banner status */
+.status { display: inline-block; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 999px; }
+.status.live { background: rgba(57,194,122,.18); color: var(--ok); }
+.status.soon { background: rgba(255,157,31,.18); color: var(--accent); }
+.status.ended { background: var(--line); color: var(--muted); }
+.row .info .small { display: block; margin-top: 2px; }
+
 /* Transformation forms inside a card */
 details.form { margin-top: 10px; }
 details.form summary { display: flex; gap: 10px; align-items: center; cursor: pointer; list-style: none; }

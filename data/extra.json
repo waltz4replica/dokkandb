@@ -67,18 +67,18 @@
       "trend": "same"
      },
      {
-      "id": "1033061",
-      "cardId": "1033060",
-      "title": "Fated Showdown",
-      "name": "Majin Vegeta + Super Saiyan 2 Goku (Angel)",
-      "trend": "same"
-     },
-     {
       "id": "1033841",
       "cardId": "1033840",
       "title": "Earth-Blanketing Army",
       "name": "Metal Cooler Army",
-      "trend": "same"
+      "trend": "up"
+     },
+     {
+      "id": "1033061",
+      "cardId": "1033060",
+      "title": "Fated Showdown",
+      "name": "Majin Vegeta + Super Saiyan 2 Goku (Angel)",
+      "trend": "down"
      },
      {
       "id": "1012931",
@@ -143,13 +143,6 @@
       "trend": "down"
      },
      {
-      "id": "1031391",
-      "cardId": "1031390",
-      "title": "Furious Final Battle in the Future",
-      "name": "Super Saiyan God SS Goku + Super Saiyan God SS Vegeta",
-      "trend": "same"
-     },
-     {
       "id": "1033011",
       "cardId": "1033010",
       "title": "Battle to Resurrect the Majin",
@@ -161,6 +154,13 @@
       "cardId": "1024860",
       "title": "Extraordinary Super Warrior",
       "name": "Super Saiyan Goku",
+      "trend": "same"
+     },
+     {
+      "id": "1031391",
+      "cardId": "1031390",
+      "title": "Furious Final Battle in the Future",
+      "name": "Super Saiyan God SS Goku + Super Saiyan God SS Vegeta",
       "trend": "down"
      }
     ]
@@ -489,13 +489,6 @@
       "trend": "same"
      },
      {
-      "id": "1031431",
-      "cardId": "1031430",
-      "title": "Terrifying Zero Mortals Plan",
-      "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
-      "trend": "down"
-     },
-     {
       "id": "1030431",
       "cardId": "1030430",
       "title": "Incomparable Radiance",
@@ -507,6 +500,13 @@
       "cardId": "1022450",
       "title": "Exceptional Wisdom",
       "name": "Piccolo",
+      "trend": "same"
+     },
+     {
+      "id": "1031431",
+      "cardId": "1031430",
+      "title": "Terrifying Zero Mortals Plan",
+      "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
       "trend": "down"
      }
     ]
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-09T14:07:49.597Z"
+  "updated": "2026-11-09T17:07:56.319Z"
  },
  "events": {
   "items": [
@@ -5192,5 +5192,556 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-09T14:01:51.975Z"
  },
- "generated": "2026-11-09T14:07:50.103Z"
+ "generated": "2026-11-09T17:29:01.021Z",
+ "summons": {
+  "items": [
+   {
+    "id": "12602",
+    "name": "\"Mysterious Ritual\" Summon",
+    "desc": "4 times only! \"Mysterious Ritual\" Summon! Use 25 Dragon Stones to recruit 5 Elder Kai!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_11128.png",
+    "start": "2026-10-29T05:00:00.000Z",
+    "end": "2026-11-12T04:59:59.000Z",
+    "cards": [
+     "1003970"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12602/"
+   },
+   {
+    "id": "12600",
+    "name": "Dokkan Festival [Great Saiyaman 2 - Special Summon Ticket]",
+    "desc": "New Great Saiyaman 2 arrives! After Dokkan Awakening, she can activate an Entrance Animation once the conditions are met!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12600.png",
+    "start": "2026-10-29T05:00:00.000Z",
+    "end": "2026-11-26T14:59:59.000Z",
+    "cards": [
+     "1034720",
+     "1034940",
+     "1033830",
+     "1032060",
+     "1032250",
+     "1031070",
+     "1031290",
+     "1029560",
+     "1026740",
+     "1024050",
+     "1000820",
+     "1001010",
+     "1000240",
+     "1000260",
+     "1000860",
+     "1000040",
+     "1003870",
+     "1002140",
+     "1001430",
+     "1000160"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12600/"
+   },
+   {
+    "id": "12598",
+    "name": "Dokkan Festival Ticket Summon [Great Saiyaman 2]",
+    "desc": "Dokkan Festival Ticket Summon! New Great Saiyaman 2 arrives! Perform a Multi-Summon to get a \"Dokkan Festival Coin (Limited) 20\"!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12598.png",
+    "start": "2026-10-29T05:00:00.000Z",
+    "end": "2026-12-01T07:59:59.000Z",
+    "cards": [
+     "1034720",
+     "1034940",
+     "1033830",
+     "1032060",
+     "1032250",
+     "1031070",
+     "1031290",
+     "1029560",
+     "1026740",
+     "1024050",
+     "1000820",
+     "1001010",
+     "1000240",
+     "1000260",
+     "1000860",
+     "1000040",
+     "1003870",
+     "1002140",
+     "1001430",
+     "1000160"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12598/"
+   },
+   {
+    "id": "12588",
+    "name": "Dokkan Festival [Great Saiyaman 2]",
+    "desc": "New Great Saiyaman 2 arrives! After Dokkan Awakening, she can activate an Entrance Animation once the conditions are met!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12588.png",
+    "start": "2026-10-29T05:00:00.000Z",
+    "end": "2026-11-24T07:59:59.000Z",
+    "cards": [
+     "1034720",
+     "1034940",
+     "1033830",
+     "1032060",
+     "1032250",
+     "1031070",
+     "1031290",
+     "1029560",
+     "1026740",
+     "1024050",
+     "1000820",
+     "1001010",
+     "1000240",
+     "1000260",
+     "1000860",
+     "1000040",
+     "1003870",
+     "1002140",
+     "1001430",
+     "1000160"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12588/"
+   },
+   {
+    "id": "12398",
+    "name": "Legendary Summon Carnival [Summon Point Ticket]",
+    "desc": "One character who can be Dokkan Awakened into an LR guaranteed! Recruit a powerful character to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12398.png",
+    "start": "2026-07-29T05:00:00.000Z",
+    "end": "2026-11-20T14:59:59.000Z",
+    "cards": [
+     "1032900",
+     "1032560",
+     "1032100",
+     "1031900",
+     "1031450",
+     "1031410",
+     "1033920",
+     "1033740",
+     "1031660",
+     "1031990"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12398/"
+   },
+   {
+    "id": "12396",
+    "name": "Dokkan Festival [Summon Point Ticket]",
+    "desc": "One Dokkan Festival character guaranteed! Recruit a powerful character to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12396.png",
+    "start": "2026-07-29T05:00:00.000Z",
+    "end": "2026-11-20T14:59:59.000Z",
+    "cards": [
+     "1032860",
+     "1032530",
+     "1033040",
+     "1033570",
+     "1031700",
+     "1033540",
+     "1033000",
+     "1032350",
+     "1032320",
+     "1032060",
+     "1032250",
+     "1031950"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12396/"
+   },
+   {
+    "id": "11394",
+    "name": "Ultimate Red Zone Ticket Summon [Goku's Story] [Vegeta's Story] [SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_11394.png",
+    "start": "2025-01-19T05:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1019800",
+     "1010150",
+     "1014480",
+     "1007860",
+     "1009530",
+     "1003600",
+     "1003670"
+    ],
+    "url": "https://dokkanstats.com/en/summons/11394/"
+   },
+   {
+    "id": "11392",
+    "name": "Ultimate Red Zone Ticket Summon [Goku's Story] [Vegeta's Story]",
+    "desc": "Engage in fierce battles against Goku and Vegeta! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_11392.png",
+    "start": "2025-01-19T05:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1019800",
+     "1010150",
+     "1014480",
+     "1007860",
+     "1009530",
+     "1003600",
+     "1003670"
+    ],
+    "url": "https://dokkanstats.com/en/summons/11392/"
+   },
+   {
+    "id": "11126",
+    "name": "Friend Summon",
+    "desc": "Characters who can be awakened into LR are available! One Z-Awakened character or Hercule Statue guaranteed per Multi-Summon!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_11126.png",
+    "start": "2024-10-03T05:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1003970",
+     "1012230",
+     "1012240",
+     "1012250",
+     "1012260",
+     "1012270",
+     "1013400",
+     "1013360",
+     "1008770",
+     "1003730"
+    ],
+    "url": "https://dokkanstats.com/en/summons/11126/"
+   },
+   {
+    "id": "11046",
+    "name": "Supreme Magnificent Battle Ticket Summon [Movie Edition] [SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_11046.png",
+    "start": "2024-08-30T02:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1018470",
+     "1026270",
+     "1022150",
+     "1026080",
+     "1003670",
+     "1012670",
+     "1023560"
+    ],
+    "url": "https://dokkanstats.com/en/summons/11046/"
+   },
+   {
+    "id": "11044",
+    "name": "Supreme Magnificent Battle Ticket Summon [Movie Edition]",
+    "desc": "Engage in fierce battles against powerful foes from the movies! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_11044.png",
+    "start": "2024-08-30T02:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1018470",
+     "1026270",
+     "1022150",
+     "1026080",
+     "1003670",
+     "1012670",
+     "1023560"
+    ],
+    "url": "https://dokkanstats.com/en/summons/11044/"
+   },
+   {
+    "id": "10868",
+    "name": "Supreme Magnificent Battle Ticket Summon [Dragon Ball Super Edition] [SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_10868.png",
+    "start": "2024-07-31T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1018230",
+     "1012640",
+     "1019270",
+     "1026080",
+     "1024590",
+     "1012980",
+     "1014200"
+    ],
+    "url": "https://dokkanstats.com/en/summons/10868/"
+   },
+   {
+    "id": "10866",
+    "name": "Supreme Magnificent Battle Ticket Summon [Dragon Ball Super Edition]",
+    "desc": "Engage in fierce battles against powerful foes from Dragon Ball Super! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_10866.png",
+    "start": "2024-07-31T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1018230",
+     "1012640",
+     "1019270",
+     "1026080",
+     "1024590",
+     "1012980",
+     "1014200"
+    ],
+    "url": "https://dokkanstats.com/en/summons/10866/"
+   },
+   {
+    "id": "10784",
+    "name": "Ultimate Red Zone Ticket Summon [Movie Edition 2] [SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_10784.png",
+    "start": "2024-07-07T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1013750",
+     "1024940",
+     "1018090",
+     "1026060",
+     "1009120",
+     "1003610",
+     "1005150"
+    ],
+    "url": "https://dokkanstats.com/en/summons/10784/"
+   },
+   {
+    "id": "10782",
+    "name": "Ultimate Red Zone Ticket Summon [Movie Edition 2]",
+    "desc": "Engage in fierce battles against powerful foes from the movies! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_10782.png",
+    "start": "2024-07-07T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1013750",
+     "1024940",
+     "1018090",
+     "1026060",
+     "1009120",
+     "1003610",
+     "1005150"
+    ],
+    "url": "https://dokkanstats.com/en/summons/10782/"
+   },
+   {
+    "id": "10652",
+    "name": "Ultimate Red Zone Ticket Summon [Majin Buu Saga]",
+    "desc": "Engage in fierce battles against powerful foes from the Majin Buu Saga! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_10652.png",
+    "start": "2024-04-26T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1011620",
+     "1007890",
+     "1007880",
+     "1005410",
+     "1015090",
+     "1006710",
+     "1011990"
+    ],
+    "url": "https://dokkanstats.com/en/summons/10652/"
+   },
+   {
+    "id": "10024",
+    "name": "Ultimate Red Zone Ticket Summon [Dismal Future Edition]",
+    "desc": "Engage in fierce battles against powerful foes from the dismal future! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_10024.png",
+    "start": "2023-08-18T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1018140",
+     "1012950",
+     "1019270",
+     "1008880",
+     "1024590",
+     "1012980",
+     "1017010"
+    ],
+    "url": "https://dokkanstats.com/en/summons/10024/"
+   },
+   {
+    "id": "9520",
+    "name": "Ultimate Red Zone Ticket Summon [Wicked Bloodline Edition][SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09520.png",
+    "start": "2022-09-22T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1022460",
+     "1017210",
+     "1014380",
+     "1010690",
+     "1004090",
+     "1003610",
+     "1008650"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9520/"
+   },
+   {
+    "id": "9518",
+    "name": "Ultimate Red Zone Ticket Summon [Wicked Bloodline Edition]",
+    "desc": "Engage in fierce battles against powerful foes of the wicked bloodline! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09518.png",
+    "start": "2022-09-22T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1022460",
+     "1017210",
+     "1014380",
+     "1010690",
+     "1004090",
+     "1003610",
+     "1008650"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9518/"
+   },
+   {
+    "id": "9498",
+    "name": "Ultimate Red Zone Ticket Summon [Movie Edition] [SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09498.png",
+    "start": "2022-09-09T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1016060",
+     "1016020",
+     "1016040",
+     "1019030",
+     "1002620",
+     "1007780",
+     "1004480"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9498/"
+   },
+   {
+    "id": "9458",
+    "name": "Ultimate Red Zone Ticket Summon [GT Edition] [SSR Guaranteed]",
+    "desc": "SSR Guaranteed Ticket Summon is on! Complete missions to recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09458.png",
+    "start": "2022-08-26T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1013920",
+     "1010130",
+     "1008660",
+     "1008690",
+     "1020960",
+     "1010550",
+     "1010540"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9458/"
+   },
+   {
+    "id": "9408",
+    "name": "Ultimate Red Zone Ticket Summon [GT Edition]",
+    "desc": "Engage in fierce battles against powerful foes from Dragon Ball GT! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09408.png",
+    "start": "2022-08-01T00:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1013920",
+     "1010130",
+     "1008660",
+     "1008690",
+     "1020960",
+     "1010550",
+     "1010540"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9408/"
+   },
+   {
+    "id": "9406",
+    "name": "Ultimate Red Zone Ticket Summon [Movie Edition]",
+    "desc": "Engage in fierce battles against powerful foes from the movies! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09406.png",
+    "start": "2022-08-01T00:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1016060",
+     "1016020",
+     "1016040",
+     "1019030",
+     "1002620",
+     "1007780",
+     "1004480"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9406/"
+   },
+   {
+    "id": "9132",
+    "name": "Fighting Legend: Vegeta Ticket Summon",
+    "desc": "Fighting Legend: Vegeta is on! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_09132.png",
+    "start": "2022-01-03T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1007380",
+     "1003230",
+     "1001790",
+     "1013180",
+     "1016040",
+     "1007860",
+     "1013200"
+    ],
+    "url": "https://dokkanstats.com/en/summons/9132/"
+   },
+   {
+    "id": "8920",
+    "name": "Returning Exclusive Summon",
+    "desc": "One featured SSR character guaranteed! Check the available characters at \"Scouter\"!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_08920.png",
+    "start": "2021-08-19T06:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1020270",
+     "1020020",
+     "1019270",
+     "1019030",
+     "1018570",
+     "1018140",
+     "1018090"
+    ],
+    "url": "https://dokkanstats.com/en/summons/8920/"
+   },
+   {
+    "id": "902",
+    "name": "Fighting Legend: Goku [GT Edition] Ticket Summon",
+    "desc": "Fighting Legend: Goku is on! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_00902.png",
+    "start": "2021-05-08T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1007370",
+     "1004070",
+     "1002080",
+     "1016020",
+     "1013170",
+     "1003190",
+     "1013190"
+    ],
+    "url": "https://dokkanstats.com/en/summons/902/"
+   },
+   {
+    "id": "569",
+    "name": "Fighting Legend: Goku Ticket Summon",
+    "desc": "Fighting Legend: Goku is on! Recruit powerful characters to your team with Summon Tickets!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_00569.png",
+    "start": "2019-10-03T06:30:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1016020",
+     "1009530",
+     "1003690",
+     "1001920",
+     "1013170",
+     "1013190",
+     "1003030"
+    ],
+    "url": "https://dokkanstats.com/en/summons/569/"
+   },
+   {
+    "id": "7010",
+    "name": "Hercule's Fortune Summon",
+    "desc": "Perform Summons with Hercule's Fortune Summon Tickets to get Hercule Statues!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_07010.png",
+    "start": "2017-08-25T00:00:00.000Z",
+    "end": "2038-01-01T00:00:00.000Z",
+    "cards": [
+     "1002630",
+     "1005480",
+     "1011481"
+    ],
+    "url": "https://dokkanstats.com/en/summons/7010/"
+   }
+  ],
+  "source": "DokkanStats",
+  "url": "https://dokkanstats.com/en/summons/",
+  "updated": "2026-11-09T17:29:00.350Z"
+ }
 }

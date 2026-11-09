@@ -3,8 +3,8 @@
 //   Cards        -> data/cards.json, built every 3 h on GitHub from DOKKAN.FYI (data from the game).
 //                   The app checks the small data/cards-meta.json first and only downloads the
 //                   big file when it has changed.
-//   Banners      -> straight from the Dokkan Wiki API (only the pages changed since last time).
-//   Tier list, events, news -> data/extra.json (fan sites, collected by scripts/scrape.mjs).
+//   Banners, tier list, events, news -> data/extra.json (fan sites, collected by scripts/scrape.mjs).
+//   (The wiki banner code below is no longer called: the wiki was months behind.)
 
 import * as db from './db.js';
 import { pagesInCategory, categoryAddedTimes, pagesByTitle, changedSince } from './wiki.js';
@@ -15,7 +15,7 @@ export const BANNER_CATEGORIES = [
   'Legendary Summons', 'Type, Class and Category Summons', 'Crossover/Collaboration Summons',
   'Ticket Summons', 'Miscellaneous Summons',
 ];
-const SCHEMA = 2;            // bump to force a fresh download on every phone (2 = cards from DOKKAN.FYI)
+const SCHEMA = 3;            // bump to force a fresh download on every phone (2 = cards from DOKKAN.FYI)
 const FULL_AFTER_DAYS = 80;  // the wiki only keeps ~90 days of change history
 
 // In-memory copy used by the screens.
@@ -86,12 +86,10 @@ async function doSync({ full = false, onProgress = () => {} }) {
     result.newCards = await syncCards(full, onProgress);
     byId = null;
 
-    const tooOld = last && (Date.now() - Date.parse(last)) / 864e5 > FULL_AFTER_DAYS;
-    result.newBanners = full || !last || tooOld || !store.banners.size
-      ? await fullBanners(onProgress)
-      : await changedBanners(last, onProgress);
-
+    // Banners now come with data/extra.json (DokkanStats); the wiki's were months behind.
+    const before = new Set((store.extra?.summons?.items || []).map((b) => b.id));
     result.newNews = await syncExtra().catch((err) => { console.warn('extra data:', err); return []; });
+    if (before.size) result.newBanners = (store.extra?.summons?.items || []).filter((b) => !before.has(b.id));
     await db.setMeta('lastSync', startedAt);
     store.lastSync = startedAt;
     emit({ type: 'sync-done', ...result });

@@ -8,6 +8,13 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 
+## 2.1.0 — 2026-11-09
+- **Banners al día** desde DokkanStats (la wiki llevaba desde septiembre sin banners nuevos): fechas de inicio y fin, estado (Activo / Próximamente / Terminado) y cartas destacadas. Se actualizan desde el PC, como la tier list.
+- Pantalla de Banners ordenada en Activos ahora, Próximamente, Permanentes y Anteriores.
+- Inicio reorganizado: primero los banners activos y las cartas nuevas, después EZA/SEZA, noticias y tier list.
+- Cartas agrupadas por fecha de salida en Inicio y en la lista de Cartas.
+- Corregido: las 122 cartas SSR no tenían tipo (AGL, TEQ…) y algunos nombres de cartas dobles salían cortados.
+
 ## 2.0.1 — 2026-11-09
 - Número de versión visible en Ajustes y aviso al actualizarse la app.
 - Este historial de versiones.

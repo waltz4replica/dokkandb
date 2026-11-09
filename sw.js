@@ -1,6 +1,6 @@
 // Service worker: makes the app open offline and caches card images.
 // Must match APP_VERSION in js/version.js, so phones pick up each new version.
-const VERSION = '2.0.1';
+const VERSION = '2.1.0';
 const SHELL = `shell-${VERSION}`;
 const IMAGES = 'images-v1';
 const MAX_IMAGES = 3000;

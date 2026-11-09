@@ -64,8 +64,13 @@ const deadline = started + budgetMin * 60000;
 // ---------- decide which cards to read ----------
 
 const targets = new Set(state.pending);
+// --ids=1002350,1012931 or --ids=ssr (every SSR) re-reads just those cards.
+const onlyIds = args.find((a) => a.startsWith('--ids='))?.split('=')[1];
 
-if (full && !state.pending.length) {
+if (onlyIds) {
+  const list = onlyIds === 'ssr' ? [...cards.values()].filter((c) => c.rarity === 'SSR').map((c) => c.page) : onlyIds.split(',');
+  list.forEach((id) => targets.add(id.trim()));
+} else if (full && !state.pending.length) {
   console.log('Full read: listing every character…');
   for (let p = 1; ; p++) {
     const html = await get(`/characters?page=${p}`);

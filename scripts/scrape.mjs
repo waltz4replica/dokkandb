@@ -8,7 +8,7 @@
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseFyiNews } from './scrapers.mjs';
+import { parseDokkanStatsTierList, parseDokkanStatsEvents, parseDokkanStatsSummons, parseFyiNews } from './scrapers.mjs';
 
 const OUT = fileURLToPath(new URL('../data/extra.json', import.meta.url));
 const UA = 'DokkanDB-fan-app/1.0 (+https://github.com/waltz4replica/dokkandb)';
@@ -29,6 +29,19 @@ const SOURCES = {
     read: (html) => {
       const items = parseDokkanStatsEvents(html).filter((e) => e.active);
       if (items.length < 5) throw new Error('events list looks empty');
+      return { items };
+    },
+  },
+  summons: {
+    url: 'https://dokkanstats.com/en/summons/',
+    site: 'DokkanStats',
+    read: (html, prev) => {
+      const current = parseDokkanStatsSummons(html);
+      if (current.length < 3) throw new Error('summons list looks empty');
+      // The page only lists current and upcoming banners: keep older ones as history.
+      const byId = new Map((prev?.items || []).map((b) => [b.id, b]));
+      for (const b of current) byId.set(b.id, b);
+      const items = [...byId.values()].sort((a, b) => (b.start || '').localeCompare(a.start || '')).slice(0, 300);
       return { items };
     },
   },
@@ -56,7 +69,7 @@ const next = { ...previous };
 let ok = 0;
 for (const [key, src] of Object.entries(SOURCES)) {
   try {
-    const data = src.read(await fetchHtml(src.url));
+    const data = src.read(await fetchHtml(src.url), previous[key]);
     const changed = JSON.stringify(data) !== JSON.stringify(stripMeta(previous[key]));
     next[key] = { ...data, source: src.site, url: src.url, updated: changed ? new Date().toISOString() : previous[key]?.updated };
     console.log(`${key}: ok${changed ? ' (changed)' : ''}`);

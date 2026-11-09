@@ -8,9 +8,8 @@ Se actualiza sola y funciona sin conexión. Publicada en https://waltz4replica.g
 | Datos | Fuente | Quién lo actualiza | Archivo |
 |---|---|---|---|
 | Cartas LR / UR / SSR (con EZA, SEZA y transformaciones) | [DOKKAN.FYI](https://dokkan.fyi) — datos sacados del juego | GitHub, cada 3 h | `data/cards.json` |
-| Banners | [Dokkan Wiki](https://dbz-dokkanbattle.fandom.com/) | El propio móvil, al abrir la app | — |
 | Noticias del juego | DOKKAN.FYI | GitHub, cada 3 h | `data/extra.json` |
-| Tier list y eventos activos | [DokkanStats](https://dokkanstats.com) | **Este PC**, cada 3 h y al iniciar sesión | `data/extra.json` |
+| Banners, tier list y eventos activos | [DokkanStats](https://dokkanstats.com) | **Este PC**, cada 3 h y al iniciar sesión | `data/extra.json` |
 
 - DokkanStats bloquea los servidores de GitHub, por eso esa parte va desde el PC (tarea de Windows "DokkanDB - actualizar datos"). Si el PC está apagado, la app sigue mostrando los últimos datos subidos.
 - Todas las fuentes permiten la lectura automática en su `robots.txt`. Se lee despacio (1 página por segundo).
