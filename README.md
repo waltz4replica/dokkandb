@@ -28,14 +28,11 @@ Para relanzar la carga completa: GitHub → Actions → "Actualizar cartas…" �
 
 ## Versiones
 
-El historial está en [CHANGELOG.md](CHANGELOG.md) y cada versión tiene su etiqueta en Git (`v2.0.1`…).
-Para publicar una versión nueva:
-
-1. Sube el número en `js/version.js`, `sw.js` y `package.json` (los tres iguales).
-2. Añade lo que cambia al principio de `CHANGELOG.md`.
-3. Haz commit, crea la etiqueta (`git tag v2.1.0`) y sube todo (`git push --follow-tags`).
-
-Para ver o recuperar una versión anterior: `git checkout v1.1.0` (vuelve con `git checkout main`).
+Hay dos canales: **estable** (https://waltz4replica.github.io/dokkandb/, rama `main`) y **beta**
+(https://waltz4replica.github.io/dokkandb/beta/, rama `beta`). Las versiones se publican con
+`scripts/release.ps1`; el plan completo (cuándo, cómo, comprobaciones y cómo volver atrás) está en
+[RELEASING.md](RELEASING.md). El historial está en [CHANGELOG.md](CHANGELOG.md) y en
+[Releases](https://github.com/waltz4replica/dokkandb/releases).
 
 ## Estructura
 
@@ -47,7 +44,9 @@ Para ver o recuperar una versión anterior: `git checkout v1.1.0` (vuelve con `g
 | `js/wiki.js`, `js/parse.js` | API de la wiki y lector de banners |
 | `js/db.js` | Base de datos local del móvil (IndexedDB) |
 | `js/teams.js` | Lógica del creador de equipos: habilidad de líder, links, rotación, sugerencias (pruebas en `tests/teams-check.mjs`) |
-| `sw.js` | Modo sin conexión y caché de imágenes. **Sube `VERSION` cada vez que cambies archivos de la app.** |
+| `sw.js` | Modo sin conexión y caché de imágenes. Su `VERSION` la pone `scripts/release.ps1`. |
+| `scripts/release.ps1`, `NEXT.md` | Publicar versiones (ver [RELEASING.md](RELEASING.md)) |
+| `.github/workflows/deploy.yml` | Monta la web: estable en la raíz y beta en `/beta/` |
 | `scripts/fyi.mjs` | Lector de DOKKAN.FYI (fichas, listado, línea temporal) |
 | `scripts/build-cards.mjs` | Genera `data/cards.json` |
 | `scripts/scrapers.mjs`, `scripts/scrape.mjs` | Tier list, eventos y noticias → `data/extra.json` |

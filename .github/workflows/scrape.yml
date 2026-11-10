@@ -25,6 +25,8 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 150
+    outputs:
+      changed: ${{ steps.save.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,6 +39,7 @@ jobs:
         run: node scripts/scrape.mjs
         continue-on-error: true
       - name: Guardar cambios
+        id: save
         run: |
           if [ -n "$(git status --porcelain data/)" ]; then
             git config user.name "github-actions[bot]"
@@ -45,6 +48,17 @@ jobs:
             git commit -m "Datos actualizados"
             git pull --rebase
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "Sin cambios"
           fi
+
+  # Los cambios que sube este robot no lanzan otros workflows, así que publica la web aquí.
+  deploy:
+    needs: scrape
+    if: needs.scrape.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml

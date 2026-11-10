@@ -1,7 +1,9 @@
 // Service worker: makes the app open offline and caches card images.
 // Must match APP_VERSION in js/version.js, so phones pick up each new version.
 const VERSION = '2.6.1';
-const SHELL = `shell-${VERSION}`;
+// The beta copy (/dokkandb/beta/) shares this site's cache storage, so its caches get their own prefix.
+const PREFIX = /\/beta\/$/.test(new URL(self.registration.scope).pathname) ? 'beta-shell-' : 'shell-';
+const SHELL = `${PREFIX}${VERSION}`;
 const IMAGES = 'images-v1';
 const MAX_IMAGES = 3000;
 const FILES = ['./', 'index.html', 'css/app.css', 'js/app.js', 'js/sync.js', 'js/wiki.js', 'js/db.js', 'js/parse.js', 'js/version.js', 'js/teams.js','manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
@@ -12,7 +14,7 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys()
-    .then((keys) => Promise.all(keys.filter((k) => k.startsWith('shell-') && k !== SHELL).map((k) => caches.delete(k))))
+    .then((keys) => Promise.all(keys.filter((k) => k.startsWith(PREFIX) && k !== SHELL).map((k) => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 

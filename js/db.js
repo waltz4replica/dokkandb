@@ -1,6 +1,8 @@
 // Local storage on the phone (IndexedDB), so the app works offline.
 
-const DB_NAME = 'dokkan-db';
+import { storageName } from './version.js';
+
+const DB_NAME = storageName('dokkan-db');
 const VERSION = 1;
 let dbPromise;
 

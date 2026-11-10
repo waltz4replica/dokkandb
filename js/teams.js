@@ -3,6 +3,8 @@
 // them in 2 rotations (2 units each, always together) and 3 floaters (see "formation" below).
 // The older 3-per-turn `rotation()` helpers are kept for reference but the screens use the formation.
 
+import { storageName } from './version.js';
+
 export const SLOTS = 7;
 export const SLOT_NAMES = ['Líder', 'Unidad 2', 'Unidad 3', 'Unidad 4', 'Unidad 5', 'Unidad 6', 'Amigo'];
 
@@ -426,7 +428,7 @@ export function summary(team) {
 
 // ---------- saving / sharing ----------
 
-const KEY = 'dokkandb-teams';
+const KEY = storageName('dokkandb-teams');
 
 export function loadTeams() {
   try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }

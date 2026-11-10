@@ -7,6 +7,7 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 - **CORRECCIÓN**: arreglos pequeños.
 
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
+Las novedades que todavía están en la beta van en [NEXT.md](NEXT.md). Cómo se publica: [RELEASING.md](RELEASING.md).
 
 ## 2.6.1 — 2026-11-10
 - Corregido: en la lista de banners, la última miniatura se salía del recuadro en pantallas estrechas. Ahora se encogen para caber.

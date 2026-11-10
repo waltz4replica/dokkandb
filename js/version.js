@@ -1,4 +1,12 @@
-// App version. When you change the app: raise this number, set the same one in sw.js and
-// package.json, and add an entry to CHANGELOG.md. See CHANGELOG.md for the numbering rules.
+// App version. Don't change it by hand: scripts/release.ps1 sets it here, in sw.js and in
+// package.json, and writes the CHANGELOG.md entry. See RELEASING.md.
 export const APP_VERSION = '2.6.1';
 export const CHANGELOG_URL = 'https://github.com/waltz4replica/dokkandb/blob/main/CHANGELOG.md';
+export const RELEASES_URL = 'https://github.com/waltz4replica/dokkandb/releases';
+
+// Two copies of the app live on the same site: stable at /dokkandb/ and beta at /dokkandb/beta/.
+// They share the browser's storage, so the beta keeps its data under separate names.
+export const CHANNEL = typeof location !== 'undefined' && /\/beta\//.test(location.pathname) ? 'beta' : 'stable';
+export const storageName = (name) => (CHANNEL === 'beta' ? `${name}-beta` : name);
+export const STABLE_URL = 'https://waltz4replica.github.io/dokkandb/';
+export const BETA_URL = 'https://waltz4replica.github.io/dokkandb/beta/';

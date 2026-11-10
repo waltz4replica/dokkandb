@@ -1,0 +1,69 @@
+name: Publicar la web (estable + beta)
+# Monta la web con dos copias de la app:
+#   /dokkandb/       -> rama main (estable), o la etiqueta que se indique para volver atrás
+#   /dokkandb/beta/  -> rama beta (pruebas)
+# Las dos usan los datos más recientes (carpeta data/ de main).
+# Se lanza al subir cambios a main o beta, después de cada actualización de datos y a mano.
+
+on:
+  push:
+    branches: [main, beta]
+  workflow_dispatch:
+    inputs:
+      stable_ref:
+        description: 'Versión estable a publicar (p. ej. v2.6.0 para volver atrás). Vacío = main'
+        type: string
+        default: ''
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - name: Estable
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.stable_ref || 'main' }}
+          path: stable
+      - name: Beta
+        uses: actions/checkout@v4
+        with:
+          ref: beta
+          path: beta
+      - name: Datos actuales
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: latest
+          sparse-checkout: data
+      - name: Montar la web
+        run: |
+          mkdir site
+          rsync -a --exclude .git --exclude .github --exclude node_modules --exclude logs stable/ site/
+          mkdir site/beta
+          rsync -a --exclude .git --exclude .github --exclude node_modules --exclude logs --exclude data beta/ site/beta/
+          # Las dos copias con los datos más recientes
+          rm -rf site/data && cp -r latest/data site/data && cp -r latest/data site/beta/data
+          # La beta se instala como otra app en el móvil
+          sed -i 's/"name": "DokkanDB"/"name": "DokkanDB Beta"/; s/"short_name": "DokkanDB"/"short_name": "Dokkan β"/' site/beta/manifest.webmanifest
+          touch site/.nojekyll
+          echo "Estable: $(grep -o "APP_VERSION = '[^']*'" site/js/version.js)"
+          echo "Beta:    $(grep -o "APP_VERSION = '[^']*'" site/beta/js/version.js)"
+      - id: pages
+        uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4

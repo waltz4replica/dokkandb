@@ -4,7 +4,7 @@
 
 import { store, loadLocal, sync, onChange, isSyncing, cardById } from './sync.js';
 import { cardThumb } from './wiki.js';
-import { APP_VERSION, CHANGELOG_URL } from './version.js';
+import { APP_VERSION, CHANGELOG_URL, RELEASES_URL, CHANNEL, storageName, STABLE_URL, BETA_URL } from './version.js';
 import * as T from './teams.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -916,8 +916,12 @@ views.settings = () => ({
   html: `
     <h2>App</h2>
     <div class="box kv">
-      <b>Versión</b><span>${APP_VERSION} · <a href="${CHANGELOG_URL}" target="_blank" rel="noopener">Ver cambios</a></span>
+      <b>Versión</b><span>${APP_VERSION} · <a href="#" id="notes-now">Novedades</a> · <a href="${CHANGELOG_URL}" target="_blank" rel="noopener">Historial</a></span>
+      <b>Canal</b><span>${CHANNEL === 'beta' ? 'Beta (pruebas)' : 'Estable'}</span>
     </div>
+    <p class="muted small">${CHANNEL === 'beta'
+      ? `Estás en la <b>beta</b>: aquí salen primero las funciones nuevas para probarlas. Tus datos y equipos de la beta van aparte. <a href="${STABLE_URL}">Ir a la versión estable</a>`
+      : `¿Quieres probar las funciones nuevas antes que nadie? <a href="${BETA_URL}">Abrir la beta</a> (se instala aparte y no toca tus datos).`}</p>
     <h2>Base de datos</h2>
     <div class="box kv">
       <b>Cartas</b><span>${store.cards.size}</span>
@@ -1029,6 +1033,54 @@ async function runSync(opts = {}) {
   }
 }
 
+// ---------- what's new (from CHANGELOG.md) ----------
+
+// The notes for this version: NEXT.md while it is a beta, else its section of CHANGELOG.md.
+async function versionNotes() {
+  const isBeta = APP_VERSION.includes('-beta');
+  const res = await fetch(isBeta ? 'NEXT.md' : 'CHANGELOG.md', { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const md = (await res.text()).replace(/<!--[\s\S]*?-->/g, '');
+  if (isBeta) {
+    const notes = md.split('\n').filter((l) => !l.startsWith('#')).join('\n').trim();
+    if (!notes) throw new Error('no notes');
+    return notes;
+  }
+  const sec = md.split(/^## /m).slice(1).find((s) => s.startsWith(`${APP_VERSION} `));
+  if (!sec) throw new Error('no notes');
+  return sec.slice(sec.indexOf('\n') + 1).trim();
+}
+
+// Just enough Markdown for the changelog: nested "- " lists, **bold** and `code`.
+function notesHtml(md) {
+  const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`(.+?)`/g, '<code>$1</code>');
+  let html = '';
+  let depth = 0;
+  const close = (to) => { while (depth > to) { html += '</li></ul>'; depth--; } };
+  for (const line of md.split('\n')) {
+    const m = /^(\s*)- (.*)$/.exec(line);
+    if (!m) { if (line.trim()) { close(0); html += `<p>${inline(line.trim())}</p>`; } continue; }
+    const d = Math.min(Math.floor(m[1].length / 2) + 1, depth + 1);
+    if (d > depth) { html += '<ul><li>'; depth = d; } else { close(d); html += '</li><li>'; }
+    html += inline(m[2]);
+  }
+  close(0);
+  return html;
+}
+
+async function showWhatsNew() {
+  const notes = notesHtml(await versionNotes());
+  const box = document.createElement('div');
+  box.className = 'modal-back';
+  box.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-label="Novedades">
+    <h2>Novedades de la versión ${esc(APP_VERSION)}</h2>
+    <div class="notes">${notes}</div>
+    <div class="btns"><button class="btn primary" data-close>Vale</button>
+      <a class="btn" href="${RELEASES_URL}" target="_blank" rel="noopener">Todas las versiones</a></div></div>`;
+  box.addEventListener('click', (e) => { if (e.target === box || e.target.closest('[data-close]')) box.remove(); });
+  document.body.append(box);
+}
+
 function autoSync() {
   if (isSyncing() || !navigator.onLine) return;
   if (!store.cards.size) return; // first download waits for the user to press the button
@@ -1042,11 +1094,18 @@ function autoSync() {
   await loadLocal();
   setPill('', store.lastSync ? 'Al día' : 'Sin datos');
   route();
-  // Tell the user when the app itself was updated.
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#notes-now')) return;
+    e.preventDefault();
+    showWhatsNew().catch(() => toast('No se pudieron cargar las novedades.'));
+  });
+  if (CHANNEL === 'beta') $('#title').insertAdjacentHTML('afterend', '<span class="chan-badge">BETA</span>');
+  // Tell the user when the app itself was updated, with that version's notes.
   try {
-    const seen = localStorage.getItem('appVersion');
-    if (seen && seen !== APP_VERSION) toast(`App actualizada a la versión ${APP_VERSION}`);
-    localStorage.setItem('appVersion', APP_VERSION);
+    const key = storageName('appVersion');
+    const seen = localStorage.getItem(key);
+    localStorage.setItem(key, APP_VERSION);
+    if (seen && seen !== APP_VERSION) showWhatsNew().catch(() => toast(`App actualizada a la versión ${APP_VERSION}`));
   } catch { /* storage unavailable: skip the notice */ }
   if (!store.cards.size && navigator.onLine) runSync({ full: true });
   else autoSync();
