@@ -1,6 +1,6 @@
 {
   "name": "dokkan-db-mobile",
-  "version": "2.8.0-beta.8",
+  "version": "2.8.0",
   "private": true,
   "type": "module",
   "description": "App web instalable (PWA) con la base de datos de Dokkan Battle, con datos de DOKKAN.FYI y DokkanStats.",
