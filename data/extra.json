@@ -260,17 +260,17 @@
       "trend": "down"
      },
      {
-      "id": "1034091",
-      "cardId": "1034090",
-      "title": "Opportunity to Rebuild",
-      "name": "Super Saiyan Trunks (Future)",
-      "trend": "up"
-     },
-     {
       "id": "1027621",
       "cardId": "1027620",
       "title": "Exploding Fist",
       "name": "Super Saiyan 3 Goku",
+      "trend": "up"
+     },
+     {
+      "id": "1034091",
+      "cardId": "1034090",
+      "title": "Opportunity to Rebuild",
+      "name": "Super Saiyan Trunks (Future)",
       "trend": "up"
      },
      {
@@ -558,13 +558,6 @@
       "trend": "up"
      },
      {
-      "id": "1009091",
-      "cardId": "1009090",
-      "title": "Open the Gates of Hell",
-      "name": "Cooler (Final Form)",
-      "trend": "down"
-     },
-     {
       "id": "1013391",
       "cardId": "1013390",
       "title": "Blazing Love and Burning Justice",
@@ -572,11 +565,25 @@
       "trend": "up"
      },
      {
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
+      "trend": "down"
+     },
+     {
       "id": "1032331",
       "cardId": "1032330",
       "title": "Alliance of Justice",
       "name": "Gamma 2 + Piccolo (Power Awakening)",
       "trend": "up"
+     },
+     {
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
+      "trend": "same"
      },
      {
       "id": "1013771",
@@ -591,13 +598,6 @@
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
       "trend": "up"
-     },
-     {
-      "id": "1032711",
-      "cardId": "1032710",
-      "title": "Luud Cult's God of Destruction",
-      "name": "Luud",
-      "trend": "down"
      }
     ]
    },
@@ -605,6 +605,13 @@
     "tier": "B-",
     "ranks": "79-90",
     "units": [
+     {
+      "id": "1033871",
+      "cardId": "1033870",
+      "title": "Overhead Surprise Attack",
+      "name": "King Cold",
+      "trend": "up"
+     },
      {
       "id": "1034691",
       "cardId": "1034690",
@@ -620,17 +627,24 @@
       "trend": "down"
      },
      {
-      "id": "1033871",
-      "cardId": "1033870",
-      "title": "Overhead Surprise Attack",
-      "name": "King Cold",
-      "trend": "down"
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
      },
      {
       "id": "1030941",
       "cardId": "1030940",
       "title": "Final Battle at the Highest Level",
       "name": "Cell (Perfect Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1034241",
+      "cardId": "1034240",
+      "title": "Solitary Duty",
+      "name": "Piccolo (Red Ribbon Army)",
       "trend": "down"
      },
      {
@@ -645,13 +659,6 @@
       "cardId": "1022380",
       "title": "Divine Warriors with Infinite Power",
       "name": "Super Saiyan God Goku & Super Saiyan God Vegeta",
-      "trend": "down"
-     },
-     {
-      "id": "1034241",
-      "cardId": "1034240",
-      "title": "Solitary Duty",
-      "name": "Piccolo (Red Ribbon Army)",
       "trend": "down"
      },
      {
@@ -681,20 +688,13 @@
       "title": "Super Saiyan God of Successive Mutations",
       "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
       "trend": "down"
-     },
-     {
-      "id": "1027651",
-      "cardId": "1027650",
-      "title": "Genius Scientist's Courage and Resolve",
-      "name": "Android #21 (Normal)",
-      "trend": "same"
      }
     ]
    }
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-10T11:07:56.227Z"
+  "updated": "2026-11-10T14:07:56.300Z"
  },
  "events": {
   "items": [
@@ -5191,7 +5191,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-10T05:07:57.777Z"
  },
- "generated": "2026-11-10T11:07:56.934Z",
+ "generated": "2026-11-10T14:07:56.941Z",
  "summons": {
   "items": [
    {
