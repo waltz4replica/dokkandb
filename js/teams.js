@@ -6,6 +6,21 @@
 import { storageName } from './version.js';
 
 export const SLOTS = 7;
+
+/**
+ * Cards that are items, not fighters: Elder Kai, Grand Kai, the Christmas cards… They have no
+ * super attack or passive, and their "leader skill" text says what they do in Training
+ * ("Guarantees Super Attack to level up by 1 in Training").
+ */
+export function trainingItem(card) {
+  if (!card || card.superAttack?.base || card.passive?.base) return null;
+  const text = (card.leader?.base || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!/Super Attack to level up/i.test(text)) return null;
+  const chance = +(/(\d+)% chance/i.exec(text)?.[1] || 100);
+  const type = /\b(AGL|TEQ|INT|STR|PHY) Type character/i.exec(text)?.[1] || '';
+  return { kind: 'sa-training', chance, type, text };
+}
+export const isFighter = (card) => !trainingItem(card);
 export const SLOT_NAMES = ['Líder', 'Unidad 2', 'Unidad 3', 'Unidad 4', 'Unidad 5', 'Unidad 6', 'Amigo'];
 
 const TYPES = ['AGL', 'TEQ', 'INT', 'STR', 'PHY'];

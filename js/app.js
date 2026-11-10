@@ -48,6 +48,7 @@ function tile(c) {
     <span class="pic">${thumbTag(c)}${rtTag(c)}</span>
     ${isNew ? '<span class="flag">NUEVA</span>' : ''}
     ${c.seza ? '<span class="flag eza">SEZA</span>' : c.eza ? '<span class="flag eza">EZA</span>' : ''}
+    ${T.trainingItem(c) ? '<span class="flag item">ENTRENAR</span>' : ''}
     <div class="nm">${esc(c.name)}</div></a>`;
 }
 
@@ -276,7 +277,24 @@ function filterCards() {
 }
 
 // "Guía rápida" box on a card: summary, effects, teams, events, slot and timing (js/advice.js).
+// Items such as Elder Kai: what they are for, instead of the battle guide.
+function itemGuideHtml(c, item) {
+  const who = item.type ? `una carta de tipo <b>${item.type}</b>` : '<b>cualquier carta</b>';
+  const odds = item.chance >= 100 ? 'sube <b>siempre</b> 1 nivel' : `tiene un <b>${item.chance}%</b> de probabilidad de subir 1 nivel`;
+  return `<section class="box guide">
+    <div class="g-head"><h2>Guía rápida</h2><span class="g-role">Objeto de entrenamiento</span></div>
+    <ul>
+      <li><b>No sirve para combatir</b>: no tiene súper ataque, pasiva ni links. No la pongas en equipos.</li>
+      <li>Úsala en <b>Entrenamiento</b> como compañera de ${who}: su súper ataque ${odds}.</li>
+      <li>Guárdala para las cartas que más uses o que tengan el súper ataque más bajo.${item.type ? ` Con una carta de otro tipo no sube nada.` : ''}</li>
+    </ul>
+    <p class="g-note">El efecto exacto, en inglés, está abajo en «Efecto en el entrenamiento».</p>
+  </section>`;
+}
+
 function guideHtml(c) {
+  const item = T.trainingItem(c);
+  if (item) return itemGuideHtml(c, item);
   const a = ADV.cardAdvice(c, [...store.cards.values()], { tier: tierOf(c) });
   const e = FX.cardEffects(c);
   const tags = FX.EFFECTS.filter(([id]) => e.fx.has(id) && id !== 'orbs').map(([id, label]) => `<a href="#/cards?fx=${id}">${esc(label)}</a>`);
@@ -312,7 +330,7 @@ views.card = (params, page) => {
   const render = (lv) => {
     const pick = (o) => (o ? o[lv] || (lv === 'seza' ? o.eza : '') || o.base : '');
     return `
-      ${skill('Habilidad de líder', '', pick(c.leader))}
+      ${skill(T.trainingItem(c) ? 'Efecto en el entrenamiento' : 'Habilidad de líder', '', pick(c.leader))}
       ${skill('Súper ataque', c.superAttack.name, pick(c.superAttack))}
       ${c.ultraSuperAttack ? skill('Ultra súper ataque', c.ultraSuperAttack.name, pick(c.ultraSuperAttack)) : ''}
       ${c.exSuperAttack ? skill('EX súper ataque', c.exSuperAttack.name, c.exSuperAttack.desc, c.exSuperAttack.condition) : ''}
@@ -431,10 +449,16 @@ views.banner = (params, id) => {
   const b = bannerList().find((x) => x.id === id);
   if (!b) return { title: 'Banner', back: true, html: '<div class="empty">Banner no encontrado.</div>' };
   const [label, cls] = STATUS[bannerStatus(b)];
+  const names = b.groups?.names || {};
+  // Hercule Statues ("Worth 1,000,000 Zeni") are only for selling.
+  const zeniOf = (cid) => /Worth ([\d,.]+) Zeni/i.exec(names[cid] || '')?.[1];
+  const statues = b.cards.filter(zeniOf);
   const cardTile = (cid) => {
     const c = cardById(cid);
     if (c) return tile(c);
-    return `<a class="tile" href="https://dokkanstats.com/en/cards/${+cid + 1}/" target="_blank" rel="noopener"><img class="thumb" loading="lazy" alt="" src="${esc(bannerCardImg(cid))}"><div class="nm muted">DokkanStats ↗</div></a>`;
+    const zeni = zeniOf(cid);
+    const label = zeni ? `Estatua de Mr. Satán · ${zeni.replace(/,/g, '.')} zeni` : names[cid] ? `${names[cid]} ↗` : 'DokkanStats ↗';
+    return `<a class="tile" href="https://dokkanstats.com/en/cards/${+cid + 1}/" target="_blank" rel="noopener"><span class="pic"><img class="thumb" loading="lazy" alt="" src="${esc(bannerCardImg(cid))}"></span>${zeni ? '<span class="flag sell">VENDER</span>' : ''}<div class="nm ${zeni ? '' : 'muted'}">${esc(label)}</div></a>`;
   };
   return {
     title: esc(b.name),
@@ -443,6 +467,8 @@ views.banner = (params, id) => {
       <p><span class="status ${cls}">${label}</span>
         <span class="muted small">${isPermanent(b) ? 'Permanente' : `${fmtDate(b.start)} – ${fmtDate(b.end)}`}</span></p>
       ${b.desc ? `<p class="small">${esc(b.desc)}</p>` : ''}
+      ${statues.length ? '<div class="box small note-item">💰 Las <b>estatuas de Mr. Satán</b> no sirven para combatir ni para entrenar: solo se venden por zeni (lo que indica cada una).</div>' : ''}
+      ${b.cards.some((cid) => T.trainingItem(cardById(cid))) ? '<div class="box small note-item">📈 Las cartas marcadas <b>ENTRENAR</b> (Elder Kai, Grand Kai…) no sirven para combatir: se usan en Entrenamiento para subir el nivel del súper ataque de otras cartas.</div>' : ''}
       ${b.groups ? bannerGroups(b.groups, cardTile)
         : b.cards.length ? `<h2>Cartas destacadas <span class="muted small">${b.cards.length}</span></h2><div class="grid">${b.cards.map(cardTile).join('')}</div>` : ''}
       <p class="small" style="margin-top:20px"><a href="${esc(b.url)}" target="_blank" rel="noopener">Ver en DokkanStats ↗</a></p>`,
@@ -616,7 +642,7 @@ views.team = (params, which) => {
   if (!editing) editing = newTeam();
   editing.order ||= [...T.DEFAULT_ORDER];
 
-  const all = [...store.cards.values()];
+  const all = [...store.cards.values()].filter(T.isFighter);
   const team = teamCards();
   const order = editing.order;
   const units = T.arrange(team, order);
@@ -963,7 +989,7 @@ views['team-pick'] = (params, slotStr) => {
         // Game rule: your own 6 units can't share a name (the friend is the exception).
         const takenNames = new Set(others.slice(0, T.SLOTS - 1).filter(Boolean).map((c) => c.name));
         const isFriend = i === T.SLOTS - 1;
-        list = [...store.cards.values()].filter((c) =>
+        list = [...store.cards.values()].filter((c) => T.isFighter(c) &&
           (!pick.rarity.size || pick.rarity.has(c.rarity)) &&
           (!pick.type.size || pick.type.has(c.type)) &&
           (isFriend || !takenNames.has(c.name)) &&

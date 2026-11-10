@@ -19,4 +19,8 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
   - **Slot:** si su pasiva premia atacar o recoger orbes en un orden concreto, o si da igual.
   - **Cuándo usarla:** turnos fuertes desde que entra, efectos a partir de cierto turno, habilidad activa, transformaciones e intercambios.
   - Su posición en la tier list, si está.
+- **Cartas que no son para combatir:**
+  - **Elder Kai, Grand Kai, las de Navidad y la Princesa Serpiente** llevan la etiqueta verde **ENTRENAR**. Su guía explica que solo sirven en Entrenamiento para subir el súper ataque de otra carta (siempre o con un 30%, y si solo vale para un tipo). Ya no salen como opción en el creador de equipos.
+  - **Estatuas de Mr. Satán:** en los banners salen con la etiqueta **VENDER** y lo que valen en zeni («Estatua de Mr. Satán · 1.000.000 zeni»).
+  - En los banners que tienen estas cartas, un aviso explica para qué sirven.
 - Corregido: la ventana de novedades no mostraba bien las listas en algunos casos.

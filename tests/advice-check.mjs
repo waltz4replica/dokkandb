@@ -2,6 +2,7 @@
 // Run: node tests/advice-check.mjs
 import { readFile } from 'node:fs/promises';
 import { cardAdvice } from '../js/advice.js';
+import { trainingItem, isFighter } from '../js/teams.js';
 
 const { cards } = JSON.parse(await readFile(new URL('../data/cards.json', import.meta.url), 'utf8'));
 const byId = new Map(cards.map((c) => [c.page, c]));
@@ -25,6 +26,14 @@ check('Nappa: exchange listed once', nappa.timing.filter((s) => /intercambia/.te
 const gs2 = advice('1034731');
 check('Great Saiyaman 2: first 5 turns', gs2.timing.some((s) => /primeros 5 turnos/.test(s)));
 check('Great Saiyaman 2: own leader skill', gs2.ownLead >= 150);
+
+// Training items (Elder Kai, Grand Kai…) are not fighters
+const items = cards.filter((c) => trainingItem(c));
+check(`training items found (${items.length})`, items.length >= 10 && items.length < 30);
+check('Elder Kai: always +1', trainingItem(byId.get('1003971') || cards.find((c) => c.id === '1003970'))?.chance === 100);
+check('Elder Kai (Dozing): 30%', trainingItem(cards.find((c) => c.id === '1013400'))?.chance === 30);
+check('Grand Kai [AGL]: AGL only', trainingItem(cards.find((c) => c.id === '1012230'))?.type === 'AGL');
+check('normal cards are fighters', isFighter(byId.get('1004251')) && isFighter(byId.get('1034731')));
 
 // Every card gets a guide with something in each section, quickly
 const t0 = Date.now();
