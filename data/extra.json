@@ -274,17 +274,17 @@
       "trend": "up"
      },
      {
-      "id": "1026251",
-      "cardId": "1026250",
-      "title": "Fighter Entrusted with Allies' Wishes",
-      "name": "Super Saiyan God Goku",
-      "trend": "down"
-     },
-     {
       "id": "1032361",
       "cardId": "1032360",
       "title": "Cooperation for Justice",
       "name": "Ultimate Gohan + Gamma 1",
+      "trend": "down"
+     },
+     {
+      "id": "1026251",
+      "cardId": "1026250",
+      "title": "Fighter Entrusted with Allies' Wishes",
+      "name": "Super Saiyan God Goku",
       "trend": "down"
      },
      {
@@ -371,18 +371,18 @@
       "trend": "up"
      },
      {
-      "id": "1020531",
-      "cardId": "1020530",
-      "title": "Power Taken From Others",
-      "name": "Majin Buu (Piccolo)",
-      "trend": "up"
-     },
-     {
       "id": "1031501",
       "cardId": "1031500",
       "title": "World Shrouded in Evil Power",
       "name": "Omega Shenron",
       "trend": "down"
+     },
+     {
+      "id": "1020531",
+      "cardId": "1020530",
+      "title": "Power Taken From Others",
+      "name": "Majin Buu (Piccolo)",
+      "trend": "up"
      },
      {
       "id": "1031721",
@@ -558,18 +558,18 @@
       "trend": "up"
      },
      {
-      "id": "1013391",
-      "cardId": "1013390",
-      "title": "Blazing Love and Burning Justice",
-      "name": "Great Saiyaman 1 & 2",
-      "trend": "up"
-     },
-     {
       "id": "1009091",
       "cardId": "1009090",
       "title": "Open the Gates of Hell",
       "name": "Cooler (Final Form)",
       "trend": "down"
+     },
+     {
+      "id": "1013391",
+      "cardId": "1013390",
+      "title": "Blazing Love and Burning Justice",
+      "name": "Great Saiyaman 1 & 2",
+      "trend": "up"
      },
      {
       "id": "1032331",
@@ -586,18 +586,18 @@
       "trend": "same"
      },
      {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
+     },
+     {
       "id": "1013771",
       "cardId": "1013770",
       "title": "Global Harmony Through Destruction",
       "name": "Beerus & Whis",
       "trend": "down"
-     },
-     {
-      "id": "1033761",
-      "cardId": "1033760",
-      "title": "Breakthrough Amidst Adversity",
-      "name": "Piccolo",
-      "trend": "up"
      }
     ]
    },
@@ -606,11 +606,18 @@
     "ranks": "79-90",
     "units": [
      {
+      "id": "1033761",
+      "cardId": "1033760",
+      "title": "Breakthrough Amidst Adversity",
+      "name": "Piccolo",
+      "trend": "up"
+     },
+     {
       "id": "1033871",
       "cardId": "1033870",
       "title": "Overhead Surprise Attack",
       "name": "King Cold",
-      "trend": "up"
+      "trend": "same"
      },
      {
       "id": "1034691",
@@ -625,13 +632,6 @@
       "title": "Exploding Latent Power",
       "name": "Piccolo (Power Awakening)",
       "trend": "down"
-     },
-     {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
      },
      {
       "id": "1030941",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-10T14:07:56.300Z"
+  "updated": "2026-11-10T17:07:56.625Z"
  },
  "events": {
   "items": [
@@ -5191,7 +5191,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-10T05:07:57.777Z"
  },
- "generated": "2026-11-10T14:07:56.941Z",
+ "generated": "2026-11-10T17:07:57.301Z",
  "summons": {
   "items": [
    {
