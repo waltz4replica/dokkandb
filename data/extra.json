@@ -565,17 +565,17 @@
       "trend": "down"
      },
      {
-      "id": "1032331",
-      "cardId": "1032330",
-      "title": "Alliance of Justice",
-      "name": "Gamma 2 + Piccolo (Power Awakening)",
-      "trend": "up"
-     },
-     {
       "id": "1013391",
       "cardId": "1013390",
       "title": "Blazing Love and Burning Justice",
       "name": "Great Saiyaman 1 & 2",
+      "trend": "up"
+     },
+     {
+      "id": "1032331",
+      "cardId": "1032330",
+      "title": "Alliance of Justice",
+      "name": "Gamma 2 + Piccolo (Power Awakening)",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-10T08:07:56.402Z"
+  "updated": "2026-11-10T11:07:56.227Z"
  },
  "events": {
   "items": [
@@ -5191,7 +5191,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-10T05:07:57.777Z"
  },
- "generated": "2026-11-10T08:07:57.214Z",
+ "generated": "2026-11-10T11:07:56.934Z",
  "summons": {
   "items": [
    {
