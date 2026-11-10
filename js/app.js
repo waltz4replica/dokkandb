@@ -6,6 +6,7 @@ import { store, loadLocal, sync, onChange, isSyncing, cardById } from './sync.js
 import { cardThumb } from './wiki.js';
 import { APP_VERSION, CHANGELOG_URL, RELEASES_URL, CHANNEL, storageName, STABLE_URL, BETA_URL } from './version.js';
 import * as T from './teams.js';
+import * as FX from './effects.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -119,11 +120,45 @@ function firstRunView() {
 }
 
 // Filters live here so they survive moving between screens.
-const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, sort: 'new', category: '' };
+const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, sort: 'new', category: '',
+  cats: new Set(), fx: new Set(), orb: new Set(), moreOpen: false };
+const advancedCount = () => filters.cats.size + filters.fx.size + filters.orb.size;
+
+// Every category, most common first, for the category picker.
+let categoryList = null;
+function allCategories() {
+  if (categoryList && categoryList.size === store.cards.size) return categoryList.list;
+  const n = new Map();
+  for (const c of store.cards.values()) for (const k of c.categories) n.set(k, (n.get(k) || 0) + 1);
+  categoryList = { size: store.cards.size, list: [...n].sort((a, b) => a[0].localeCompare(b[0])) };
+  return categoryList.list;
+}
+
+function advancedFiltersHtml() {
+  const chip = (group, val, label, extra = '') => `<button class="chip ${extra} ${filters[group].has(val) ? 'on' : ''}" data-g="${group}" data-v="${esc(val)}">${label}</button>`;
+  return `
+    <div class="adv-sec"><b>Categorías</b> <span class="muted small">(la carta debe tenerlas todas)</span>
+      <select id="cat-add"><option value="">+ Añadir categoría…</option>
+        ${allCategories().filter(([k]) => !filters.cats.has(k)).map(([k, n]) => `<option value="${esc(k)}">${esc(k)} (${n})</option>`).join('')}
+      </select>
+      <div class="chips" id="cat-chips">${[...filters.cats].map((k) => `<button class="chip on" data-g="cats" data-v="${esc(k)}">${esc(k)} ✕</button>`).join('')}</div></div>
+    ${FX.EFFECT_GROUPS.map(([title, list]) => `<div class="adv-sec"><b>${title}</b>
+      <div class="chips">${list.map(([id, label]) => chip('fx', id, label)).join('')}</div></div>`).join('')}
+    <div class="adv-sec"><b>Cambia orbes a</b>
+      <div class="chips">${FX.ORB_TYPES.map((t) => chip('orb', t, FX.ORB_LABELS[t] || t, t === 'Rainbow' ? 'orb-rb' : 't-' + t.toLowerCase())).join('')}</div></div>
+    <p class="muted small">Los efectos se leen del texto de la pasiva, los súper ataques y la habilidad activa (al nivel más alto: SEZA, EZA o base, y sus transformaciones).</p>
+    ${advancedCount() ? '<div class="btns"><button class="btn" id="adv-clear">Quitar estos filtros</button></div>' : ''}`;
+}
 
 views.cards = (params) => {
   if (!store.cards.size) return firstRunView();
   if (params.get('category') != null) { filters.category = params.get('category'); filters.q = ''; }
+  // From a card's "Qué hace" tags: show every card with that effect.
+  if (params.get('fx') || params.get('orb')) {
+    filters.fx = new Set(params.get('fx') ? [params.get('fx')] : []);
+    filters.orb = new Set(params.get('orb') ? [params.get('orb')] : []);
+    filters.cats.clear(); filters.q = ''; filters.moreOpen = true;
+  }
   const chip = (group, val, label, extra = '') => `<button class="chip ${extra} ${filters[group].has(val) ? 'on' : ''}" data-g="${group}" data-v="${val}">${label}</button>`;
   return {
     title: 'Cartas',
@@ -136,6 +171,10 @@ views.cards = (params) => {
         <button class="chip ${filters.eza ? 'on' : ''}" data-g="eza">EZA</button>
       </div>
       ${filters.category ? `<div class="chips"><button class="chip on" data-g="category">Categoría: ${esc(filters.category)} ✕</button></div>` : ''}
+      <details class="adv" id="adv" ${filters.moreOpen ? 'open' : ''}>
+        <summary>Más filtros: categorías y habilidades <span class="adv-n" id="adv-n">${advancedCount() || ''}</span></summary>
+        <div id="adv-body">${advancedFiltersHtml()}</div>
+      </details>
       <div class="toolbar"><span id="count"></span>
         <select id="sort">
           <option value="new">Más recientes</option>
@@ -173,10 +212,25 @@ views.cards = (params) => {
       let t;
       $('#q', el).addEventListener('input', (e) => { clearTimeout(t); t = setTimeout(() => { filters.q = e.target.value; refresh(); }, 150); });
       $('#sort', el).addEventListener('change', (e) => { filters.sort = e.target.value; refresh(); });
+      const redrawAdv = () => { $('#adv-body', el).innerHTML = advancedFiltersHtml(); $('#adv-n', el).textContent = advancedCount() || ''; };
+      $('#adv', el).addEventListener('toggle', (e) => { filters.moreOpen = e.target.open; });
+      el.addEventListener('change', (e) => {
+        if (e.target.id !== 'cat-add' || !e.target.value) return;
+        filters.cats.add(e.target.value);
+        redrawAdv();
+        refresh();
+      });
       el.addEventListener('click', (e) => {
+        if (e.target.closest('#adv-clear')) { filters.cats.clear(); filters.fx.clear(); filters.orb.clear(); redrawAdv(); refresh(); return; }
         const b = e.target.closest('.chip');
         if (!b) return;
         const g = b.dataset.g;
+        if (g === 'cats' || g === 'fx' || g === 'orb') {
+          filters[g].has(b.dataset.v) ? filters[g].delete(b.dataset.v) : filters[g].add(b.dataset.v);
+          redrawAdv();
+          refresh();
+          return;
+        }
         if (g === 'eza') filters.eza = !filters.eza;
         else if (g === 'category') { filters.category = ''; b.parentElement.remove(); }
         else filters[g].has(b.dataset.v) ? filters[g].delete(b.dataset.v) : filters[g].add(b.dataset.v);
@@ -191,6 +245,12 @@ views.cards = (params) => {
   };
 };
 
+// All chosen effects must be there; for orbs, any of the chosen types.
+function matchesEffects(c) {
+  const e = FX.cardEffects(c);
+  return [...filters.fx].every((id) => e.fx.has(id)) && (!filters.orb.size || [...filters.orb].some((t) => e.orbs.has(t)));
+}
+
 function filterCards() {
   const words = filters.q.toLowerCase().split(/\s+/).filter(Boolean);
   const out = [...store.cards.values()].filter((c) =>
@@ -199,7 +259,9 @@ function filterCards() {
     (!filters.cls.size || filters.cls.has(c.cls)) &&
     (!filters.eza || c.eza || c.seza) &&
     (!filters.category || c.categories.includes(filters.category) || c.links.includes(filters.category)) &&
-    words.every((w) => c.search.includes(w)));
+    [...filters.cats].every((k) => c.categories.includes(k)) &&
+    words.every((w) => c.search.includes(w)) &&
+    (!filters.fx.size && !filters.orb.size || matchesEffects(c)));
   const stat = (k) => (c) => c.stats[k][1] || c.stats[k][0] || 0;
   const sorters = {
     new: byRelease,
@@ -256,6 +318,12 @@ views.card = (params, page) => {
         ${c.cost ? `<span class="badge">Coste ${c.cost}</span>` : ''}${c.seza ? '<span class="badge">SEZA</span>' : c.eza ? '<span class="badge">EZA</span>' : ''}</div></div>
       </div>
       ${levels.length > 1 ? `<div class="seg" id="lv">${levels.map(([k, l], i) => `<button data-lv="${k}" class="${i === levels.length - 1 ? 'on' : ''}">${l}</button>`).join('')}</div>` : ''}
+      ${(() => {
+        const e = FX.cardEffects(c);
+        const tags = FX.EFFECTS.filter(([id]) => e.fx.has(id) && id !== 'orbs').map(([id, label]) => `<a href="#/cards?fx=${id}">${esc(label)}</a>`);
+        for (const o of e.orbs) tags.push(`<a href="#/cards?orb=${enc(o)}">Orbes → ${esc(FX.ORB_LABELS[o] || o)}</a>`);
+        return tags.length ? `<h2>Qué hace</h2><div class="tags fx-tags">${tags.join('')}</div>` : '';
+      })()}
       <div id="skills" style="margin-top:10px">${render(levels[levels.length - 1][0])}</div>
       <div class="box"><table class="stats"><tr><th></th><th>Base</th><th>Máx.</th></tr>
         <tr><td>HP</td><td>${c.stats.hp[0] ?? '–'}</td><td>${c.stats.hp[1] ?? '–'}</td></tr>

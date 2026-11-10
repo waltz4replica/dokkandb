@@ -108,6 +108,7 @@ function Invoke-Checks {
   Write-Host '== Comprobaciones'
   Test-Versions
   Run node tests/teams-check.mjs | Out-Null
+  Run node tests/effects-check.mjs | Out-Null
   $probe = Join-Path $env:TEMP 'dokkan-probe'
   if (Test-Path $probe) {
     Run node tests/scrapers-check.mjs $probe | Out-Null

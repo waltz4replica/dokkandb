@@ -30,7 +30,7 @@ La web la monta `.github/workflows/deploy.yml` cada vez que cambia `main` o `bet
 
 `release.ps1` hace las automáticas y se para si algo falla:
 1. Las tres copias del número de versión coinciden (`js/version.js`, `sw.js`, `package.json`).
-2. Pruebas: `tests/teams-check.mjs` (con los datos reales) y, si existe la carpeta de páginas guardadas `%TEMP%\dokkan-probe`, `tests/scrapers-check.mjs` y `tests/fyi-check.mjs`.
+2. Pruebas: `tests/teams-check.mjs` y `tests/effects-check.mjs` (con los datos reales) y, si existe la carpeta de páginas guardadas `%TEMP%\dokkan-probe`, `tests/scrapers-check.mjs` y `tests/fyi-check.mjs`.
 
 A mano, antes de lanzar el script:
 3. Abrir la app en el PC (`npm start`) con tamaño de móvil y revisar Inicio, Cartas, una ficha, Banners, un banner, Equipos y Tier list.
