@@ -42,3 +42,13 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
   - Para las que suben **por cada ataque, súper ataque u orbe**: cuánto ganan cada vez, el máximo y cuántas veces hacen falta para llegar.
   - Los extras de un solo ataque («al atacar con 12 o más de Ki») se suman a la tabla para ver el total.
   - El resumen de arriba ya dice desde dónde empieza y hasta dónde llega.
+- **Guía rápida revisada y reescrita** para que se entienda mejor (frases más claras: «Lo que mejor hace», «Su pasiva le da siempre…», «Cuándo usarla»…). Además se han corregido estos fallos:
+  - Lo que hace una **transformación** ya no se presenta como si la carta lo tuviera siempre: ahora pone «Se transforma en X, que…».
+  - Las mejoras que da **a sus aliados** ya no se cuentan como si se hiciera más fuerte ella misma.
+  - «Su pasiva le da siempre Ki +X» solo cuenta lo que da de verdad siempre («Basic effect»), no el Ki que gana atacando.
+  - Las condiciones con **«o»** (por ejemplo «con 60% de vida o menos, o desde el turno 3») ya no se leen como si hiciera falta todo a la vez.
+  - Las habilidades activas dicen **qué aliados, categorías o enemigos** hacen falta, y también «tras atacar N veces».
+  - Detecta lo que **pierde** al recibir ataques o hacer súper ataques, y los valores que gana con su **animación de entrada**.
+  - Efectos «durante 4 turno(s)» que antes no se reconocían.
+  - Cartas que solo daban un pequeño extra a aliados en ciertos casos ya no salen como «Apoyo».
+  - Las cartas muy simples (sin efectos especiales) ya tienen resumen.

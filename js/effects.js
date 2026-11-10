@@ -20,13 +20,14 @@ const statRe = (stat) => `(?:ATK (?:&|and) DEF|DEF (?:&|and) ATK|${stat})`;
  */
 export function passiveSections(c) {
   const out = [];
-  for (const html of [c.passive, ...(c.forms || []).map((f) => f.passive)].map(top)) {
+  const sources = [{ form: null, html: top(c.passive) }, ...(c.forms || []).map((f) => ({ form: f.name || 'otra forma', html: top(f.passive) }))];
+  for (const { form, html } of sources) {
     if (!html) continue;
     for (const sec of html.split(/<hr\s*\/?>/i)) {
       const head = plain(/<b>([\s\S]*?)<\/b>/i.exec(sec)?.[1] || '');
       const body = sec.replace(/<b>[\s\S]*?<\/b>/i, '');
       const lines = body.split(/<br\s*\/?>/i).map(plain).map((l) => l.replace(/^- /, '')).filter(Boolean);
-      if (lines.length) out.push({ head, lines });
+      if (lines.length) out.push({ head, lines, form });
     }
   }
   return out;
@@ -35,7 +36,8 @@ export function passiveSections(c) {
 // A line about the card's own stats (not allies' or enemies').
 // ("chance of evading enemy's attack" is still the card's own.)
 const own = (line) => !/(?:enem(?:y|ies)|all(?:y|ies))'?s? (?:ATK|DEF|Ki)\b|\ball (?:enemies|allies)\b/i.test(line);
-const statLine = (stat) => new RegExp(`(?:^|permanente |\\b)${statRe(stat)} \\d+%`, 'i');
+// "ATK 50%", "ATK & DEF 50%", "ATK, DEF & chance of evading enemy's attack 59%" (case-sensitive: "attack" is not ATK).
+const statLine = (stat) => new RegExp(`\\b${stat}\\b[^▲▼%]*?\\d+%`);
 // Sections that repeat during the battle ("For every attack performed", "At the start of each turn").
 const REPEATS = /for every|each turn|whenever|every time|each time|(?:after|when) (?:evading|receiving|delivering|guarding|performing) an? (?:attack|super|final)/i;
 
