@@ -157,11 +157,11 @@
       "trend": "same"
      },
      {
-      "id": "1031391",
-      "cardId": "1031390",
-      "title": "Furious Final Battle in the Future",
-      "name": "Super Saiyan God SS Goku + Super Saiyan God SS Vegeta",
-      "trend": "down"
+      "id": "1032121",
+      "cardId": "1032120",
+      "title": "Bonds Leading to the Future",
+      "name": "Super Saiyan Gohan (Future)/ Super Saiyan Trunks (Youth) (Future)",
+      "trend": "same"
      }
     ]
    },
@@ -170,10 +170,10 @@
     "ranks": "21-30",
     "units": [
      {
-      "id": "1032121",
-      "cardId": "1032120",
-      "title": "Bonds Leading to the Future",
-      "name": "Super Saiyan Gohan (Future)/ Super Saiyan Trunks (Youth) (Future)",
+      "id": "1031391",
+      "cardId": "1031390",
+      "title": "Furious Final Battle in the Future",
+      "name": "Super Saiyan God SS Goku + Super Saiyan God SS Vegeta",
       "trend": "down"
      },
      {
@@ -191,18 +191,18 @@
       "trend": "down"
      },
      {
-      "id": "1033821",
-      "cardId": "1033820",
-      "title": "Epic Battle of Divine Scale",
-      "name": "Super Saiyan God Goku",
-      "trend": "down"
-     },
-     {
       "id": "1026431",
       "cardId": "1026430",
       "title": "Destructive Scattershot Strike",
       "name": "Buu (Super)",
       "trend": "up"
+     },
+     {
+      "id": "1033821",
+      "cardId": "1033820",
+      "title": "Epic Battle of Divine Scale",
+      "name": "Super Saiyan God Goku",
+      "trend": "down"
      },
      {
       "id": "1025731",
@@ -219,6 +219,13 @@
       "trend": "down"
      },
      {
+      "id": "1026161",
+      "cardId": "1026160",
+      "title": "A Soul Pumped Up in Battle",
+      "name": "Goku",
+      "trend": "same"
+     },
+     {
       "id": "1031471",
       "cardId": "1031470",
       "title": "Fighter of Ultimate Radiance",
@@ -226,18 +233,11 @@
       "trend": "down"
      },
      {
-      "id": "1026161",
-      "cardId": "1026160",
-      "title": "A Soul Pumped Up in Battle",
-      "name": "Goku",
-      "trend": "down"
-     },
-     {
-      "id": "1024831",
-      "cardId": "1024830",
-      "title": "Planet-Crushing Blow",
-      "name": "Cooler (Final Form)",
-      "trend": "down"
+      "id": "1034221",
+      "cardId": "1034220",
+      "title": "Overwhelming Force of Destruction",
+      "name": "Beerus",
+      "trend": "same"
      }
     ]
    },
@@ -246,10 +246,10 @@
     "ranks": "31-42",
     "units": [
      {
-      "id": "1034221",
-      "cardId": "1034220",
-      "title": "Overwhelming Force of Destruction",
-      "name": "Beerus",
+      "id": "1024831",
+      "cardId": "1024830",
+      "title": "Planet-Crushing Blow",
+      "name": "Cooler (Final Form)",
       "trend": "down"
      },
      {
@@ -260,17 +260,17 @@
       "trend": "down"
      },
      {
-      "id": "1034091",
-      "cardId": "1034090",
-      "title": "Opportunity to Rebuild",
-      "name": "Super Saiyan Trunks (Future)",
-      "trend": "up"
-     },
-     {
       "id": "1027621",
       "cardId": "1027620",
       "title": "Exploding Fist",
       "name": "Super Saiyan 3 Goku",
+      "trend": "up"
+     },
+     {
+      "id": "1034091",
+      "cardId": "1034090",
+      "title": "Opportunity to Rebuild",
+      "name": "Super Saiyan Trunks (Future)",
       "trend": "up"
      },
      {
@@ -281,13 +281,6 @@
       "trend": "down"
      },
      {
-      "id": "1026251",
-      "cardId": "1026250",
-      "title": "Fighter Entrusted with Allies' Wishes",
-      "name": "Super Saiyan God Goku",
-      "trend": "down"
-     },
-     {
       "id": "1013541",
       "cardId": "1013540",
       "title": "Transdimensional Instinct",
@@ -295,11 +288,18 @@
       "trend": "down"
      },
      {
-      "id": "1034431",
-      "cardId": "1034430",
-      "title": "Ambition for the Future of the Demon Realm",
-      "name": "Dr. Arinsu",
+      "id": "1026251",
+      "cardId": "1026250",
+      "title": "Fighter Entrusted with Allies' Wishes",
+      "name": "Super Saiyan God Goku",
       "trend": "down"
+     },
+     {
+      "id": "1028061",
+      "cardId": "1028060",
+      "title": "All-Out Ultimate Battle",
+      "name": "Super Saiyan Goku & Super Saiyan Vegeta & Super Saiyan Trunks (Teen)",
+      "trend": "same"
      },
      {
       "id": "1024351",
@@ -309,11 +309,18 @@
       "trend": "same"
      },
      {
-      "id": "1028061",
-      "cardId": "1028060",
-      "title": "All-Out Ultimate Battle",
-      "name": "Super Saiyan Goku & Super Saiyan Vegeta & Super Saiyan Trunks (Teen)",
+      "id": "1034431",
+      "cardId": "1034430",
+      "title": "Ambition for the Future of the Demon Realm",
+      "name": "Dr. Arinsu",
       "trend": "down"
+     },
+     {
+      "id": "1025771",
+      "cardId": "1025770",
+      "title": "Miracle-Making Final Showdown",
+      "name": "Goku (GT) & Super Saiyan 4 Vegeta",
+      "trend": "same"
      },
      {
       "id": "1010901",
@@ -321,13 +328,6 @@
       "title": "Extraordinary Friendship",
       "name": "Hercule",
       "trend": "up"
-     },
-     {
-      "id": "1025771",
-      "cardId": "1025770",
-      "title": "Miracle-Making Final Showdown",
-      "name": "Goku (GT) & Super Saiyan 4 Vegeta",
-      "trend": "down"
      }
     ]
    },
@@ -335,6 +335,13 @@
     "tier": "A-",
     "ranks": "43-54",
     "units": [
+     {
+      "id": "1032261",
+      "cardId": "1032260",
+      "title": "Spirited Showdown",
+      "name": "Super Saiyan 4 Goku (Mini) (DAIMA)",
+      "trend": "up"
+     },
      {
       "id": "1024891",
       "cardId": "1024890",
@@ -354,14 +361,7 @@
       "cardId": "1009380",
       "title": "Reign of Terror",
       "name": "Frieza (1st Form)",
-      "trend": "same"
-     },
-     {
-      "id": "1032261",
-      "cardId": "1032260",
-      "title": "Spirited Showdown",
-      "name": "Super Saiyan 4 Goku (Mini) (DAIMA)",
-      "trend": "same"
+      "trend": "down"
      },
      {
       "id": "1034171",
@@ -369,6 +369,13 @@
       "title": "Unleashed Ferocity",
       "name": "Majin Buu (South Supreme Kai)",
       "trend": "up"
+     },
+     {
+      "id": "1031501",
+      "cardId": "1031500",
+      "title": "World Shrouded in Evil Power",
+      "name": "Omega Shenron",
+      "trend": "down"
      },
      {
       "id": "1020531",
@@ -385,11 +392,11 @@
       "trend": "down"
      },
      {
-      "id": "1031501",
-      "cardId": "1031500",
-      "title": "World Shrouded in Evil Power",
-      "name": "Omega Shenron",
-      "trend": "down"
+      "id": "1028161",
+      "cardId": "1028160",
+      "title": "Terrifying Phantom Majin",
+      "name": "Hirudegarn",
+      "trend": "up"
      },
      {
       "id": "1034701",
@@ -403,14 +410,7 @@
       "cardId": "1034000",
       "title": "Devastating Strike to Hell",
       "name": "Frieza (2nd Form)",
-      "trend": "up"
-     },
-     {
-      "id": "1028161",
-      "cardId": "1028160",
-      "title": "Terrifying Phantom Majin",
-      "name": "Hirudegarn",
-      "trend": "down"
+      "trend": "same"
      },
      {
       "id": "1032581",
@@ -433,6 +433,13 @@
       "trend": "up"
      },
      {
+      "id": "1025561",
+      "cardId": "1025560",
+      "title": "Awakened Super Hero",
+      "name": "Ultimate Gohan",
+      "trend": "down"
+     },
+     {
       "id": "1034861",
       "cardId": "1034860",
       "title": "Valor Etched into History",
@@ -440,10 +447,10 @@
       "trend": "up"
      },
      {
-      "id": "1025561",
-      "cardId": "1025560",
-      "title": "Awakened Super Hero",
-      "name": "Ultimate Gohan",
+      "id": "1019361",
+      "cardId": "1019360",
+      "title": "Best Measure",
+      "name": "Whis",
       "trend": "down"
      },
      {
@@ -454,10 +461,17 @@
       "trend": "down"
      },
      {
-      "id": "1019361",
-      "cardId": "1019360",
-      "title": "Best Measure",
-      "name": "Whis",
+      "id": "1030341",
+      "cardId": "1030340",
+      "title": "Ultimate Saiyan Power Roar",
+      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
+      "trend": "up"
+     },
+     {
+      "id": "1030431",
+      "cardId": "1030430",
+      "title": "Incomparable Radiance",
+      "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
       "trend": "down"
      },
      {
@@ -465,14 +479,7 @@
       "cardId": "1031590",
       "title": "Spirited New Generation",
       "name": "Super Saiyan Gohan (Teen) + Super Saiyan Trunks (Kid) & Super Saiyan Goten (Kid)",
-      "trend": "same"
-     },
-     {
-      "id": "1033551",
-      "cardId": "1033550",
-      "title": "Inconceivable Saiyan Power",
-      "name": "Vegeta + Nappa",
-      "trend": "same"
+      "trend": "down"
      },
      {
       "id": "1014371",
@@ -482,17 +489,10 @@
       "trend": "up"
      },
      {
-      "id": "1030341",
-      "cardId": "1030340",
-      "title": "Ultimate Saiyan Power Roar",
-      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
-      "trend": "same"
-     },
-     {
-      "id": "1030431",
-      "cardId": "1030430",
-      "title": "Incomparable Radiance",
-      "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
+      "id": "1033551",
+      "cardId": "1033550",
+      "title": "Inconceivable Saiyan Power",
+      "name": "Vegeta + Nappa",
       "trend": "down"
      },
      {
@@ -516,6 +516,13 @@
     "ranks": "67-78",
     "units": [
      {
+      "id": "1022421",
+      "cardId": "1022420",
+      "title": "Saiyan Warriors with Ultimate Power",
+      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
+      "trend": "down"
+     },
+     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
@@ -527,14 +534,7 @@
       "cardId": "1022700",
       "title": "Wicked Life Form's Superiority Complex",
       "name": "Cell (2nd Form)",
-      "trend": "up"
-     },
-     {
-      "id": "1022421",
-      "cardId": "1022420",
-      "title": "Saiyan Warriors with Ultimate Power",
-      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
-      "trend": "down"
+      "trend": "same"
      },
      {
       "id": "1024991",
@@ -544,10 +544,10 @@
       "trend": "down"
      },
      {
-      "id": "1009091",
-      "cardId": "1009090",
-      "title": "Open the Gates of Hell",
-      "name": "Cooler (Final Form)",
+      "id": "1030481",
+      "cardId": "1030480",
+      "title": "Unprecedented Miracle",
+      "name": "Super Saiyan Vegeta (Angel) + Super Saiyan Goku (Angel)",
       "trend": "down"
      },
      {
@@ -558,11 +558,18 @@
       "trend": "up"
      },
      {
-      "id": "1030481",
-      "cardId": "1030480",
-      "title": "Unprecedented Miracle",
-      "name": "Super Saiyan Vegeta (Angel) + Super Saiyan Goku (Angel)",
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
       "trend": "down"
+     },
+     {
+      "id": "1032331",
+      "cardId": "1032330",
+      "title": "Alliance of Justice",
+      "name": "Gamma 2 + Piccolo (Power Awakening)",
+      "trend": "up"
      },
      {
       "id": "1013391",
@@ -572,25 +579,11 @@
       "trend": "up"
      },
      {
-      "id": "1025591",
-      "cardId": "1025590",
-      "title": "Exploding Latent Power",
-      "name": "Piccolo (Power Awakening)",
+      "id": "1013771",
+      "cardId": "1013770",
+      "title": "Global Harmony Through Destruction",
+      "name": "Beerus & Whis",
       "trend": "down"
-     },
-     {
-      "id": "1032711",
-      "cardId": "1032710",
-      "title": "Luud Cult's God of Destruction",
-      "name": "Luud",
-      "trend": "same"
-     },
-     {
-      "id": "1034691",
-      "cardId": "1034690",
-      "title": "Chaos-Bringing Secret Technique",
-      "name": "Ginyu (Goku)",
-      "trend": "up"
      },
      {
       "id": "1033761",
@@ -598,6 +591,13 @@
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
       "trend": "up"
+     },
+     {
+      "id": "1025591",
+      "cardId": "1025590",
+      "title": "Exploding Latent Power",
+      "name": "Piccolo (Power Awakening)",
+      "trend": "down"
      }
     ]
    },
@@ -606,10 +606,17 @@
     "ranks": "79-90",
     "units": [
      {
-      "id": "1013771",
-      "cardId": "1013770",
-      "title": "Global Harmony Through Destruction",
-      "name": "Beerus & Whis",
+      "id": "1034691",
+      "cardId": "1034690",
+      "title": "Chaos-Bringing Secret Technique",
+      "name": "Ginyu (Goku)",
+      "trend": "down"
+     },
+     {
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
       "trend": "down"
      },
      {
@@ -617,55 +624,6 @@
       "cardId": "1033870",
       "title": "Overhead Surprise Attack",
       "name": "King Cold",
-      "trend": "same"
-     },
-     {
-      "id": "1032331",
-      "cardId": "1032330",
-      "title": "Alliance of Justice",
-      "name": "Gamma 2 + Piccolo (Power Awakening)",
-      "trend": "down"
-     },
-     {
-      "id": "1033591",
-      "cardId": "1033590",
-      "title": "Super Saiyan God of Successive Mutations",
-      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
-      "trend": "down"
-     },
-     {
-      "id": "1022381",
-      "cardId": "1022380",
-      "title": "Divine Warriors with Infinite Power",
-      "name": "Super Saiyan God Goku & Super Saiyan God Vegeta",
-      "trend": "down"
-     },
-     {
-      "id": "1024141",
-      "cardId": "1024140",
-      "title": "Desperate Onslaught",
-      "name": "Goku & Piccolo/Piccolo",
-      "trend": "up"
-     },
-     {
-      "id": "1026751",
-      "cardId": "1026750",
-      "title": "Demonic Fighter Wielding Forbidden Power",
-      "name": "Turles",
-      "trend": "up"
-     },
-     {
-      "id": "1034241",
-      "cardId": "1034240",
-      "title": "Solitary Duty",
-      "name": "Piccolo (Red Ribbon Army)",
-      "trend": "down"
-     },
-     {
-      "id": "1030941",
-      "cardId": "1030940",
-      "title": "Final Battle at the Highest Level",
-      "name": "Cell (Perfect Form)",
       "trend": "down"
      },
      {
@@ -676,11 +634,18 @@
       "trend": "down"
      },
      {
-      "id": "1027651",
-      "cardId": "1027650",
-      "title": "Genius Scientist's Courage and Resolve",
-      "name": "Android #21 (Normal)",
-      "trend": "up"
+      "id": "1030941",
+      "cardId": "1030940",
+      "title": "Final Battle at the Highest Level",
+      "name": "Cell (Perfect Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1022381",
+      "cardId": "1022380",
+      "title": "Divine Warriors with Infinite Power",
+      "name": "Super Saiyan God Goku & Super Saiyan God Vegeta",
+      "trend": "down"
      },
      {
       "id": "1009591",
@@ -688,13 +653,48 @@
       "title": "Passion of the Warrior Race",
       "name": "Super Saiyan God SS Vegeta",
       "trend": "down"
+     },
+     {
+      "id": "1024141",
+      "cardId": "1024140",
+      "title": "Desperate Onslaught",
+      "name": "Goku & Piccolo/Piccolo",
+      "trend": "down"
+     },
+     {
+      "id": "1033591",
+      "cardId": "1033590",
+      "title": "Super Saiyan God of Successive Mutations",
+      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
+      "trend": "down"
+     },
+     {
+      "id": "1026751",
+      "cardId": "1026750",
+      "title": "Demonic Fighter Wielding Forbidden Power",
+      "name": "Turles",
+      "trend": "down"
+     },
+     {
+      "id": "1034241",
+      "cardId": "1034240",
+      "title": "Solitary Duty",
+      "name": "Piccolo (Red Ribbon Army)",
+      "trend": "down"
+     },
+     {
+      "id": "1027651",
+      "cardId": "1027650",
+      "title": "Genius Scientist's Courage and Resolve",
+      "name": "Android #21 (Normal)",
+      "trend": "same"
      }
     ]
    }
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-09T20:07:56.180Z"
+  "updated": "2026-11-10T02:13:34.334Z"
  },
  "events": {
   "items": [
@@ -3008,7 +3008,7 @@
     "active": true,
     "url": "https://dokkanstats.com/en/events/challenge/1723",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1723_B.png",
-    "stones": 48
+    "stones": 52
    },
    {
     "title": "Special Battle 2026",
@@ -3080,7 +3080,7 @@
     "active": true,
     "url": "https://dokkanstats.com/en/events/challenge/767",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_767.png",
-    "stones": 133
+    "stones": 140
    },
    {
     "title": "Supreme Magnificent Battle: RE [The Tree of Might]",
@@ -3104,7 +3104,7 @@
     "active": true,
     "url": "https://dokkanstats.com/en/events/challenge/1751",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1751.png",
-    "stones": 143
+    "stones": 154
    },
    {
     "title": "11th Anniversary! Special Battle Part 2",
@@ -3144,7 +3144,7 @@
     "active": true,
     "url": "https://dokkanstats.com/en/events/challenge/720",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_720_1.png",
-    "stones": 701
+    "stones": 709
    },
    {
     "title": "Super Battle Road",
@@ -3371,7 +3371,7 @@
     "stones": 170
    },
    {
-    "title": "Extreme Z-Battle 215",
+    "title": "Extreme Z-Battle 215 - Bulma (Youth)",
     "group": "Z-Battles",
     "active": true,
     "url": "https://dokkanstats.com/en/events/z-battles/215",
@@ -5045,7 +5045,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/events/",
-  "updated": "2026-11-09T13:59:14.122Z"
+  "updated": "2026-11-10T02:13:34.557Z"
  },
  "news": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-09T14:01:51.975Z"
  },
- "generated": "2026-11-09T22:47:13.354Z",
+ "generated": "2026-11-10T02:14:16.366Z",
  "summons": {
   "items": [
    {
@@ -5205,7 +5205,18 @@
     "cards": [
      "1003970"
     ],
-    "url": "https://dokkanstats.com/en/summons/12602/"
+    "url": "https://dokkanstats.com/en/summons/12602/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1003970"
+     ],
+     "secondary": [],
+     "unfeatured": 0,
+     "names": {
+      "1003970": "Mysterious Ritual"
+     }
+    }
    },
    {
     "id": "12600",
@@ -5264,7 +5275,29 @@
       "1001430",
       "1000160"
      ],
-     "unfeatured": 546
+     "unfeatured": 546,
+     "names": {
+      "1000040": "Genius of War",
+      "1000160": "Peerless Saiyan",
+      "1000240": "Power Unleashed",
+      "1000260": "Unrivaled Assassin",
+      "1000820": "Hero Chosen by Earth",
+      "1000860": "Extreme Elite's Pride",
+      "1001010": "The Warrior Awakens",
+      "1001430": "Cocky Counter",
+      "1002140": "Tireless Training",
+      "1003870": "Never-Ending Battle",
+      "1024050": "Cunning Threat",
+      "1026740": "Saiyan with Enormous Ambitions",
+      "1029560": "Confidence in Power-Up",
+      "1031070": "The Beginning of the Story",
+      "1031290": "Terrifying Split-Second Death Notice",
+      "1032060": "Android Faithful to His Mission",
+      "1032250": "Awakening of New Power",
+      "1033830": "Overwhelming Encirclement",
+      "1034720": "Glorious Heroic Acts",
+      "1034940": "Heroic Performance"
+     }
     }
    },
    {
@@ -5324,7 +5357,29 @@
       "1001430",
       "1000160"
      ],
-     "unfeatured": 546
+     "unfeatured": 546,
+     "names": {
+      "1000040": "Genius of War",
+      "1000160": "Peerless Saiyan",
+      "1000240": "Power Unleashed",
+      "1000260": "Unrivaled Assassin",
+      "1000820": "Hero Chosen by Earth",
+      "1000860": "Extreme Elite's Pride",
+      "1001010": "The Warrior Awakens",
+      "1001430": "Cocky Counter",
+      "1002140": "Tireless Training",
+      "1003870": "Never-Ending Battle",
+      "1024050": "Cunning Threat",
+      "1026740": "Saiyan with Enormous Ambitions",
+      "1029560": "Confidence in Power-Up",
+      "1031070": "The Beginning of the Story",
+      "1031290": "Terrifying Split-Second Death Notice",
+      "1032060": "Android Faithful to His Mission",
+      "1032250": "Awakening of New Power",
+      "1033830": "Overwhelming Encirclement",
+      "1034720": "Glorious Heroic Acts",
+      "1034940": "Heroic Performance"
+     }
     }
    },
    {
@@ -5384,7 +5439,29 @@
       "1001430",
       "1000160"
      ],
-     "unfeatured": 546
+     "unfeatured": 546,
+     "names": {
+      "1000040": "Genius of War",
+      "1000160": "Peerless Saiyan",
+      "1000240": "Power Unleashed",
+      "1000260": "Unrivaled Assassin",
+      "1000820": "Hero Chosen by Earth",
+      "1000860": "Extreme Elite's Pride",
+      "1001010": "The Warrior Awakens",
+      "1001430": "Cocky Counter",
+      "1002140": "Tireless Training",
+      "1003870": "Never-Ending Battle",
+      "1024050": "Cunning Threat",
+      "1026740": "Saiyan with Enormous Ambitions",
+      "1029560": "Confidence in Power-Up",
+      "1031070": "The Beginning of the Story",
+      "1031290": "Terrifying Split-Second Death Notice",
+      "1032060": "Android Faithful to His Mission",
+      "1032250": "Awakening of New Power",
+      "1033830": "Overwhelming Encirclement",
+      "1034720": "Glorious Heroic Acts",
+      "1034940": "Heroic Performance"
+     }
     }
    },
    {
@@ -5422,7 +5499,19 @@
       "1031990"
      ],
      "secondary": [],
-     "unfeatured": 0
+     "unfeatured": 0,
+     "names": {
+      "1031410": "Awakening Beyond Mortal Intellect",
+      "1031450": "Super Saiyan 4 Fusion",
+      "1031660": "Reign of the New Supreme Demon King",
+      "1031900": "Ice Sheet-Melting Power",
+      "1031990": "Mind-Controlled Brothers",
+      "1032100": "Fighter with a Blazing Heart",
+      "1032560": "All-Or-Nothing Grand Transformation",
+      "1032900": "Signs of Further Awakening",
+      "1033740": "Confrontation with an Unprecedented Threat",
+      "1033920": "Discovery of the Perfect Soil"
+     }
     }
    },
    {
@@ -5464,7 +5553,21 @@
       "1031950"
      ],
      "secondary": [],
-     "unfeatured": 0
+     "unfeatured": 0,
+     "names": {
+      "1031700": "Forced into the Fray",
+      "1031950": "Fusion of Tuffle and Saiyan",
+      "1032060": "Android Faithful to His Mission",
+      "1032250": "Awakening of New Power",
+      "1032320": "Evil-Neutralizing Android",
+      "1032350": "Tide-Turning Full Power",
+      "1032530": "Decisive Grand Transformation",
+      "1032860": "In Pursuit of Further Evolution",
+      "1033000": "The Formidable Obstacle",
+      "1033040": "Power Corrupted by Evil",
+      "1033540": "Disciplinary Blow",
+      "1033570": "Abused Divine Power"
+     }
     }
    },
    {
@@ -5496,7 +5599,16 @@
       "1003670"
      ],
      "secondary": [],
-     "unfeatured": 59
+     "unfeatured": 59,
+     "names": {
+      "1003600": "Ever-Evolving Legend",
+      "1003670": "The Weight of Hope",
+      "1007860": "Fearless Departure",
+      "1009530": "Indomitable Battle Lust",
+      "1010150": "Dark Desires Awoken",
+      "1014480": "Trusted by Friends",
+      "1019800": "Warrior Beyond Limits and Expectations"
+     }
     }
    },
    {
@@ -5528,7 +5640,16 @@
       "1003670"
      ],
      "secondary": [],
-     "unfeatured": 71
+     "unfeatured": 71,
+     "names": {
+      "1003600": "Ever-Evolving Legend",
+      "1003670": "The Weight of Hope",
+      "1007860": "Fearless Departure",
+      "1009530": "Indomitable Battle Lust",
+      "1010150": "Dark Desires Awoken",
+      "1014480": "Trusted by Friends",
+      "1019800": "Warrior Beyond Limits and Expectations"
+     }
     }
    },
    {
@@ -5567,7 +5688,19 @@
       "1008770",
       "1003730"
      ],
-     "unfeatured": 259
+     "unfeatured": 259,
+     "names": {
+      "1003730": "Earth's Savior",
+      "1003970": "Mysterious Ritual",
+      "1008770": "Unbridled Horror",
+      "1012230": "Big Name in the Otherworld",
+      "1012240": "Big Name in the Otherworld",
+      "1012250": "Big Name in the Otherworld",
+      "1012260": "Big Name in the Otherworld",
+      "1012270": "Big Name in the Otherworld",
+      "1013360": "Hero of Justice Transformation Complete",
+      "1013400": "Light Doze"
+     }
     }
    },
    {
@@ -5599,7 +5732,16 @@
       "1023560"
      ],
      "secondary": [],
-     "unfeatured": 46
+     "unfeatured": 46,
+     "names": {
+      "1003670": "The Weight of Hope",
+      "1012670": "God of Destruction's Ultimatum",
+      "1018470": "Blazing Warrior",
+      "1022150": "Counterattack Lock-On",
+      "1023560": "Terrifying Survival Instinct",
+      "1026080": "Extraordinary Talent",
+      "1026270": "Assault with Pride Put Aside"
+     }
     }
    },
    {
@@ -5631,7 +5773,16 @@
       "1023560"
      ],
      "secondary": [],
-     "unfeatured": 60
+     "unfeatured": 60,
+     "names": {
+      "1003670": "The Weight of Hope",
+      "1012670": "God of Destruction's Ultimatum",
+      "1018470": "Blazing Warrior",
+      "1022150": "Counterattack Lock-On",
+      "1023560": "Terrifying Survival Instinct",
+      "1026080": "Extraordinary Talent",
+      "1026270": "Assault with Pride Put Aside"
+     }
     }
    },
    {
@@ -5663,7 +5814,16 @@
       "1014200"
      ],
      "secondary": [],
-     "unfeatured": 34
+     "unfeatured": 34,
+     "names": {
+      "1012640": "Determined to Fight Back",
+      "1012980": "Terrifying Plan",
+      "1014200": "Song of Love and Victory",
+      "1018230": "Righteous-Hearted Saiyan",
+      "1019270": "Raging Resistance",
+      "1024590": "Enemy Beyond Space and Time",
+      "1026080": "Extraordinary Talent"
+     }
     }
    },
    {
@@ -5695,7 +5855,16 @@
       "1014200"
      ],
      "secondary": [],
-     "unfeatured": 36
+     "unfeatured": 36,
+     "names": {
+      "1012640": "Determined to Fight Back",
+      "1012980": "Terrifying Plan",
+      "1014200": "Song of Love and Victory",
+      "1018230": "Righteous-Hearted Saiyan",
+      "1019270": "Raging Resistance",
+      "1024590": "Enemy Beyond Space and Time",
+      "1026080": "Extraordinary Talent"
+     }
     }
    },
    {
@@ -5727,7 +5896,16 @@
       "1005150"
      ],
      "secondary": [],
-     "unfeatured": 44
+     "unfeatured": 44,
+     "names": {
+      "1003610": "Proudest in the Universe",
+      "1005150": "Decadent Saiyans",
+      "1009120": "Galactic Messenger",
+      "1013750": "Awakened God of Destruction",
+      "1018090": "Unwavering Will",
+      "1024940": "Quick Reactions",
+      "1026060": "Strengthened Friends"
+     }
     }
    },
    {
@@ -5759,7 +5937,16 @@
       "1005150"
      ],
      "secondary": [],
-     "unfeatured": 58
+     "unfeatured": 58,
+     "names": {
+      "1003610": "Proudest in the Universe",
+      "1005150": "Decadent Saiyans",
+      "1009120": "Galactic Messenger",
+      "1013750": "Awakened God of Destruction",
+      "1018090": "Unwavering Will",
+      "1024940": "Quick Reactions",
+      "1026060": "Strengthened Friends"
+     }
     }
    },
    {
@@ -5791,7 +5978,16 @@
       "1011990"
      ],
      "secondary": [],
-     "unfeatured": 69
+     "unfeatured": 69,
+     "names": {
+      "1005410": "Confident Fusion",
+      "1006710": "Unprecedented Majin",
+      "1007880": "Inborn Fearlessness",
+      "1007890": "Inborn Pride",
+      "1011620": "Covert Masked Fighter",
+      "1011990": "Freaky Strategy",
+      "1015090": "The Ultimate Champion Heading into Battle"
+     }
     }
    },
    {
@@ -5823,7 +6019,16 @@
       "1017010"
      ],
      "secondary": [],
-     "unfeatured": 66
+     "unfeatured": 66,
+     "names": {
+      "1008880": "Fighting Eradication",
+      "1012950": "Hour of Ordeal",
+      "1012980": "Terrifying Plan",
+      "1017010": "Instructor of Gods",
+      "1018140": "In the Name of True Peace",
+      "1019270": "Raging Resistance",
+      "1024590": "Enemy Beyond Space and Time"
+     }
     }
    },
    {
@@ -5855,7 +6060,16 @@
       "1008650"
      ],
      "secondary": [],
-     "unfeatured": 26
+     "unfeatured": 26,
+     "names": {
+      "1003610": "Proudest in the Universe",
+      "1004090": "Golden Emperor",
+      "1008650": "Impeccable Emperor",
+      "1010690": "Hell Conquering Ambition",
+      "1014380": "Fierce Warm-Up",
+      "1017210": "Overflowing Bloodlust",
+      "1022460": "Escalating Nightmare"
+     }
     }
    },
    {
@@ -5887,7 +6101,16 @@
       "1008650"
      ],
      "secondary": [],
-     "unfeatured": 64
+     "unfeatured": 64,
+     "names": {
+      "1003610": "Proudest in the Universe",
+      "1004090": "Golden Emperor",
+      "1008650": "Impeccable Emperor",
+      "1010690": "Hell Conquering Ambition",
+      "1014380": "Fierce Warm-Up",
+      "1017210": "Overflowing Bloodlust",
+      "1022460": "Escalating Nightmare"
+     }
     }
    },
    {
@@ -5919,7 +6142,16 @@
       "1004480"
      ],
      "secondary": [],
-     "unfeatured": 49
+     "unfeatured": 49,
+     "names": {
+      "1002620": "Amazing Combat Sense",
+      "1004480": "Ferocious Counterattack",
+      "1007780": "Burgeoning Might",
+      "1016020": "Intensifying Battle",
+      "1016040": "Rapid Clash",
+      "1016060": "Warrior in Exile",
+      "1019030": "Saiyan's True Calling"
+     }
     }
    },
    {
@@ -5951,7 +6183,16 @@
       "1010540"
      ],
      "secondary": [],
-     "unfeatured": 24
+     "unfeatured": 24,
+     "names": {
+      "1008660": "Pedigree of Justice",
+      "1008690": "Warrior Girl with Strong DNA",
+      "1010130": "Yearning for Adventure",
+      "1010540": "Hell and Earth in Unison",
+      "1010550": "Message from Hell",
+      "1013920": "Into the Fierce Battle",
+      "1020960": "Resurrected by Plus Energy"
+     }
     }
    },
    {
@@ -5983,7 +6224,16 @@
       "1010540"
      ],
      "secondary": [],
-     "unfeatured": 37
+     "unfeatured": 37,
+     "names": {
+      "1008660": "Pedigree of Justice",
+      "1008690": "Warrior Girl with Strong DNA",
+      "1010130": "Yearning for Adventure",
+      "1010540": "Hell and Earth in Unison",
+      "1010550": "Message from Hell",
+      "1013920": "Into the Fierce Battle",
+      "1020960": "Resurrected by Plus Energy"
+     }
     }
    },
    {
@@ -6015,7 +6265,16 @@
       "1004480"
      ],
      "secondary": [],
-     "unfeatured": 63
+     "unfeatured": 63,
+     "names": {
+      "1002620": "Amazing Combat Sense",
+      "1004480": "Ferocious Counterattack",
+      "1007780": "Burgeoning Might",
+      "1016020": "Intensifying Battle",
+      "1016040": "Rapid Clash",
+      "1016060": "Warrior in Exile",
+      "1019030": "Saiyan's True Calling"
+     }
     }
    },
    {
@@ -6047,7 +6306,16 @@
       "1013200"
      ],
      "secondary": [],
-     "unfeatured": 24
+     "unfeatured": 24,
+     "names": {
+      "1001790": "Combative Will",
+      "1003230": "Overbearing Power",
+      "1007380": "Proud Heir",
+      "1007860": "Fearless Departure",
+      "1013180": "Clashing Pride",
+      "1013200": "Blazing Pride",
+      "1016040": "Rapid Clash"
+     }
     }
    },
    {
@@ -6079,7 +6347,16 @@
       "1018090"
      ],
      "secondary": [],
-     "unfeatured": 350
+     "unfeatured": 350,
+     "names": {
+      "1018090": "Unwavering Will",
+      "1018140": "In the Name of True Peace",
+      "1018570": "Full-Throttled Interception",
+      "1019030": "Saiyan's True Calling",
+      "1019270": "Raging Resistance",
+      "1020020": "A Veteran's Ingenuity and Perseverance",
+      "1020270": "Support In the Nick of Time"
+     }
     }
    },
    {
@@ -6172,6 +6449,6 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/summons/",
-  "updated": "2026-11-09T22:47:13.034Z"
+  "updated": "2026-11-10T02:14:16.010Z"
  }
 }
