@@ -36,5 +36,6 @@ console.log('Banner groups:', g && [g.main.length, g.featured.length, g.secondar
 check('banner main units', g?.main.join() === '1034720,1034940');
 check('banner featured / secondary', g?.featured.length === 8 && g?.secondary.length === 10);
 check('banner unfeatured count', g?.unfeatured === 546);
+check('banner card names', g?.names['1034720'] === 'Glorious Heroic Acts' && g?.names['1000860'] === "Extreme Elite's Pride");
 
 process.exit(fail ? 1 : 0);

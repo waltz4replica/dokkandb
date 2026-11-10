@@ -48,7 +48,7 @@ const SOURCES = {
       }
       const items = [...byId.values()].sort((a, b) => (b.start || '').localeCompare(a.start || '')).slice(0, 300);
       // Read each banner's own page once to split its cards (newest first, a few per run, slowly).
-      const todo = items.filter((b) => !b.groups && b.cards.length > 1 && b.url && !(b.end && Date.parse(b.end) < Date.now())).slice(0, 25);
+      const todo = items.filter((b) => (!b.groups || !b.groups.names) && b.cards.length && b.url && !(b.end && Date.parse(b.end) < Date.now())).slice(0, 25);
       for (const b of todo) {
         try {
           const groups = parseDokkanStatsSummonDetail(await fetchHtml(b.url));

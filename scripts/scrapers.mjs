@@ -121,12 +121,16 @@ export function parseDokkanStatsSummonDetail(html) {
   const from = feat.index + feat[0].length;
   const next = heads.find((h) => h.index > feat.index);
   const section = html.slice(from, next ? next.index : html.indexOf('summon-courses', from) >>> 0);
-  const out = { main: [], featured: [], secondary: [], unfeatured: 0 };
+  // `names`: the card title the site shows for each id (e.g. "Worth 1,000,000 Zeni" for a Hercule Statue),
+  // used for cards that are not in the app's own database.
+  const out = { main: [], featured: [], secondary: [], unfeatured: 0, names: {} };
   const seen = new Set();
   for (const item of section.split('class="summon-chargrid-item"').slice(1)) {
     const id = /card_(\d{7})_thumb/.exec(item)?.[1];
     if (!id || seen.has(id)) continue;
     seen.add(id);
+    const title = /class="card-thumb-character"[^>]*alt="([^"]*)"|alt="([^"]*)"[^>]*class="card-thumb-character"/.exec(item);
+    if (title) out.names[id] = decode(title[1] ?? title[2]);
     const rarity = /cha_rare_sm_(\w+)\.png/.exec(item)?.[1] || '';
     if (/cha_icon_new\.png/.test(item) || item.includes('<canvas')) out.main.push(id);
     else if (/^(ssr|ur|lr)$/i.test(rarity)) out.featured.push(id);
