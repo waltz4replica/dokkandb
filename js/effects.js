@@ -13,11 +13,66 @@ const top = (o) => (o ? o.seza || o.eza || o.base || o.desc || '' : '');
 // "ATK", "DEF", "ATK & DEF", "DEF & ATK"
 const statRe = (stat) => `(?:ATK (?:&|and) DEF|DEF (?:&|and) ATK|${stat})`;
 
-// Super attack that raises the stat for the battle ("Raises ATK", no duration) or for 2+ turns,
-// or a passive boost marked "permanente" ("For every attack performed - permanente ATK 50% ▲ (up to 200%)").
-const stacks = (stat) => (T) =>
-  new RegExp(`raises? ${statRe(stat)}(?!(?: (?:&|and) (?:ATK|DEF))?(?: by \\d+%)? (?:for 1 turn|temporarily))`, 'i').test(T.s)
-  || new RegExp(`permanente ${statRe(stat)}`, 'i').test(T.p);
+/**
+ * The passive split into its sections: [{ head, lines }], e.g.
+ * { head: 'For every attack performed', lines: ['permanente ATK 50% ▲ (up to 200%)'] }.
+ * Includes transformations. A passive without headings becomes one section with head ''.
+ */
+export function passiveSections(c) {
+  const out = [];
+  for (const html of [c.passive, ...(c.forms || []).map((f) => f.passive)].map(top)) {
+    if (!html) continue;
+    for (const sec of html.split(/<hr\s*\/?>/i)) {
+      const head = plain(/<b>([\s\S]*?)<\/b>/i.exec(sec)?.[1] || '');
+      const body = sec.replace(/<b>[\s\S]*?<\/b>/i, '');
+      const lines = body.split(/<br\s*\/?>/i).map(plain).map((l) => l.replace(/^- /, '')).filter(Boolean);
+      if (lines.length) out.push({ head, lines });
+    }
+  }
+  return out;
+}
+
+// A line about the card's own stats (not allies' or enemies').
+// ("chance of evading enemy's attack" is still the card's own.)
+const own = (line) => !/(?:enem(?:y|ies)|all(?:y|ies))'?s? (?:ATK|DEF|Ki)\b|\ball (?:enemies|allies)\b/i.test(line);
+const statLine = (stat) => new RegExp(`(?:^|permanente |\\b)${statRe(stat)} \\d+%`, 'i');
+// Sections that repeat during the battle ("For every attack performed", "At the start of each turn").
+const REPEATS = /for every|each turn|whenever|every time|each time|(?:after|when) (?:evading|receiving|delivering|guarding|performing) an? (?:attack|super|final)/i;
+
+/** Own stat that keeps going down during the battle (e.g. "For every turn passed - ATK & DEF 60% ▼"). */
+export function passiveDecay(c) {
+  const out = [];
+  for (const { head, lines } of passiveSections(c)) {
+    for (const l of lines) {
+      if (!own(l) || !/▼/.test(l) || !/(?:ATK|DEF|damage reduction|evading)/i.test(l)) continue;
+      const when = `${head} ${l}`;
+      if (/for every (?:\d+ )?turns? passed/i.test(when)) out.push({ by: 'turn', line: l });
+      else if (/permanente/.test(l) && REPEATS.test(head)) out.push({ by: 'action', head, line: l });
+    }
+  }
+  return out;
+}
+
+// A super attack's "raises" part ends at "causes ..." / "and ...", and a duration found there applies to all of it:
+// "Greatly raises ATK, raises DEF for 1 turn and causes ..." raises both for 1 turn only.
+function saStacks(text, stat) {
+  for (const sa of text.split(' | ')) {
+    const re = new RegExp(`raises? ${statRe(stat)}`, 'i');
+    const m = re.exec(sa);
+    if (!m) continue;
+    const rest = sa.slice(m.index).split(/\b(?:causes|and (?!raises|ATK|DEF)|seals|lowers|disables|with a)\b/i)[0];
+    const dur = /for (\d+) turns?|temporarily/i.exec(rest);
+    if (!dur || +dur[1] >= 2) return true;
+  }
+  return false;
+}
+
+// Stacks: a super attack that raises the stat for the battle ("Raises ATK", no duration) or for 2+ turns,
+// or a passive boost that adds up during the battle ("For every attack performed - permanente ATK 50% ▲ (up to 200%)").
+// One-off permanent boosts ("Starting from the 4th turn", entrance animations) and decreases don't count.
+const stacks = (stat) => (T, c) => saStacks(T.s, stat)
+  || passiveSections(c).some(({ head, lines }) => lines.some((l) => own(l) && /permanente/.test(l) && statLine(stat).test(l)
+    && /▲/.test(l) && !/▼/.test(l.split('▲')[0]) && (REPEATS.test(head) || /\(up to|for every/i.test(l))));
 
 // "lowers ATK" (super attack), "All enemies' DEF 50% ▼", "Attacked enemy's ATK & DEF 20% ▼".
 const lowersEnemy = (stat) => (T) =>

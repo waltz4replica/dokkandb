@@ -3,7 +3,7 @@
 // transformations) and from which leaders in the database cover it. No opinions from other sites.
 // Tests: tests/advice-check.mjs
 
-import { cardEffects, EFFECT_LABEL } from './effects.js';
+import { cardEffects, EFFECT_LABEL, passiveSections, passiveDecay } from './effects.js';
 import { leaderClauses, coverage } from './teams.js';
 
 const plain = (html = '') => html.replace(/<[^>]+>/g, ' ')
@@ -96,13 +96,31 @@ export function cardAdvice(c, cards, opts = {}) {
   let role = Object.entries(score).sort((x, y) => y[1] - x[1])[0][0];
   if (score.atk >= 2 && score.def >= 2 && Math.abs(score.atk - score.def) <= 1) role = 'mix';
 
-  // Build-up
+  // Build-up: only sections that raise the card's own stats. Drops go to `decay`.
+  const sections = passiveSections(c);
+  const gains = (re) => sections.some(({ head, lines }) => re.test(head) && lines.some((l) => /▲/.test(l.split('▼')[0]) && !/enem/i.test(l)));
   const builds = [];
-  if (/for every attack (?:received|evaded)|every time the character receives|after receiving/i.test(p)) builds.push('con cada ataque que recibe');
-  if (/for every (?:attack|Super Attack) performed/i.test(p)) builds.push('con cada ataque que hace');
-  if (/for every (?:\w+ )?Ki Sphere obtained/i.test(p)) builds.push('con cada orbe que recoge');
-  if (/for every turn passed/i.test(p)) builds.push('con cada turno que pasa');
+  if (gains(/for every attack (?:received|evaded)|every time the character receives|after receiving an attack|after evading/i)) builds.push('con cada ataque que recibe');
+  if (gains(/for every (?:attack|Super Attack) performed/i)) builds.push('con cada ataque que hace');
+  if (gains(/for every (?:\w+ )?Ki Sphere obtained/i)) builds.push('con cada orbe que recoge');
+  if (gains(/for every (?:\d+ )?turns? passed|at the start of each turn/i)) builds.push('con cada turno que pasa');
+  const decay = passiveDecay(c);
+  const decayTurn = decay.some((d) => d.by === 'turn');
+  const lost = (by) => {
+    const txt = decay.filter((d) => d.by === by).map((d) => d.line).join(' ');
+    const bits = [];
+    if (/ATK/.test(txt)) bits.push('ATK');
+    if (/DEF/.test(txt)) bits.push('DEF');
+    if (/damage reduction/i.test(txt)) bits.push('reducción de daño');
+    if (/evading/i.test(txt)) bits.push('esquiva');
+    return list(bits);
+  };
   const stacks = has('atk-stack') || has('def-stack');
+  // Strong first turns: "For 5 turns from the start of battle", "For 3 turns from the character's entry turn".
+  const entry = [...p.matchAll(/For (\d+) turns? from (?:the )?(character's entry turn|start of battle)/gi)].map((m) => ({ n: +m[1], start: /battle/.test(m[2]) })).filter((x) => x.n >= 2);
+  const earlyTurns = entry.length ? Math.max(...entry.map((x) => x.n)) : 0;
+  const grows = (stacks || builds.length > 0) && !decayTurn;
+  const early = decayTurn || earlyTurns > 0;
   const needsAllies = /Category ally (?:attacking )?in the same turn|ally attacking in the same turn/i.test(p);
   const hpDep = /when HP is \d+% or (?:less|more)|the more HP remaining|the less HP remaining/i.test(p);
   const highKi = +(/with (\d+) or more Ki/i.exec(p)?.[1] || 0);
@@ -118,6 +136,8 @@ export function cardAdvice(c, cards, opts = {}) {
     summary.push(`Siempre tiene ${list(bits)} por su pasiva.`);
   }
   if (builds.length) summary.push(`Se hace más fuerte ${list(builds)}.`);
+  if (decayTurn) summary.push(`Pierde ${lost('turn')} con cada turno que pasa: es más fuerte al principio.`);
+  if (decay.some((d) => d.by === 'action')) summary.push(`Pierde ${lost('action')} a medida que ${/received|evaded|receiv/i.test(decay.find((d) => d.by === 'action').head) ? 'recibe ataques' : 'ataca'}.`);
   if (orbs.size) summary.push(`Cambia orbes a ${list([...orbs].map((o) => (o === 'Rainbow' ? 'arcoíris' : o)))}.`);
   if (needsAllies) summary.push('Parte de su pasiva necesita aliados de su categoría o clase atacando en el mismo turno.');
   if (hpDep) summary.push('Parte de su pasiva depende de su vida (HP).');
@@ -142,14 +162,15 @@ export function cardAdvice(c, cards, opts = {}) {
   // ----- events -----
   const events = [];
   const ev = (title, why) => { if (!events.some((e) => e.title === title)) events.push({ title, why }); };
-  if (stacks || builds.length) ev('Zona Roja y Supreme Magnificent Battle', 'son combates largos y esta carta gana fuerza con los turnos');
+  if (grows) ev('Zona Roja y Supreme Magnificent Battle', 'son combates largos y esta carta gana fuerza con los turnos');
+  if (early) ev('Batallas cortas o fases que hay que acabar rápido', decayTurn ? 'pega y aguanta más en los primeros turnos y luego se debilita' : `es muy fuerte en sus primeros ${earlyTurns} turnos`);
   if (def.length >= 2) ev('Jefes que pegan muy fuerte (Zona Roja, Batallas Z extremas)', `aguanta bien: ${list(def.slice(0, 3).map((id) => lower(EFFECT_LABEL[id])))}`);
   if (has('stun') || has('seal')) ev('Jefes con súper ataques peligrosos', has('stun') && has('seal') ? 'puede aturdirlos y sellar sus súper ataques' : has('stun') ? 'puede aturdirlos' : 'puede sellar sus súper ataques');
   if (has('aoe')) ev('Fases con varios enemigos a la vez', 'su súper ataque golpea a todos los enemigos');
   if (has('enemy-def')) ev('Jefes con mucha defensa', 'baja la DEF del enemigo');
   if (has('heal')) ev('Eventos de muchas fases (Super Battle Road)', 'recupera vida y ahorra objetos');
   if (has('eff-all')) ev('Cualquier evento, sea cual sea el tipo del enemigo', 'es eficaz contra todos los tipos');
-  if (att.length >= 2 && !stacks) ev('Batallas cortas o fases que hay que acabar rápido', 'pega fuerte desde el principio');
+  if (att.length >= 2 && !grows) ev('Batallas cortas o fases que hay que acabar rápido', 'pega fuerte desde el principio');
   if (!events.length) ev('Super Battle Road y misiones de su categoría', 'sirve para cumplir condiciones de categoría o tipo');
   events.splice(3);
 
@@ -167,13 +188,17 @@ export function cardAdvice(c, cards, opts = {}) {
     else slot.push('Cualquier slot: su pasiva no depende de la posición.');
   }
   if (needsAllies) slot.push('Ponla en la misma rotación que cartas de sus categorías para activar los extras de «en el mismo turno».');
-  if (stacks || builds.length) slot.push('Mejor en una rotación (2 cartas que se turnan) que de flotante: sale más veces y acumula más.');
+  if (grows) slot.push('Mejor en una rotación (2 cartas que se turnan) que de flotante: sale más veces y acumula más.');
 
   // ----- timing -----
   const timing = [];
-  const entry = [...p.matchAll(/For (\d+) turns? from the character's entry turn/gi)].map((m) => +m[1]);
-  const bigEntry = entry.filter((n) => n >= 2);
-  if (bigEntry.length) timing.push(`Muy fuerte en sus primeros ${Math.max(...bigEntry)} turnos desde que entra en combate: no la guardes para el final.`);
+  if (earlyTurns) {
+    const fromStart = entry.filter((x) => x.n === earlyTurns).every((x) => x.start);
+    timing.push(fromStart
+      ? `Muy fuerte en los ${earlyTurns} primeros turnos del combate: sácala en la primera rotación.`
+      : `Muy fuerte en sus primeros ${earlyTurns} turnos desde que entra en combate: no la guardes para el final.`);
+  }
+  if (decayTurn) timing.push(`Cada turno que pasa pierde ${lost('turn')}: úsala sobre todo al principio del combate.`);
   const later = [...p.matchAll(/Starting from the (\d+)(?:st|nd|rd|th) turn from (?:the )?(character's entry turn|start of battle)/gi)].map((m) => ({ n: +m[1], entry: /entry/.test(m[2]) }));
   if (later.length) {
     const first = later.sort((x, y) => x.n - y.n)[0];
@@ -194,7 +219,7 @@ export function cardAdvice(c, cards, opts = {}) {
     const cond = translateCondition(exch[1]);
     timing.push(`Se intercambia con ${exch[2].trim()}${cond ? ` ${cond}` : ''}.`);
   }
-  if (stacks && !bigEntry.length) timing.push('Rinde más cuanto más dure el combate.');
+  if (grows && !earlyTurns) timing.push('Rinde más cuanto más dure el combate.');
   if (!timing.length) timing.push('Rinde igual durante todo el combate.');
 
   return { role: ROLES[role], summary, teams, ownLead, events, slot, timing, tier: opts.tier ?? null };

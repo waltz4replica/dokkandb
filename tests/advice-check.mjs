@@ -27,6 +27,16 @@ const gs2 = advice('1034731');
 check('Great Saiyaman 2: first 5 turns', gs2.timing.some((s) => /primeros 5 turnos/.test(s)));
 check('Great Saiyaman 2: own leader skill', gs2.ownLead >= 150);
 
+// SSJ Goku "Lurking Abnormality": loses ATK/DEF every turn, strong first 5 turns
+const goku = byId.has('1034871') && advice('1034871');
+check('Goku decay: card found', !!goku);
+if (goku) {
+  check('Goku decay: no "más fuerte con los turnos"', !goku.timing.some((s) => /cuanto más dure/.test(s)) && !goku.summary.some((s) => /más fuerte con cada turno/.test(s)));
+  check('Goku decay: says it weakens', goku.summary.some((s) => /Pierde ATK, DEF, reducción de daño y esquiva con cada turno/.test(s)));
+  check('Goku decay: first 5 turns of battle', goku.timing.some((s) => /5 primeros turnos del combate/.test(s)));
+  check('Goku decay: no long-battle event', !goku.events.some((e) => /Zona Roja y Supreme/.test(e.title)));
+}
+
 // Training items (Elder Kai, Grand Kai…) are not fighters
 const items = cards.filter((c) => trainingItem(c));
 check(`training items found (${items.length})`, items.length >= 10 && items.length < 30);

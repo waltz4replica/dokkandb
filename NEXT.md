@@ -33,3 +33,7 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
 - Corregido: sin conexión, el aviso hablaba de «la wiki» (ya no se usa) y ahora explica qué pasa.
 - La app descarga menos: quitado código antiguo de la wiki que ya no se usaba.
 - Corregido: la ventana de novedades no mostraba bien las listas en algunos casos.
+- **Guía rápida y filtro «Acumula ATK/DEF» más precisos:**
+  - Ya no marcan como «acumula» las cartas cuyo ATK o DEF **baja** con los turnos, ni las que suben una sola vez (desde el turno 4, al entrar en combate…), ni los súper ataques que suben ATK solo durante 1 turno («Greatly raises ATK, raises DEF for 1 turn»).
+  - Las cartas que se debilitan con los turnos lo dicen («Pierde ATK, DEF… con cada turno que pasa») y se recomiendan para batallas cortas y para sacarlas al principio, no para combates largos.
+  - Los efectos «durante los primeros N turnos del combate» ahora también cuentan como turnos fuertes.
