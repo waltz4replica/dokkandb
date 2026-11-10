@@ -6,7 +6,7 @@ const PREFIX = /\/beta\/$/.test(new URL(self.registration.scope).pathname) ? 'be
 const SHELL = `${PREFIX}${VERSION}`;
 const IMAGES = 'images-v1';
 const MAX_IMAGES = 3000;
-const FILES = ['./', 'index.html', 'css/app.css', 'js/app.js', 'js/sync.js', 'js/wiki.js', 'js/db.js', 'js/parse.js', 'js/version.js', 'js/teams.js', 'js/effects.js','manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
+const FILES = ['./', 'index.html', 'css/app.css', 'js/app.js', 'js/sync.js', 'js/wiki.js', 'js/db.js', 'js/parse.js', 'js/version.js', 'js/teams.js', 'js/effects.js', 'js/advice.js','manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(SHELL).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));

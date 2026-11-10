@@ -7,6 +7,7 @@ import { cardThumb } from './wiki.js';
 import { APP_VERSION, CHANGELOG_URL, RELEASES_URL, CHANNEL, storageName, STABLE_URL, BETA_URL } from './version.js';
 import * as T from './teams.js';
 import * as FX from './effects.js';
+import * as ADV from './advice.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -274,6 +275,34 @@ function filterCards() {
   return out.sort(sorters[filters.sort] || byRelease);
 }
 
+// "Guía rápida" box on a card: summary, effects, teams, events, slot and timing (js/advice.js).
+function guideHtml(c) {
+  const a = ADV.cardAdvice(c, [...store.cards.values()], { tier: tierOf(c) });
+  const e = FX.cardEffects(c);
+  const tags = FX.EFFECTS.filter(([id]) => e.fx.has(id) && id !== 'orbs').map(([id, label]) => `<a href="#/cards?fx=${id}">${esc(label)}</a>`);
+  for (const o of e.orbs) tags.push(`<a href="#/cards?orb=${enc(o)}">Orbes → ${esc(FX.ORB_LABELS[o] || o)}</a>`);
+  const tierName = (store.extra?.tierlist?.tiers || []).find((t) => t.units.some((u) => u.cardId === c.id || (c.awakensFrom || []).includes(u.cardId)))?.tier;
+  const li = (xs) => `<ul>${xs.map((x) => `<li>${x}</li>`).join('')}</ul>`;
+  const leaderRow = (t) => `<a class="g-lead" href="#/card/${enc(t.leader.page)}">
+      <img alt="" loading="lazy" src="${esc(cardImg(t.leader))}">
+      <span><b>${esc(t.group)}</b><span class="small muted">Líder: ${esc(t.leader.name)} · <span class="ok">+${t.pct}%</span>${t.ki ? ` · Ki +${t.ki}` : ''}</span></span></a>`;
+  return `<section class="box guide">
+    <div class="g-head"><h2>Guía rápida</h2><span class="g-role">${esc(a.role)}</span>${tierName ? `<a class="g-tier" href="#/tierlist">Tier ${esc(tierName)}</a>` : ''}</div>
+    ${li(a.summary.map(esc))}
+    ${tags.length ? `<div class="tags fx-tags">${tags.join('')}</div>` : ''}
+    <h3>🛡️ En qué equipo</h3>
+    ${a.teams.length ? a.teams.map(leaderRow).join('') : '<p class="small muted">No hay ningún líder en la base de datos que la cubra con +120% o más.</p>'}
+    ${a.ownLead >= 150 ? `<p class="small">También sirve de <b>líder</b>: da +${a.ownLead}% a su grupo.</p>` : ''}
+    <h3>🎯 En qué eventos</h3>
+    ${li(a.events.map((x) => `<b>${esc(x.title)}</b>: ${esc(x.why)}.`))}
+    <h3>📍 Slot</h3>
+    ${li(a.slot.map(esc))}
+    <h3>⏱️ Cuándo usarla</h3>
+    ${li(a.timing.map(esc))}
+    <p class="g-note">Guía automática a partir del texto de la carta en su nivel más alto${c.seza ? ' (SEZA)' : c.eza ? ' (EZA)' : ''} y de los líderes de la base de datos. Tómala como orientación.</p>
+  </section>`;
+}
+
 views.card = (params, page) => {
   const c = store.cards.get(page);
   if (!c) return { title: 'Carta', back: true, html: `<div class="empty">Esta carta no está en la base de datos.<br><br><a href="https://dokkan.fyi/characters/${enc(page)}" target="_blank" rel="noopener">Buscar en DOKKAN.FYI</a></div>` };
@@ -318,12 +347,7 @@ views.card = (params, page) => {
         ${c.cost ? `<span class="badge">Coste ${c.cost}</span>` : ''}${c.seza ? '<span class="badge">SEZA</span>' : c.eza ? '<span class="badge">EZA</span>' : ''}</div></div>
       </div>
       ${levels.length > 1 ? `<div class="seg" id="lv">${levels.map(([k, l], i) => `<button data-lv="${k}" class="${i === levels.length - 1 ? 'on' : ''}">${l}</button>`).join('')}</div>` : ''}
-      ${(() => {
-        const e = FX.cardEffects(c);
-        const tags = FX.EFFECTS.filter(([id]) => e.fx.has(id) && id !== 'orbs').map(([id, label]) => `<a href="#/cards?fx=${id}">${esc(label)}</a>`);
-        for (const o of e.orbs) tags.push(`<a href="#/cards?orb=${enc(o)}">Orbes → ${esc(FX.ORB_LABELS[o] || o)}</a>`);
-        return tags.length ? `<h2>Qué hace</h2><div class="tags fx-tags">${tags.join('')}</div>` : '';
-      })()}
+      ${guideHtml(c)}
       <div id="skills" style="margin-top:10px">${render(levels[levels.length - 1][0])}</div>
       <div class="box"><table class="stats"><tr><th></th><th>Base</th><th>Máx.</th></tr>
         <tr><td>HP</td><td>${c.stats.hp[0] ?? '–'}</td><td>${c.stats.hp[1] ?? '–'}</td></tr>
@@ -1125,7 +1149,7 @@ function notesHtml(md) {
   let html = '';
   let depth = 0;
   const close = (to) => { while (depth > to) { html += '</li></ul>'; depth--; } };
-  for (const line of md.split('\n')) {
+  for (const line of md.split(/\r?\n/)) {
     const m = /^(\s*)- (.*)$/.exec(line);
     if (!m) { if (line.trim()) { close(0); html += `<p>${inline(line.trim())}</p>`; } continue; }
     const d = Math.min(Math.floor(m[1].length / 2) + 1, depth + 1);

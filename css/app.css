@@ -157,6 +157,24 @@ h2 a { font-size: 13px; font-weight: 600; }
 .chip.orb-rb.on { background: linear-gradient(90deg, #ff4d4d, #ff9d1f, #2fbf5b, #2f8cff, #9b5cff); border-color: transparent; color: #fff; }
 .fx-tags a { background: rgba(255,157,31,.12); }
 
+/* Card page: "Guía rápida" */
+.guide { margin-top: 12px; border-color: rgba(255,157,31,.35); background: linear-gradient(180deg, rgba(255,157,31,.08), var(--card) 120px); }
+.guide .g-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.guide .g-head h2 { margin: 0; margin-right: auto; }
+.g-role { font-size: 12px; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: var(--accent); color: #1a1000; }
+.g-tier { font-size: 12px; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: var(--line); color: var(--text); }
+.guide h3 { font-size: 14px; margin: 14px 0 6px; }
+.guide ul { margin: 6px 0; padding-left: 18px; font-size: 14px; line-height: 1.45; }
+.guide li { margin: 3px 0; }
+.guide .fx-tags { margin-top: 8px; }
+.g-lead { display: flex; align-items: center; gap: 10px; padding: 6px; border-radius: 10px; color: var(--text); }
+.g-lead + .g-lead { margin-top: 2px; }
+.g-lead:hover { background: var(--bg2); }
+.g-lead img { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; background: var(--bg2); flex: none; }
+.g-lead > span { display: flex; flex-direction: column; min-width: 0; }
+.g-lead .ok { color: var(--ok); font-weight: 700; }
+.g-note { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; }
+
 /* Beta channel badge + "what's new" window */
 .chan-badge { font-size: 10px; font-weight: 900; letter-spacing: 1px; padding: 2px 6px; border-radius: 6px; background: #9b5cff; color: #fff; margin-right: auto; margin-left: -4px; }
 .modal-back { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.6); display: grid; place-items: center; padding: 16px; }
