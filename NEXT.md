@@ -52,3 +52,16 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
   - Efectos «durante 4 turno(s)» que antes no se reconocían.
   - Cartas que solo daban un pequeño extra a aliados en ciertos casos ya no salen como «Apoyo».
   - Las cartas muy simples (sin efectos especiales) ya tienen resumen.
+- **Nuevo aspecto, más vistoso:**
+  - Fondo con brillos de color suaves, y barras de arriba y de abajo translúcidas.
+  - Cada carta brilla con el **color de su tipo** (AGL azul, TEQ verde, INT morado, STR rojo, PHY naranja), también en la cabecera de su ficha.
+  - La pestaña en la que estás se marca con una pastilla; títulos de sección, botones, filtros, banners y ventanas rediseñados.
+  - Animaciones suaves al cambiar de pantalla, al pulsar y al cargarse las imágenes (se desactivan si el móvil tiene «reducir movimiento»).
+- **Inicio:** buscador de cartas arriba del todo y accesos rápidos con el número de cartas, tus cartas y tus equipos.
+- Tocar la pestaña en la que ya estás **vuelve arriba** de la lista.
+- Las estadísticas de las cartas salen con separador de miles (12.345).
+- La ventana de novedades se cierra también con la tecla Escape.
+- Corregido: en el creador de equipos, **Deshacer** no devolvía las cartas a su sitio después de «Mover», «Optimizar», «Completar» o «Aleatorio».
+- Corregido: si llegaban datos nuevos mientras escribías en un buscador, la pantalla se redibujaba y se cerraba el teclado.
+- Corregido: un enlace mal escrito o una carta con datos incompletos podían dejar la pantalla en blanco; ahora sale un aviso con un botón para volver al inicio.
+- Corregido: el hueco vacío que quedaba arriba en algunas pantallas.

@@ -44,7 +44,7 @@ function rtTag(c) {
 
 function tile(c) {
   const isNew = c.firstSeen && Date.now() - Date.parse(c.firstSeen) < 7 * 864e5;
-  return `<a class="tile" href="#/card/${enc(c.page)}">
+  return `<a class="tile k-${esc((c.type || '').toLowerCase())}" href="#/card/${enc(c.page)}">
     <span class="pic">${thumbTag(c)}${rtTag(c)}</span>
     ${isNew ? '<span class="flag">NUEVA</span>' : ''}
     ${c.seza ? '<span class="flag eza">SEZA</span>' : c.eza ? '<span class="flag eza">EZA</span>' : ''}
@@ -95,12 +95,30 @@ views.home = () => {
   return {
     title: '<span class="logo">Dokkan</span>DB',
     html: `
+      <form id="home-search" role="search"><input class="search" type="search" id="hq" placeholder="Buscar una carta…" autocomplete="off" enterkeyhint="search" aria-label="Buscar una carta"></form>
+      <div class="quick">
+        <a href="#/cards"><b>${cards.length.toLocaleString('es-ES')}</b><span>cartas</span></a>
+        <a href="#/cards" id="q-mine"><b>${owned.size}</b><span>mis cartas</span></a>
+        <a href="#/teams"><b>${T.loadTeams().length}</b><span>equipos</span></a>
+      </div>
       ${active.length ? `<h2>Banners activos <a href="#/banners">Ver todos</a></h2>${active.map(bannerRow).join('')}` : ''}
       <h2>Cartas nuevas <a href="#/cards">Ver todas</a></h2>
       ${groupByDate(latest, (c) => c.released, tile)}
       ${eza.length ? `<h2>Últimos EZA / SEZA</h2>${groupByDate(eza, lastEza, tile)}` : ''}
       ${news.length ? `<h2>Noticias del juego <a href="#/events?tab=news">Ver todas</a></h2>${news.map(newsRow).join('')}` : ''}
       ${top.length ? `<h2>Top de la tier list <a href="#/tierlist">Ver completa</a></h2><div class="grid">${top.map(tierTile).join('')}</div>` : ''}`,
+    mount(el) {
+      // Searching from the home screen opens Cards with that search.
+      $('#home-search', el).addEventListener('submit', (e) => {
+        e.preventDefault();
+        const q = $('#hq', el).value.trim();
+        if (!q) return;
+        filters.q = q; filters.category = ''; filters.mine = false;
+        saveFilters();
+        location.hash = '#/cards';
+      });
+      $('#q-mine', el).addEventListener('click', () => { filters.mine = true; saveFilters(); });
+    },
   };
 };
 const lastEza = (c) => [c.dates.glbSeza, c.dates.glbEza].filter(Boolean).sort().pop() || '';
@@ -377,7 +395,8 @@ views.card = (params, page) => {
   const c = store.cards.get(page);
   if (!c) return { title: 'Carta', back: true, html: `<div class="empty">Esta carta no está en la base de datos.<br><br><a href="https://dokkan.fyi/characters/${enc(page)}" target="_blank" rel="noopener">Buscar en DOKKAN.FYI</a></div>` };
   const levels = [['base', 'Base'], ...(c.eza ? [['eza', 'EZA']] : []), ...(c.seza ? [['seza', 'SEZA']] : [])];
-  const t = c.type.toLowerCase();
+  const t = (c.type || '').toLowerCase();
+  const num = (n) => (typeof n === 'number' ? n.toLocaleString('es-ES') : n ?? '–');
   const item = T.trainingItem(c);
   const skill = (label, name, body, cond) => body ? `<div class="box skill"><h3>${label}</h3>${name ? `<div class="sn">${esc(name)}</div>` : ''}<div class="desc">${body}</div>${cond ? `<div class="cond">${cond}</div>` : ''}</div>` : '';
   const render = (lv) => {
@@ -412,9 +431,9 @@ views.card = (params, page) => {
     title: esc(c.name),
     back: true,
     html: `
-      <div class="hero">${thumbTag(c, '')}
+      <div class="hero k-${esc(t)}">${thumbTag(c, '')}
         <div><div class="t">${esc(c.title)}</div><div class="n">${esc(c.name)}</div>
-        <div class="badges"><span class="badge ${c.rarity.toLowerCase()}">${esc(c.rarity)}</span><span class="badge t-${t}">${esc(c.cls)} ${esc(c.type)}</span>
+        <div class="badges"><span class="badge ${esc((c.rarity || '').toLowerCase())}">${esc(c.rarity)}</span><span class="badge t-${esc(t)}">${esc(c.cls)} ${esc(c.type)}</span>
         ${c.cost && !item ? `<span class="badge">Coste ${c.cost}</span>` : ''}${c.seza ? '<span class="badge">SEZA</span>' : c.eza ? '<span class="badge">EZA</span>' : ''}</div></div>
       </div>
       <div class="card-actions">
@@ -425,9 +444,7 @@ views.card = (params, page) => {
       ${guideHtml(c)}
       <div id="skills" style="margin-top:10px">${render(levels[levels.length - 1][0])}</div>
       ${item ? '' : `<div class="box"><table class="stats"><tr><th></th><th>Base</th><th>Máx.</th></tr>
-        <tr><td>HP</td><td>${c.stats.hp[0] ?? '–'}</td><td>${c.stats.hp[1] ?? '–'}</td></tr>
-        <tr><td>ATK</td><td>${c.stats.atk[0] ?? '–'}</td><td>${c.stats.atk[1] ?? '–'}</td></tr>
-        <tr><td>DEF</td><td>${c.stats.def[0] ?? '–'}</td><td>${c.stats.def[1] ?? '–'}</td></tr></table>
+        ${[['HP', 'hp'], ['ATK', 'atk'], ['DEF', 'def']].map(([l, k]) => `<tr><td>${l}</td><td>${num(c.stats?.[k]?.[0])}</td><td>${num(c.stats?.[k]?.[1])}</td></tr>`).join('')}</table>
         ${c.ki12 ? `<div class="small muted" style="margin-top:8px">Multiplicador a 12 de ki: ${esc(c.ki12)}</div>` : ''}</div>`}
       ${c.links.length ? `<h2>Links (${c.links.length})</h2><div class="tags">${c.links.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>` : ''}
       ${c.categories.length ? `<h2>Categorías (${c.categories.length})</h2><div class="tags">${c.categories.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>` : ''}
@@ -621,7 +638,7 @@ function tierTile(u) {
   const c = cardById(u.cardId, u.title, u.name);
   const img = c ? cardImg(c) : `https://assets.dokkanstats.com/assets/global/en/character/thumb/card_${u.cardId}_thumb/card_${u.cardId}_thumb.png`;
   const href = c ? `#/card/${enc(c.page)}` : `https://dokkanstats.com/en/cards/${u.id}/`;
-  return `<a class="tile" href="${esc(href)}" ${c ? '' : 'target="_blank" rel="noopener"'} title="${esc(u.title)}">
+  return `<a class="tile k-${esc((c?.type || '').toLowerCase())}" href="${esc(href)}" ${c ? '' : 'target="_blank" rel="noopener"'} title="${esc(u.title)}">
     <span class="pic"><img class="thumb" loading="lazy" alt="" src="${esc(img)}" data-fallback="${esc(c?.image || '')}">${rtTag(c)}</span>${TREND[u.trend] || ''}
     <div class="nm">${esc(u.name)}</div></a>`;
 }
@@ -649,9 +666,20 @@ let allCats = null;
 const knownCategories = () => (allCats ||= new Set([...store.cards.values()].flatMap((c) => c.categories)));
 
 // Every change goes through here so it can be undone.
-function changeTeam(fn) {
-  (editing.history ||= []).push([...editing.ids]);
+// Remembers the team as it is now (cards and formation), so the next change can be undone.
+function snapshot() {
+  (editing.history ||= []).push({ ids: [...editing.ids], order: editing.order ? [...editing.order] : null });
   if (editing.history.length > 30) editing.history.shift();
+}
+function undoTeam() {
+  const prev = editing.history?.pop();
+  if (!prev) return;
+  editing.ids = prev.ids;
+  if (prev.order) editing.order = prev.order;
+  route();
+}
+function changeTeam(fn) {
+  snapshot();
   fn(editing.ids);
   route();
 }
@@ -713,7 +741,7 @@ views.team = (params, which) => {
   if (params.get('c') || params.has('fresh')) {
     editing = params.get('c') ? { ...newTeam(), name: 'Equipo compartido', ids: T.decodeTeam(params.get('c')) } : newTeam();
     const o = (params.get('o') || '').split('').map(Number);
-    if (o.length === T.SLOTS && new Set(o).size === T.SLOTS) editing.order = o;
+    if (o.length === T.SLOTS && new Set(o).size === T.SLOTS && o.every((n) => n >= 0 && n < T.SLOTS)) editing.order = o;
     history.replaceState(null, '', '#/team/new');
   } else if (/^\d+$/.test(which) && saved[+which] && (!editing || editing.id !== saved[+which].id)) {
     editing = { ...saved[+which], ids: [...saved[+which].ids], order: saved[+which].order ? [...saved[+which].order] : null, history: [], fromList: true };
@@ -923,7 +951,8 @@ views.team = (params, which) => {
         const pos = +b.dataset.pos;
         if (moving !== null) { // second tap of "Mover": swap the two positions in the formation
           const from = moving; moving = null;
-          (editing.history ||= []).push([...editing.ids]);
+          if (from === pos) { route(); return; }
+          snapshot();
           [editing.order[from], editing.order[pos]] = [editing.order[pos], editing.order[from]];
           route(); return;
         }
@@ -955,7 +984,7 @@ views.team = (params, which) => {
         if (t) { editing.tab = t.dataset.t; route(); }
         if (s) { editing.sub = s.dataset.s; route(); }
       });
-      $('#undo', el).addEventListener('click', () => { const prev = editing.history?.pop(); if (prev) { editing.ids = prev; route(); } });
+      $('#undo', el).addEventListener('click', undoTeam);
       const optimize = () => {
         const best = T.optimizeFormation(teamCards(), editing.order);
         const before = T.formationScore(T.arrange(teamCards(), editing.order));
@@ -964,14 +993,16 @@ views.team = (params, which) => {
       };
       $('#fill', el).addEventListener('click', () => {
         const done = T.autoFill(teamCards(), all);
-        (editing.history ||= []).push([...editing.ids]);
+        snapshot();
         done.forEach((c, k) => { editing.ids[k] = c?.page || null; });
         if (editing.ids.every(Boolean)) optimize();
         toast('Equipo completado y ordenado. Puedes deshacerlo con ↶');
         route();
       });
       $('#opt', el).addEventListener('click', () => {
+        snapshot();
         const [before, after] = optimize();
+        if (after <= before) editing.history.pop(); // nothing changed: nothing to undo
         toast(after > before ? `Formación mejorada: ${before} → ${after} links` : 'La formación ya era la mejor');
         route();
       });
@@ -979,7 +1010,7 @@ views.team = (params, which) => {
         const leaders = all.filter((c) => c.rarity !== 'SSR' && leaderStrength(c) >= 150);
         const pickL = leaders[Math.floor(Math.random() * leaders.length)];
         if (!pickL) return;
-        (editing.history ||= []).push([...editing.ids]);
+        snapshot();
         const done = T.autoFill([pickL, null, null, null, null, null, pickL], all);
         done.forEach((c, k) => { editing.ids[k] = c?.page || null; });
         editing.order = [...T.DEFAULT_ORDER];
@@ -1090,7 +1121,7 @@ views['team-pick'] = (params, slotStr) => {
       box.addEventListener('click', (e) => {
         const b = e.target.closest('.pick');
         if (!b) return;
-        (editing.history ||= []).push([...editing.ids]);
+        snapshot();
         editing.ids[i] = b.dataset.id;
         // A leader is usually also brought as the friend.
         if (i === 0 && !editing.ids[T.SLOTS - 1]) editing.ids[T.SLOTS - 1] = b.dataset.id;
@@ -1195,23 +1226,44 @@ function route() {
   let view = 'home', tab = 'home', arg;
   for (const [re, v, t] of ROUTES) {
     const m = re.exec(path || '');
-    if (m) { view = v; tab = t; arg = m[1] && decodeURIComponent(m[1]); break; }
+    if (m) { view = v; tab = t; arg = m[1] && safeDecode(m[1]); break; }
   }
-  cleanup?.(); cleanup = null;
-  const out = views[view](params, arg);
+  try { cleanup?.(); } catch (err) { console.error(err); }
+  cleanup = null;
+  // A screen that fails must not leave the app blank: show a message and a way out.
+  let out;
+  try { out = views[view](params, arg); } catch (err) { console.error(err); out = errorView(); }
   // A fresh <main> for every screen, so click handlers from the previous screen don't pile up.
   const old = $('main');
   const main = old.cloneNode(false);
+  // Fade in only when moving to another screen, not when the same screen redraws itself.
+  main.classList.toggle('enter', location.hash !== shownHash);
+  shownHash = location.hash;
   old.replaceWith(main);
   $('#title').innerHTML = out.title;
+  document.title = view === 'home' ? 'DokkanDB' : `${$('#title').textContent} · DokkanDB`;
   $('#back').hidden = !out.back;
   main.innerHTML = out.html;
-  cleanup = out.mount?.(main) || null;
-  document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', a.dataset.tab === tab));
+  try { cleanup = out.mount?.(main) || null; } catch (err) { console.error(err); }
+  document.querySelectorAll('.nav a').forEach((a) => {
+    a.classList.toggle('on', a.dataset.tab === tab);
+    a.dataset.tab === tab ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current');
+  });
   window.scrollTo(0, scrollPos.get(location.hash) || 0);
 }
+let shownHash = null;
+function safeDecode(s) { try { return decodeURIComponent(s); } catch { return s; } }
+const errorView = () => ({ title: 'Error', back: true,
+  html: '<div class="empty"><span class="empty-ic">⚠</span>Esta pantalla no se ha podido mostrar.<br><br><a class="btn" href="#/">Volver al inicio</a></div>' });
 
 addEventListener('hashchange', route);
+// Tapping the tab you are already on goes back to the top of the list.
+document.querySelector('.nav').addEventListener('click', (e) => {
+  const a = e.target.closest('a');
+  if (a && a.getAttribute('href') === (location.hash || '#/')) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+});
+// Card pictures fade in once they have loaded.
+for (const ev of ['load', 'error']) document.addEventListener(ev, (e) => { if (e.target.tagName === 'IMG') e.target.classList.add('ld'); }, true);
 addEventListener('scroll', () => scrollPos.set(location.hash, scrollY), { passive: true });
 
 // Broken card image -> try the backup copy (data-fallback) once.
@@ -1246,7 +1298,9 @@ async function runSync(opts = {}) {
     if (parts.length) toast('Novedades: ' + parts.join(' y '));
     else if (opts.manual || opts.full) toast(r.full ? `Base de datos descargada: ${store.cards.size} cartas` : 'Todo está al día');
     // Refresh the screen unless the user is reading a detail page.
-    if (!/^#\/(card|banner)\//.test(location.hash) || $('main .empty')) route();
+    // ...or typing in a search box (redrawing would close the keyboard) and nothing new arrived.
+    const typing = document.activeElement?.matches?.('input, select, textarea') && !parts.length && !r.full;
+    if ((!/^#\/(card|banner)\//.test(location.hash) && !typing) || $('main .empty')) route();
   } catch (err) {
     console.error(err);
     setPill('err', 'Sin conexión');
@@ -1300,8 +1354,13 @@ async function showWhatsNew() {
     <div class="notes">${notes}</div>
     <div class="btns"><button class="btn primary" data-close>Vale</button>
       <a class="btn" href="${RELEASES_URL}" target="_blank" rel="noopener">Todas las versiones</a></div></div>`;
-  box.addEventListener('click', (e) => { if (e.target === box || e.target.closest('[data-close]')) box.remove(); });
+  document.querySelector('.modal-back')?.remove(); // never two at once
+  const close = () => { box.remove(); removeEventListener('keydown', onKey); };
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  box.addEventListener('click', (e) => { if (e.target === box || e.target.closest('[data-close]')) close(); });
+  addEventListener('keydown', onKey);
   document.body.append(box);
+  box.querySelector('[data-close]').focus({ preventScroll: true });
 }
 
 function autoSync() {
