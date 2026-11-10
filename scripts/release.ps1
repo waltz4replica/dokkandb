@@ -212,6 +212,9 @@ elseif ($Action -eq 'stable') {
   Add-ChangelogEntry $v $body
   Invoke-Checks
   Publish 'main' $v $body
+  # Si la beta no tiene nada pendiente, avanza con la estable para que las dos webs coincidan.
+  & git merge-base --is-ancestor origin/beta main
+  if (-not $LASTEXITCODE) { G push -q origin main:beta; Write-Host '   beta puesta al día' }
   Wait-Live $Site $v
 }
 
