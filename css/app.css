@@ -93,8 +93,9 @@ h2 a { font-size: 13px; font-weight: 600; }
 .row .banner-img { width: 120px; height: 60px; object-fit: cover; border-radius: 8px; background: var(--bg2); flex: none; }
 .row .info { min-width: 0; flex: 1; }
 .row .info b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.minis { display: flex; gap: 4px; margin-top: 6px; }
-.minis img { width: 34px; height: 34px; border-radius: 6px; background: var(--bg2); }
+.minis { display: flex; gap: 4px; margin-top: 6px; padding: 2px; }
+/* Shrink to fit the row so the last one never sticks out of the box. */
+.minis img { flex: 1 1 0; min-width: 0; max-width: 34px; aspect-ratio: 1; height: auto; border-radius: 6px; background: var(--bg2); object-fit: contain; }
 
 /* Card detail */
 .hero { display: flex; gap: 14px; align-items: center; }
