@@ -354,6 +354,12 @@ function guideHtml(c) {
     <div class="g-head"><h2>Guía rápida</h2><span class="g-role">${esc(a.role)}</span>${tierName ? `<a class="g-tier" href="#/tierlist">Tier ${esc(tierName)}</a>` : ''}</div>
     ${li(a.summary.map(esc))}
     ${tags.length ? `<div class="tags fx-tags">${tags.join('')}</div>` : ''}
+    ${a.math.length ? `<h3>📈 Cómo cambian sus estadísticas</h3>${a.math.map((m) => `<div class="g-math">
+      <b>${esc(m.title)}</b>
+      ${m.rows.length ? `<table><thead><tr><th>Turno</th><th>Pasiva</th><th>Cuenta</th></tr></thead><tbody>${m.rows.map(([t, v, f]) => `<tr><td>${esc(t.replace(/^Turno /, ''))}</td><td><b>${esc(v)}</b></td><td class="muted">${esc(f)}</td></tr>`).join('')}</tbody></table>` : ''}
+      <p class="small"><b>Por qué:</b> ${esc(m.why)}</p>
+      ${m.notes.map((n) => `<p class="small muted">${esc(n)}</p>`).join('')}
+    </div>`).join('')}` : ''}
     <h3>🛡️ En qué equipo</h3>
     ${a.teams.length ? a.teams.map(leaderRow).join('') : '<p class="small muted">No hay ningún líder en la base de datos que la cubra con +120% o más.</p>'}
     ${a.ownLead >= 150 ? `<p class="small">También sirve de <b>líder</b>: da +${a.ownLead}% a su grupo.</p>` : ''}

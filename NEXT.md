@@ -37,3 +37,8 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
   - Ya no marcan como «acumula» las cartas cuyo ATK o DEF **baja** con los turnos, ni las que suben una sola vez (desde el turno 4, al entrar en combate…), ni los súper ataques que suben ATK solo durante 1 turno («Greatly raises ATK, raises DEF for 1 turn»).
   - Las cartas que se debilitan con los turnos lo dicen («Pierde ATK, DEF… con cada turno que pasa») y se recomiendan para batallas cortas y para sacarlas al principio, no para combates largos.
   - Los efectos «durante los primeros N turnos del combate» ahora también cuentan como turnos fuertes.
+- **Nueva sección «📈 Cómo cambian sus estadísticas»** en la Guía rápida, con la cuenta hecha:
+  - Para las cartas cuyo ATK, DEF, reducción de daño o esquiva **sube o baja cada turno**: tabla turno a turno (por ejemplo +600%, +540%… hasta +300% desde el turno 6), la operación de cada fila y el porqué (valor inicial, cuánto cambia, límite y en qué turno lo alcanza).
+  - Para las que suben **por cada ataque, súper ataque u orbe**: cuánto ganan cada vez, el máximo y cuántas veces hacen falta para llegar.
+  - Los extras de un solo ataque («al atacar con 12 o más de Ki») se suman a la tabla para ver el total.
+  - El resumen de arriba ya dice desde dónde empieza y hasta dónde llega.

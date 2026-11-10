@@ -67,6 +67,132 @@ function translateCondition(s) {
   return parts.length ? parts.join(' ') : '';
 }
 
+// ---------- stat math (how ATK/DEF/… change during the battle) ----------
+
+const STAT_NAMES = { atk: 'ATK', def: 'DEF', dr: 'reducción de daño', ev: 'esquiva' };
+const clean = (l) => l.replace(/\b(?:permanente|\d+ vez)\s*/g, '').trim();
+
+/** "ATK & DEF 60% ▼ (no more than -300%)" → [{ keys:['atk','def'], pct:60, dir:-1, cap:300, every:1|0 }] */
+function statParts(line) {
+  const out = [];
+  if (/enem(?:y|ies)'?s? (?:ATK|DEF)\b|all(?:y|ies)'?s? (?:ATK|DEF|Ki)\b|\ball (?:enemies|allies)\b/i.test(line)) return out;
+  for (const part of clean(line).split(/ and (?=[A-Z])/)) {
+    const m = /^(.*?)(\d+)% (▲|▼)(.*)$/.exec(part);
+    if (!m) continue;
+    const label = m[1];
+    const keys = [];
+    if (/\bATK\b/.test(label)) keys.push('atk');
+    if (/\bDEF\b/.test(label)) keys.push('def');
+    if (/damage reduction/i.test(label)) keys.push('dr');
+    if (/evading/i.test(label)) keys.push('ev');
+    if (!keys.length || /for \d+ turn/i.test(m[4])) continue;
+    const cap = /\((?:up to|no more than) [-+]?(\d+)%\)/i.exec(m[4]);
+    const every = /for every (\d+ )?turns? passed/i.exec(m[4]);
+    out.push({ keys, pct: +m[2], dir: m[3] === '▲' ? 1 : -1, cap: cap ? +cap[1] : 0, every: every ? +(every[1] || 1) : 0 });
+  }
+  return out;
+}
+
+const fmtPct = (key, v) => (key === 'atk' || key === 'def' ? `${v >= 0 ? '+' : '−'}${Math.abs(v)}%` : `${Math.max(0, v)}%`);
+
+/**
+ * How the card's own ATK, DEF, damage reduction and evasion change during the battle, with the math.
+ * [{ title, why, rows: [[label, value, formula]], notes: [] }]
+ */
+export function statMath(c) {
+  const sections = passiveSections(c);
+  const base = {};
+  const perTurn = {};   // key → { pct (signed), every, cap, now }
+  const perAction = []; // { keys, pct, cap, what }
+  const extras = [];    // conditional one-attack boosts, e.g. "When attacking with 12 or more Ki"
+  for (const { head, lines } of sections) {
+    const isBasic = /^basic effect/i.test(head);
+    for (const l of lines) {
+      for (const s of statParts(l)) {
+        const turnHead = /for every (\d+ )?turns? passed/i.exec(head);
+        const startEach = /at the start of each turn/i.test(head);
+        if (s.every || turnHead || startEach) {
+          const every = s.every || (turnHead ? +(turnHead[1] || 1) : 1);
+          for (const k of s.keys) if (!perTurn[k]) perTurn[k] = { pct: s.pct * s.dir, every, cap: s.cap, now: startEach && !s.every };
+          if (isBasic && s.every) continue;
+        }
+        if (s.every) continue;
+        if (isBasic) { for (const k of s.keys) if (s.dir > 0 && base[k] == null) base[k] = s.pct; continue; }
+        if (turnHead || startEach) continue;
+        const action = /for every (attack performed|super attack performed|attack received or evaded|attack received|attack evaded|(?:\w+ )?ki sphere obtained)/i.exec(head);
+        if (action && s.dir > 0 && /permanente/.test(l)) {
+          const what = { 'attack performed': 'ataque que hace', 'super attack performed': 'súper ataque que hace', 'attack received or evaded': 'ataque que recibe o esquiva', 'attack received': 'ataque que recibe', 'attack evaded': 'ataque que esquiva' }[action[1].toLowerCase()] || 'orbe que recoge';
+          perAction.push({ keys: s.keys, pct: s.pct, cap: s.cap, what });
+        } else if (/when attacking with (\d+) or more Ki/i.test(head) && s.dir > 0 && s.keys.includes('atk')) {
+          extras.push({ ki: /(\d+) or more Ki/i.exec(head)[1], pct: s.pct });
+        } else if (/when receiving an attack with (\d+) or more Ki/i.test(head) && s.dir > 0 && s.keys.includes('def')) {
+          extras.push(`Al recibir un ataque teniendo ${/(\d+) or more Ki/i.exec(head)[1]} o más de Ki suma ${s.pct}% de DEF en ese turno (tampoco se acumula).`);
+        }
+      }
+    }
+  }
+
+  const out = [];
+  // Group keys that change the same way ("ATK y DEF").
+  const groups = new Map();
+  for (const [k, t] of Object.entries(perTurn)) {
+    const id = `${base[k] ?? 0}|${t.pct}|${t.every}|${t.cap}|${t.now}`;
+    groups.set(id, [...(groups.get(id) || []), k]);
+  }
+  for (const [id, keys] of groups) {
+    const [b, pct, every, cap, now] = id.split('|').map((x, i) => (i === 4 ? x === 'true' : +x));
+    const name = list(keys.map((k) => STAT_NAMES[k]));
+    const k0 = keys[0];
+    const steps = cap ? Math.ceil(cap / Math.abs(pct)) : 0;
+    const valueAt = (t) => {
+      const n = Math.floor((t - (now ? 0 : 1)) / every);
+      const delta = cap ? Math.min(cap, Math.abs(pct) * n) : Math.abs(pct) * n;
+      return { n, v: b + Math.sign(pct) * delta };
+    };
+    const lastTurn = cap ? steps * every + (now ? 0 : 1) : 6;
+    const rows = [];
+    for (let t = 1; t <= Math.min(lastTurn, 12); t++) {
+      const { n, v } = valueAt(t);
+      const sign = pct < 0 ? '−' : '+';
+      const formula = n === 0 ? (b ? 'valor inicial' : '') : `${b ? `${b} ` : ''}${sign} ${Math.abs(pct)} × ${n}${cap && Math.abs(pct) * n > cap ? ` (tope ${cap})` : ''}`;
+      rows.push([t === lastTurn && cap ? `Turno ${t} en adelante` : `Turno ${t}`, fmtPct(k0, v), formula]);
+    }
+    const end = b + Math.sign(pct) * cap;
+    const verb = pct < 0 ? 'pierde' : 'gana';
+    const cadence = every > 1 ? `cada ${every} turnos` : 'cada turno';
+    let why = `${b ? `Su pasiva le da ${fmtPct(k0, b)} de ${name} desde el principio («Basic effect»)${pct < 0 ? ', pero' : ' y'} ` : 'Su pasiva '}${verb} ${Math.abs(pct)}% ${cadence}`;
+    why += now ? ' (ya desde el turno 1, «at the start of each turn»)' : ' («for every turn passed»: el turno 1 no cuenta, empieza a cambiar en el turno 2)';
+    if (cap) {
+      why += `, con un límite de ${pct < 0 ? '−' : '+'}${cap}% («${pct < 0 ? 'no more than' : 'up to'}»). ${cap} ÷ ${Math.abs(pct)} = ${steps} ${steps === 1 ? 'vez' : 'veces'}, así que llega al límite en el turno ${lastTurn} y desde ahí se queda en ${fmtPct(k0, end)}${b ? ` (${b} ${pct < 0 ? '−' : '+'} ${cap})` : ''}.`;
+    } else why += ', sin límite.';
+    const first = rows[0][1], last = rows[rows.length - 1];
+    const short = `${name.charAt(0).toUpperCase()}${name.slice(1)}: ${now ? `${first} en el turno 1` : `empieza en ${first}`} y ${verb} ${Math.abs(pct)}% ${cadence}${cap ? ` hasta quedarse en ${last[1]} desde el turno ${/\d+/.exec(last[0])[0]}` : ''}`;
+    out.push({ title: `${name.charAt(0).toUpperCase()}${name.slice(1)} turno a turno`, why, rows, notes: [], keys, short });
+  }
+
+  for (const a of perAction) {
+    const name = list(a.keys.map((k) => STAT_NAMES[k]));
+    const b = base[a.keys[0]] || 0;
+    if (!a.cap) {
+      out.push({ title: `${name.charAt(0).toUpperCase()}${name.slice(1)} por cada ${a.what}`, why: `Gana ${a.pct}% de ${name} por cada ${a.what}, para todo el combate y sin límite${b ? `, sobre su ${fmtPct(a.keys[0], b)} de base` : ''}.`, rows: [], notes: [] });
+      continue;
+    }
+    const n = Math.ceil(a.cap / a.pct);
+    out.push({
+      title: `${name.charAt(0).toUpperCase()}${name.slice(1)} por cada ${a.what}`,
+      why: `Gana ${a.pct}% de ${name} por cada ${a.what} y lo mantiene todo el combate, hasta un máximo de +${a.cap}% («up to»). ${a.cap} ÷ ${a.pct} = ${n}: lo alcanza tras ${n} ${n === 1 ? 'vez' : 'veces'}${b ? `. Con su ${fmtPct(a.keys[0], b)} de base llega a ${fmtPct(a.keys[0], b + a.cap)} (${b} + ${a.cap})` : ''}.`,
+      rows: [], notes: [],
+    });
+  }
+  if (out.length && extras.length) {
+    const atkRows = out.find((m) => m.keys?.includes('atk'))?.rows;
+    out[0].notes.push(...extras.map((x) => (typeof x === 'string' ? x
+      : `Además, al atacar con ${x.ki} o más de Ki suma ${x.pct}% de ATK solo en ese ataque (no se acumula)${atkRows ? `. Sumado a la tabla: ${atkRows[0][1]} + ${x.pct}% = ${fmtPct('atk', parseInt(atkRows[0][1].replace('−', '-'), 10) + x.pct)} en el turno 1 y ${atkRows[atkRows.length - 1][1]} + ${x.pct}% = ${fmtPct('atk', parseInt(atkRows[atkRows.length - 1][1].replace('−', '-'), 10) + x.pct)} en el ${lower(atkRows[atkRows.length - 1][0])}` : ''}.`)));
+  }
+  if (out.length) out[out.length - 1].notes.push('Los porcentajes de la pasiva se suman entre sí y se aplican sobre su ATK/DEF después del líder.');
+  return out;
+}
+
 // ---------- main ----------
 
 const ROLES = {
@@ -136,7 +262,10 @@ export function cardAdvice(c, cards, opts = {}) {
     summary.push(`Siempre tiene ${list(bits)} por su pasiva.`);
   }
   if (builds.length) summary.push(`Se hace más fuerte ${list(builds)}.`);
-  if (decayTurn) summary.push(`Pierde ${lost('turn')} con cada turno que pasa: es más fuerte al principio.`);
+  const math = statMath(c);
+  const turnMath = math.filter((m) => m.short);
+  if (decayTurn) summary.push(`Pierde ${lost('turn')} con cada turno que pasa: es más fuerte al principio${turnMath.length ? ':' : '.'}`);
+  for (const m of turnMath) summary.push(`${m.short} (la cuenta, en «Cómo cambian sus estadísticas»).`);
   if (decay.some((d) => d.by === 'action')) summary.push(`Pierde ${lost('action')} a medida que ${/received|evaded|receiv/i.test(decay.find((d) => d.by === 'action').head) ? 'recibe ataques' : 'ataca'}.`);
   if (orbs.size) summary.push(`Cambia orbes a ${list([...orbs].map((o) => (o === 'Rainbow' ? 'arcoíris' : o)))}.`);
   if (needsAllies) summary.push('Parte de su pasiva necesita aliados de su categoría o clase atacando en el mismo turno.');
@@ -222,5 +351,5 @@ export function cardAdvice(c, cards, opts = {}) {
   if (grows && !earlyTurns) timing.push('Rinde más cuanto más dure el combate.');
   if (!timing.length) timing.push('Rinde igual durante todo el combate.');
 
-  return { role: ROLES[role], summary, teams, ownLead, events, slot, timing, tier: opts.tier ?? null };
+  return { role: ROLES[role], summary, teams, ownLead, events, slot, timing, math, tier: opts.tier ?? null };
 }

@@ -34,6 +34,12 @@ if (goku) {
   check('Goku decay: no "más fuerte con los turnos"', !goku.timing.some((s) => /cuanto más dure/.test(s)) && !goku.summary.some((s) => /más fuerte con cada turno/.test(s)));
   check('Goku decay: says it weakens', goku.summary.some((s) => /Pierde ATK, DEF, reducción de daño y esquiva con cada turno/.test(s)));
   check('Goku decay: first 5 turns of battle', goku.timing.some((s) => /5 primeros turnos del combate/.test(s)));
+  check('Goku math: 600 → 300 from turn 6', goku.summary.some((s) => /ATK y DEF: empieza en \+600% y pierde 60% cada turno hasta quedarse en \+300% desde el turno 6/.test(s)));
+  const gm = goku.math.find((m) => m.keys?.includes('atk'));
+  check('Goku math: table 600,540,480,420,360,300', gm && gm.rows.map((r) => r[1]).join() === '+600%,+540%,+480%,+420%,+360%,+300%');
+  check('Goku math: 12 Ki adds 300 → 900 / 600', gm && gm.notes.some((n) => /\+900% en el turno 1 y .*\+600%/.test(n)));
+  const gr = goku.math.find((m) => m.keys?.includes('dr'));
+  check('Goku math: damage reduction 50 → 0', gr && gr.rows[0][1] === '50%' && gr.rows[gr.rows.length - 1][1] === '0%');
   check('Goku decay: no long-battle event', !goku.events.some((e) => /Zona Roja y Supreme/.test(e.title)));
 }
 
