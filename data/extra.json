@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-09T14:01:51.975Z"
  },
- "generated": "2026-11-10T02:14:16.366Z",
+ "generated": "2026-11-10T02:14:39.220Z",
  "summons": {
   "items": [
    {
@@ -6388,7 +6388,16 @@
       "1013190"
      ],
      "secondary": [],
-     "unfeatured": 33
+     "unfeatured": 33,
+     "names": {
+      "1002080": "A God Evolved",
+      "1003190": "Triumphant Light",
+      "1004070": "Crusher of Evil",
+      "1007370": "Unstoppable Ascension",
+      "1013170": "Clashing Tenacity",
+      "1013190": "Strenuous Struggle",
+      "1016020": "Intensifying Battle"
+     }
     }
    },
    {
@@ -6420,7 +6429,16 @@
       "1003030"
      ],
      "secondary": [],
-     "unfeatured": 30
+     "unfeatured": 30,
+     "names": {
+      "1001920": "The Power to Shake the Universe",
+      "1003030": "Quintessential Saiyan",
+      "1003690": "Absolute Realm of God",
+      "1009530": "Indomitable Battle Lust",
+      "1013170": "Clashing Tenacity",
+      "1013190": "Strenuous Struggle",
+      "1016020": "Intensifying Battle"
+     }
     }
    },
    {
@@ -6443,12 +6461,16 @@
       "1005480"
      ],
      "secondary": [],
-     "unfeatured": 0
+     "unfeatured": 0,
+     "names": {
+      "1002630": "Worth 1,000,000 Zeni",
+      "1005480": "Worth 1,500,000 Zeni"
+     }
     }
    }
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/summons/",
-  "updated": "2026-11-10T02:14:16.010Z"
+  "updated": "2026-11-10T02:14:38.904Z"
  }
 }
