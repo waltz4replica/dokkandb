@@ -3,7 +3,7 @@
   "version": "2.8.0-beta.3",
   "private": true,
   "type": "module",
-  "description": "App web instalable (PWA) con la base de datos de Dokkan Battle, sincronizada con la Dokkan Wiki.",
+  "description": "App web instalable (PWA) con la base de datos de Dokkan Battle, con datos de DOKKAN.FYI y DokkanStats.",
   "scripts": {
     "start": "node scripts/serve.mjs",
     "check": "node tests/live-check.mjs",

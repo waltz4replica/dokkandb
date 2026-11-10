@@ -49,7 +49,7 @@ function tile(c) {
     ${isNew ? '<span class="flag">NUEVA</span>' : ''}
     ${c.seza ? '<span class="flag eza">SEZA</span>' : c.eza ? '<span class="flag eza">EZA</span>' : ''}
     ${T.trainingItem(c) ? '<span class="flag item">ENTRENAR</span>' : ''}
-    <div class="nm">${esc(c.name)}</div></a>`;
+    <div class="nm">${isOwned(c) ? '<span class="own" title="La tienes">★</span> ' : ''}${esc(c.name)}</div></a>`;
 }
 
 // Newest first (cards without a date yet go on top).
@@ -65,6 +65,16 @@ function toast(msg) {
   el.hidden = false;
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => { el.hidden = true; }, 3500);
+}
+
+// Phone share sheet when there is one; otherwise copy the link.
+async function shareLink(title, url) {
+  try {
+    if (navigator.share) await navigator.share({ title, url });
+    else { await navigator.clipboard.writeText(url); toast('Enlace copiado'); }
+  } catch (err) {
+    if (err?.name !== 'AbortError') toast('No se pudo compartir. Enlace: ' + url);
+  }
 }
 
 // ---------- views ----------
@@ -122,9 +132,38 @@ function firstRunView() {
 }
 
 // Filters live here so they survive moving between screens.
-const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, sort: 'new', category: '',
+const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, mine: false, sort: 'new', category: '',
   cats: new Set(), fx: new Set(), orb: new Set(), moreOpen: false };
 const advancedCount = () => filters.cats.size + filters.fx.size + filters.orb.size;
+let listShown = 60; // cards the list had loaded, so coming back from a card lands in the same place
+
+// The Cards filters are remembered between visits (on this phone only).
+const FILTERS_KEY = storageName('cardFilters');
+const SET_KEYS = ['rarity', 'type', 'cls', 'cats', 'fx', 'orb'];
+function saveFilters() {
+  try {
+    const out = { q: filters.q, eza: filters.eza, mine: filters.mine, sort: filters.sort, moreOpen: filters.moreOpen };
+    for (const k of SET_KEYS) out[k] = [...filters[k]];
+    localStorage.setItem(FILTERS_KEY, JSON.stringify(out));
+  } catch { /* storage unavailable */ }
+}
+try {
+  const saved = JSON.parse(localStorage.getItem(FILTERS_KEY) || 'null');
+  if (saved) {
+    for (const k of ['q', 'eza', 'mine', 'sort', 'moreOpen']) if (k in saved) filters[k] = saved[k];
+    for (const k of SET_KEYS) if (Array.isArray(saved[k])) filters[k] = new Set(saved[k]);
+  }
+} catch { /* ignore a damaged copy */ }
+
+// "Mis cartas": the cards you own, marked from each card's page (on this phone only).
+const OWNED_KEY = storageName('ownedCards');
+let owned = new Set();
+try { owned = new Set(JSON.parse(localStorage.getItem(OWNED_KEY) || '[]')); } catch { /* start empty */ }
+const isOwned = (c) => !!c && owned.has(c.page);
+function setOwned(page, on) {
+  on ? owned.add(page) : owned.delete(page);
+  try { localStorage.setItem(OWNED_KEY, JSON.stringify([...owned])); } catch { toast('No se pudo guardar en este móvil.'); }
+}
 
 // Every category, most common first, for the category picker.
 let categoryList = null;
@@ -167,6 +206,7 @@ views.cards = (params) => {
     html: `
       <input class="search" type="search" placeholder="Buscar por nombre, categoría, link…" value="${esc(filters.q)}" id="q" autocomplete="off">
       <div class="chips">
+        <button class="chip mine ${filters.mine ? 'on' : ''}" data-g="mine">★ Mis cartas</button>
         ${['LR', 'UR', 'SSR'].map((r) => chip('rarity', r, r)).join('')}
         ${['AGL', 'TEQ', 'INT', 'STR', 'PHY'].map((t) => chip('type', t, t, 't-' + t.toLowerCase())).join('')}
         ${chip('cls', 'Super', 'Super')}${chip('cls', 'Extreme', 'Extreme')}
@@ -193,8 +233,8 @@ views.cards = (params) => {
       const grid = $('#grid', el);
       // When sorted by date, a heading marks each release day.
       let lastDate = null;
-      const renderMore = () => {
-        const next = list.slice(shown, shown + 60);
+      const renderMore = (n = 60) => {
+        const next = list.slice(shown, shown + n);
         const byDate = filters.sort === 'new' || filters.sort === 'old';
         grid.insertAdjacentHTML('beforeend', next.map((c) => {
           if (!byDate || c.released === lastDate) return tile(c);
@@ -202,20 +242,25 @@ views.cards = (params) => {
           return `<div class="date-head in-grid">${c.released ? fmtDate(c.released) : 'Sin fecha'}</div>${tile(c)}`;
         }).join(''));
         shown += next.length;
+        listShown = shown;
       };
-      const refresh = () => {
+      // keep = coming back to the list: load as many cards as before so the scroll position still fits.
+      const refresh = (keep = false) => {
         list = filterCards();
         shown = 0;
         lastDate = null;
-        grid.innerHTML = list.length ? '' : '<div class="empty" style="grid-column:1/-1">No hay cartas con esos filtros.</div>';
+        grid.innerHTML = list.length ? '' : `<div class="empty" style="grid-column:1/-1">${filters.mine && !owned.size
+          ? 'Todavía no has marcado ninguna carta como tuya.<br>Entra en una carta y pulsa <b>☆ La tengo</b>.'
+          : 'No hay cartas con esos filtros.'}</div>`;
         $('#count', el).textContent = `${list.length} cartas`;
-        renderMore();
+        renderMore(keep ? Math.max(60, listShown) : 60);
+        if (!keep) saveFilters();
       };
       let t;
       $('#q', el).addEventListener('input', (e) => { clearTimeout(t); t = setTimeout(() => { filters.q = e.target.value; refresh(); }, 150); });
       $('#sort', el).addEventListener('change', (e) => { filters.sort = e.target.value; refresh(); });
       const redrawAdv = () => { $('#adv-body', el).innerHTML = advancedFiltersHtml(); $('#adv-n', el).textContent = advancedCount() || ''; };
-      $('#adv', el).addEventListener('toggle', (e) => { filters.moreOpen = e.target.open; });
+      $('#adv', el).addEventListener('toggle', (e) => { filters.moreOpen = e.target.open; saveFilters(); });
       el.addEventListener('change', (e) => {
         if (e.target.id !== 'cat-add' || !e.target.value) return;
         filters.cats.add(e.target.value);
@@ -233,15 +278,15 @@ views.cards = (params) => {
           refresh();
           return;
         }
-        if (g === 'eza') filters.eza = !filters.eza;
+        if (g === 'eza' || g === 'mine') filters[g] = !filters[g];
         else if (g === 'category') { filters.category = ''; b.parentElement.remove(); }
         else filters[g].has(b.dataset.v) ? filters[g].delete(b.dataset.v) : filters[g].add(b.dataset.v);
-        b.classList.toggle('on', g === 'eza' ? filters.eza : g === 'category' ? false : filters[g].has(b.dataset.v));
+        b.classList.toggle('on', g === 'eza' || g === 'mine' ? filters[g] : g === 'category' ? false : filters[g].has(b.dataset.v));
         refresh();
       });
       const io = new IntersectionObserver((entries) => { if (entries[0].isIntersecting && shown < list.length) renderMore(); }, { rootMargin: '600px' });
       io.observe($('#more', el));
-      refresh();
+      refresh(true);
       return () => io.disconnect();
     },
   };
@@ -256,6 +301,7 @@ function matchesEffects(c) {
 function filterCards() {
   const words = filters.q.toLowerCase().split(/\s+/).filter(Boolean);
   const out = [...store.cards.values()].filter((c) =>
+    (!filters.mine || owned.has(c.page)) &&
     (!filters.rarity.size || filters.rarity.has(c.rarity)) &&
     (!filters.type.size || filters.type.has(c.type)) &&
     (!filters.cls.size || filters.cls.has(c.cls)) &&
@@ -326,6 +372,7 @@ views.card = (params, page) => {
   if (!c) return { title: 'Carta', back: true, html: `<div class="empty">Esta carta no está en la base de datos.<br><br><a href="https://dokkan.fyi/characters/${enc(page)}" target="_blank" rel="noopener">Buscar en DOKKAN.FYI</a></div>` };
   const levels = [['base', 'Base'], ...(c.eza ? [['eza', 'EZA']] : []), ...(c.seza ? [['seza', 'SEZA']] : [])];
   const t = c.type.toLowerCase();
+  const item = T.trainingItem(c);
   const skill = (label, name, body, cond) => body ? `<div class="box skill"><h3>${label}</h3>${name ? `<div class="sn">${esc(name)}</div>` : ''}<div class="desc">${body}</div>${cond ? `<div class="cond">${cond}</div>` : ''}</div>` : '';
   const render = (lv) => {
     const pick = (o) => (o ? o[lv] || (lv === 'seza' ? o.eza : '') || o.base : '');
@@ -362,21 +409,34 @@ views.card = (params, page) => {
       <div class="hero">${thumbTag(c, '')}
         <div><div class="t">${esc(c.title)}</div><div class="n">${esc(c.name)}</div>
         <div class="badges"><span class="badge ${c.rarity.toLowerCase()}">${esc(c.rarity)}</span><span class="badge t-${t}">${esc(c.cls)} ${esc(c.type)}</span>
-        ${c.cost ? `<span class="badge">Coste ${c.cost}</span>` : ''}${c.seza ? '<span class="badge">SEZA</span>' : c.eza ? '<span class="badge">EZA</span>' : ''}</div></div>
+        ${c.cost && !item ? `<span class="badge">Coste ${c.cost}</span>` : ''}${c.seza ? '<span class="badge">SEZA</span>' : c.eza ? '<span class="badge">EZA</span>' : ''}</div></div>
+      </div>
+      <div class="card-actions">
+        <button class="btn own-btn ${isOwned(c) ? 'on' : ''}" id="own" aria-pressed="${isOwned(c)}">${isOwned(c) ? '★ La tengo' : '☆ La tengo'}</button>
+        <button class="btn" id="share">Compartir</button>
       </div>
       ${levels.length > 1 ? `<div class="seg" id="lv">${levels.map(([k, l], i) => `<button data-lv="${k}" class="${i === levels.length - 1 ? 'on' : ''}">${l}</button>`).join('')}</div>` : ''}
       ${guideHtml(c)}
       <div id="skills" style="margin-top:10px">${render(levels[levels.length - 1][0])}</div>
-      <div class="box"><table class="stats"><tr><th></th><th>Base</th><th>Máx.</th></tr>
+      ${item ? '' : `<div class="box"><table class="stats"><tr><th></th><th>Base</th><th>Máx.</th></tr>
         <tr><td>HP</td><td>${c.stats.hp[0] ?? '–'}</td><td>${c.stats.hp[1] ?? '–'}</td></tr>
         <tr><td>ATK</td><td>${c.stats.atk[0] ?? '–'}</td><td>${c.stats.atk[1] ?? '–'}</td></tr>
         <tr><td>DEF</td><td>${c.stats.def[0] ?? '–'}</td><td>${c.stats.def[1] ?? '–'}</td></tr></table>
-        ${c.ki12 ? `<div class="small muted" style="margin-top:8px">Multiplicador a 12 de ki: ${esc(c.ki12)}</div>` : ''}</div>
-      <h2>Links (${c.links.length})</h2><div class="tags">${c.links.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>
-      <h2>Categorías (${c.categories.length})</h2><div class="tags">${c.categories.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>
+        ${c.ki12 ? `<div class="small muted" style="margin-top:8px">Multiplicador a 12 de ki: ${esc(c.ki12)}</div>` : ''}</div>`}
+      ${c.links.length ? `<h2>Links (${c.links.length})</h2><div class="tags">${c.links.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>` : ''}
+      ${c.categories.length ? `<h2>Categorías (${c.categories.length})</h2><div class="tags">${c.categories.map((l) => `<a href="#/cards?category=${enc(l)}">${esc(l)}</a>`).join('')}</div>` : ''}
       ${dateRows.length ? `<h2>Fechas</h2><div class="box dates"><span></span><b>Global</b><b>Japón</b>${dateRows.map(([l, g, j]) => `<b>${l}</b><span>${fmtDate(g) || '–'}</span><span>${fmtDate(j) || '–'}</span>`).join('')}</div>` : '<p class="muted small">Sin fecha de lanzamiento todavía (próximamente o solo en Japón).</p>'}
       <p class="small"><a href="${esc(sourceUrl(c))}" target="_blank" rel="noopener">Ver en DOKKAN.FYI ↗</a></p>`,
     mount(el) {
+      $('#own', el).addEventListener('click', (e) => {
+        const on = !isOwned(c);
+        setOwned(c.page, on);
+        e.currentTarget.classList.toggle('on', on);
+        e.currentTarget.setAttribute('aria-pressed', on);
+        e.currentTarget.textContent = on ? '★ La tengo' : '☆ La tengo';
+        toast(on ? 'Añadida a Mis cartas' : 'Quitada de Mis cartas');
+      });
+      $('#share', el).addEventListener('click', () => shareLink(`${c.name} (${c.rarity} ${c.type}) en DokkanDB`, `${location.origin}${location.pathname}#/card/${enc(c.page)}`));
       $('#lv', el)?.addEventListener('click', (e) => {
         const b = e.target.closest('button');
         if (!b) return;
@@ -501,8 +561,11 @@ views.events = (params) => {
   const others = [...new Set(items.map((e) => e.group))].filter((g) => !present.includes(g));
   const groups = [...present, ...others];
   const tabs = `<div class="seg" style="margin-top:0"><button data-tab="events" class="${tab === 'events' ? 'on' : ''}">Eventos activos</button><button data-tab="news" class="${tab === 'news' ? 'on' : ''}">Noticias del juego</button></div>`;
+  const withStones = items.filter((e) => e.stones > 0);
   const eventsHtml = !items.length ? noExtra() : `
-    <div class="chips">${groups.map((g, i) => `<button class="chip ${i === 0 ? 'on' : ''}" data-g="${esc(g)}">${esc(groupName(g))} (${items.filter((e) => e.group === g).length})</button>`).join('')}</div>
+    <input class="search" type="search" id="evq" placeholder="Buscar evento…" autocomplete="off">
+    <div class="chips">${groups.map((g, i) => `<button class="chip ${i === 0 ? 'on' : ''}" data-g="${esc(g)}">${esc(groupName(g))} (${items.filter((e) => e.group === g).length})</button>`).join('')}
+      ${withStones.length ? '<button class="chip" data-g="__stones">💎 Más piedras</button>' : ''}</div>
     <div class="ev-grid" id="ev"></div>
     <p class="muted small">Fuente: <a href="${esc(ex.events.url)}" target="_blank" rel="noopener">${esc(ex.events.source)}</a>${ex.events.updated ? ' · cambios detectados ' + ago(ex.events.updated) : ''}</p>`;
   const news = ex?.news?.items || [];
@@ -518,18 +581,28 @@ views.events = (params) => {
       });
       const box = $('#ev', el);
       if (!box) return;
-      const show = (g) => {
-        box.innerHTML = items.filter((e) => e.group === g).map((e) => `
+      let group = groups[0];
+      // A search looks in every group; otherwise the chosen group (or every event with stones).
+      const show = () => {
+        const words = ($('#evq', el).value || '').toLowerCase().split(/\s+/).filter(Boolean);
+        const list = words.length ? items.filter((e) => words.every((w) => e.title.toLowerCase().includes(w)))
+          : group === '__stones' ? withStones.slice().sort((a, b) => b.stones - a.stones) : items.filter((e) => e.group === group);
+        box.innerHTML = list.length ? list.map((e) => `
           <a class="ev" href="${esc(e.url)}" target="_blank" rel="noopener" title="${esc(e.title)}">
-            <img loading="lazy" alt="" src="${esc(e.image)}"><span>${esc(e.title)}</span></a>`).join('');
+            <img loading="lazy" alt="" src="${esc(e.image)}"><span>${esc(e.title)}${e.stones ? ` <b class="stones">💎 ${e.stones}</b>` : ''}${words.length ? ` <i class="muted">· ${esc(groupName(e.group))}</i>` : ''}</span></a>`).join('')
+          : '<div class="empty">No hay eventos con ese nombre.</div>';
       };
       el.querySelector('.chips').addEventListener('click', (e) => {
         const c = e.target.closest('.chip');
         if (!c) return;
         el.querySelectorAll('.chips .chip').forEach((x) => x.classList.toggle('on', x === c));
-        show(c.dataset.g);
+        group = c.dataset.g;
+        $('#evq', el).value = '';
+        show();
       });
-      show(groups[0]);
+      let t;
+      $('#evq', el).addEventListener('input', () => { clearTimeout(t); t = setTimeout(show, 150); });
+      show();
     },
   };
 };
@@ -916,13 +989,7 @@ views.team = (params, which) => {
         toast(T.saveTeams(list) ? 'Equipo guardado' : 'No se pudo guardar en este dispositivo');
         if (!editing.fromList) { editing.fromList = true; route(); }
       });
-      $('#share', el).addEventListener('click', async () => {
-        const url = shareUrl();
-        try {
-          if (navigator.share) await navigator.share({ title: editing.name, url });
-          else { await navigator.clipboard.writeText(url); toast('Enlace copiado'); }
-        } catch { /* cancelled */ }
-      });
+      $('#share', el).addEventListener('click', () => shareLink(editing.name, shareUrl()));
       $('#del', el)?.addEventListener('click', () => {
         if (!confirm(`¿Borrar el equipo «${editing.name}»? No se puede deshacer.`)) return;
         deleteTeam(editing.id);
@@ -944,7 +1011,7 @@ function leaderStrength(card) {
 }
 
 // Card picker for one slot of the team.
-const pick = { q: '', lead: true, rarity: new Set(), type: new Set() };
+const pick = { q: '', lead: true, mine: false, rarity: new Set(), type: new Set() };
 views['team-pick'] = (params, slotStr) => {
   if (!editing) { location.replace('#/teams'); return { title: '', html: '' }; }
   const i = +slotStr;
@@ -957,6 +1024,7 @@ views['team-pick'] = (params, slotStr) => {
     back: true,
     html: `<input class="search" type="search" id="pq" placeholder="Buscar carta…" value="${esc(pick.q)}" autocomplete="off">
       <div class="chips">
+        ${i !== T.SLOTS - 1 && owned.size ? `<button class="chip mine ${pick.mine ? 'on' : ''}" data-g="mine">★ Solo mis cartas</button>` : ''}
         ${hasLeader && !isLeaderSlot ? `<button class="chip ${pick.lead ? 'on' : ''}" data-g="lead">Bajo el líder</button>` : ''}
         ${['LR', 'UR', 'SSR'].map((r) => chip('rarity', r, r)).join('')}
         ${['AGL', 'TEQ', 'INT', 'STR', 'PHY'].map((t) => chip('type', t, t, 't-' + t.toLowerCase())).join('')}
@@ -981,7 +1049,7 @@ views['team-pick'] = (params, slotStr) => {
           <span class="small">${c.rarity} ${c.cls} ${c.type}
             ${l ? (l.covered ? ` · <span class="ok">Líder +${l.pct}%</span>` : ' · <span class="no">fuera del líder</span>') : ''}
             ${others.some(Boolean) ? ` · ${links} links` : ''}
-            ${lead ? ` · <span class="ok">Líder ${lead.pct}%</span>` : ''}</span></span></button>`;
+            ${lead ? ` · <span class="ok">Líder ${lead.pct}%</span>` : ''}${isOwned(c) ? ' · <span class="own">★ tuya</span>' : ''}</span></span></button>`;
       };
       const more = () => { box.insertAdjacentHTML('beforeend', list.slice(shown, shown + 40).map(rowHtml).join('')); shown += 40; };
       const refresh = () => {
@@ -990,6 +1058,7 @@ views['team-pick'] = (params, slotStr) => {
         const takenNames = new Set(others.slice(0, T.SLOTS - 1).filter(Boolean).map((c) => c.name));
         const isFriend = i === T.SLOTS - 1;
         list = [...store.cards.values()].filter((c) => T.isFighter(c) &&
+          (!pick.mine || isFriend || !owned.size || owned.has(c.page)) &&
           (!pick.rarity.size || pick.rarity.has(c.rarity)) &&
           (!pick.type.size || pick.type.has(c.type)) &&
           (isFriend || !takenNames.has(c.name)) &&
@@ -1007,9 +1076,9 @@ views['team-pick'] = (params, slotStr) => {
         const b = e.target.closest('.chip');
         if (!b) return;
         const g = b.dataset.g;
-        if (g === 'lead') pick.lead = !pick.lead;
+        if (g === 'lead' || g === 'mine') pick[g] = !pick[g];
         else pick[g].has(b.dataset.v) ? pick[g].delete(b.dataset.v) : pick[g].add(b.dataset.v);
-        b.classList.toggle('on', g === 'lead' ? pick.lead : pick[g].has(b.dataset.v));
+        b.classList.toggle('on', g === 'lead' || g === 'mine' ? pick[g] : pick[g].has(b.dataset.v));
         refresh();
       });
       box.addEventListener('click', (e) => {
@@ -1040,6 +1109,16 @@ views.settings = () => ({
     <p class="muted small">${CHANNEL === 'beta'
       ? `Estás en la <b>beta</b>: aquí salen primero las funciones nuevas para probarlas. Tus datos y equipos de la beta van aparte. <a href="${STABLE_URL}">Ir a la versión estable</a>`
       : `¿Quieres probar las funciones nuevas antes que nadie? <a href="${BETA_URL}">Abrir la beta</a> (se instala aparte y no toca tus datos).`}</p>
+    <h2>Tus datos</h2>
+    <div class="box kv">
+      <b>Mis cartas</b><span>${owned.size} <a href="#/cards" id="see-mine">Ver</a></span>
+      <b>Equipos guardados</b><span>${T.loadTeams().length}</span>
+    </div>
+    <p class="muted small">Se guardan solo en este móvil${CHANNEL === 'beta' ? ' (y aparte de la versión estable)' : ''}. Haz una copia antes de cambiar de móvil o borrar los datos del navegador.</p>
+    <div class="btns">
+      <button class="btn" id="backup">Copiar copia de seguridad</button>
+      <button class="btn" id="restore">Restaurar copia</button>
+    </div>
     <h2>Base de datos</h2>
     <div class="box kv">
       <b>Cartas</b><span>${store.cards.size}</span>
@@ -1060,6 +1139,26 @@ views.settings = () => ({
       Estos se recogen cada 3 horas en GitHub${store.extra?.generated ? ` (última vez con cambios: ${fmtDate(store.extra.generated)}, ${ago(store.extra.generated)})` : ''}.<br><br>
       Los textos del juego están en inglés. App de fans, sin relación con Bandai Namco ni Akatsuki.</div>`,
   mount(el) {
+    $('#see-mine', el).addEventListener('click', () => { filters.mine = true; saveFilters(); });
+    $('#backup', el).addEventListener('click', async () => {
+      const text = JSON.stringify({ app: 'DokkanDB', v: 1, date: new Date().toISOString(), owned: [...owned], teams: T.loadTeams() });
+      try { await navigator.clipboard.writeText(text); toast('Copia copiada: pégala en una nota o mándatela por mensaje.'); }
+      catch { prompt('Copia este texto y guárdalo:', text); }
+    });
+    $('#restore', el).addEventListener('click', () => {
+      const text = prompt('Pega aquí tu copia de seguridad:');
+      if (!text) return;
+      try {
+        const data = JSON.parse(text);
+        if (data.app !== 'DokkanDB' || !Array.isArray(data.owned) || !Array.isArray(data.teams)) throw new Error('formato');
+        if (!confirm(`La copia tiene ${data.owned.length} cartas tuyas y ${data.teams.length} equipos. Se añadirán a los que ya tienes. ¿Seguir?`)) return;
+        data.owned.forEach((p) => setOwned(String(p), true));
+        const have = new Set(T.loadTeams().map((t) => t.id));
+        T.saveTeams([...T.loadTeams(), ...data.teams.filter((t) => t && Array.isArray(t.ids) && !have.has(t.id))]);
+        toast('Copia restaurada');
+        route();
+      } catch { alert('Ese texto no es una copia de seguridad de DokkanDB.'); }
+    });
     $('#sync-now', el).addEventListener('click', () => runSync({ manual: true }));
     $('#sync-full', el).addEventListener('click', () => { if (confirm('¿Volver a descargar toda la base de datos? Tarda unos minutos.')) runSync({ full: true }); });
   },
@@ -1109,7 +1208,7 @@ function route() {
 addEventListener('hashchange', route);
 addEventListener('scroll', () => scrollPos.set(location.hash, scrollY), { passive: true });
 
-// Broken card image -> fall back to the page image from the wiki.
+// Broken card image -> try the backup copy (data-fallback) once.
 document.addEventListener('error', (e) => {
   const img = e.target;
   if (img.tagName === 'IMG' && img.dataset.fallback && img.src !== img.dataset.fallback) {
@@ -1146,7 +1245,7 @@ async function runSync(opts = {}) {
     console.error(err);
     setPill('err', 'Sin conexión');
     if (msg()) msg().textContent = 'No se pudo actualizar: ' + err.message;
-    if (opts.manual || opts.full) toast('No se pudo conectar con la wiki');
+    if (opts.manual || opts.full) toast(navigator.onLine ? 'No se pudieron descargar las novedades. Inténtalo más tarde.' : 'Sin conexión a internet. Se usan los datos guardados.');
     if (location.hash.startsWith('#/settings') || !store.cards.size) route();
   }
 }

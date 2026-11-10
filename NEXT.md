@@ -23,4 +23,13 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
   - **Elder Kai, Grand Kai, las de Navidad y la Princesa Serpiente** llevan la etiqueta verde **ENTRENAR**. Su guía explica que solo sirven en Entrenamiento para subir el súper ataque de otra carta (siempre o con un 30%, y si solo vale para un tipo). Ya no salen como opción en el creador de equipos.
   - **Estatuas de Mr. Satán:** en los banners salen con la etiqueta **VENDER** y lo que valen en zeni («Estatua de Mr. Satán · 1.000.000 zeni»).
   - En los banners que tienen estas cartas, un aviso explica para qué sirven.
+- **Mis cartas:** botón **☆ La tengo** en cada carta. Las tuyas llevan una ★, se filtran con **★ Mis cartas** en Cartas y con **★ Solo mis cartas** al elegir unidades para un equipo.
+- **Copia de seguridad** en Ajustes → Tus datos: copia y restaura tus cartas y equipos (para cambiar de móvil).
+- **Compartir** una carta con un enlace.
+- Los **filtros de Cartas se recuerdan** aunque cierres la app.
+- **Eventos:** buscador y orden por **💎 Más piedras**; cada evento muestra cuántas Dragon Stones da.
+- En las cartas de entrenamiento ya no salen estadísticas ni secciones vacías.
+- Corregido: al volver de una carta a la lista de Cartas, la lista saltaba a otro sitio.
+- Corregido: sin conexión, el aviso hablaba de «la wiki» (ya no se usa) y ahora explica qué pasa.
+- La app descarga menos: quitado código antiguo de la wiki que ya no se usaba.
 - Corregido: la ventana de novedades no mostraba bien las listas en algunos casos.

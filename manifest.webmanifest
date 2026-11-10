@@ -1,7 +1,7 @@
 {
   "name": "DokkanDB",
   "short_name": "DokkanDB",
-  "description": "Base de datos de Dokkan Battle que se actualiza sola con la Dokkan Wiki.",
+  "description": "Base de datos de Dokkan Battle que se actualiza sola: cartas, banners, eventos, tier list y creador de equipos.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",

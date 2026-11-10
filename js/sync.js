@@ -4,22 +4,13 @@
 //                   The app checks the small data/cards-meta.json first and only downloads the
 //                   big file when it has changed.
 //   Banners, tier list, events, news -> data/extra.json (fan sites, collected by scripts/scrape.mjs).
-//   (The wiki banner code below is no longer called: the wiki was months behind.)
 
 import * as db from './db.js';
-import { pagesInCategory, categoryAddedTimes, pagesByTitle, changedSince } from './wiki.js';
-import { parseBanner } from './parse.js';
 
-export const BANNER_CATEGORIES = [
-  'Dokkan Festivals', 'Extreme Z Dokkan Festivals', 'Step-Up Dokkan Festivals', 'Carnivals',
-  'Legendary Summons', 'Type, Class and Category Summons', 'Crossover/Collaboration Summons',
-  'Ticket Summons', 'Miscellaneous Summons',
-];
-const SCHEMA = 3;            // bump to force a fresh download on every phone (2 = cards from DOKKAN.FYI)
-const FULL_AFTER_DAYS = 80;  // the wiki only keeps ~90 days of change history
+const SCHEMA = 3; // bump to force a fresh download on every phone (2 = cards from DOKKAN.FYI)
 
 // In-memory copy used by the screens.
-export const store = { cards: new Map(), banners: new Map(), extra: null, linkFx: {}, lastSync: null, cardsVersion: null, loaded: false };
+export const store = { cards: new Map(), extra: null, linkFx: {}, lastSync: null, cardsVersion: null, loaded: false };
 
 let byId = null, byEarlier = null, byName = null;
 const nameKey = (title, name) => `${title}|${name}`.toLowerCase().replace(/[^a-z0-9|]+/g, '');
@@ -55,12 +46,11 @@ export async function loadLocal() {
     await Promise.all([db.clear('cards'), db.clear('banners'), db.setMeta('lastSync', null), db.setMeta('cardsVersion', null)]);
     await db.setMeta('schema', SCHEMA);
   }
-  const [cards, banners, lastSync, extra, cardsVersion, linkFx] = await Promise.all([
-    db.getAll('cards'), db.getAll('banners'), db.getMeta('lastSync'), db.getMeta('extra'), db.getMeta('cardsVersion'), db.getMeta('linkFx'),
+  const [cards, lastSync, extra, cardsVersion, linkFx] = await Promise.all([
+    db.getAll('cards'), db.getMeta('lastSync'), db.getMeta('extra'), db.getMeta('cardsVersion'), db.getMeta('linkFx'),
   ]);
   store.linkFx = linkFx || {};
   store.cards = new Map(cards.map((c) => [c.page, c]));
-  store.banners = new Map(banners.map((b) => [b.page, b]));
   store.extra = extra;
   store.lastSync = lastSync;
   store.cardsVersion = cardsVersion;
@@ -126,48 +116,6 @@ async function getJson(url) {
   const res = await fetch(url, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
   return res.json();
-}
-
-// ---------- banners (Dokkan Wiki) ----------
-
-async function fullBanners(onProgress) {
-  const banners = [];
-  for (const cat of BANNER_CATEGORIES) {
-    const added = await categoryAddedTimes(cat);
-    for await (const batch of pagesInCategory(cat)) {
-      for (const p of batch) {
-        const b = parseBanner({ ...p, category: cat, added: added[p.title] || '' });
-        if (b) banners.push(b);
-      }
-      onProgress(`Descargando banners… (${banners.length})`);
-    }
-  }
-  if (banners.length < 20) throw new Error('La wiki devolvió muy pocos banners; se mantienen los anteriores.');
-  const newBanners = store.banners.size ? banners.filter((b) => !store.banners.has(b.page)) : [];
-  await db.clear('banners');
-  await db.putMany('banners', banners);
-  store.banners = new Map(banners.map((b) => [b.page, b]));
-  return newBanners;
-}
-
-async function changedBanners(since, onProgress) {
-  onProgress('Buscando banners nuevos…');
-  const titles = await changedSince(since);
-  if (!titles.length) return [];
-  const now = new Date().toISOString();
-  const pages = await pagesByTitle(titles, BANNER_CATEGORIES);
-  const banners = [];
-  for (const p of pages) {
-    const cat = p.categories.find((c) => BANNER_CATEGORIES.includes(c));
-    if (!cat) continue;
-    const prev = store.banners.get(p.title);
-    const b = parseBanner({ ...p, category: cat, added: prev?.added || now });
-    if (b) banners.push(b);
-  }
-  const newBanners = banners.filter((b) => !store.banners.has(b.page));
-  await db.putMany('banners', banners);
-  banners.forEach((b) => store.banners.set(b.page, b));
-  return newBanners;
 }
 
 // ---------- tier list / events / news (data/extra.json) ----------
