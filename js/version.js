@@ -1,6 +1,6 @@
 // App version. Don't change it by hand: scripts/release.ps1 sets it here, in sw.js and in
 // package.json, and writes the CHANGELOG.md entry. See RELEASING.md.
-export const APP_VERSION = '2.6.1';
+export const APP_VERSION = '2.7.0';
 export const CHANGELOG_URL = 'https://github.com/waltz4replica/dokkandb/blob/main/CHANGELOG.md';
 export const RELEASES_URL = 'https://github.com/waltz4replica/dokkandb/releases';
 

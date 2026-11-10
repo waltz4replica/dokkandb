@@ -1,6 +1,6 @@
 // Service worker: makes the app open offline and caches card images.
 // Must match APP_VERSION in js/version.js, so phones pick up each new version.
-const VERSION = '2.6.1';
+const VERSION = '2.7.0';
 // The beta copy (/dokkandb/beta/) shares this site's cache storage, so its caches get their own prefix.
 const PREFIX = /\/beta\/$/.test(new URL(self.registration.scope).pathname) ? 'beta-shell-' : 'shell-';
 const SHELL = `${PREFIX}${VERSION}`;

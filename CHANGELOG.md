@@ -9,6 +9,11 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 Las novedades que todavía están en la beta van en [NEXT.md](NEXT.md). Cómo se publica: [RELEASING.md](RELEASING.md).
 
+## 2.7.0 — 2026-11-10
+- **Canal beta:** las funciones nuevas salen primero en https://waltz4replica.github.io/dokkandb/beta/ para probarlas. Se instala aparte (DokkanDB Beta) y guarda sus datos y equipos por separado. Se abre desde Ajustes.
+- **Ventana de novedades:** al actualizarse, la app enseña qué ha cambiado. También en Ajustes → Novedades.
+- Cada versión tiene su página en GitHub Releases y se publica con un solo comando (plan completo en RELEASING.md).
+
 ## 2.6.1 — 2026-11-10
 - Corregido: en la lista de banners, la última miniatura se salía del recuadro en pantallas estrechas. Ahora se encogen para caber.
 
