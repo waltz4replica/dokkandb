@@ -5050,6 +5050,18 @@
  "news": {
   "items": [
    {
+    "id": "105875",
+    "title": "Server Maintenance Announcement",
+    "url": "https://dokkan.fyi/news/105875",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/DBDB_maintenance_start_lg_US_550x160.jpg",
+    "tags": [
+     "Other",
+     "Check"
+    ],
+    "date": "Nov 11, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-11T08:00:00.000Z"
+   },
+   {
     "id": "107052",
     "title": "Hercule's Miracle Special Test of Luck!",
     "url": "https://dokkan.fyi/news/107052",
@@ -5173,25 +5185,13 @@
     ],
     "date": "Nov 2, 2026, 8:00 AM GMT+0",
     "iso": "2026-11-02T08:00:00.000Z"
-   },
-   {
-    "id": "107377",
-    "title": "Information on Upcoming Content!",
-    "url": "https://dokkan.fyi/news/107377",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 1, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-01T08:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-10T05:07:57.777Z"
+  "updated": "2026-11-11T14:23:05.370Z"
  },
- "generated": "2026-11-10T17:07:57.301Z",
+ "generated": "2026-11-11T14:23:05.372Z",
  "summons": {
   "items": [
    {
