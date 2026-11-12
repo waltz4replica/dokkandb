@@ -122,6 +122,13 @@
       "trend": "down"
      },
      {
+      "id": "1034591",
+      "cardId": "1034590",
+      "title": "Shifting Fate",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "same"
+     },
+     {
       "id": "1034301",
       "cardId": "1034300",
       "title": "Grand Assault Leading Allies",
@@ -134,13 +141,6 @@
       "title": "Infinite Terror",
       "name": "Metal Cooler",
       "trend": "down"
-     },
-     {
-      "id": "1034591",
-      "cardId": "1034590",
-      "title": "Shifting Fate",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "same"
      },
      {
       "id": "1032881",
@@ -433,6 +433,13 @@
       "trend": "down"
      },
      {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
+     },
+     {
       "id": "1034861",
       "cardId": "1034860",
       "title": "Valor Etched into History",
@@ -444,13 +451,6 @@
       "cardId": "1020280",
       "title": "Risky Covering Fire",
       "name": "Tien",
-      "trend": "up"
-     },
-     {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
       "trend": "up"
      },
      {
@@ -537,18 +537,18 @@
       "trend": "down"
      },
      {
-      "id": "1034731",
-      "cardId": "1034730",
-      "title": "Magnificent Act of Justice",
-      "name": "Great Saiyaman 2",
-      "trend": "up"
-     },
-     {
       "id": "1022701",
       "cardId": "1022700",
       "title": "Wicked Life Form's Superiority Complex",
       "name": "Cell (2nd Form)",
       "trend": "down"
+     },
+     {
+      "id": "1034731",
+      "cardId": "1034730",
+      "title": "Magnificent Act of Justice",
+      "name": "Great Saiyaman 2",
+      "trend": "up"
      },
      {
       "id": "1024991",
@@ -572,17 +572,17 @@
       "trend": "up"
      },
      {
-      "id": "1013391",
-      "cardId": "1013390",
-      "title": "Blazing Love and Burning Justice",
-      "name": "Great Saiyaman 1 & 2",
-      "trend": "up"
-     },
-     {
       "id": "1032331",
       "cardId": "1032330",
       "title": "Alliance of Justice",
       "name": "Gamma 2 + Piccolo (Power Awakening)",
+      "trend": "up"
+     },
+     {
+      "id": "1013391",
+      "cardId": "1013390",
+      "title": "Blazing Love and Burning Justice",
+      "name": "Great Saiyaman 1 & 2",
       "trend": "up"
      },
      {
@@ -593,11 +593,11 @@
       "trend": "down"
      },
      {
-      "id": "1032711",
-      "cardId": "1032710",
-      "title": "Luud Cult's God of Destruction",
-      "name": "Luud",
-      "trend": "down"
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
      }
     ]
    },
@@ -606,11 +606,11 @@
     "ranks": "79-90",
     "units": [
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
+      "trend": "down"
      },
      {
       "id": "1033761",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-12T20:07:56.861Z"
+  "updated": "2026-11-12T23:07:57.476Z"
  },
  "events": {
   "items": [
@@ -5200,7 +5200,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-12T20:07:57.665Z",
+ "generated": "2026-11-12T23:07:58.132Z",
  "summons": {
   "items": [
    {
