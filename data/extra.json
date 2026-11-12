@@ -447,13 +447,6 @@
       "trend": "up"
      },
      {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
-     },
-     {
       "id": "1025561",
       "cardId": "1025560",
       "title": "Awakened Super Hero",
@@ -466,6 +459,13 @@
       "title": "Best Measure",
       "name": "Whis",
       "trend": "down"
+     },
+     {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
      },
      {
       "id": "1022471",
@@ -634,18 +634,18 @@
       "trend": "down"
      },
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
-     },
-     {
       "id": "1025591",
       "cardId": "1025590",
       "title": "Exploding Latent Power",
       "name": "Piccolo (Power Awakening)",
       "trend": "down"
+     },
+     {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
      },
      {
       "id": "1030941",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-12T13:13:56.587Z"
+  "updated": "2026-11-12T13:22:19.455Z"
  },
  "events": {
   "items": [
@@ -5200,7 +5200,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-12T13:14:03.002Z",
+ "generated": "2026-11-12T13:22:20.241Z",
  "summons": {
   "items": [
    {
