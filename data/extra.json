@@ -136,6 +136,13 @@
       "trend": "down"
      },
      {
+      "id": "1034591",
+      "cardId": "1034590",
+      "title": "Shifting Fate",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "same"
+     },
+     {
       "id": "1032881",
       "cardId": "1032880",
       "title": "Final Showdown Against the Shadow Dragons",
@@ -147,7 +154,7 @@
       "cardId": "1024860",
       "title": "Extraordinary Super Warrior",
       "name": "Super Saiyan Goku",
-      "trend": "up"
+      "trend": "same"
      },
      {
       "id": "1033011",
@@ -155,13 +162,6 @@
       "title": "Battle to Resurrect the Majin",
       "name": "Dabura",
       "trend": "down"
-     },
-     {
-      "id": "1034591",
-      "cardId": "1034590",
-      "title": "Shifting Fate",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "same"
      }
     ]
    },
@@ -433,13 +433,6 @@
       "trend": "down"
      },
      {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
-     },
-     {
       "id": "1034861",
       "cardId": "1034860",
       "title": "Valor Etched into History",
@@ -451,6 +444,13 @@
       "cardId": "1020280",
       "title": "Risky Covering Fire",
       "name": "Tien",
+      "trend": "up"
+     },
+     {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
       "trend": "up"
      },
      {
@@ -475,6 +475,13 @@
       "trend": "down"
      },
      {
+      "id": "1030341",
+      "cardId": "1030340",
+      "title": "Ultimate Saiyan Power Roar",
+      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
+      "trend": "up"
+     },
+     {
       "id": "1030431",
       "cardId": "1030430",
       "title": "Incomparable Radiance",
@@ -489,24 +496,17 @@
       "trend": "down"
      },
      {
-      "id": "1033551",
-      "cardId": "1033550",
-      "title": "Inconceivable Saiyan Power",
-      "name": "Vegeta + Nappa",
-      "trend": "down"
-     },
-     {
-      "id": "1030341",
-      "cardId": "1030340",
-      "title": "Ultimate Saiyan Power Roar",
-      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
-      "trend": "down"
-     },
-     {
       "id": "1014371",
       "cardId": "1014370",
       "title": "Determined to Fight",
       "name": "Goku (Kaioken)",
+      "trend": "down"
+     },
+     {
+      "id": "1033551",
+      "cardId": "1033550",
+      "title": "Inconceivable Saiyan Power",
+      "name": "Vegeta + Nappa",
       "trend": "down"
      }
     ]
@@ -606,13 +606,6 @@
     "ranks": "79-90",
     "units": [
      {
-      "id": "1013771",
-      "cardId": "1013770",
-      "title": "Global Harmony Through Destruction",
-      "name": "Beerus & Whis",
-      "trend": "down"
-     },
-     {
       "id": "1021721",
       "cardId": "1021720",
       "title": "Counterattack of Light",
@@ -624,7 +617,14 @@
       "cardId": "1033760",
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
-      "trend": "same"
+      "trend": "up"
+     },
+     {
+      "id": "1013771",
+      "cardId": "1013770",
+      "title": "Global Harmony Through Destruction",
+      "name": "Beerus & Whis",
+      "trend": "down"
      },
      {
       "id": "1033871",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-12T17:07:56.565Z"
+  "updated": "2026-11-12T20:07:56.861Z"
  },
  "events": {
   "items": [
@@ -5200,7 +5200,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-12T17:07:57.277Z",
+ "generated": "2026-11-12T20:07:57.665Z",
  "summons": {
   "items": [
    {
