@@ -5050,148 +5050,149 @@
  "news": {
   "items": [
    {
-    "id": "105875",
-    "title": "Server Maintenance Announcement",
-    "url": "https://dokkan.fyi/news/105875",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/DBDB_maintenance_start_lg_US_550x160.jpg",
-    "tags": [
-     "Other",
-     "Check"
-    ],
-    "date": "Nov 11, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-11T08:00:00.000Z"
-   },
-   {
-    "id": "107052",
-    "title": "Hercule's Miracle Special Test of Luck!",
-    "url": "https://dokkan.fyi/news/107052",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_807_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 10, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-10T05:00:00.000Z"
-   },
-   {
-    "id": "107381",
-    "title": "Information on Upcoming Content!",
-    "url": "https://dokkan.fyi/news/107381",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
+    "id": "107544",
+    "title": "Select Characters Dokkan Festival!",
+    "url": "https://dokkan.fyi/news/107544",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_select_dokkan_20260822_2_small.png",
     "tags": [
      "Campaign",
      "News"
     ],
-    "date": "Nov 9, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-09T08:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    },
    {
-    "id": "107380",
-    "title": "Burst Mode Is On!",
-    "url": "https://dokkan.fyi/news/107380",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_burst_01_small.png",
+    "id": "107389",
+    "title": "Limited-Time Character Boost Campaign!",
+    "url": "https://dokkan.fyi/news/107389",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261028_strengthen_small_1.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
+   },
+   {
+    "id": "107387",
+    "title": "Quest Dokkan Story Area 43 Is Here!",
+    "url": "https://dokkan.fyi/news/107387",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_adventure_43_1_small.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 5, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-05T05:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    },
    {
-    "id": "107517",
-    "title": "Regarding an Issue with a Campaign Mission",
-    "url": "https://dokkan.fyi/news/107517",
-    "image": "",
-    "tags": [
-     "Other",
-     "Check"
-    ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
-   },
-   {
-    "id": "107500",
-    "title": "Regarding an Issue with a Character's Passive Skill",
-    "url": "https://dokkan.fyi/news/107500",
-    "image": "",
-    "tags": [
-     "Other",
-     "Check"
-    ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
-   },
-   {
-    "id": "107379",
+    "id": "107386",
     "title": "Extreme Z-Battle Is On!",
-    "url": "https://dokkan.fyi/news/107379",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_zbattle_215_small_A.png",
+    "url": "https://dokkan.fyi/news/107386",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_zbattle_152_small_A.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    },
    {
-    "id": "107378",
+    "id": "107385",
+    "title": "Approaching Terror! The Androids Appear!",
+    "url": "https://dokkan.fyi/news/107385",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1781_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
+   },
+   {
+    "id": "107384",
     "title": "Brimming with Courage! Autumn Dokkan Campaign!",
-    "url": "https://dokkan.fyi/news/107378",
+    "url": "https://dokkan.fyi/news/107384",
     "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261029_small.png",
     "tags": [
      "Campaign",
      "News"
     ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    },
    {
-    "id": "107374",
-    "title": "The 49th Pettan Battle Is On!",
-    "url": "https://dokkan.fyi/news/107374",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_pettan_small_49.png",
+    "id": "107383",
+    "title": "Legendary Summon Is On!",
+    "url": "https://dokkan.fyi/news/107383",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_gasha_12612_small.png",
+    "tags": [
+     "Campaign",
+     "Summon"
+    ],
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
+   },
+   {
+    "id": "107382",
+    "title": "Legendary Summon Packs Up for Sale!",
+    "url": "https://dokkan.fyi/news/107382",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_spshop_legendary_pack_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
+   },
+   {
+    "id": "107239",
+    "title": "Dokkan Frontier \"Androids/Cell Saga\"!",
+    "url": "https://dokkan.fyi/news/107239",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_dokkan-frontier_2002_small.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    },
    {
-    "id": "107373",
-    "title": "The 106th Virtual Dokkan Ultimate Clash Ver. 3.0!",
-    "url": "https://dokkan.fyi/news/107373",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_dairansen_110_small.png",
+    "id": "106853",
+    "title": "Seriously Serious! All-Out Battles 2!",
+    "url": "https://dokkan.fyi/news/106853",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1751_small_20260302042143.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    },
    {
-    "id": "106882",
-    "title": "Transformation of Justice! Great Saiyaman!",
-    "url": "https://dokkan.fyi/news/106882",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1208_small.png",
+    "id": "104390",
+    "title": "\"Mysterious Ritual\" Summon Is Now On!",
+    "url": "https://dokkan.fyi/news/104390",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_gasha_11128_small.png",
+    "tags": [
+     "Campaign",
+     "Summon"
+    ],
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
+   },
+   {
+    "id": "103451",
+    "title": "Behold! Support Memory Boost!",
+    "url": "https://dokkan.fyi/news/103451",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_767_small.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
-   },
-   {
-    "id": "106017",
-    "title": "Perfect Cooperation! Team Battle!",
-    "url": "https://dokkan.fyi/news/106017",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_1723_B_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 2, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-02T08:00:00.000Z"
+    "date": "Nov 12, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-12T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-11T14:23:05.370Z"
+  "updated": "2026-11-12T07:09:18.492Z"
  },
- "generated": "2026-11-11T14:23:05.372Z",
+ "generated": "2026-11-12T07:09:18.494Z",
  "summons": {
   "items": [
    {
