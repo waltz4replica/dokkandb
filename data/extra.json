@@ -157,11 +157,11 @@
       "trend": "down"
      },
      {
-      "id": "1031391",
-      "cardId": "1031390",
-      "title": "Furious Final Battle in the Future",
-      "name": "Super Saiyan God SS Goku + Super Saiyan God SS Vegeta",
-      "trend": "down"
+      "id": "1034591",
+      "cardId": "1034590",
+      "title": "Shifting Fate",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "same"
      }
     ]
    },
@@ -169,6 +169,13 @@
     "tier": "A+",
     "ranks": "21-30",
     "units": [
+     {
+      "id": "1031391",
+      "cardId": "1031390",
+      "title": "Furious Final Battle in the Future",
+      "name": "Super Saiyan God SS Goku + Super Saiyan God SS Vegeta",
+      "trend": "down"
+     },
      {
       "id": "1032121",
       "cardId": "1032120",
@@ -181,7 +188,7 @@
       "cardId": "1027000",
       "title": "Super Power Counterattack",
       "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
+      "trend": "same"
      },
      {
       "id": "1033941",
@@ -196,13 +203,6 @@
       "title": "Epic Battle of Divine Scale",
       "name": "Super Saiyan God Goku",
       "trend": "down"
-     },
-     {
-      "id": "1034591",
-      "cardId": "1034590",
-      "title": "Shifting Fate",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "same"
      },
      {
       "id": "1026431",
@@ -433,6 +433,13 @@
       "trend": "down"
      },
      {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
+     },
+     {
       "id": "1034861",
       "cardId": "1034860",
       "title": "Valor Etched into History",
@@ -459,13 +466,6 @@
       "title": "Best Measure",
       "name": "Whis",
       "trend": "down"
-     },
-     {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
      },
      {
       "id": "1022471",
@@ -613,11 +613,18 @@
       "trend": "down"
      },
      {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
+     },
+     {
       "id": "1033761",
       "cardId": "1033760",
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
-      "trend": "up"
+      "trend": "same"
      },
      {
       "id": "1033871",
@@ -639,13 +646,6 @@
       "title": "Exploding Latent Power",
       "name": "Piccolo (Power Awakening)",
       "trend": "down"
-     },
-     {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
      },
      {
       "id": "1030941",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-12T13:22:19.455Z"
+  "updated": "2026-11-12T17:07:56.565Z"
  },
  "events": {
   "items": [
@@ -5200,7 +5200,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-12T13:22:20.241Z",
+ "generated": "2026-11-12T17:07:57.277Z",
  "summons": {
   "items": [
    {
