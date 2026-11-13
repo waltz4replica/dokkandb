@@ -433,18 +433,18 @@
       "trend": "down"
      },
      {
-      "id": "1032581",
-      "cardId": "1032580",
-      "title": "Earth-Shattering Climax",
-      "name": "Super Saiyan 3 Vegeta (DAIMA)",
-      "trend": "down"
-     },
-     {
       "id": "1034861",
       "cardId": "1034860",
       "title": "Valor Etched into History",
       "name": "Hercule",
       "trend": "up"
+     },
+     {
+      "id": "1032581",
+      "cardId": "1032580",
+      "title": "Earth-Shattering Climax",
+      "name": "Super Saiyan 3 Vegeta (DAIMA)",
+      "trend": "down"
      },
      {
       "id": "1020281",
@@ -572,17 +572,17 @@
       "trend": "down"
      },
      {
-      "id": "1013391",
-      "cardId": "1013390",
-      "title": "Blazing Love and Burning Justice",
-      "name": "Great Saiyaman 1 & 2",
-      "trend": "up"
-     },
-     {
       "id": "1021721",
       "cardId": "1021720",
       "title": "Counterattack of Light",
       "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
+     },
+     {
+      "id": "1013391",
+      "cardId": "1013390",
+      "title": "Blazing Love and Burning Justice",
+      "name": "Great Saiyaman 1 & 2",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T05:07:56.700Z"
+  "updated": "2026-11-13T08:07:56.053Z"
  },
  "events": {
   "items": [
@@ -1419,14 +1419,6 @@
     "stones": 2
    },
    {
-    "title": "Transformation of Justice! Great Saiyaman",
-    "group": "Bonus",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/bonus/1208",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1208.png",
-    "stones": 51
-   },
-   {
     "title": "Tricks? Power? Secrets of \"Ki\"",
     "group": "Bonus",
     "active": true,
@@ -1587,19 +1579,27 @@
     "stones": 17
    },
    {
-    "title": "Summit of the Universe",
+    "title": "All-Out Earthling Warrior",
     "group": "Growth",
     "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/613",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_613.png",
-    "stones": 5
+    "url": "https://dokkanstats.com/en/events/growth/617",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_617.png",
+    "stones": 4
    },
    {
-    "title": "Inherited Power",
+    "title": "Bringer of Destruction and Nightmares",
     "group": "Growth",
     "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/619",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_619.png",
+    "url": "https://dokkanstats.com/en/events/growth/618",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_618.png",
+    "stones": 4
+   },
+   {
+    "title": "The Immortal Bio-Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/611",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_611.png",
     "stones": 4
    },
    {
@@ -2563,28 +2563,28 @@
     "stones": 8
    },
    {
-    "title": "Mercenary Tao Strikes Back",
+    "title": "Success? Fail? A Fusion of Super Forces",
     "group": "Growth",
     "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/404",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_404_R2.png",
+    "url": "https://dokkanstats.com/en/events/growth/418",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_418_R2.png",
+    "stones": 33
+   },
+   {
+    "title": "Cold-Blooded King",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/408",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_408_R2.png",
     "stones": 23
    },
    {
-    "title": "The Masked Martial Artist",
+    "title": "Vicious Mechanical Monarch",
     "group": "Growth",
     "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/413",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_413_R2.png",
-    "stones": 25
-   },
-   {
-    "title": "The Time-Traveling Warrior",
-    "group": "Growth",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/414",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_414_R2.png",
-    "stones": 25
+    "url": "https://dokkanstats.com/en/events/growth/406",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_406_R2.png",
+    "stones": 24
    },
    {
     "title": "Extreme Z-Area DAIMA Edition",
@@ -2739,19 +2739,11 @@
     "stones": 9
    },
    {
-    "title": "Bringer of Destruction and Nightmares",
+    "title": "Inherited Power",
     "group": "Growth",
     "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/618",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_618.png",
-    "stones": 4
-   },
-   {
-    "title": "All-Out Earthling Warrior",
-    "group": "Growth",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/617",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_617.png",
+    "url": "https://dokkanstats.com/en/events/growth/619",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_619.png",
     "stones": 4
    },
    {
@@ -2779,20 +2771,20 @@
     "stones": 4
    },
    {
+    "title": "Summit of the Universe",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/613",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_613.png",
+    "stones": 5
+   },
+   {
     "title": "Transcended Warrior",
     "group": "Growth",
     "active": true,
     "url": "https://dokkanstats.com/en/events/growth/612",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_612.png",
     "stones": 5
-   },
-   {
-    "title": "The Immortal Bio-Warrior",
-    "group": "Growth",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/611",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_611.png",
-    "stones": 4
    },
    {
     "title": "Return of the Sinister Scientist",
@@ -2875,14 +2867,6 @@
     "stones": 25
    },
    {
-    "title": "Success? Fail? A Fusion of Super Forces",
-    "group": "Growth",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/418",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_418_R2.png",
-    "stones": 33
-   },
-   {
     "title": "The Full-Hearted Fighter",
     "group": "Growth",
     "active": true,
@@ -2904,6 +2888,22 @@
     "active": true,
     "url": "https://dokkanstats.com/en/events/growth/415",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_415_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Time-Traveling Warrior",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/414",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_414_R2.png",
+    "stones": 25
+   },
+   {
+    "title": "The Masked Martial Artist",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/413",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_413_R2.png",
     "stones": 25
    },
    {
@@ -2931,27 +2931,19 @@
     "stones": 25
    },
    {
-    "title": "Cold-Blooded King",
-    "group": "Growth",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/408",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_408_R2.png",
-    "stones": 23
-   },
-   {
-    "title": "Vicious Mechanical Monarch",
-    "group": "Growth",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/growth/406",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_406_R2.png",
-    "stones": 24
-   },
-   {
     "title": "Master of Masters",
     "group": "Growth",
     "active": true,
     "url": "https://dokkanstats.com/en/events/growth/405",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_405_R2.png",
+    "stones": 23
+   },
+   {
+    "title": "Mercenary Tao Strikes Back",
+    "group": "Growth",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/growth/404",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_404_R2.png",
     "stones": 23
    },
    {
@@ -5053,7 +5045,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/events/",
-  "updated": "2026-11-12T13:13:56.759Z"
+  "updated": "2026-11-13T08:07:56.242Z"
  },
  "news": {
   "items": [
@@ -5200,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T05:07:57.377Z",
+ "generated": "2026-11-13T08:07:56.699Z",
  "summons": {
   "items": [
    {
