@@ -40,18 +40,18 @@
       "trend": "same"
      },
      {
-      "id": "1034151",
-      "cardId": "1034150",
-      "title": "Transcendent Existence",
-      "name": "Buu (Kid)",
-      "trend": "same"
-     },
-     {
       "id": "1034121",
       "cardId": "1034120",
       "title": "Mastery of Perfected Power",
       "name": "Perfect Cell",
-      "trend": "same"
+      "trend": "up"
+     },
+     {
+      "id": "1034151",
+      "cardId": "1034150",
+      "title": "Transcendent Existence",
+      "name": "Buu (Kid)",
+      "trend": "down"
      }
     ]
    },
@@ -385,18 +385,11 @@
       "trend": "down"
      },
      {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
-     },
-     {
       "id": "1020531",
       "cardId": "1020530",
       "title": "Power Taken From Others",
       "name": "Majin Buu (Piccolo)",
-      "trend": "down"
+      "trend": "same"
      },
      {
       "id": "1031721",
@@ -404,6 +397,13 @@
       "title": "Stirred Battle Instincts",
       "name": "Golden Frieza + Gogeta",
       "trend": "down"
+     },
+     {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
      },
      {
       "id": "1034701",
@@ -440,18 +440,18 @@
       "trend": "up"
      },
      {
-      "id": "1020281",
-      "cardId": "1020280",
-      "title": "Risky Covering Fire",
-      "name": "Tien",
-      "trend": "up"
-     },
-     {
       "id": "1032581",
       "cardId": "1032580",
       "title": "Earth-Shattering Climax",
       "name": "Super Saiyan 3 Vegeta (DAIMA)",
       "trend": "down"
+     },
+     {
+      "id": "1020281",
+      "cardId": "1020280",
+      "title": "Risky Covering Fire",
+      "name": "Tien",
+      "trend": "up"
      },
      {
       "id": "1025561",
@@ -537,6 +537,13 @@
       "trend": "down"
      },
      {
+      "id": "1022701",
+      "cardId": "1022700",
+      "title": "Wicked Life Form's Superiority Complex",
+      "name": "Cell (2nd Form)",
+      "trend": "down"
+     },
+     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
@@ -544,11 +551,11 @@
       "trend": "up"
      },
      {
-      "id": "1022701",
-      "cardId": "1022700",
-      "title": "Wicked Life Form's Superiority Complex",
-      "name": "Cell (2nd Form)",
-      "trend": "down"
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
      },
      {
       "id": "1024991",
@@ -570,13 +577,6 @@
       "title": "Unprecedented Miracle",
       "name": "Super Saiyan Vegeta (Angel) + Super Saiyan Goku (Angel)",
       "trend": "down"
-     },
-     {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
      },
      {
       "id": "1013391",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T14:07:57.464Z"
+  "updated": "2026-11-13T17:07:56.645Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T14:07:58.328Z",
+ "generated": "2026-11-13T17:07:57.321Z",
  "summons": {
   "items": [
    {
