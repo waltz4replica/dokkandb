@@ -371,11 +371,11 @@
       "trend": "down"
      },
      {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
+      "id": "1031501",
+      "cardId": "1031500",
+      "title": "World Shrouded in Evil Power",
+      "name": "Omega Shenron",
+      "trend": "down"
      },
      {
       "id": "1034171",
@@ -385,11 +385,11 @@
       "trend": "down"
      },
      {
-      "id": "1031501",
-      "cardId": "1031500",
-      "title": "World Shrouded in Evil Power",
-      "name": "Omega Shenron",
-      "trend": "down"
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
      },
      {
       "id": "1020531",
@@ -440,18 +440,18 @@
       "trend": "up"
      },
      {
-      "id": "1032581",
-      "cardId": "1032580",
-      "title": "Earth-Shattering Climax",
-      "name": "Super Saiyan 3 Vegeta (DAIMA)",
-      "trend": "down"
-     },
-     {
       "id": "1020281",
       "cardId": "1020280",
       "title": "Risky Covering Fire",
       "name": "Tien",
       "trend": "up"
+     },
+     {
+      "id": "1032581",
+      "cardId": "1032580",
+      "title": "Earth-Shattering Climax",
+      "name": "Super Saiyan 3 Vegeta (DAIMA)",
+      "trend": "down"
      },
      {
       "id": "1025561",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T11:07:56.546Z"
+  "updated": "2026-11-13T14:07:57.464Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T11:07:58.996Z",
+ "generated": "2026-11-13T14:07:58.328Z",
  "summons": {
   "items": [
    {
