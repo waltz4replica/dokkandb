@@ -191,17 +191,17 @@
       "trend": "same"
      },
      {
-      "id": "1033941",
-      "cardId": "1033940",
-      "title": "Supreme Tree of Might",
-      "name": "Turles",
-      "trend": "down"
-     },
-     {
       "id": "1033821",
       "cardId": "1033820",
       "title": "Epic Battle of Divine Scale",
       "name": "Super Saiyan God Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1033941",
+      "cardId": "1033940",
+      "title": "Supreme Tree of Might",
+      "name": "Turles",
       "trend": "down"
      },
      {
@@ -226,17 +226,17 @@
       "trend": "down"
      },
      {
-      "id": "1026161",
-      "cardId": "1026160",
-      "title": "A Soul Pumped Up in Battle",
-      "name": "Goku",
-      "trend": "down"
-     },
-     {
       "id": "1031471",
       "cardId": "1031470",
       "title": "Fighter of Ultimate Radiance",
       "name": "Super Saiyan 4 Gogeta",
+      "trend": "down"
+     },
+     {
+      "id": "1026161",
+      "cardId": "1026160",
+      "title": "A Soul Pumped Up in Battle",
+      "name": "Goku",
       "trend": "down"
      }
     ]
@@ -288,17 +288,17 @@
       "trend": "down"
      },
      {
-      "id": "1026251",
-      "cardId": "1026250",
-      "title": "Fighter Entrusted with Allies' Wishes",
-      "name": "Super Saiyan God Goku",
-      "trend": "down"
-     },
-     {
       "id": "1013541",
       "cardId": "1013540",
       "title": "Transdimensional Instinct",
       "name": "Goku (Ultra Instinct -Sign-)",
+      "trend": "down"
+     },
+     {
+      "id": "1026251",
+      "cardId": "1026250",
+      "title": "Fighter Entrusted with Allies' Wishes",
+      "name": "Super Saiyan God Goku",
       "trend": "down"
      },
      {
@@ -309,17 +309,17 @@
       "trend": "down"
      },
      {
-      "id": "1034431",
-      "cardId": "1034430",
-      "title": "Ambition for the Future of the Demon Realm",
-      "name": "Dr. Arinsu",
-      "trend": "down"
-     },
-     {
       "id": "1024351",
       "cardId": "1024350",
       "title": "Universe-Shaking Strike",
       "name": "Super Saiyan Goku & Super Saiyan Gohan (Youth)",
+      "trend": "down"
+     },
+     {
+      "id": "1034431",
+      "cardId": "1034430",
+      "title": "Ambition for the Future of the Demon Realm",
+      "name": "Dr. Arinsu",
       "trend": "down"
      },
      {
@@ -503,10 +503,10 @@
       "trend": "down"
      },
      {
-      "id": "1033551",
-      "cardId": "1033550",
-      "title": "Inconceivable Saiyan Power",
-      "name": "Vegeta + Nappa",
+      "id": "1022421",
+      "cardId": "1022420",
+      "title": "Saiyan Warriors with Ultimate Power",
+      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
       "trend": "down"
      }
     ]
@@ -516,17 +516,17 @@
     "ranks": "67-78",
     "units": [
      {
+      "id": "1033551",
+      "cardId": "1033550",
+      "title": "Inconceivable Saiyan Power",
+      "name": "Vegeta + Nappa",
+      "trend": "down"
+     },
+     {
       "id": "1022451",
       "cardId": "1022450",
       "title": "Exceptional Wisdom",
       "name": "Piccolo",
-      "trend": "down"
-     },
-     {
-      "id": "1022421",
-      "cardId": "1022420",
-      "title": "Saiyan Warriors with Ultimate Power",
-      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
       "trend": "down"
      },
      {
@@ -586,18 +586,18 @@
       "trend": "up"
      },
      {
-      "id": "1032331",
-      "cardId": "1032330",
-      "title": "Alliance of Justice",
-      "name": "Gamma 2 + Piccolo (Power Awakening)",
-      "trend": "same"
-     },
-     {
       "id": "1009091",
       "cardId": "1009090",
       "title": "Open the Gates of Hell",
       "name": "Cooler (Final Form)",
       "trend": "down"
+     },
+     {
+      "id": "1033761",
+      "cardId": "1033760",
+      "title": "Breakthrough Amidst Adversity",
+      "name": "Piccolo",
+      "trend": "up"
      }
     ]
    },
@@ -605,6 +605,13 @@
     "tier": "B-",
     "ranks": "79-90",
     "units": [
+     {
+      "id": "1032331",
+      "cardId": "1032330",
+      "title": "Alliance of Justice",
+      "name": "Gamma 2 + Piccolo (Power Awakening)",
+      "trend": "down"
+     },
      {
       "id": "1032711",
       "cardId": "1032710",
@@ -620,17 +627,10 @@
       "trend": "down"
      },
      {
-      "id": "1033761",
-      "cardId": "1033760",
-      "title": "Breakthrough Amidst Adversity",
-      "name": "Piccolo",
-      "trend": "same"
-     },
-     {
-      "id": "1033871",
-      "cardId": "1033870",
-      "title": "Overhead Surprise Attack",
-      "name": "King Cold",
+      "id": "1025591",
+      "cardId": "1025590",
+      "title": "Exploding Latent Power",
+      "name": "Piccolo (Power Awakening)",
       "trend": "down"
      },
      {
@@ -641,10 +641,10 @@
       "trend": "down"
      },
      {
-      "id": "1025591",
-      "cardId": "1025590",
-      "title": "Exploding Latent Power",
-      "name": "Piccolo (Power Awakening)",
+      "id": "1033871",
+      "cardId": "1033870",
+      "title": "Overhead Surprise Attack",
+      "name": "King Cold",
       "trend": "down"
      },
      {
@@ -669,17 +669,10 @@
       "trend": "down"
      },
      {
-      "id": "1009591",
-      "cardId": "1009590",
-      "title": "Passion of the Warrior Race",
-      "name": "Super Saiyan God SS Vegeta",
-      "trend": "down"
-     },
-     {
-      "id": "1022381",
-      "cardId": "1022380",
-      "title": "Divine Warriors with Infinite Power",
-      "name": "Super Saiyan God Goku & Super Saiyan God Vegeta",
+      "id": "1024141",
+      "cardId": "1024140",
+      "title": "Desperate Onslaught",
+      "name": "Goku & Piccolo/Piccolo",
       "trend": "down"
      },
      {
@@ -688,13 +681,20 @@
       "title": "Demonic Fighter Wielding Forbidden Power",
       "name": "Turles",
       "trend": "down"
+     },
+     {
+      "id": "1009591",
+      "cardId": "1009590",
+      "title": "Passion of the Warrior Race",
+      "name": "Super Saiyan God SS Vegeta",
+      "trend": "down"
      }
     ]
    }
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T08:07:56.053Z"
+  "updated": "2026-11-13T11:07:56.546Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T08:07:56.699Z",
+ "generated": "2026-11-13T11:07:58.996Z",
  "summons": {
   "items": [
    {
@@ -5294,6 +5294,61 @@
      "1003280"
     ],
     "url": "https://dokkanstats.com/en/summons/12604/",
+    "groups": {
+     "main": [
+      "1034570"
+     ],
+     "featured": [
+      "1033740",
+      "1026590",
+      "1033630",
+      "1033610",
+      "2000170",
+      "1004990",
+      "1004960",
+      "1004970",
+      "1004980"
+     ],
+     "secondary": [
+      "1003280"
+     ],
+     "unfeatured": 606,
+     "names": {
+      "1003280": "A Slash of Respect",
+      "1004960": "Sinister Scientist",
+      "1004970": "Infernal Android",
+      "1004980": "Ominous Designs",
+      "1004990": "A Critical Mission",
+      "1026590": "Encounters Guided by the Quest for Dragon Balls",
+      "1033610": "Atonement for Time Traveling",
+      "1033630": "Experimenting with History",
+      "1033740": "Confrontation with an Unprecedented Threat",
+      "1034570": "Turning Point in History",
+      "2000170": "Envoy from Beyond"
+     }
+    }
+   },
+   {
+    "id": "12616",
+    "name": "Legendary Summon [Special Summon Ticket]",
+    "desc": "Legendary Summon is now on! Summon Super Saiyan Trunks (Teen) who can be awakened into an LR!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12616.png",
+    "start": "2026-11-12T05:00:00.000Z",
+    "end": "2026-11-26T14:59:59.000Z",
+    "cards": [
+     "1034570",
+     "1033740",
+     "1026590",
+     "1033630",
+     "1033610",
+     "2000170",
+     "1004990",
+     "1004960",
+     "1004970",
+     "1004980",
+     "1003280"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12616/",
     "groups": {
      "main": [
       "1034570"
@@ -6604,6 +6659,6 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/summons/",
-  "updated": "2026-11-12T13:14:02.552Z"
+  "updated": "2026-11-13T11:07:58.633Z"
  }
 }
