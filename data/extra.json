@@ -184,17 +184,17 @@
       "trend": "down"
      },
      {
-      "id": "1027001",
-      "cardId": "1027000",
-      "title": "Super Power Counterattack",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "same"
-     },
-     {
       "id": "1033821",
       "cardId": "1033820",
       "title": "Epic Battle of Divine Scale",
       "name": "Super Saiyan God Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1027001",
+      "cardId": "1027000",
+      "title": "Super Power Counterattack",
+      "name": "Super Saiyan Trunks (Teen)",
       "trend": "down"
      },
      {
@@ -336,18 +336,18 @@
     "ranks": "43-54",
     "units": [
      {
-      "id": "1010901",
-      "cardId": "1010900",
-      "title": "Extraordinary Friendship",
-      "name": "Hercule",
-      "trend": "up"
-     },
-     {
       "id": "1024891",
       "cardId": "1024890",
       "title": "Full-Power Final Showdown",
       "name": "Super Saiyan Goku & Super Saiyan Vegeta",
       "trend": "down"
+     },
+     {
+      "id": "1010901",
+      "cardId": "1010900",
+      "title": "Extraordinary Friendship",
+      "name": "Hercule",
+      "trend": "same"
      },
      {
       "id": "1032261",
@@ -357,13 +357,6 @@
       "trend": "up"
      },
      {
-      "id": "1034411",
-      "cardId": "1034410",
-      "title": "Key Figure of the Demon Realm Journey",
-      "name": "Panzy",
-      "trend": "down"
-     },
-     {
       "id": "1009381",
       "cardId": "1009380",
       "title": "Reign of Terror",
@@ -371,10 +364,10 @@
       "trend": "down"
      },
      {
-      "id": "1031501",
-      "cardId": "1031500",
-      "title": "World Shrouded in Evil Power",
-      "name": "Omega Shenron",
+      "id": "1034411",
+      "cardId": "1034410",
+      "title": "Key Figure of the Demon Realm Journey",
+      "name": "Panzy",
       "trend": "down"
      },
      {
@@ -382,6 +375,13 @@
       "cardId": "1034170",
       "title": "Unleashed Ferocity",
       "name": "Majin Buu (South Supreme Kai)",
+      "trend": "same"
+     },
+     {
+      "id": "1031501",
+      "cardId": "1031500",
+      "title": "World Shrouded in Evil Power",
+      "name": "Omega Shenron",
       "trend": "down"
      },
      {
@@ -392,13 +392,6 @@
       "trend": "same"
      },
      {
-      "id": "1031721",
-      "cardId": "1031720",
-      "title": "Stirred Battle Instincts",
-      "name": "Golden Frieza + Gogeta",
-      "trend": "down"
-     },
-     {
       "id": "1027601",
       "cardId": "1027600",
       "title": "Unity Forged in Another World",
@@ -406,10 +399,10 @@
       "trend": "up"
      },
      {
-      "id": "1034701",
-      "cardId": "1034700",
-      "title": "Force of Diverse Techniques",
-      "name": "Recoome + Guldo",
+      "id": "1031721",
+      "cardId": "1031720",
+      "title": "Stirred Battle Instincts",
+      "name": "Golden Frieza + Gogeta",
       "trend": "down"
      },
      {
@@ -417,6 +410,13 @@
       "cardId": "1028160",
       "title": "Terrifying Phantom Majin",
       "name": "Hirudegarn",
+      "trend": "down"
+     },
+     {
+      "id": "1034701",
+      "cardId": "1034700",
+      "title": "Force of Diverse Techniques",
+      "name": "Recoome + Guldo",
       "trend": "down"
      }
     ]
@@ -475,18 +475,18 @@
       "trend": "down"
      },
      {
-      "id": "1030341",
-      "cardId": "1030340",
-      "title": "Ultimate Saiyan Power Roar",
-      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
-      "trend": "up"
-     },
-     {
       "id": "1030431",
       "cardId": "1030430",
       "title": "Incomparable Radiance",
       "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
       "trend": "down"
+     },
+     {
+      "id": "1030341",
+      "cardId": "1030340",
+      "title": "Ultimate Saiyan Power Roar",
+      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
+      "trend": "same"
      },
      {
       "id": "1031591",
@@ -537,18 +537,18 @@
       "trend": "down"
      },
      {
-      "id": "1022701",
-      "cardId": "1022700",
-      "title": "Wicked Life Form's Superiority Complex",
-      "name": "Cell (2nd Form)",
-      "trend": "down"
-     },
-     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
       "name": "Great Saiyaman 2",
       "trend": "up"
+     },
+     {
+      "id": "1022701",
+      "cardId": "1022700",
+      "title": "Wicked Life Form's Superiority Complex",
+      "name": "Cell (2nd Form)",
+      "trend": "down"
      },
      {
       "id": "1021721",
@@ -586,18 +586,18 @@
       "trend": "up"
      },
      {
-      "id": "1009091",
-      "cardId": "1009090",
-      "title": "Open the Gates of Hell",
-      "name": "Cooler (Final Form)",
-      "trend": "down"
-     },
-     {
       "id": "1033761",
       "cardId": "1033760",
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
       "trend": "up"
+     },
+     {
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
+      "trend": "down"
      }
     ]
    },
@@ -676,17 +676,17 @@
       "trend": "down"
      },
      {
+      "id": "1022381",
+      "cardId": "1022380",
+      "title": "Divine Warriors with Infinite Power",
+      "name": "Super Saiyan God Goku & Super Saiyan God Vegeta",
+      "trend": "down"
+     },
+     {
       "id": "1026751",
       "cardId": "1026750",
       "title": "Demonic Fighter Wielding Forbidden Power",
       "name": "Turles",
-      "trend": "down"
-     },
-     {
-      "id": "1009591",
-      "cardId": "1009590",
-      "title": "Passion of the Warrior Race",
-      "name": "Super Saiyan God SS Vegeta",
       "trend": "down"
      }
     ]
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T17:07:56.645Z"
+  "updated": "2026-11-13T20:07:59.066Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T17:07:57.321Z",
+ "generated": "2026-11-13T20:07:59.717Z",
  "summons": {
   "items": [
    {
