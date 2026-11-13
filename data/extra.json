@@ -67,18 +67,18 @@
       "trend": "same"
      },
      {
-      "id": "1033841",
-      "cardId": "1033840",
-      "title": "Earth-Blanketing Army",
-      "name": "Metal Cooler Army",
-      "trend": "up"
-     },
-     {
       "id": "1033061",
       "cardId": "1033060",
       "title": "Fated Showdown",
       "name": "Majin Vegeta + Super Saiyan 2 Goku (Angel)",
-      "trend": "down"
+      "trend": "same"
+     },
+     {
+      "id": "1033841",
+      "cardId": "1033840",
+      "title": "Earth-Blanketing Army",
+      "name": "Metal Cooler Army",
+      "trend": "same"
      },
      {
       "id": "1012931",
@@ -108,18 +108,18 @@
     "ranks": "13-20",
     "units": [
      {
-      "id": "1012901",
-      "cardId": "1012900",
-      "title": "Fused Super Power",
-      "name": "Super Saiyan Goku & Super Saiyan Vegeta",
-      "trend": "same"
-     },
-     {
       "id": "1034591",
       "cardId": "1034590",
       "title": "Shifting Fate",
       "name": "Super Saiyan Trunks (Teen)",
       "trend": "same"
+     },
+     {
+      "id": "1012901",
+      "cardId": "1012900",
+      "title": "Fused Super Power",
+      "name": "Super Saiyan Goku & Super Saiyan Vegeta",
+      "trend": "down"
      },
      {
       "id": "1032551",
@@ -371,11 +371,18 @@
       "trend": "down"
      },
      {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
+     },
+     {
       "id": "1034171",
       "cardId": "1034170",
       "title": "Unleashed Ferocity",
       "name": "Majin Buu (South Supreme Kai)",
-      "trend": "same"
+      "trend": "down"
      },
      {
       "id": "1031501",
@@ -389,7 +396,7 @@
       "cardId": "1020530",
       "title": "Power Taken From Others",
       "name": "Majin Buu (Piccolo)",
-      "trend": "same"
+      "trend": "down"
      },
      {
       "id": "1031721",
@@ -411,13 +418,6 @@
       "title": "Terrifying Phantom Majin",
       "name": "Hirudegarn",
       "trend": "down"
-     },
-     {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
      }
     ]
    },
@@ -572,17 +572,17 @@
       "trend": "down"
      },
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
-     },
-     {
       "id": "1013391",
       "cardId": "1013390",
       "title": "Blazing Love and Burning Justice",
       "name": "Great Saiyaman 1 & 2",
+      "trend": "up"
+     },
+     {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T02:07:55.798Z"
+  "updated": "2026-11-13T05:07:56.700Z"
  },
  "events": {
   "items": [
@@ -5200,7 +5200,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T02:07:56.476Z",
+ "generated": "2026-11-13T05:07:57.377Z",
  "summons": {
   "items": [
    {
