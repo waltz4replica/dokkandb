@@ -115,18 +115,18 @@
       "trend": "same"
      },
      {
-      "id": "1032551",
-      "cardId": "1032550",
-      "title": "Maximum-Power Battle",
-      "name": "Super Saiyan 4 Goku (DAIMA)",
-      "trend": "down"
-     },
-     {
       "id": "1034591",
       "cardId": "1034590",
       "title": "Shifting Fate",
       "name": "Super Saiyan Trunks (Teen)",
       "trend": "same"
+     },
+     {
+      "id": "1032551",
+      "cardId": "1032550",
+      "title": "Maximum-Power Battle",
+      "name": "Super Saiyan 4 Goku (DAIMA)",
+      "trend": "down"
      },
      {
       "id": "1034301",
@@ -357,17 +357,17 @@
       "trend": "up"
      },
      {
-      "id": "1009381",
-      "cardId": "1009380",
-      "title": "Reign of Terror",
-      "name": "Frieza (1st Form)",
-      "trend": "down"
-     },
-     {
       "id": "1034411",
       "cardId": "1034410",
       "title": "Key Figure of the Demon Realm Journey",
       "name": "Panzy",
+      "trend": "down"
+     },
+     {
+      "id": "1009381",
+      "cardId": "1009380",
+      "title": "Reign of Terror",
+      "name": "Frieza (1st Form)",
       "trend": "down"
      },
      {
@@ -406,30 +406,10 @@
       "trend": "down"
      },
      {
-      "id": "1034001",
-      "cardId": "1034000",
-      "title": "Devastating Strike to Hell",
-      "name": "Frieza (2nd Form)",
-      "trend": "same"
-     },
-     {
       "id": "1028161",
       "cardId": "1028160",
       "title": "Terrifying Phantom Majin",
       "name": "Hirudegarn",
-      "trend": "down"
-     }
-    ]
-   },
-   {
-    "tier": "B+",
-    "ranks": "55-66",
-    "units": [
-     {
-      "id": "1032581",
-      "cardId": "1032580",
-      "title": "Earth-Shattering Climax",
-      "name": "Super Saiyan 3 Vegeta (DAIMA)",
       "trend": "down"
      },
      {
@@ -438,6 +418,26 @@
       "title": "Unity Forged in Another World",
       "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
       "trend": "up"
+     }
+    ]
+   },
+   {
+    "tier": "B+",
+    "ranks": "55-66",
+    "units": [
+     {
+      "id": "1034001",
+      "cardId": "1034000",
+      "title": "Devastating Strike to Hell",
+      "name": "Frieza (2nd Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1032581",
+      "cardId": "1032580",
+      "title": "Earth-Shattering Climax",
+      "name": "Super Saiyan 3 Vegeta (DAIMA)",
+      "trend": "down"
      },
      {
       "id": "1034861",
@@ -537,13 +537,6 @@
       "trend": "down"
      },
      {
-      "id": "1022701",
-      "cardId": "1022700",
-      "title": "Wicked Life Form's Superiority Complex",
-      "name": "Cell (2nd Form)",
-      "trend": "down"
-     },
-     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
@@ -551,17 +544,17 @@
       "trend": "up"
      },
      {
+      "id": "1022701",
+      "cardId": "1022700",
+      "title": "Wicked Life Form's Superiority Complex",
+      "name": "Cell (2nd Form)",
+      "trend": "down"
+     },
+     {
       "id": "1024991",
       "cardId": "1024990",
       "title": "Stamina to Attack Evil",
       "name": "Pan (GT)",
-      "trend": "down"
-     },
-     {
-      "id": "1030481",
-      "cardId": "1030480",
-      "title": "Unprecedented Miracle",
-      "name": "Super Saiyan Vegeta (Angel) + Super Saiyan Goku (Angel)",
       "trend": "down"
      },
      {
@@ -572,10 +565,17 @@
       "trend": "up"
      },
      {
-      "id": "1032331",
-      "cardId": "1032330",
-      "title": "Alliance of Justice",
-      "name": "Gamma 2 + Piccolo (Power Awakening)",
+      "id": "1030481",
+      "cardId": "1030480",
+      "title": "Unprecedented Miracle",
+      "name": "Super Saiyan Vegeta (Angel) + Super Saiyan Goku (Angel)",
+      "trend": "down"
+     },
+     {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
       "trend": "up"
      },
      {
@@ -586,18 +586,18 @@
       "trend": "up"
      },
      {
+      "id": "1032331",
+      "cardId": "1032330",
+      "title": "Alliance of Justice",
+      "name": "Gamma 2 + Piccolo (Power Awakening)",
+      "trend": "same"
+     },
+     {
       "id": "1009091",
       "cardId": "1009090",
       "title": "Open the Gates of Hell",
       "name": "Cooler (Final Form)",
       "trend": "down"
-     },
-     {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
      }
     ]
    },
@@ -613,18 +613,18 @@
       "trend": "down"
      },
      {
-      "id": "1033761",
-      "cardId": "1033760",
-      "title": "Breakthrough Amidst Adversity",
-      "name": "Piccolo",
-      "trend": "up"
-     },
-     {
       "id": "1013771",
       "cardId": "1013770",
       "title": "Global Harmony Through Destruction",
       "name": "Beerus & Whis",
       "trend": "down"
+     },
+     {
+      "id": "1033761",
+      "cardId": "1033760",
+      "title": "Breakthrough Amidst Adversity",
+      "name": "Piccolo",
+      "trend": "same"
      },
      {
       "id": "1033871",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-12T23:07:57.476Z"
+  "updated": "2026-11-13T02:07:55.798Z"
  },
  "events": {
   "items": [
@@ -5200,7 +5200,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-12T23:07:58.132Z",
+ "generated": "2026-11-13T02:07:56.476Z",
  "summons": {
   "items": [
    {
