@@ -40,18 +40,18 @@
       "trend": "same"
      },
      {
-      "id": "1034121",
-      "cardId": "1034120",
-      "title": "Mastery of Perfected Power",
-      "name": "Perfect Cell",
-      "trend": "up"
-     },
-     {
       "id": "1034151",
       "cardId": "1034150",
       "title": "Transcendent Existence",
       "name": "Buu (Kid)",
-      "trend": "down"
+      "trend": "same"
+     },
+     {
+      "id": "1034121",
+      "cardId": "1034120",
+      "title": "Mastery of Perfected Power",
+      "name": "Perfect Cell",
+      "trend": "same"
      }
     ]
    },
@@ -95,11 +95,11 @@
       "trend": "up"
      },
      {
-      "id": "1032311",
-      "cardId": "1032310",
-      "title": "Threat of the Third Eye",
-      "name": "Third Eye Gomah",
-      "trend": "down"
+      "id": "1034591",
+      "cardId": "1034590",
+      "title": "Shifting Fate",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "same"
      }
     ]
    },
@@ -108,11 +108,11 @@
     "ranks": "13-20",
     "units": [
      {
-      "id": "1034591",
-      "cardId": "1034590",
-      "title": "Shifting Fate",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "same"
+      "id": "1032311",
+      "cardId": "1032310",
+      "title": "Threat of the Third Eye",
+      "name": "Third Eye Gomah",
+      "trend": "down"
      },
      {
       "id": "1012901",
@@ -433,18 +433,18 @@
       "trend": "down"
      },
      {
-      "id": "1034861",
-      "cardId": "1034860",
-      "title": "Valor Etched into History",
-      "name": "Hercule",
-      "trend": "up"
-     },
-     {
       "id": "1032581",
       "cardId": "1032580",
       "title": "Earth-Shattering Climax",
       "name": "Super Saiyan 3 Vegeta (DAIMA)",
       "trend": "down"
+     },
+     {
+      "id": "1034861",
+      "cardId": "1034860",
+      "title": "Valor Etched into History",
+      "name": "Hercule",
+      "trend": "up"
      },
      {
       "id": "1020281",
@@ -537,18 +537,18 @@
       "trend": "down"
      },
      {
-      "id": "1034731",
-      "cardId": "1034730",
-      "title": "Magnificent Act of Justice",
-      "name": "Great Saiyaman 2",
-      "trend": "up"
-     },
-     {
       "id": "1022701",
       "cardId": "1022700",
       "title": "Wicked Life Form's Superiority Complex",
       "name": "Cell (2nd Form)",
       "trend": "down"
+     },
+     {
+      "id": "1034731",
+      "cardId": "1034730",
+      "title": "Magnificent Act of Justice",
+      "name": "Great Saiyaman 2",
+      "trend": "up"
      },
      {
       "id": "1021721",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T20:07:59.066Z"
+  "updated": "2026-11-13T23:07:57.568Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T20:07:59.717Z",
+ "generated": "2026-11-13T23:07:58.521Z",
  "summons": {
   "items": [
    {
