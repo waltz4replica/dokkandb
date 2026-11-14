@@ -184,17 +184,17 @@
       "trend": "down"
      },
      {
-      "id": "1027001",
-      "cardId": "1027000",
-      "title": "Super Power Counterattack",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "same"
-     },
-     {
       "id": "1033821",
       "cardId": "1033820",
       "title": "Epic Battle of Divine Scale",
       "name": "Super Saiyan God Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1027001",
+      "cardId": "1027000",
+      "title": "Super Power Counterattack",
+      "name": "Super Saiyan Trunks (Teen)",
       "trend": "down"
      },
      {
@@ -523,17 +523,17 @@
       "trend": "down"
      },
      {
-      "id": "1022451",
-      "cardId": "1022450",
-      "title": "Exceptional Wisdom",
-      "name": "Piccolo",
-      "trend": "down"
-     },
-     {
       "id": "1031431",
       "cardId": "1031430",
       "title": "Terrifying Zero Mortals Plan",
       "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
+      "trend": "down"
+     },
+     {
+      "id": "1022451",
+      "cardId": "1022450",
+      "title": "Exceptional Wisdom",
+      "name": "Piccolo",
       "trend": "down"
      },
      {
@@ -544,17 +544,17 @@
       "trend": "down"
      },
      {
-      "id": "1034731",
-      "cardId": "1034730",
-      "title": "Magnificent Act of Justice",
-      "name": "Great Saiyaman 2",
-      "trend": "up"
-     },
-     {
       "id": "1021721",
       "cardId": "1021720",
       "title": "Counterattack of Light",
       "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
+     },
+     {
+      "id": "1034731",
+      "cardId": "1034730",
+      "title": "Magnificent Act of Justice",
+      "name": "Great Saiyaman 2",
       "trend": "up"
      },
      {
@@ -683,10 +683,10 @@
       "trend": "down"
      },
      {
-      "id": "1024141",
-      "cardId": "1024140",
-      "title": "Desperate Onslaught",
-      "name": "Goku & Piccolo/Piccolo",
+      "id": "1026751",
+      "cardId": "1026750",
+      "title": "Demonic Fighter Wielding Forbidden Power",
+      "name": "Turles",
       "trend": "down"
      }
     ]
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-14T14:07:58.860Z"
+  "updated": "2026-11-14T17:07:56.162Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-14T14:07:59.440Z",
+ "generated": "2026-11-14T17:07:56.812Z",
  "summons": {
   "items": [
    {
