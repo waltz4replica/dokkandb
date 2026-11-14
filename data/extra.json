@@ -385,17 +385,17 @@
       "trend": "down"
      },
      {
-      "id": "1020531",
-      "cardId": "1020530",
-      "title": "Power Taken From Others",
-      "name": "Majin Buu (Piccolo)",
-      "trend": "same"
-     },
-     {
       "id": "1031721",
       "cardId": "1031720",
       "title": "Stirred Battle Instincts",
       "name": "Golden Frieza + Gogeta",
+      "trend": "down"
+     },
+     {
+      "id": "1020531",
+      "cardId": "1020530",
+      "title": "Power Taken From Others",
+      "name": "Majin Buu (Piccolo)",
       "trend": "down"
      },
      {
@@ -447,18 +447,18 @@
       "trend": "up"
      },
      {
+      "id": "1020281",
+      "cardId": "1020280",
+      "title": "Risky Covering Fire",
+      "name": "Tien",
+      "trend": "up"
+     },
+     {
       "id": "1025561",
       "cardId": "1025560",
       "title": "Awakened Super Hero",
       "name": "Ultimate Gohan",
       "trend": "down"
-     },
-     {
-      "id": "1020281",
-      "cardId": "1020280",
-      "title": "Risky Covering Fire",
-      "name": "Tien",
-      "trend": "same"
      },
      {
       "id": "1019361",
@@ -468,17 +468,17 @@
       "trend": "down"
      },
      {
-      "id": "1022471",
-      "cardId": "1022470",
-      "title": "Eerie Sense of Despair",
-      "name": "Frieza (3rd Form)",
-      "trend": "down"
-     },
-     {
       "id": "1030431",
       "cardId": "1030430",
       "title": "Incomparable Radiance",
       "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
+      "trend": "down"
+     },
+     {
+      "id": "1022471",
+      "cardId": "1022470",
+      "title": "Eerie Sense of Despair",
+      "name": "Frieza (3rd Form)",
       "trend": "down"
      },
      {
@@ -496,17 +496,17 @@
       "trend": "down"
      },
      {
-      "id": "1014371",
-      "cardId": "1014370",
-      "title": "Determined to Fight",
-      "name": "Goku (Kaioken)",
-      "trend": "down"
-     },
-     {
       "id": "1022421",
       "cardId": "1022420",
       "title": "Saiyan Warriors with Ultimate Power",
       "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1014371",
+      "cardId": "1014370",
+      "title": "Determined to Fight",
+      "name": "Goku (Kaioken)",
       "trend": "down"
      }
     ]
@@ -558,18 +558,18 @@
       "trend": "up"
      },
      {
-      "id": "1024991",
-      "cardId": "1024990",
-      "title": "Stamina to Attack Evil",
-      "name": "Pan (GT)",
-      "trend": "down"
-     },
-     {
       "id": "1020311",
       "cardId": "1020310",
       "title": "True Ultra Instinct",
       "name": "Goku (Ultra Instinct)",
       "trend": "up"
+     },
+     {
+      "id": "1024991",
+      "cardId": "1024990",
+      "title": "Stamina to Attack Evil",
+      "name": "Pan (GT)",
+      "trend": "down"
      },
      {
       "id": "1030481",
@@ -669,13 +669,6 @@
       "trend": "down"
      },
      {
-      "id": "1024141",
-      "cardId": "1024140",
-      "title": "Desperate Onslaught",
-      "name": "Goku & Piccolo/Piccolo",
-      "trend": "down"
-     },
-     {
       "id": "1022381",
       "cardId": "1022380",
       "title": "Divine Warriors with Infinite Power",
@@ -683,10 +676,17 @@
       "trend": "down"
      },
      {
-      "id": "1026751",
-      "cardId": "1026750",
-      "title": "Demonic Fighter Wielding Forbidden Power",
-      "name": "Turles",
+      "id": "1033591",
+      "cardId": "1033590",
+      "title": "Super Saiyan God of Successive Mutations",
+      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
+      "trend": "down"
+     },
+     {
+      "id": "1024141",
+      "cardId": "1024140",
+      "title": "Desperate Onslaught",
+      "name": "Goku & Piccolo/Piccolo",
       "trend": "down"
      }
     ]
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-14T11:42:37.646Z"
+  "updated": "2026-11-14T14:07:58.860Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-14T11:42:38.413Z",
+ "generated": "2026-11-14T14:07:59.440Z",
  "summons": {
   "items": [
    {
