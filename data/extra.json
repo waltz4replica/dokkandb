@@ -281,17 +281,17 @@
       "trend": "up"
      },
      {
-      "id": "1032361",
-      "cardId": "1032360",
-      "title": "Cooperation for Justice",
-      "name": "Ultimate Gohan + Gamma 1",
-      "trend": "down"
-     },
-     {
       "id": "1013541",
       "cardId": "1013540",
       "title": "Transdimensional Instinct",
       "name": "Goku (Ultra Instinct -Sign-)",
+      "trend": "down"
+     },
+     {
+      "id": "1032361",
+      "cardId": "1032360",
+      "title": "Cooperation for Justice",
+      "name": "Ultimate Gohan + Gamma 1",
       "trend": "down"
      },
      {
@@ -544,13 +544,6 @@
       "trend": "down"
      },
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
-     },
-     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
@@ -562,6 +555,13 @@
       "cardId": "1020310",
       "title": "True Ultra Instinct",
       "name": "Goku (Ultra Instinct)",
+      "trend": "up"
+     },
+     {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-14T17:07:56.162Z"
+  "updated": "2026-11-14T20:07:58.371Z"
  },
  "events": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-14T17:07:56.812Z",
+ "generated": "2026-11-14T20:07:58.966Z",
  "summons": {
   "items": [
    {
