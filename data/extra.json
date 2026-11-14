@@ -447,18 +447,18 @@
       "trend": "up"
      },
      {
-      "id": "1020281",
-      "cardId": "1020280",
-      "title": "Risky Covering Fire",
-      "name": "Tien",
-      "trend": "up"
-     },
-     {
       "id": "1025561",
       "cardId": "1025560",
       "title": "Awakened Super Hero",
       "name": "Ultimate Gohan",
       "trend": "down"
+     },
+     {
+      "id": "1020281",
+      "cardId": "1020280",
+      "title": "Risky Covering Fire",
+      "name": "Tien",
+      "trend": "same"
      },
      {
       "id": "1019361",
@@ -551,18 +551,18 @@
       "trend": "up"
      },
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
-     },
-     {
       "id": "1024991",
       "cardId": "1024990",
       "title": "Stamina to Attack Evil",
       "name": "Pan (GT)",
       "trend": "down"
+     },
+     {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
      },
      {
       "id": "1020311",
@@ -579,17 +579,17 @@
       "trend": "down"
      },
      {
-      "id": "1013391",
-      "cardId": "1013390",
-      "title": "Blazing Love and Burning Justice",
-      "name": "Great Saiyaman 1 & 2",
-      "trend": "up"
-     },
-     {
       "id": "1033761",
       "cardId": "1033760",
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
+      "trend": "up"
+     },
+     {
+      "id": "1013391",
+      "cardId": "1013390",
+      "title": "Blazing Love and Burning Justice",
+      "name": "Great Saiyaman 1 & 2",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-13T23:07:57.568Z"
+  "updated": "2026-11-14T02:08:05.140Z"
  },
  "events": {
   "items": [
@@ -1446,7 +1446,7 @@
     "title": "Big Bucks Hercule Challenge",
     "group": "Bonus",
     "active": true,
-    "url": "https://dokkanstats.com/en/events/bonus/116",
+    "url": "https://dokkanstats.com/en/events/bonus/245",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_116.png",
     "stones": 3
    },
@@ -5045,7 +5045,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/events/",
-  "updated": "2026-11-13T08:07:56.242Z"
+  "updated": "2026-11-14T02:08:05.502Z"
  },
  "news": {
   "items": [
@@ -5192,7 +5192,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-12T13:14:03.000Z"
  },
- "generated": "2026-11-13T23:07:58.521Z",
+ "generated": "2026-11-14T02:08:06.147Z",
  "summons": {
   "items": [
    {
