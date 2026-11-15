@@ -5050,6 +5050,29 @@
  "news": {
   "items": [
    {
+    "id": "106497",
+    "title": "Today Is Dokkan Special Day!",
+    "url": "https://dokkan.fyi/news/106497",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_plain_camp_-20250515-_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 15, 2026, 12:00 AM GMT+0",
+    "iso": "2026-11-15T00:00:00.000Z"
+   },
+   {
+    "id": "105949",
+    "title": "Ultimate Leveling Up! Chamber of Spirit and Time!",
+    "url": "https://dokkan.fyi/news/105949",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_298_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 15, 2026, 12:00 AM GMT+0",
+    "iso": "2026-11-15T00:00:00.000Z"
+   },
+   {
     "id": "107390",
     "title": "The 107th Virtual Dokkan Ultimate Clash Ver. 3.0!",
     "url": "https://dokkan.fyi/news/107390",
@@ -5163,36 +5186,13 @@
     ],
     "date": "Nov 12, 2026, 5:00 AM GMT+0",
     "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "106853",
-    "title": "Seriously Serious! All-Out Battles 2!",
-    "url": "https://dokkan.fyi/news/106853",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1751_small_20260302042143.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "104390",
-    "title": "\"Mysterious Ritual\" Summon Is Now On!",
-    "url": "https://dokkan.fyi/news/104390",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_gasha_11128_small.png",
-    "tags": [
-     "Campaign",
-     "Summon"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-12T13:14:03.000Z"
+  "updated": "2026-11-15T06:28:07.418Z"
  },
- "generated": "2026-11-14T20:07:58.966Z",
+ "generated": "2026-11-15T06:28:07.420Z",
  "summons": {
   "items": [
    {
