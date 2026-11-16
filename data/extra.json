@@ -551,17 +551,17 @@
       "trend": "down"
      },
      {
-      "id": "1020311",
-      "cardId": "1020310",
-      "title": "True Ultra Instinct",
-      "name": "Goku (Ultra Instinct)",
-      "trend": "up"
-     },
-     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
       "name": "Great Saiyaman 2",
+      "trend": "up"
+     },
+     {
+      "id": "1020311",
+      "cardId": "1020310",
+      "title": "True Ultra Instinct",
+      "name": "Goku (Ultra Instinct)",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-16T17:07:56.970Z"
+  "updated": "2026-11-16T20:07:56.289Z"
  },
  "events": {
   "items": [
@@ -5199,7 +5199,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-16T17:07:57.645Z",
+ "generated": "2026-11-16T20:07:57.115Z",
  "summons": {
   "items": [
    {
