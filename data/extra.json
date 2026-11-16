@@ -516,6 +516,13 @@
     "ranks": "67-78",
     "units": [
      {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
+     },
+     {
       "id": "1014371",
       "cardId": "1014370",
       "title": "Determined to Fight",
@@ -528,13 +535,6 @@
       "title": "Inconceivable Saiyan Power",
       "name": "Vegeta + Nappa",
       "trend": "down"
-     },
-     {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
      },
      {
       "id": "1022451",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-16T20:07:56.289Z"
+  "updated": "2026-11-16T23:07:57.624Z"
  },
  "events": {
   "items": [
@@ -5199,7 +5199,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-16T20:07:57.115Z",
+ "generated": "2026-11-16T23:07:58.459Z",
  "summons": {
   "items": [
    {
