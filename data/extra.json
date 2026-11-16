@@ -5050,6 +5050,39 @@
  "news": {
   "items": [
    {
+    "id": "107391",
+    "title": "Ultimate Red Zone: RE [Dragon Ball Super: Beerus Edition]!",
+    "url": "https://dokkan.fyi/news/107391",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1784_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 16, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-16T05:00:00.000Z"
+   },
+   {
+    "id": "106017",
+    "title": "Perfect Cooperation! Team Battle!",
+    "url": "https://dokkan.fyi/news/106017",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_1723_B_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 16, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-16T05:00:00.000Z"
+   },
+   {
+    "id": "101966",
+    "title": "Extreme Super Battle Road Is On!",
+    "url": "https://dokkan.fyi/news/101966",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_720_B_small_plural.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 16, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-16T05:00:00.000Z"
+   },
+   {
     "id": "106497",
     "title": "Today Is Dokkan Special Day!",
     "url": "https://dokkan.fyi/news/106497",
@@ -5151,48 +5184,13 @@
     ],
     "date": "Nov 12, 2026, 5:00 AM GMT+0",
     "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "107383",
-    "title": "Legendary Summon Is On!",
-    "url": "https://dokkan.fyi/news/107383",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_gasha_12612_small.png",
-    "tags": [
-     "Campaign",
-     "Summon"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "107382",
-    "title": "Legendary Summon Packs Up for Sale!",
-    "url": "https://dokkan.fyi/news/107382",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_spshop_legendary_pack_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "107239",
-    "title": "Dokkan Frontier \"Androids/Cell Saga\"!",
-    "url": "https://dokkan.fyi/news/107239",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_dokkan-frontier_2002_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-15T06:28:07.418Z"
+  "updated": "2026-11-16T06:25:55.279Z"
  },
- "generated": "2026-11-15T06:28:07.420Z",
+ "generated": "2026-11-16T06:25:55.281Z",
  "summons": {
   "items": [
    {
