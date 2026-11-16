@@ -88,18 +88,18 @@
       "trend": "same"
      },
      {
-      "id": "1026611",
-      "cardId": "1026610",
-      "title": "A Quest That Makes Wishes Come True",
-      "name": "Bulma (Youth)",
-      "trend": "up"
-     },
-     {
       "id": "1034591",
       "cardId": "1034590",
       "title": "Shifting Fate",
       "name": "Super Saiyan Trunks (Teen)",
       "trend": "same"
+     },
+     {
+      "id": "1026611",
+      "cardId": "1026610",
+      "title": "A Quest That Makes Wishes Come True",
+      "name": "Bulma (Youth)",
+      "trend": "up"
      }
     ]
    },
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-16T13:04:34.860Z"
+  "updated": "2026-11-16T17:07:56.970Z"
  },
  "events": {
   "items": [
@@ -5199,7 +5199,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-16T13:04:35.527Z",
+ "generated": "2026-11-16T17:07:57.645Z",
  "summons": {
   "items": [
    {
