@@ -205,17 +205,17 @@
       "trend": "down"
      },
      {
-      "id": "1026431",
-      "cardId": "1026430",
-      "title": "Destructive Scattershot Strike",
-      "name": "Buu (Super)",
-      "trend": "same"
-     },
-     {
       "id": "1025731",
       "cardId": "1025730",
       "title": "Universe's Last Hope",
       "name": "Super Saiyan 3 Goku & Super Saiyan 2 Vegeta",
+      "trend": "down"
+     },
+     {
+      "id": "1026431",
+      "cardId": "1026430",
+      "title": "Destructive Scattershot Strike",
+      "name": "Buu (Super)",
       "trend": "down"
      },
      {
@@ -371,18 +371,18 @@
       "trend": "down"
      },
      {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
-     },
-     {
       "id": "1031501",
       "cardId": "1031500",
       "title": "World Shrouded in Evil Power",
       "name": "Omega Shenron",
       "trend": "down"
+     },
+     {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
      },
      {
       "id": "1034171",
@@ -503,11 +503,11 @@
       "trend": "down"
      },
      {
-      "id": "1031431",
-      "cardId": "1031430",
-      "title": "Terrifying Zero Mortals Plan",
-      "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
-      "trend": "down"
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
      }
     ]
    },
@@ -516,11 +516,11 @@
     "ranks": "67-78",
     "units": [
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
+      "id": "1031431",
+      "cardId": "1031430",
+      "title": "Terrifying Zero Mortals Plan",
+      "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
+      "trend": "down"
      },
      {
       "id": "1014371",
@@ -551,17 +551,17 @@
       "trend": "down"
      },
      {
-      "id": "1034731",
-      "cardId": "1034730",
-      "title": "Magnificent Act of Justice",
-      "name": "Great Saiyaman 2",
-      "trend": "up"
-     },
-     {
       "id": "1020311",
       "cardId": "1020310",
       "title": "True Ultra Instinct",
       "name": "Goku (Ultra Instinct)",
+      "trend": "up"
+     },
+     {
+      "id": "1034731",
+      "cardId": "1034730",
+      "title": "Magnificent Act of Justice",
+      "name": "Great Saiyaman 2",
       "trend": "up"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-16T23:07:57.624Z"
+  "updated": "2026-11-17T02:07:56.708Z"
  },
  "events": {
   "items": [
@@ -5199,7 +5199,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-16T23:07:58.459Z",
+ "generated": "2026-11-17T02:07:57.597Z",
  "summons": {
   "items": [
    {
