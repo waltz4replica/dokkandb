@@ -260,18 +260,18 @@
       "trend": "down"
      },
      {
-      "id": "1034381",
-      "cardId": "1034380",
-      "title": "Cataclysmic Calamity",
-      "name": "Cell Max",
-      "trend": "down"
-     },
-     {
       "id": "1034091",
       "cardId": "1034090",
       "title": "Opportunity to Rebuild",
       "name": "Super Saiyan Trunks (Future)",
       "trend": "up"
+     },
+     {
+      "id": "1034381",
+      "cardId": "1034380",
+      "title": "Cataclysmic Calamity",
+      "name": "Cell Max",
+      "trend": "down"
      },
      {
       "id": "1027621",
@@ -440,18 +440,18 @@
       "trend": "down"
      },
      {
-      "id": "1032581",
-      "cardId": "1032580",
-      "title": "Earth-Shattering Climax",
-      "name": "Super Saiyan 3 Vegeta (DAIMA)",
-      "trend": "down"
-     },
-     {
       "id": "1020281",
       "cardId": "1020280",
       "title": "Risky Covering Fire",
       "name": "Tien",
       "trend": "up"
+     },
+     {
+      "id": "1032581",
+      "cardId": "1032580",
+      "title": "Earth-Shattering Climax",
+      "name": "Super Saiyan 3 Vegeta (DAIMA)",
+      "trend": "down"
      },
      {
       "id": "1034861",
@@ -593,11 +593,11 @@
       "trend": "down"
      },
      {
-      "id": "1013391",
-      "cardId": "1013390",
-      "title": "Blazing Love and Burning Justice",
-      "name": "Great Saiyaman 1 & 2",
-      "trend": "up"
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
+      "trend": "down"
      }
     ]
    },
@@ -606,11 +606,11 @@
     "ranks": "79-90",
     "units": [
      {
-      "id": "1009091",
-      "cardId": "1009090",
-      "title": "Open the Gates of Hell",
-      "name": "Cooler (Final Form)",
-      "trend": "down"
+      "id": "1013391",
+      "cardId": "1013390",
+      "title": "Blazing Love and Burning Justice",
+      "name": "Great Saiyaman 1 & 2",
+      "trend": "up"
      },
      {
       "id": "1032711",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-17T16:41:40.232Z"
+  "updated": "2026-11-17T20:07:59.105Z"
  },
  "events": {
   "items": [
@@ -5199,7 +5199,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-17T16:41:40.877Z",
+ "generated": "2026-11-17T20:07:59.826Z",
  "summons": {
   "items": [
    {
