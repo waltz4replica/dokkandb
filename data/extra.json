@@ -399,17 +399,17 @@
       "trend": "down"
      },
      {
-      "id": "1034701",
-      "cardId": "1034700",
-      "title": "Force of Diverse Techniques",
-      "name": "Recoome + Guldo",
-      "trend": "down"
-     },
-     {
       "id": "1031721",
       "cardId": "1031720",
       "title": "Stirred Battle Instincts",
       "name": "Golden Frieza + Gogeta",
+      "trend": "down"
+     },
+     {
+      "id": "1034701",
+      "cardId": "1034700",
+      "title": "Force of Diverse Techniques",
+      "name": "Recoome + Guldo",
       "trend": "down"
      },
      {
@@ -530,17 +530,17 @@
       "trend": "down"
      },
      {
-      "id": "1022451",
-      "cardId": "1022450",
-      "title": "Exceptional Wisdom",
-      "name": "Piccolo",
-      "trend": "down"
-     },
-     {
       "id": "1033551",
       "cardId": "1033550",
       "title": "Inconceivable Saiyan Power",
       "name": "Vegeta + Nappa",
+      "trend": "down"
+     },
+     {
+      "id": "1022451",
+      "cardId": "1022450",
+      "title": "Exceptional Wisdom",
+      "name": "Piccolo",
       "trend": "down"
      },
      {
@@ -586,17 +586,17 @@
       "trend": "up"
      },
      {
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
+      "trend": "down"
+     },
+     {
       "id": "1025591",
       "cardId": "1025590",
       "title": "Exploding Latent Power",
       "name": "Piccolo (Power Awakening)",
-      "trend": "down"
-     },
-     {
-      "id": "1009091",
-      "cardId": "1009090",
-      "title": "Open the Gates of Hell",
-      "name": "Cooler (Final Form)",
       "trend": "down"
      }
     ]
@@ -606,18 +606,18 @@
     "ranks": "79-90",
     "units": [
      {
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
+      "trend": "down"
+     },
+     {
       "id": "1013391",
       "cardId": "1013390",
       "title": "Blazing Love and Burning Justice",
       "name": "Great Saiyaman 1 & 2",
       "trend": "up"
-     },
-     {
-      "id": "1032711",
-      "cardId": "1032710",
-      "title": "Luud Cult's God of Destruction",
-      "name": "Luud",
-      "trend": "down"
      },
      {
       "id": "1032331",
@@ -676,17 +676,17 @@
       "trend": "down"
      },
      {
-      "id": "1033591",
-      "cardId": "1033590",
-      "title": "Super Saiyan God of Successive Mutations",
-      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
-      "trend": "down"
-     },
-     {
       "id": "1024141",
       "cardId": "1024140",
       "title": "Desperate Onslaught",
       "name": "Goku & Piccolo/Piccolo",
+      "trend": "down"
+     },
+     {
+      "id": "1033591",
+      "cardId": "1033590",
+      "title": "Super Saiyan God of Successive Mutations",
+      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
       "trend": "down"
      }
     ]
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-17T20:07:59.105Z"
+  "updated": "2026-11-17T23:08:01.498Z"
  },
  "events": {
   "items": [
@@ -5199,7 +5199,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-17T20:07:59.826Z",
+ "generated": "2026-11-17T23:08:02.554Z",
  "summons": {
   "items": [
    {
