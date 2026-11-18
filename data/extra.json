@@ -475,17 +475,17 @@
       "trend": "down"
      },
      {
-      "id": "1022471",
-      "cardId": "1022470",
-      "title": "Eerie Sense of Despair",
-      "name": "Frieza (3rd Form)",
-      "trend": "down"
-     },
-     {
       "id": "1030431",
       "cardId": "1030430",
       "title": "Incomparable Radiance",
       "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
+      "trend": "down"
+     },
+     {
+      "id": "1022471",
+      "cardId": "1022470",
+      "title": "Eerie Sense of Despair",
+      "name": "Frieza (3rd Form)",
       "trend": "down"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-18T11:24:57.421Z"
+  "updated": "2026-11-18T14:07:59.546Z"
  },
  "events": {
   "items": [
@@ -5191,7 +5191,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-18T11:24:58.107Z",
+ "generated": "2026-11-18T14:08:01.149Z",
  "summons": {
   "items": [
    {
