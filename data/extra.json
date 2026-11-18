@@ -489,18 +489,18 @@
       "trend": "down"
      },
      {
-      "id": "1030341",
-      "cardId": "1030340",
-      "title": "Ultimate Saiyan Power Roar",
-      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
-      "trend": "down"
-     },
-     {
       "id": "1021721",
       "cardId": "1021720",
       "title": "Counterattack of Light",
       "name": "Super Saiyan Trunks (Teen)",
       "trend": "up"
+     },
+     {
+      "id": "1030341",
+      "cardId": "1030340",
+      "title": "Ultimate Saiyan Power Roar",
+      "name": "Super Saiyan 3 Goku (GT) (Golden Giant Ape)",
+      "trend": "down"
      },
      {
       "id": "1022421",
@@ -565,18 +565,18 @@
       "trend": "down"
      },
      {
-      "id": "1034731",
-      "cardId": "1034730",
-      "title": "Magnificent Act of Justice",
-      "name": "Great Saiyaman 2",
-      "trend": "up"
-     },
-     {
       "id": "1024991",
       "cardId": "1024990",
       "title": "Stamina to Attack Evil",
       "name": "Pan (GT)",
       "trend": "down"
+     },
+     {
+      "id": "1034731",
+      "cardId": "1034730",
+      "title": "Magnificent Act of Justice",
+      "name": "Great Saiyaman 2",
+      "trend": "up"
      },
      {
       "id": "1033761",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-18T14:07:59.546Z"
+  "updated": "2026-11-18T20:07:59.570Z"
  },
  "events": {
   "items": [
@@ -5191,7 +5191,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-16T13:04:35.525Z"
  },
- "generated": "2026-11-18T14:08:01.149Z",
+ "generated": "2026-11-18T20:08:00.268Z",
  "summons": {
   "items": [
    {
