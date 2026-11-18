@@ -5050,6 +5050,30 @@
  "news": {
   "items": [
    {
+    "id": "107511",
+    "title": "Update Details",
+    "url": "https://dokkan.fyi/news/107511",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_Ver6.7.0_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 18, 2026, 7:30 AM GMT+0",
+    "iso": "2026-11-18T07:30:00.000Z"
+   },
+   {
+    "id": "107123",
+    "title": "Regarding an Issue with Link Skill Levels",
+    "url": "https://dokkan.fyi/news/107123",
+    "image": "",
+    "tags": [
+     "Other",
+     "Check"
+    ],
+    "date": "Nov 18, 2026, 7:30 AM GMT+0",
+    "iso": "2026-11-18T07:30:00.000Z"
+   },
+   {
     "id": "107501",
     "title": "Information on Upcoming Content!",
     "url": "https://dokkan.fyi/news/107501",
@@ -5163,35 +5187,13 @@
     ],
     "date": "Nov 12, 2026, 5:00 AM GMT+0",
     "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "107387",
-    "title": "Quest Dokkan Story Area 43 Is Here!",
-    "url": "https://dokkan.fyi/news/107387",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_adventure_43_1_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "107386",
-    "title": "Extreme Z-Battle Is On!",
-    "url": "https://dokkan.fyi/news/107386",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_zbattle_152_small_A.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-16T13:04:35.525Z"
+  "updated": "2026-11-18T23:08:02.424Z"
  },
- "generated": "2026-11-18T20:08:00.268Z",
+ "generated": "2026-11-18T23:08:02.426Z",
  "summons": {
   "items": [
    {
