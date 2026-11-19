@@ -288,17 +288,17 @@
       "trend": "down"
      },
      {
-      "id": "1032361",
-      "cardId": "1032360",
-      "title": "Cooperation for Justice",
-      "name": "Ultimate Gohan + Gamma 1",
-      "trend": "down"
-     },
-     {
       "id": "1026251",
       "cardId": "1026250",
       "title": "Fighter Entrusted with Allies' Wishes",
       "name": "Super Saiyan God Goku",
+      "trend": "down"
+     },
+     {
+      "id": "1032361",
+      "cardId": "1032360",
+      "title": "Cooperation for Justice",
+      "name": "Ultimate Gohan + Gamma 1",
       "trend": "down"
      },
      {
@@ -371,13 +371,6 @@
       "trend": "same"
      },
      {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
-      "trend": "up"
-     },
-     {
       "id": "1009381",
       "cardId": "1009380",
       "title": "Reign of Terror",
@@ -385,17 +378,24 @@
       "trend": "down"
      },
      {
-      "id": "1031721",
-      "cardId": "1031720",
-      "title": "Stirred Battle Instincts",
-      "name": "Golden Frieza + Gogeta",
-      "trend": "down"
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "up"
      },
      {
       "id": "1020531",
       "cardId": "1020530",
       "title": "Power Taken From Others",
       "name": "Majin Buu (Piccolo)",
+      "trend": "same"
+     },
+     {
+      "id": "1031721",
+      "cardId": "1031720",
+      "title": "Stirred Battle Instincts",
+      "name": "Golden Frieza + Gogeta",
       "trend": "down"
      },
      {
@@ -468,18 +468,18 @@
       "trend": "same"
      },
      {
-      "id": "1021721",
-      "cardId": "1021720",
-      "title": "Counterattack of Light",
-      "name": "Super Saiyan Trunks (Teen)",
-      "trend": "up"
-     },
-     {
       "id": "1019361",
       "cardId": "1019360",
       "title": "Best Measure",
       "name": "Whis",
       "trend": "down"
+     },
+     {
+      "id": "1021721",
+      "cardId": "1021720",
+      "title": "Counterattack of Light",
+      "name": "Super Saiyan Trunks (Teen)",
+      "trend": "up"
      },
      {
       "id": "1030431",
@@ -523,17 +523,17 @@
       "trend": "down"
      },
      {
-      "id": "1014371",
-      "cardId": "1014370",
-      "title": "Determined to Fight",
-      "name": "Goku (Kaioken)",
-      "trend": "down"
-     },
-     {
       "id": "1033551",
       "cardId": "1033550",
       "title": "Inconceivable Saiyan Power",
       "name": "Vegeta + Nappa",
+      "trend": "down"
+     },
+     {
+      "id": "1014371",
+      "cardId": "1014370",
+      "title": "Determined to Fight",
+      "name": "Goku (Kaioken)",
       "trend": "down"
      },
      {
@@ -579,18 +579,18 @@
       "trend": "up"
      },
      {
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
+      "trend": "same"
+     },
+     {
       "id": "1033761",
       "cardId": "1033760",
       "title": "Breakthrough Amidst Adversity",
       "name": "Piccolo",
       "trend": "up"
-     },
-     {
-      "id": "1032711",
-      "cardId": "1032710",
-      "title": "Luud Cult's God of Destruction",
-      "name": "Luud",
-      "trend": "down"
      },
      {
       "id": "1025591",
@@ -606,13 +606,6 @@
     "ranks": "79-90",
     "units": [
      {
-      "id": "1009091",
-      "cardId": "1009090",
-      "title": "Open the Gates of Hell",
-      "name": "Cooler (Final Form)",
-      "trend": "down"
-     },
-     {
       "id": "1013391",
       "cardId": "1013390",
       "title": "Blazing Love and Burning Justice",
@@ -620,17 +613,10 @@
       "trend": "up"
      },
      {
-      "id": "1032331",
-      "cardId": "1032330",
-      "title": "Alliance of Justice",
-      "name": "Gamma 2 + Piccolo (Power Awakening)",
-      "trend": "down"
-     },
-     {
-      "id": "1030941",
-      "cardId": "1030940",
-      "title": "Final Battle at the Highest Level",
-      "name": "Cell (Perfect Form)",
+      "id": "1009091",
+      "cardId": "1009090",
+      "title": "Open the Gates of Hell",
+      "name": "Cooler (Final Form)",
       "trend": "down"
      },
      {
@@ -641,10 +627,10 @@
       "trend": "down"
      },
      {
-      "id": "1034691",
-      "cardId": "1034690",
-      "title": "Chaos-Bringing Secret Technique",
-      "name": "Ginyu (Goku)",
+      "id": "1032331",
+      "cardId": "1032330",
+      "title": "Alliance of Justice",
+      "name": "Gamma 2 + Piccolo (Power Awakening)",
       "trend": "down"
      },
      {
@@ -652,6 +638,20 @@
       "cardId": "1033870",
       "title": "Overhead Surprise Attack",
       "name": "King Cold",
+      "trend": "down"
+     },
+     {
+      "id": "1030941",
+      "cardId": "1030940",
+      "title": "Final Battle at the Highest Level",
+      "name": "Cell (Perfect Form)",
+      "trend": "down"
+     },
+     {
+      "id": "1034691",
+      "cardId": "1034690",
+      "title": "Chaos-Bringing Secret Technique",
+      "name": "Ginyu (Goku)",
       "trend": "down"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-19T17:07:56.415Z"
+  "updated": "2026-11-19T23:07:57.844Z"
  },
  "events": {
   "items": [
@@ -5242,7 +5242,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-19T11:37:59.493Z"
  },
- "generated": "2026-11-19T17:07:57.128Z",
+ "generated": "2026-11-19T23:07:58.549Z",
  "summons": {
   "items": [
    {
