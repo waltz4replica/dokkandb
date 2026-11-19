@@ -385,24 +385,24 @@
       "trend": "up"
      },
      {
+      "id": "1031721",
+      "cardId": "1031720",
+      "title": "Stirred Battle Instincts",
+      "name": "Golden Frieza + Gogeta",
+      "trend": "down"
+     },
+     {
       "id": "1020531",
       "cardId": "1020530",
       "title": "Power Taken From Others",
       "name": "Majin Buu (Piccolo)",
-      "trend": "same"
+      "trend": "down"
      },
      {
       "id": "1034171",
       "cardId": "1034170",
       "title": "Unleashed Ferocity",
       "name": "Majin Buu (South Supreme Kai)",
-      "trend": "down"
-     },
-     {
-      "id": "1031721",
-      "cardId": "1031720",
-      "title": "Stirred Battle Instincts",
-      "name": "Golden Frieza + Gogeta",
       "trend": "down"
      },
      {
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-19T13:20:16.311Z"
+  "updated": "2026-11-19T14:07:56.510Z"
  },
  "events": {
   "items": [
@@ -5242,7 +5242,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-19T11:37:59.493Z"
  },
- "generated": "2026-11-19T13:20:17.416Z",
+ "generated": "2026-11-19T14:07:57.173Z",
  "summons": {
   "items": [
    {
