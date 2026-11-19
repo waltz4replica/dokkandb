@@ -371,18 +371,18 @@
       "trend": "same"
      },
      {
-      "id": "1009381",
-      "cardId": "1009380",
-      "title": "Reign of Terror",
-      "name": "Frieza (1st Form)",
-      "trend": "down"
-     },
-     {
       "id": "1027601",
       "cardId": "1027600",
       "title": "Unity Forged in Another World",
       "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
       "trend": "up"
+     },
+     {
+      "id": "1009381",
+      "cardId": "1009380",
+      "title": "Reign of Terror",
+      "name": "Frieza (1st Form)",
+      "trend": "down"
      },
      {
       "id": "1031721",
@@ -468,18 +468,18 @@
       "trend": "same"
      },
      {
-      "id": "1019361",
-      "cardId": "1019360",
-      "title": "Best Measure",
-      "name": "Whis",
-      "trend": "down"
-     },
-     {
       "id": "1021721",
       "cardId": "1021720",
       "title": "Counterattack of Light",
       "name": "Super Saiyan Trunks (Teen)",
       "trend": "up"
+     },
+     {
+      "id": "1019361",
+      "cardId": "1019360",
+      "title": "Best Measure",
+      "name": "Whis",
+      "trend": "down"
      },
      {
       "id": "1030431",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-19T14:07:56.510Z"
+  "updated": "2026-11-19T17:07:56.415Z"
  },
  "events": {
   "items": [
@@ -5242,7 +5242,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-19T11:37:59.493Z"
  },
- "generated": "2026-11-19T14:07:57.173Z",
+ "generated": "2026-11-19T17:07:57.128Z",
  "summons": {
   "items": [
    {
