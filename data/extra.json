@@ -5098,6 +5098,17 @@
  "news": {
   "items": [
    {
+    "id": "107515",
+    "title": "Virtual Dokkan Ultimate Clash Ver. 3.0 [Black Friday Special Edition]!",
+    "url": "https://dokkan.fyi/news/107515",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_dairansen_112_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 19, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-19T08:00:00.000Z"
+   },
+   {
     "id": "107514",
     "title": "Renewal and Reopening of Burst Mode!",
     "url": "https://dokkan.fyi/news/107514",
@@ -5218,31 +5229,20 @@
     "id": "107495",
     "title": "[Important] Implementation of the Age Verification System",
     "url": "https://dokkan.fyi/news/107495",
-    "image": "",
+    "image": "https://dokkan.fyi/build/assets/icon_inverted-3rAD0Q2k.png",
     "tags": [
      "Other",
      "Check"
     ],
     "date": "Nov 16, 2026, 8:00 AM GMT+0",
     "iso": "2026-11-16T08:00:00.000Z"
-   },
-   {
-    "id": "107391",
-    "title": "Ultimate Red Zone: RE [Dragon Ball Super: Beerus Edition]!",
-    "url": "https://dokkan.fyi/news/107391",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1784_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 16, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-16T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-19T02:08:03.474Z"
+  "updated": "2026-11-19T11:37:59.493Z"
  },
- "generated": "2026-11-19T02:08:03.476Z",
+ "generated": "2026-11-19T11:37:59.495Z",
  "summons": {
   "items": [
    {
