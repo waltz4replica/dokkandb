@@ -699,6 +699,14 @@
  "events": {
   "items": [
    {
+    "title": "Dragon Ball DAIMA",
+    "group": "Story",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/story/1308",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1308_4.png",
+    "stones": 36
+   },
+   {
     "title": "Curse of the Blood Rubies",
     "group": "Story",
     "active": true,
@@ -769,14 +777,6 @@
     "url": "https://dokkanstats.com/en/events/story/1314",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1314.png",
     "stones": 21
-   },
-   {
-    "title": "Dragon Ball DAIMA",
-    "group": "Story",
-    "active": true,
-    "url": "https://dokkanstats.com/en/events/story/1308",
-    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1308_4.png",
-    "stones": 36
    },
    {
     "title": "Demonic Attack! Legendary Super Saiyan Broly",
@@ -1417,6 +1417,14 @@
     "url": "https://dokkanstats.com/en/events/story/133",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_133.png",
     "stones": 2
+   },
+   {
+    "title": "Launch's Treasure Hunt",
+    "group": "Bonus",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/bonus/1229",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1229.png",
+    "stones": 31
    },
    {
     "title": "In Search of Greater Power! \nGod-Level Intensive Training",
@@ -2961,6 +2969,46 @@
     "url": "https://dokkanstats.com/en/events/limited/805",
     "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_805.png",
     "stones": 0
+   },
+   {
+    "title": "The Awakened Supreme Demon King",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1739",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1739A.png",
+    "stones": 32
+   },
+   {
+    "title": "Take Down the Gendarmerie! Masked Majin Arrives!",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1747",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1747_A.png",
+    "stones": 36
+   },
+   {
+    "title": "The Invincible Guardians",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1748",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1748_C.png",
+    "stones": 18
+   },
+   {
+    "title": "The Greatest Tours",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1749",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1749.png",
+    "stones": 38
+   },
+   {
+    "title": "Strike x Impact",
+    "group": "Challenge",
+    "active": true,
+    "url": "https://dokkanstats.com/en/events/challenge/1783",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/event/eve_listbutton/myp_banner_event_1783.png",
+    "stones": 10
    },
    {
     "title": "Ultimate Red Zone: RE \n[Dragon Ball Super: Beerus Edition]",
@@ -5045,10 +5093,91 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/events/",
-  "updated": "2026-11-18T11:24:57.599Z"
+  "updated": "2026-11-19T02:07:59.421Z"
  },
  "news": {
   "items": [
+   {
+    "id": "107514",
+    "title": "Renewal and Reopening of Burst Mode!",
+    "url": "https://dokkan.fyi/news/107514",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_burst_01_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 19, 2026, 1:00 AM GMT+0",
+    "iso": "2026-11-19T01:00:00.000Z"
+   },
+   {
+    "id": "107513",
+    "title": "Strike x Impact!",
+    "url": "https://dokkan.fyi/news/107513",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1783_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 19, 2026, 1:00 AM GMT+0",
+    "iso": "2026-11-19T01:00:00.000Z"
+   },
+   {
+    "id": "107512",
+    "title": "Launch's Treasure Hunt!",
+    "url": "https://dokkan.fyi/news/107512",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1229_small.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 19, 2026, 1:00 AM GMT+0",
+    "iso": "2026-11-19T01:00:00.000Z"
+   },
+   {
+    "id": "107506",
+    "title": "Black Friday Dokkan Festival!",
+    "url": "https://dokkan.fyi/news/107506",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_gasha_12624_small.png",
+    "tags": [
+     "Campaign",
+     "Summon"
+    ],
+    "date": "Nov 19, 2026, 1:00 AM GMT+0",
+    "iso": "2026-11-19T01:00:00.000Z"
+   },
+   {
+    "id": "107503",
+    "title": "Special Support Pack Up for Sale!",
+    "url": "https://dokkan.fyi/news/107503",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_spshop_20261119_small_B.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 19, 2026, 1:00 AM GMT+0",
+    "iso": "2026-11-19T01:00:00.000Z"
+   },
+   {
+    "id": "107502",
+    "title": "Black Friday Dokkan Festival Packs!",
+    "url": "https://dokkan.fyi/news/107502",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_spshop_20261119_small_A.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 19, 2026, 1:00 AM GMT+0",
+    "iso": "2026-11-19T01:00:00.000Z"
+   },
+   {
+    "id": "107507",
+    "title": "Black Friday Campaign 2026!",
+    "url": "https://dokkan.fyi/news/107507",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261119_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 19, 2026, 12:00 AM GMT+0",
+    "iso": "2026-11-19T00:00:00.000Z"
+   },
    {
     "id": "107511",
     "title": "Update Details",
@@ -5107,95 +5236,145 @@
     ],
     "date": "Nov 16, 2026, 5:00 AM GMT+0",
     "iso": "2026-11-16T05:00:00.000Z"
-   },
-   {
-    "id": "106017",
-    "title": "Perfect Cooperation! Team Battle!",
-    "url": "https://dokkan.fyi/news/106017",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_1723_B_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 16, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-16T05:00:00.000Z"
-   },
-   {
-    "id": "101966",
-    "title": "Extreme Super Battle Road Is On!",
-    "url": "https://dokkan.fyi/news/101966",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_720_B_small_plural.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 16, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-16T05:00:00.000Z"
-   },
-   {
-    "id": "106497",
-    "title": "Today Is Dokkan Special Day!",
-    "url": "https://dokkan.fyi/news/106497",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_plain_camp_-20250515-_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 15, 2026, 12:00 AM GMT+0",
-    "iso": "2026-11-15T00:00:00.000Z"
-   },
-   {
-    "id": "105949",
-    "title": "Ultimate Leveling Up! Chamber of Spirit and Time!",
-    "url": "https://dokkan.fyi/news/105949",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/EN_news_banner_event_298_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 15, 2026, 12:00 AM GMT+0",
-    "iso": "2026-11-15T00:00:00.000Z"
-   },
-   {
-    "id": "107390",
-    "title": "The 107th Virtual Dokkan Ultimate Clash Ver. 3.0!",
-    "url": "https://dokkan.fyi/news/107390",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_dairansen_111_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 12, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-12T08:00:00.000Z"
-   },
-   {
-    "id": "107544",
-    "title": "Select Characters Dokkan Festival!",
-    "url": "https://dokkan.fyi/news/107544",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_select_dokkan_20260822_2_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
-   },
-   {
-    "id": "107389",
-    "title": "Limited-Time Character Boost Campaign!",
-    "url": "https://dokkan.fyi/news/107389",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261028_strengthen_small_1.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 12, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-12T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-18T23:08:02.424Z"
+  "updated": "2026-11-19T02:08:03.474Z"
  },
- "generated": "2026-11-18T23:08:02.426Z",
+ "generated": "2026-11-19T02:08:03.476Z",
  "summons": {
   "items": [
+   {
+    "id": "12626",
+    "name": "Black Friday Dokkan Festival Ticket Summon",
+    "desc": "Black Friday Dokkan Festival Ticket Summon! One SSR character guaranteed per Multi-Summon!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12626.png",
+    "start": "2026-11-19T01:00:00.000Z",
+    "end": "2026-12-10T07:59:59.000Z",
+    "cards": [
+     "1032530",
+     "1032860",
+     "1031700",
+     "1033920",
+     "1031660",
+     "1032400",
+     "1034230",
+     "1033860",
+     "1033610",
+     "1033630",
+     "1033690",
+     "1033020",
+     "1032970",
+     "1032950",
+     "1031650"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12626/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1032530",
+      "1032860",
+      "1031700",
+      "1033920",
+      "1031660",
+      "1032400",
+      "1034230",
+      "1033860",
+      "1033610",
+      "1033630",
+      "1033690",
+      "1033020",
+      "1032970",
+      "1032950",
+      "1031650"
+     ],
+     "secondary": [],
+     "unfeatured": 547,
+     "names": {
+      "1031650": "Imbued with Anticipation and Ambition",
+      "1031660": "Reign of the New Supreme Demon King",
+      "1031700": "Forced into the Fray",
+      "1032400": "The Glind Who Returned to His Homeland",
+      "1032530": "Decisive Grand Transformation",
+      "1032860": "In Pursuit of Further Evolution",
+      "1032950": "The Renowned Bodyguard",
+      "1032970": "Hunter of the Planet of Darkness",
+      "1033020": "Energy-Stealing Assassin",
+      "1033610": "Atonement for Time Traveling",
+      "1033630": "Experimenting with History",
+      "1033690": "Swarms of Combat Life Forms",
+      "1033860": "Royal Execution",
+      "1033920": "Discovery of the Perfect Soil",
+      "1034230": "Infiltrating the Red Ribbon Army"
+     }
+    }
+   },
+   {
+    "id": "12620",
+    "name": "Black Friday Dokkan Festival",
+    "desc": "77 hours only! Perform 3 Multi-Summons and get one FREE! Recruit powerful characters to your team!",
+    "image": "https://assets.dokkanstats.com/assets/global/en/banners/en/gashasocool/gasha_top_banner_12620.png",
+    "start": "2026-11-19T01:00:00.000Z",
+    "end": "2026-11-22T05:59:59.000Z",
+    "cards": [
+     "1032530",
+     "1032860",
+     "1031700",
+     "1033920",
+     "1031660",
+     "1032400",
+     "1034230",
+     "1033860",
+     "1033610",
+     "1033630",
+     "1033690",
+     "1033020",
+     "1032970",
+     "1032950",
+     "1031650"
+    ],
+    "url": "https://dokkanstats.com/en/summons/12620/",
+    "groups": {
+     "main": [],
+     "featured": [
+      "1032530",
+      "1032860",
+      "1031700",
+      "1033920",
+      "1031660",
+      "1032400",
+      "1034230",
+      "1033860",
+      "1033610",
+      "1033630",
+      "1033690",
+      "1033020",
+      "1032970",
+      "1032950",
+      "1031650"
+     ],
+     "secondary": [],
+     "unfeatured": 547,
+     "names": {
+      "1031650": "Imbued with Anticipation and Ambition",
+      "1031660": "Reign of the New Supreme Demon King",
+      "1031700": "Forced into the Fray",
+      "1032400": "The Glind Who Returned to His Homeland",
+      "1032530": "Decisive Grand Transformation",
+      "1032860": "In Pursuit of Further Evolution",
+      "1032950": "The Renowned Bodyguard",
+      "1032970": "Hunter of the Planet of Darkness",
+      "1033020": "Energy-Stealing Assassin",
+      "1033610": "Atonement for Time Traveling",
+      "1033630": "Experimenting with History",
+      "1033690": "Swarms of Combat Life Forms",
+      "1033860": "Royal Execution",
+      "1033920": "Discovery of the Perfect Soil",
+      "1034230": "Infiltrating the Red Ribbon Army"
+     }
+    }
+   },
    {
     "id": "12618",
     "name": "\"Mysterious Ritual\" Summon",
@@ -6660,6 +6839,6 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/summons/",
-  "updated": "2026-11-13T11:07:58.633Z"
+  "updated": "2026-11-19T02:08:03.034Z"
  }
 }
