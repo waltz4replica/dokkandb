@@ -551,6 +551,13 @@
       "trend": "up"
      },
      {
+      "id": "1033761",
+      "cardId": "1033760",
+      "title": "Breakthrough Amidst Adversity",
+      "name": "Piccolo",
+      "trend": "up"
+     },
+     {
       "id": "1022701",
       "cardId": "1022700",
       "title": "Wicked Life Form's Superiority Complex",
@@ -572,25 +579,18 @@
       "trend": "down"
      },
      {
+      "id": "1032711",
+      "cardId": "1032710",
+      "title": "Luud Cult's God of Destruction",
+      "name": "Luud",
+      "trend": "same"
+     },
+     {
       "id": "1034731",
       "cardId": "1034730",
       "title": "Magnificent Act of Justice",
       "name": "Great Saiyaman 2",
       "trend": "up"
-     },
-     {
-      "id": "1033761",
-      "cardId": "1033760",
-      "title": "Breakthrough Amidst Adversity",
-      "name": "Piccolo",
-      "trend": "up"
-     },
-     {
-      "id": "1032711",
-      "cardId": "1032710",
-      "title": "Luud Cult's God of Destruction",
-      "name": "Luud",
-      "trend": "down"
      },
      {
       "id": "1025591",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-20T15:24:54.028Z"
+  "updated": "2026-11-20T17:54:57.332Z"
  },
  "events": {
   "items": [
@@ -5242,7 +5242,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-19T11:37:59.493Z"
  },
- "generated": "2026-11-20T15:24:54.796Z",
+ "generated": "2026-11-20T17:54:58.061Z",
  "summons": {
   "items": [
    {
