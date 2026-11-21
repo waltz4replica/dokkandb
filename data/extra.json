@@ -5098,6 +5098,18 @@
  "news": {
   "items": [
    {
+    "id": "107313",
+    "title": "\"Golden Weekend Missions\" Gloriously Arrive!",
+    "url": "https://dokkan.fyi/news/107313",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261010_mission_A_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 21, 2026, 12:00 AM GMT+0",
+    "iso": "2026-11-21T00:00:00.000Z"
+   },
+   {
     "id": "107515",
     "title": "Virtual Dokkan Ultimate Clash Ver. 3.0 [Black Friday Special Edition]!",
     "url": "https://dokkan.fyi/news/107515",
@@ -5224,25 +5236,13 @@
     ],
     "date": "Nov 16, 2026, 8:00 AM GMT+0",
     "iso": "2026-11-16T08:00:00.000Z"
-   },
-   {
-    "id": "107495",
-    "title": "[Important] Implementation of the Age Verification System",
-    "url": "https://dokkan.fyi/news/107495",
-    "image": "https://dokkan.fyi/build/assets/icon_inverted-3rAD0Q2k.png",
-    "tags": [
-     "Other",
-     "Check"
-    ],
-    "date": "Nov 16, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-16T08:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-19T11:37:59.493Z"
+  "updated": "2026-11-21T02:13:42.604Z"
  },
- "generated": "2026-11-20T17:54:58.061Z",
+ "generated": "2026-11-21T02:13:42.606Z",
  "summons": {
   "items": [
    {
