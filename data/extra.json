@@ -468,18 +468,18 @@
       "trend": "down"
      },
      {
-      "id": "1034861",
-      "cardId": "1034860",
-      "title": "Valor Etched into History",
-      "name": "Hercule",
-      "trend": "up"
-     },
-     {
       "id": "1030431",
       "cardId": "1030430",
       "title": "Incomparable Radiance",
       "name": "Super Saiyan Goku + Super Saiyan Vegeta (Angel)",
       "trend": "down"
+     },
+     {
+      "id": "1034861",
+      "cardId": "1034860",
+      "title": "Valor Etched into History",
+      "name": "Hercule",
+      "trend": "up"
      },
      {
       "id": "1021721",
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-23T17:07:55.985Z"
+  "updated": "2026-11-23T20:07:56.040Z"
  },
  "events": {
   "items": [
@@ -5242,7 +5242,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-23T12:34:24.354Z"
  },
- "generated": "2026-11-23T17:07:56.707Z",
+ "generated": "2026-11-23T20:07:56.753Z",
  "summons": {
   "items": [
    {
