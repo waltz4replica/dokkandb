@@ -5098,6 +5098,18 @@
  "news": {
   "items": [
    {
+    "id": "107572",
+    "title": "Regarding an Issue with Rank EXP from Quest Stages",
+    "url": "https://dokkan.fyi/news/107572",
+    "image": "",
+    "tags": [
+     "Other",
+     "Check"
+    ],
+    "date": "Nov 23, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-23T08:00:00.000Z"
+   },
+   {
     "id": "107313",
     "title": "\"Golden Weekend Missions\" Gloriously Arrive!",
     "url": "https://dokkan.fyi/news/107313",
@@ -5217,32 +5229,20 @@
     "id": "107123",
     "title": "Regarding an Issue with Link Skill Levels",
     "url": "https://dokkan.fyi/news/107123",
-    "image": "",
+    "image": "https://dokkan.fyi/build/assets/icon_inverted-3rAD0Q2k.png",
     "tags": [
      "Other",
      "Check"
     ],
     "date": "Nov 18, 2026, 7:30 AM GMT+0",
     "iso": "2026-11-18T07:30:00.000Z"
-   },
-   {
-    "id": "107501",
-    "title": "Information on Upcoming Content!",
-    "url": "https://dokkan.fyi/news/107501",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 16, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-16T08:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-21T02:13:42.604Z"
+  "updated": "2026-11-23T12:34:24.354Z"
  },
- "generated": "2026-11-21T23:07:59.278Z",
+ "generated": "2026-11-23T12:34:24.356Z",
  "summons": {
   "items": [
    {
