@@ -89,7 +89,8 @@ views.home = () => {
   const dates = [...new Set(sorted.map((c) => c.released))].slice(0, 3);
   const latest = sorted.filter((c) => dates.includes(c.released)).slice(0, 15);
   const eza = cards.filter((c) => lastEza(c)).sort((a, b) => lastEza(b).localeCompare(lastEza(a))).slice(0, 12);
-  const active = bannerList().filter((b) => bannerStatus(b) === 'live' && !isPermanent(b)).slice(0, 4);
+  const active = bannerList().filter((b) => bannerStatus(b) === 'live' && !isPermanent(b))
+    .sort((a, b) => (a.end || '').localeCompare(b.end || '')).slice(0, 8);
   const news = (store.extra?.news?.items || []).slice(0, 3);
   const top = (store.extra?.tierlist?.tiers || []).flatMap((t) => t.units).slice(0, 6);
   return {
@@ -97,17 +98,17 @@ views.home = () => {
     html: `
       <form id="home-search" role="search"><input class="search" type="search" id="hq" placeholder="Buscar una carta…" autocomplete="off" enterkeyhint="search" aria-label="Buscar una carta"></form>
       <div class="quick">
-        <a href="#/cards"><b>${cards.length.toLocaleString('es-ES')}</b><span>cartas</span></a>
-        <a href="#/cards" id="q-mine"><b>${owned.size}</b><span>mis cartas</span></a>
-        <a href="#/teams"><b>${T.loadTeams().length}</b><span>equipos</span></a>
+        <a href="#/cards" id="q-mine"><b>${owned.size}</b><span>Mis cartas</span></a>
+        <a href="#/cards" id="q-wish2"><b>${wished.size}</b><span>Deseadas</span></a>
+        <a href="#/teams"><b>${T.loadTeams().length}</b><span>Equipos</span></a>
       </div>
+      ${active.length ? `<h2>Se puede invocar ahora <a href="#/banners">Todos</a></h2><div class="rail">${active.map(bannerCard).join('')}<a class="rail-more" href="#/banners?v=cal"><b>Calendario</b><span>Qué termina y qué viene</span></a></div>` : ''}
       ${wishHome()}
-      ${active.length ? `<h2>Banners activos <a href="#/banners">Ver todos</a></h2>${active.map(bannerRow).join('')}` : ''}
-      <h2>Cartas nuevas <a href="#/cards">Ver todas</a></h2>
+      <h2>Cartas nuevas <a href="#/cards">Todas</a></h2>
       ${groupByDate(latest, (c) => c.released, tile)}
       ${eza.length ? `<h2>Últimos EZA / SEZA</h2>${groupByDate(eza, lastEza, tile)}` : ''}
-      ${news.length ? `<h2>Noticias del juego <a href="#/events?tab=news">Ver todas</a></h2>${news.map(newsRow).join('')}` : ''}
-      ${top.length ? `<h2>Top de la tier list <a href="#/tierlist">Ver completa</a></h2><div class="grid">${top.map(tierTile).join('')}</div>` : ''}`,
+      ${top.length ? `<h2>Lo mejor de la tier list <a href="#/tierlist">Completa</a></h2><div class="grid">${top.map(tierTile).join('')}</div>` : ''}
+      ${news.length ? `<h2>Noticias del juego <a href="#/events?tab=news">Todas</a></h2>${news.map(newsRow).join('')}` : ''}`,
     mount(el) {
       // Searching from the home screen opens Cards with that search.
       $('#home-search', el).addEventListener('submit', (e) => {
@@ -120,7 +121,7 @@ views.home = () => {
         location.hash = '#/cards';
       });
       $('#q-mine', el).addEventListener('click', () => { filters.mine = true; filters.wish = false; saveFilters(); });
-      $('#q-wish', el)?.addEventListener('click', () => { filters.wish = true; filters.mine = false; saveFilters(); });
+      for (const id of ['#q-wish', '#q-wish2']) $(id, el)?.addEventListener('click', () => { filters.wish = true; filters.mine = false; saveFilters(); });
       mountStones(el);
     },
   };
@@ -137,6 +138,12 @@ function groupByDate(items, dateOf, render) {
   }
   return html ? html + '</div>' : '';
 }
+
+// Tabs inside a section (Cartas: Todas / Tier list...). They replace the address, so Back leaves the section.
+function subTabs(items, active) {
+  return `<nav class="subtabs" aria-label="Apartados">${items.map(([href, label]) => `<a href="${href}"${href === active ? ' class="on" aria-current="page"' : ''}>${label}</a>`).join('')}</nav>`;
+}
+const cardTabs = (active) => subTabs([['#/cards', 'Todas'], ['#/tierlist', 'Tier list']], active);
 
 function firstRunView() {
   return {
@@ -357,7 +364,7 @@ views.cards = (params) => {
   const chip = (group, val, label, extra = '') => `<button class="chip ${extra} ${filters[group].has(val) ? 'on' : ''}" data-g="${group}" data-v="${val}">${label}</button>`;
   return {
     title: 'Cartas',
-    html: `
+    html: `${cardTabs('#/cards')}
       <input class="search" type="search" placeholder="Buscar por nombre, categoría, link…" value="${esc(filters.q)}" id="q" autocomplete="off" enterkeyhint="search">
       <div class="chips recent" id="recent"></div>
       <div class="chips">
@@ -813,6 +820,21 @@ function bannerRow(b) {
       ${minis ? `<div class="minis">${minis}</div>` : ''}</div></a>`;
 }
 
+function bannerCard(b) {
+  const left = timeLeft(b);
+  const soon = Date.parse(b.end) - Date.now() < 3 * 864e5;
+  const main = new Set(b.groups?.main || []);
+  const ids = [...b.cards].sort((x, y) => main.has(y) - main.has(x)).slice(0, 5);
+  const w = wishedIn(b).length;
+  return `<a class="bcard" href="#/banner/${enc(b.id)}">
+    <img class="bc-img" loading="lazy" alt="" src="${esc(b.image)}">
+    <span class="bc-body">
+      <span class="bc-time${soon ? ' soon' : ''}">${esc(left || 'Activo')}</span>
+      <b class="bc-name">${esc(b.name)}</b>
+      <span class="bc-foot"><span class="minis">${ids.map((id) => `<img loading="lazy" alt="" src="${esc(bannerCardImg(id))}">`).join('')}</span>${w ? `<span class="wish-n" title="De tu lista de deseos">♥ ${w}</span>` : ''}</span>
+    </span></a>`;
+}
+
 views.banners = (params) => {
   const all = bannerList();
   if (!all.length) return { title: 'Banners', html: noExtra() };
@@ -826,16 +848,10 @@ views.banners = (params) => {
   const src = store.extra.summons;
   return {
     title: 'Banners',
-    html: `<div class="seg" id="bview" style="margin-top:0"><button data-v="" class="${cal ? '' : 'on'}">Lista</button><button data-v="cal" class="${cal ? 'on' : ''}">📅 Calendario</button></div>
-      ${cal ? bannerCalendar() : `${stonesBox()}${groups.map(([title, list]) => `<h2>${title} <span class="muted small">${list.length}</span></h2>${list.map(bannerRow).join('')}`).join('')}`}
+    html: `${subTabs([['#/banners', 'Lista'], ['#/banners?v=cal', 'Calendario']], cal ? '#/banners?v=cal' : '#/banners')}
+      ${cal ? bannerCalendar() : `${groups.map(([title, list], i) => `<h2>${title} <span class="muted small">${list.length}</span></h2>${list.map(bannerRow).join('')}${i === 0 ? stonesBox() : ''}`).join('')}`}
       <p class="muted small">Fuente: <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.source)}</a>. Los banners anteriores se van guardando desde que la app empezó a recogerlos.</p>`,
     mount(el) {
-      $('#bview', el).addEventListener('click', (e) => {
-        const b = e.target.closest('button');
-        if (!b) return;
-        history.replaceState(null, '', b.dataset.v ? '#/banners?v=cal' : '#/banners');
-        route();
-      });
       mountStones(el);
     },
   };
@@ -943,7 +959,7 @@ views.events = (params) => {
   const present = EVENT_GROUPS.map(([k]) => k).filter((k) => items.some((e) => e.group === k));
   const others = [...new Set(items.map((e) => e.group))].filter((g) => !present.includes(g));
   const groups = [...present, ...others];
-  const tabs = `<div class="seg" style="margin-top:0"><button data-tab="events" class="${tab === 'events' ? 'on' : ''}">Eventos activos</button><button data-tab="news" class="${tab === 'news' ? 'on' : ''}">Noticias del juego</button></div>`;
+  const tabs = subTabs([['#/events', 'Eventos activos'], ['#/events?tab=news', 'Noticias del juego']], tab === 'news' ? '#/events?tab=news' : '#/events');
   const withStones = items.filter((e) => e.stones > 0);
   const eventsHtml = !items.length ? noExtra() : `
     <input class="search" type="search" id="evq" placeholder="Buscar evento…" autocomplete="off">
@@ -956,12 +972,8 @@ views.events = (params) => {
     <p class="muted small">Fuente: <a href="${esc(ex.news.url)}" target="_blank" rel="noopener">${esc(ex.news.source)}</a></p>`;
   return {
     title: 'Eventos',
-    html: `${tabs}<div id="tab-body" style="margin-top:12px">${tab === 'news' ? newsHtml : eventsHtml}</div>`,
+    html: `${tabs}<div id="tab-body">${tab === 'news' ? newsHtml : eventsHtml}</div>`,
     mount(el) {
-      el.querySelector('.seg').addEventListener('click', (e) => {
-        const b = e.target.closest('button');
-        if (b) location.replace(`#/events${b.dataset.tab === 'news' ? '?tab=news' : ''}`);
-      });
       const box = $('#ev', el);
       if (!box) return;
       let group = groups[0];
@@ -1005,10 +1017,10 @@ function tierTile(u) {
 
 views.tierlist = () => {
   const tl = store.extra?.tierlist;
-  if (!tl?.tiers?.length) return { title: 'Tier list', html: noExtra() };
+  if (!tl?.tiers?.length) return { title: 'Tier list', html: cardTabs('#/tierlist') + noExtra() };
   return {
     title: 'Tier list',
-    html: `<p class="muted small" style="margin-top:0">Las mejores cartas LR y UR según los votos de la comunidad de
+    html: `${cardTabs('#/tierlist')}<p class="muted small">Las mejores cartas LR y UR según los votos de la comunidad de
       <a href="${esc(tl.url)}" target="_blank" rel="noopener">${esc(tl.source)}</a>. ▲▼ = sube o baja respecto a la última vez.</p>
       ${tl.tiers.map((t) => `<h2><span><span class="tier-badge">${esc(t.tier)}</span> <span class="muted small">puestos ${esc(t.ranks)}</span></span></h2>
         <div class="grid">${t.units.map(tierTile).join('')}</div>`).join('')}
@@ -1612,7 +1624,7 @@ const ROUTES = [
   [/^#\/team\/(.+)$/, 'team', 'teams'],
   [/^#\/team-pick\/(\d)$/, 'team-pick', 'teams'],
   [/^#\/events$/, 'events', 'events'],
-  [/^#\/tierlist$/, 'tierlist', 'tierlist'],
+  [/^#\/tierlist$/, 'tierlist', 'cards'],
   [/^#\/settings$/, 'settings', 'settings'],
 ];
 
@@ -1657,6 +1669,12 @@ const errorView = () => ({ title: 'Error', back: true,
   html: '<div class="empty"><span class="empty-ic">⚠</span>Esta pantalla no se ha podido mostrar.<br><br><a class="btn" href="#/">Volver al inicio</a></div>' });
 
 addEventListener('hashchange', route);
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('.subtabs a');
+  if (!a) return;
+  e.preventDefault();
+  if (!a.classList.contains('on')) location.replace(a.getAttribute('href'));
+});
 // Tapping the tab you are already on goes back to the top of the list.
 document.querySelector('.nav').addEventListener('click', (e) => {
   const a = e.target.closest('a');

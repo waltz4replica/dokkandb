@@ -690,3 +690,95 @@ main > .ds-box:first-child { margin-top: 4px; }
 .cmp-cell .g-role { border-radius: 8px; padding: 3px 7px; line-height: 1.25; }
 body:has(#cmp-bar) .toast { bottom: calc(var(--nav-h) + 68px + env(safe-area-inset-bottom)); }
 .cal-bar.ended { background: rgba(255,255,255,.2); }
+
+/* ───────── Look v5: night-blue base, condensed headings, flat surfaces ─────────
+   Colour only where it means something: the type of a card, the state of a banner,
+   the one main action. Everything else stays quiet. */
+:root {
+  --bg: #0d1022; --bg2: #141936; --card: #171d3b; --card2: #1e2549; --line: #29305c;
+  --text: #eef0fb; --muted: #a3aacb;
+  --accent: #ff8f1f; --accent2: #ffc84a;
+  --grad: linear-gradient(135deg, #ffa53a, #ff8a14);
+  --glass: rgba(13,16,34,.86);
+  --shadow: none;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --hair: rgba(160,175,255,.12);
+}
+body::before { background: radial-gradient(80% 32% at 50% -4%, rgba(70,90,220,.22), transparent 72%), var(--bg); }
+
+/* Headings: condensed, tight, no ornaments */
+.top h1, h2, .hero .n, .quick b, .lead-pct, .tier-badge, .bc-time, .rail-more b, .modal h2 { font-family: var(--display); }
+.top h1 { font-size: 25px; font-weight: 700; letter-spacing: .2px; line-height: 1; }
+.top h1 .logo { background: none; color: var(--accent); }
+.top::after { display: none; }
+.top { border-bottom-color: var(--hair); }
+h2 { font-size: 22px; font-weight: 700; letter-spacing: .2px; line-height: 1.1; margin: 28px 0 12px; }
+main > h2::before, .bgroup h2::before { display: none; }
+main > h2 > a, h2 > a { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 13.5px; font-weight: 700; padding: 8px 0 8px 12px; margin: -8px 0 -8px auto; background: none; color: var(--accent2); }
+.date-head { text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--muted); }
+.hero .n { font-size: 26px; font-weight: 700; line-height: 1.05; }
+.modal h2 { font-size: 26px; }
+
+/* Surfaces: flat, one hairline, no drop shadows */
+.box, .row, .bgroup, .unit, .tbtn, .icon-btn, .reco-card, .cal-row { background: var(--card); border-color: var(--hair); box-shadow: none; }
+.row { border-radius: 14px; }
+@media (hover: hover) { a.row:hover, button.row:hover { border-color: rgba(255,143,31,.5); } }
+.row .banner-img { box-shadow: none; }
+.guide { background: linear-gradient(180deg, rgba(255,143,31,.1), rgba(255,143,31,0) 120px), var(--card); }
+.empty { border-color: var(--hair); }
+
+/* Controls */
+.search { background-color: var(--bg2); border-color: var(--hair); }
+.search:focus { background-color: var(--card); box-shadow: 0 0 0 3px rgba(255,143,31,.2); }
+.chip { background: var(--bg2); border-color: var(--hair); min-height: 36px; }
+.chip.on, .seg button.on, .btn.primary { background: var(--accent); box-shadow: none; color: #1f1000; }
+.chip.t-agl.on, .chip.t-teq.on, .chip.t-int.on, .chip.t-str.on, .chip.t-phy.on { box-shadow: none; }
+.chip.wish.on, .wish-btn.on, .own-btn.on { box-shadow: none; }
+.seg { background: var(--bg2); border-color: var(--hair); }
+.btn { background: var(--card2); border-color: var(--hair); min-height: 44px; }
+.toolbar select, .adv-sec select { background-color: var(--bg2); border-color: var(--hair); }
+.adv { background: var(--bg2); border-color: var(--hair); }
+
+/* Tabs inside a section (Todas / Tier list, Lista / Calendario...) */
+.subtabs { display: flex; gap: 22px; margin: -2px 0 14px; border-bottom: 1px solid var(--hair); overflow-x: auto; scrollbar-width: none; }
+.subtabs::-webkit-scrollbar { display: none; }
+.subtabs a { position: relative; flex: none; padding: 10px 0 11px; font-size: 14.5px; font-weight: 700; color: var(--muted); }
+.subtabs a.on { color: var(--text); }
+.subtabs a.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; border-radius: 3px 3px 0 0; background: var(--accent); }
+
+/* Bottom bar: five sections, the current one in a filled pill */
+.nav { background: var(--glass); border-top-color: var(--hair); }
+.nav a { font-size: 11px; font-weight: 700; color: var(--muted); }
+.nav a::before { top: 6px; width: 56px; height: 32px; margin-left: -28px; background: var(--accent); }
+.nav a.on { color: var(--text); }
+.nav a.on svg { color: #1f1000; transform: none; }
+
+/* Home: three shortcuts */
+.quick { gap: 8px; margin-top: 12px; }
+.quick a, .quick a:nth-child(2), .quick a:nth-child(3) { flex-direction: row; align-items: baseline; justify-content: center; gap: 6px; padding: 10px 6px; border-radius: 12px; background: var(--bg2); border-color: var(--hair); }
+.quick b { font-size: 22px; font-weight: 700; }
+.quick span { text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--muted); }
+
+/* Home: banners you can summon on now, as big swipeable cards */
+.rail { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 0 16px 6px; scroll-padding: 0 16px; scrollbar-width: none; }
+.rail::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .bcard { flex-basis: 44% !important; } }
+.bcard { flex: 0 0 82%; min-width: 0; scroll-snap-align: start; display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: var(--card); border: 1px solid var(--hair); color: var(--text); transition: transform .12s; }
+.bcard:active { transform: scale(.98); }
+.bc-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 35%; background: var(--bg2); }
+.bc-body { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px 12px; flex: 1; }
+.bc-time { font-size: 21px; font-weight: 700; line-height: 1; color: var(--accent2); }
+.bc-time.soon { color: #ff7a7a; }
+.bc-name { font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bc-foot { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 4px; }
+.bc-foot .minis { flex: 1; margin: 0; }
+.rail-more { scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 16px; border-radius: 18px; border: 1px dashed var(--line); color: var(--text); flex: 0 0 150px; }
+.rail-more b { font-size: 22px; font-weight: 700; color: var(--accent2); }
+.rail-more span { font-size: 13px; color: var(--muted); }
+
+/* Card tiles: type colour as a thin frame, no glow */
+.tile .pic { box-shadow: inset 0 0 0 1px rgba(var(--k),.35); background: radial-gradient(circle at 50% 40%, rgba(var(--k),.26), rgba(var(--k),.04) 70%), var(--bg2); }
+.tile .flag { background: var(--accent); box-shadow: none; }
+.tile .flag.eza { background: #e9e2ff; }
+.tier-badge { background: var(--accent); box-shadow: none; font-size: 18px; }
+.status.live { box-shadow: none; }

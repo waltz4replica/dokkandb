@@ -26,6 +26,22 @@ self.addEventListener('fetch', (e) => {
   // Old wiki API requests (if any) always go to the network.
   if (url.pathname.endsWith('/api.php')) return;
 
+  // Heading font (Google Fonts): keep a copy so it also works offline.
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+    e.respondWith(caches.open('fonts-v1').then(async (cache) => {
+      const hit = await cache.match(req);
+      if (hit) return hit;
+      try {
+        const res = await fetch(req);
+        if (res.ok || res.type === 'opaque') cache.put(req, res.clone());
+        return res;
+      } catch {
+        return new Response('', { status: 504 });
+      }
+    }));
+    return;
+  }
+
   // Images: serve from cache, fetch once otherwise.
   if (req.destination === 'image') {
     e.respondWith(caches.open(IMAGES).then(async (cache) => {
