@@ -111,10 +111,9 @@ function Invoke-Checks {
   Run node tests/effects-check.mjs | Out-Null
   Run node tests/advice-check.mjs | Out-Null
   $probe = Join-Path $env:TEMP 'dokkan-probe'
-  if (Test-Path $probe) {
-    Run node tests/scrapers-check.mjs $probe | Out-Null
-    Run node tests/fyi-check.mjs $probe | Out-Null
-  }
+  # Only when the saved sample pages are there (Windows may empty the temp folder).
+  if (Test-Path (Join-Path $probe 'ds-tier.html')) { Run node tests/scrapers-check.mjs $probe | Out-Null }
+  if (Test-Path (Join-Path $probe 'fyi-chars.html')) { Run node tests/fyi-check.mjs $probe | Out-Null }
   Write-Host '   ok'
 }
 
