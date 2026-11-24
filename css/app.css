@@ -604,3 +604,20 @@ a.row:active, button.row:active { transform: scale(.985); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }#tname.search { background-image: none; padding-left: 14px; font-weight: 700; }
+
+/* Wish list */
+.wish { color: #ff6b9a; }
+.chip.wish.on { background: linear-gradient(135deg, #ff7aa8, #ff4d7d); border-color: transparent; color: #fff; box-shadow: 0 3px 12px rgba(255,77,125,.4); }
+.wish-btn.on { background: linear-gradient(135deg, #ff7aa8, #ff4d7d); border-color: transparent; color: #fff; box-shadow: 0 4px 16px rgba(255,77,125,.35); }
+.wish-btn[hidden] { display: none; }
+.wish-n { display: inline-block; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 999px; background: rgba(255,77,125,.18); color: #ff8fb1; }
+.wish-row { border-color: rgba(255,77,125,.35); }
+.wish-row .minis img.hl { box-shadow: 0 0 0 2px #ff6b9a; }
+.wish-note { margin: 10px 0; border-color: rgba(255,77,125,.4); background: linear-gradient(180deg, rgba(255,77,125,.12), rgba(255,77,125,0) 80%), var(--card); }
+.ds-box { margin-top: 10px; }
+.ds-box label { display: block; font-weight: 800; margin-bottom: 8px; }
+.ds-box input { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05); color: var(--text); font: inherit; font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; outline: none; }
+.ds-box input:focus { border-color: #7fd4ff; box-shadow: 0 0 0 3px rgba(127,212,255,.18); }
+.ds-box p { margin: 8px 0 0; }
+.ds-box #ds-out b { color: #7fd4ff; }
+main > .ds-box:first-child { margin-top: 4px; }

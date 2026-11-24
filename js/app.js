@@ -49,7 +49,7 @@ function tile(c) {
     ${isNew ? '<span class="flag">NUEVA</span>' : ''}
     ${c.seza ? '<span class="flag eza">SEZA</span>' : c.eza ? '<span class="flag eza">EZA</span>' : ''}
     ${T.trainingItem(c) ? '<span class="flag item">ENTRENAR</span>' : ''}
-    <div class="nm">${isOwned(c) ? '<span class="own" title="La tienes">★</span> ' : ''}${esc(c.name)}</div></a>`;
+    <div class="nm">${isOwned(c) ? '<span class="own" title="La tienes">★</span> ' : isWished(c) ? '<span class="wish" title="La quieres">♥</span> ' : ''}${esc(c.name)}</div></a>`;
 }
 
 // Newest first (cards without a date yet go on top).
@@ -101,6 +101,7 @@ views.home = () => {
         <a href="#/cards" id="q-mine"><b>${owned.size}</b><span>mis cartas</span></a>
         <a href="#/teams"><b>${T.loadTeams().length}</b><span>equipos</span></a>
       </div>
+      ${wishHome()}
       ${active.length ? `<h2>Banners activos <a href="#/banners">Ver todos</a></h2>${active.map(bannerRow).join('')}` : ''}
       <h2>Cartas nuevas <a href="#/cards">Ver todas</a></h2>
       ${groupByDate(latest, (c) => c.released, tile)}
@@ -113,11 +114,13 @@ views.home = () => {
         e.preventDefault();
         const q = $('#hq', el).value.trim();
         if (!q) return;
-        filters.q = q; filters.category = ''; filters.mine = false;
+        filters.q = q; filters.category = ''; filters.mine = false; filters.wish = false;
         saveFilters();
         location.hash = '#/cards';
       });
-      $('#q-mine', el).addEventListener('click', () => { filters.mine = true; saveFilters(); });
+      $('#q-mine', el).addEventListener('click', () => { filters.mine = true; filters.wish = false; saveFilters(); });
+      $('#q-wish', el)?.addEventListener('click', () => { filters.wish = true; filters.mine = false; saveFilters(); });
+      mountStones(el);
     },
   };
 };
@@ -150,7 +153,7 @@ function firstRunView() {
 }
 
 // Filters live here so they survive moving between screens.
-const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, mine: false, sort: 'new', category: '',
+const filters = { q: '', rarity: new Set(), type: new Set(), cls: new Set(), eza: false, mine: false, wish: false, sort: 'new', category: '',
   cats: new Set(), fx: new Set(), orb: new Set(), moreOpen: false };
 const advancedCount = () => filters.cats.size + filters.fx.size + filters.orb.size;
 let listShown = 60; // cards the list had loaded, so coming back from a card lands in the same place
@@ -160,7 +163,7 @@ const FILTERS_KEY = storageName('cardFilters');
 const SET_KEYS = ['rarity', 'type', 'cls', 'cats', 'fx', 'orb'];
 function saveFilters() {
   try {
-    const out = { q: filters.q, eza: filters.eza, mine: filters.mine, sort: filters.sort, moreOpen: filters.moreOpen };
+    const out = { q: filters.q, eza: filters.eza, mine: filters.mine, wish: filters.wish, sort: filters.sort, moreOpen: filters.moreOpen };
     for (const k of SET_KEYS) out[k] = [...filters[k]];
     localStorage.setItem(FILTERS_KEY, JSON.stringify(out));
   } catch { /* storage unavailable */ }
@@ -168,7 +171,7 @@ function saveFilters() {
 try {
   const saved = JSON.parse(localStorage.getItem(FILTERS_KEY) || 'null');
   if (saved) {
-    for (const k of ['q', 'eza', 'mine', 'sort', 'moreOpen']) if (k in saved) filters[k] = saved[k];
+    for (const k of ['q', 'eza', 'mine', 'wish', 'sort', 'moreOpen']) if (k in saved) filters[k] = saved[k];
     for (const k of SET_KEYS) if (Array.isArray(saved[k])) filters[k] = new Set(saved[k]);
   }
 } catch { /* ignore a damaged copy */ }
@@ -181,6 +184,86 @@ const isOwned = (c) => !!c && owned.has(c.page);
 function setOwned(page, on) {
   on ? owned.add(page) : owned.delete(page);
   try { localStorage.setItem(OWNED_KEY, JSON.stringify([...owned])); } catch { toast('No se pudo guardar en este móvil.'); }
+}
+
+// "Lista de deseos": cards you want, to see when a banner brings them (on this phone only).
+const WISH_KEY = storageName('wishCards');
+let wished = new Set();
+try { wished = new Set(JSON.parse(localStorage.getItem(WISH_KEY) || '[]')); } catch { /* start empty */ }
+const isWished = (c) => !!c && wished.has(c.page);
+function setWished(page, on) {
+  on ? wished.add(page) : wished.delete(page);
+  try { localStorage.setItem(WISH_KEY, JSON.stringify([...wished])); } catch { toast('No se pudo guardar en este móvil.'); }
+}
+// The wished cards a banner can give (each card once, even if the banner lists it twice).
+function wishedIn(b) {
+  const seen = new Set();
+  return b.cards.map((id) => cardById(id)).filter((c) => isWished(c) && !seen.has(c.page) && seen.add(c.page));
+}
+// Banners still worth planning for: running now (also permanent ones) or coming soon.
+const openBanners = () => bannerList().filter((b) => bannerStatus(b) !== 'ended');
+
+// Your Dragon Stones, to know how many summons you can do.
+const DS_KEY = storageName('dragonStones');
+const MULTI = 50, SINGLE = 5;
+function readStones() { try { return Math.max(0, parseInt(localStorage.getItem(DS_KEY), 10) || 0); } catch { return 0; } }
+function stonesText(n) {
+  if (!n) return 'Escribe cuántas tienes para saber cuántas invocaciones puedes hacer.';
+  const multis = Math.floor(n / MULTI), singles = Math.floor((n % MULTI) / SINGLE);
+  const parts = [];
+  if (multis) parts.push(`<b>${multis}</b> multi${multis > 1 ? 's' : ''}`);
+  if (singles) parts.push(`<b>${singles}</b> individual${singles > 1 ? 'es' : ''}`);
+  if (!parts.length) return `Te faltan <b>${SINGLE - n}</b> para una invocación individual (${SINGLE}).`;
+  const rest = n % MULTI;
+  return `Te da para ${parts.join(' y ')}.${rest ? ` Te faltan <b>${MULTI - rest}</b> para ${multis ? 'otra' : 'una'} multi.` : ''}`;
+}
+const stonesBox = () => `<div class="box ds-box"><label for="ds">💎 Tus Dragon Stones</label>
+  <input id="ds" type="number" inputmode="numeric" min="0" max="99999" placeholder="0" value="${readStones() || ''}">
+  <p class="small" id="ds-out">${stonesText(readStones())}</p>
+  <p class="muted small">Multi = ${MULTI} piedras (10 cartas) · Individual = ${SINGLE} piedras.</p></div>`;
+function mountStones(el) {
+  const input = $('#ds', el);
+  input?.addEventListener('input', () => {
+    const n = Math.min(99999, Math.max(0, parseInt(input.value, 10) || 0));
+    try { localStorage.setItem(DS_KEY, String(n)); } catch { /* storage unavailable */ }
+    $('#ds-out', el).innerHTML = stonesText(n);
+  });
+}
+// "Termina en 3 días", "Empieza mañana"...
+function timeLeft(b, now = Date.now()) {
+  const st = bannerStatus(b, now);
+  if (isPermanent(b) || st === 'ended') return '';
+  const ms = Date.parse(st === 'soon' ? b.start : b.end) - now;
+  if (!(ms > 0)) return '';
+  // Count calendar days, so "mañana" really means tomorrow on this phone's clock.
+  const at = new Date(now + ms), today = new Date(now);
+  const d = Math.round((new Date(at.getFullYear(), at.getMonth(), at.getDate()) - new Date(today.getFullYear(), today.getMonth(), today.getDate())) / 864e5);
+  const hour = at.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+  const when = d >= 2 ? `en ${d} días` : d === 1 ? `mañana a las ${hour}` : `hoy a las ${hour}`;
+  return `${st === 'soon' ? 'Empieza' : 'Termina'} ${when}`;
+}
+
+// Home: where your wished cards can be summoned.
+function wishHome() {
+  if (!wished.size) return '';
+  const rows = openBanners().map((b) => [b, wishedIn(b)]).filter(([, l]) => l.length)
+    .sort(([a], [b]) => (bannerStatus(a) === 'soon') - (bannerStatus(b) === 'soon') || isPermanent(a) - isPermanent(b) || (a.end || '').localeCompare(b.end || ''));
+  const inSome = new Set(rows.flatMap(([, l]) => l.map((c) => c.page)));
+  const missing = [...wished].filter((p) => store.cards.has(p) && !inSome.has(p)).length;
+  return `<h2>♥ Tus deseadas <a href="#/cards" id="q-wish">Ver lista</a></h2>
+    ${rows.length ? rows.map(([b, l]) => wishRow(b, l)).join('') : '<div class="box small muted">Ahora mismo no sale ninguna de tus deseadas en un banner.</div>'}
+    ${rows.length && missing ? `<p class="muted small">${missing} de tus deseadas no sale${missing > 1 ? 'n' : ''} en ningún banner abierto.</p>` : ''}
+    ${stonesBox()}`;
+}
+function wishRow(b, list) {
+  const [label, cls] = STATUS[bannerStatus(b)];
+  const left = timeLeft(b);
+  const soon = left.startsWith('Termina') && Date.parse(b.end) - Date.now() < 3 * 864e5;
+  return `<a class="row wish-row" href="#/banner/${enc(b.id)}">
+    <img class="banner-img" loading="lazy" alt="" src="${esc(b.image)}">
+    <div class="info"><b>${esc(b.name)}</b>
+      <span class="small"><span class="status ${cls}">${label}</span> <span class="${soon ? 'warn' : 'muted'}">${isPermanent(b) ? 'Permanente' : esc(left)}</span></span>
+      <div class="minis">${list.slice(0, 6).map((c) => `<img loading="lazy" alt="" class="hl" title="${esc(c.name)}" src="${esc(cardImg(c))}">`).join('')}</div></div></a>`;
 }
 
 // Every category, most common first, for the category picker.
@@ -225,6 +308,7 @@ views.cards = (params) => {
       <input class="search" type="search" placeholder="Buscar por nombre, categoría, link…" value="${esc(filters.q)}" id="q" autocomplete="off">
       <div class="chips">
         <button class="chip mine ${filters.mine ? 'on' : ''}" data-g="mine">★ Mis cartas</button>
+        <button class="chip wish ${filters.wish ? 'on' : ''}" data-g="wish">♥ Deseadas</button>
         ${['LR', 'UR', 'SSR'].map((r) => chip('rarity', r, r)).join('')}
         ${['AGL', 'TEQ', 'INT', 'STR', 'PHY'].map((t) => chip('type', t, t, 't-' + t.toLowerCase())).join('')}
         ${chip('cls', 'Super', 'Super')}${chip('cls', 'Extreme', 'Extreme')}
@@ -269,7 +353,9 @@ views.cards = (params) => {
         lastDate = null;
         grid.innerHTML = list.length ? '' : `<div class="empty" style="grid-column:1/-1">${filters.mine && !owned.size
           ? 'Todavía no has marcado ninguna carta como tuya.<br>Entra en una carta y pulsa <b>☆ La tengo</b>.'
-          : 'No hay cartas con esos filtros.'}</div>`;
+          : filters.wish && !wished.size
+            ? 'Tu lista de deseos está vacía.<br>Entra en una carta y pulsa <b>♡ La quiero</b>.'
+            : 'No hay cartas con esos filtros.'}</div>`;
         $('#count', el).textContent = `${list.length} cartas`;
         renderMore(keep ? Math.max(60, listShown) : 60);
         if (!keep) saveFilters();
@@ -296,10 +382,10 @@ views.cards = (params) => {
           refresh();
           return;
         }
-        if (g === 'eza' || g === 'mine') filters[g] = !filters[g];
+        if (g === 'eza' || g === 'mine' || g === 'wish') filters[g] = !filters[g];
         else if (g === 'category') { filters.category = ''; b.parentElement.remove(); }
         else filters[g].has(b.dataset.v) ? filters[g].delete(b.dataset.v) : filters[g].add(b.dataset.v);
-        b.classList.toggle('on', g === 'eza' || g === 'mine' ? filters[g] : g === 'category' ? false : filters[g].has(b.dataset.v));
+        b.classList.toggle('on', g === 'eza' || g === 'mine' || g === 'wish' ? filters[g] : g === 'category' ? false : filters[g].has(b.dataset.v));
         refresh();
       });
       const io = new IntersectionObserver((entries) => { if (entries[0].isIntersecting && shown < list.length) renderMore(); }, { rootMargin: '600px' });
@@ -320,6 +406,7 @@ function filterCards() {
   const words = filters.q.toLowerCase().split(/\s+/).filter(Boolean);
   const out = [...store.cards.values()].filter((c) =>
     (!filters.mine || owned.has(c.page)) &&
+    (!filters.wish || wished.has(c.page)) &&
     (!filters.rarity.size || filters.rarity.has(c.rarity)) &&
     (!filters.type.size || filters.type.has(c.type)) &&
     (!filters.cls.size || filters.cls.has(c.cls)) &&
@@ -438,6 +525,7 @@ views.card = (params, page) => {
       </div>
       <div class="card-actions">
         <button class="btn own-btn ${isOwned(c) ? 'on' : ''}" id="own" aria-pressed="${isOwned(c)}">${isOwned(c) ? '★ La tengo' : '☆ La tengo'}</button>
+        <button class="btn wish-btn ${isWished(c) ? 'on' : ''}" id="wish" aria-pressed="${isWished(c)}" ${isOwned(c) ? 'hidden' : ''}>${isWished(c) ? '♥ La quiero' : '♡ La quiero'}</button>
         <button class="btn" id="share">Compartir</button>
       </div>
       ${levels.length > 1 ? `<div class="seg" id="lv">${levels.map(([k, l], i) => `<button data-lv="${k}" class="${i === levels.length - 1 ? 'on' : ''}">${l}</button>`).join('')}</div>` : ''}
@@ -457,7 +545,19 @@ views.card = (params, page) => {
         e.currentTarget.classList.toggle('on', on);
         e.currentTarget.setAttribute('aria-pressed', on);
         e.currentTarget.textContent = on ? '★ La tengo' : '☆ La tengo';
-        toast(on ? 'Añadida a Mis cartas' : 'Quitada de Mis cartas');
+        // Once you have it, it leaves the wish list.
+        const w = $('#wish', el);
+        w.hidden = on;
+        if (on && isWished(c)) { setWished(c.page, false); paintWish(w, false); toast('¡Conseguida! Añadida a Mis cartas y quitada de deseadas'); }
+        else toast(on ? 'Añadida a Mis cartas' : 'Quitada de Mis cartas');
+      });
+      const paintWish = (b, on) => { b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); b.textContent = on ? '♥ La quiero' : '♡ La quiero'; };
+      $('#wish', el).addEventListener('click', (e) => {
+        const on = !isWished(c);
+        setWished(c.page, on);
+        paintWish(e.currentTarget, on);
+        const where = on ? openBanners().filter((b) => wishedIn(b).some((x) => x.page === c.page)).length : 0;
+        toast(!on ? 'Quitada de deseadas' : where ? `Añadida a deseadas · sale en ${where} banner${where > 1 ? 's' : ''} ahora` : 'Añadida a deseadas · la verás en Inicio cuando salga en un banner');
       });
       $('#share', el).addEventListener('click', () => shareLink(`${c.name} (${c.rarity} ${c.type}) en DokkanDB`, `${location.origin}${location.pathname}#/card/${enc(c.page)}`));
       $('#lv', el)?.addEventListener('click', (e) => {
@@ -490,12 +590,13 @@ function bannerCardImg(id) {
 function bannerRow(b) {
   const [label, cls] = STATUS[bannerStatus(b)];
   const main = new Set(b.groups?.main || []);
+  const w = bannerStatus(b) === 'ended' ? [] : wishedIn(b);
   const minis = b.cards.slice(0, 6).map((id) => `<img loading="lazy" alt=""${main.has(id) ? ' class="hl"' : ''} src="${esc(bannerCardImg(id))}">`).join('');
   const dates = isPermanent(b) ? 'Permanente' : `${shortDate(b.start)} – ${shortDate(b.end)}`;
   return `<a class="row" href="#/banner/${enc(b.id)}">
     <img class="banner-img" loading="lazy" alt="" src="${esc(b.image)}">
     <div class="info"><b>${esc(b.name)}</b>
-      <span class="small"><span class="status ${cls}">${label}</span> <span class="muted">${dates}</span></span>
+      <span class="small"><span class="status ${cls}">${label}</span> <span class="muted">${dates}</span>${w.length ? ` <span class="wish-n" title="De tu lista de deseos">♥ ${w.length}</span>` : ''}</span>
       ${minis ? `<div class="minis">${minis}</div>` : ''}</div></a>`;
 }
 
@@ -511,8 +612,9 @@ views.banners = () => {
   const src = store.extra.summons;
   return {
     title: 'Banners',
-    html: `${groups.map(([title, list]) => `<h2>${title} <span class="muted small">${list.length}</span></h2>${list.map(bannerRow).join('')}`).join('')}
+    html: `${stonesBox()}${groups.map(([title, list]) => `<h2>${title} <span class="muted small">${list.length}</span></h2>${list.map(bannerRow).join('')}`).join('')}
       <p class="muted small">Fuente: <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.source)}</a>. Los banners anteriores se van guardando desde que la app empezó a recogerlos.</p>`,
+    mount: mountStones,
   };
 };
 
@@ -550,6 +652,7 @@ views.banner = (params, id) => {
       <p><span class="status ${cls}">${label}</span>
         <span class="muted small">${isPermanent(b) ? 'Permanente' : `${fmtDate(b.start)} – ${fmtDate(b.end)}`}</span></p>
       ${b.desc ? `<p class="small">${esc(b.desc)}</p>` : ''}
+      ${wishedIn(b).length ? `<div class="box small wish-note">♥ ${bannerStatus(b) === 'ended' ? 'Aquí salían' : 'Aquí salen'} <b>${wishedIn(b).map((c) => esc(c.name)).join(', ')}</b>, de tu lista de deseos.${timeLeft(b) ? ` ${timeLeft(b)}.` : ''}</div>` : ''}
       ${statues.length ? '<div class="box small note-item">💰 Las <b>estatuas de Mr. Satán</b> no sirven para combatir ni para entrenar: solo se venden por zeni (lo que indica cada una).</div>' : ''}
       ${b.cards.some((cid) => T.trainingItem(cardById(cid))) ? '<div class="box small note-item">📈 Las cartas marcadas <b>ENTRENAR</b> (Elder Kai, Grand Kai…) no sirven para combatir: se usan en Entrenamiento para subir el nivel del súper ataque de otras cartas.</div>' : ''}
       ${b.groups ? bannerGroups(b.groups, cardTile)
@@ -1149,6 +1252,7 @@ views.settings = () => ({
     <h2>Tus datos</h2>
     <div class="box kv">
       <b>Mis cartas</b><span>${owned.size} <a href="#/cards" id="see-mine">Ver</a></span>
+      <b>Deseadas</b><span>${wished.size} <a href="#/cards" id="see-wish">Ver</a></span>
       <b>Equipos guardados</b><span>${T.loadTeams().length}</span>
     </div>
     <p class="muted small">Se guardan solo en este móvil${CHANNEL === 'beta' ? ' (y aparte de la versión estable)' : ''}. Haz una copia antes de cambiar de móvil o borrar los datos del navegador.</p>
@@ -1176,9 +1280,10 @@ views.settings = () => ({
       Estos se recogen cada 3 horas en GitHub${store.extra?.generated ? ` (última vez con cambios: ${fmtDate(store.extra.generated)}, ${ago(store.extra.generated)})` : ''}.<br><br>
       Los textos del juego están en inglés. App de fans, sin relación con Bandai Namco ni Akatsuki.</div>`,
   mount(el) {
-    $('#see-mine', el).addEventListener('click', () => { filters.mine = true; saveFilters(); });
+    $('#see-mine', el).addEventListener('click', () => { filters.mine = true; filters.wish = false; saveFilters(); });
+    $('#see-wish', el).addEventListener('click', () => { filters.wish = true; filters.mine = false; saveFilters(); });
     $('#backup', el).addEventListener('click', async () => {
-      const text = JSON.stringify({ app: 'DokkanDB', v: 1, date: new Date().toISOString(), owned: [...owned], teams: T.loadTeams() });
+      const text = JSON.stringify({ app: 'DokkanDB', v: 1, date: new Date().toISOString(), owned: [...owned], wish: [...wished], teams: T.loadTeams() });
       try { await navigator.clipboard.writeText(text); toast('Copia copiada: pégala en una nota o mándatela por mensaje.'); }
       catch { prompt('Copia este texto y guárdalo:', text); }
     });
@@ -1188,8 +1293,10 @@ views.settings = () => ({
       try {
         const data = JSON.parse(text);
         if (data.app !== 'DokkanDB' || !Array.isArray(data.owned) || !Array.isArray(data.teams)) throw new Error('formato');
-        if (!confirm(`La copia tiene ${data.owned.length} cartas tuyas y ${data.teams.length} equipos. Se añadirán a los que ya tienes. ¿Seguir?`)) return;
+        const wish = Array.isArray(data.wish) ? data.wish : [];
+        if (!confirm(`La copia tiene ${data.owned.length} cartas tuyas, ${wish.length} deseadas y ${data.teams.length} equipos. Se añadirán a los que ya tienes. ¿Seguir?`)) return;
         data.owned.forEach((p) => setOwned(String(p), true));
+        wish.forEach((p) => { if (!owned.has(String(p))) setWished(String(p), true); });
         const have = new Set(T.loadTeams().map((t) => t.id));
         T.saveTeams([...T.loadTeams(), ...data.teams.filter((t) => t && Array.isArray(t.ids) && !have.has(t.id))]);
         toast('Copia restaurada');
