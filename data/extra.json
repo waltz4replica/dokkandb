@@ -40,17 +40,17 @@
       "trend": "same"
      },
      {
-      "id": "1034071",
-      "cardId": "1034070",
-      "title": "Release of Mighty Power",
-      "name": "Super Saiyan Gohan (Youth)",
-      "trend": "same"
-     },
-     {
       "id": "1034151",
       "cardId": "1034150",
       "title": "Transcendent Existence",
       "name": "Buu (Kid)",
+      "trend": "same"
+     },
+     {
+      "id": "1034071",
+      "cardId": "1034070",
+      "title": "Release of Mighty Power",
+      "name": "Super Saiyan Gohan (Youth)",
       "trend": "same"
      }
     ]
@@ -364,6 +364,13 @@
       "trend": "same"
      },
      {
+      "id": "1027601",
+      "cardId": "1027600",
+      "title": "Unity Forged in Another World",
+      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
+      "trend": "same"
+     },
+     {
       "id": "1031501",
       "cardId": "1031500",
       "title": "World Shrouded in Evil Power",
@@ -382,13 +389,6 @@
       "cardId": "1009380",
       "title": "Reign of Terror",
       "name": "Frieza (1st Form)",
-      "trend": "same"
-     },
-     {
-      "id": "1027601",
-      "cardId": "1027600",
-      "title": "Unity Forged in Another World",
-      "name": "Super Saiyan Trunks (Teen) & Super Saiyan Broly",
       "trend": "same"
      },
      {
@@ -482,17 +482,17 @@
       "trend": "same"
      },
      {
-      "id": "1022421",
-      "cardId": "1022420",
-      "title": "Saiyan Warriors with Ultimate Power",
-      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
-      "trend": "same"
-     },
-     {
       "id": "1021721",
       "cardId": "1021720",
       "title": "Counterattack of Light",
       "name": "Super Saiyan Trunks (Teen)",
+      "trend": "same"
+     },
+     {
+      "id": "1022421",
+      "cardId": "1022420",
+      "title": "Saiyan Warriors with Ultimate Power",
+      "name": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
       "trend": "same"
      },
      {
@@ -523,17 +523,17 @@
       "trend": "same"
      },
      {
-      "id": "1014371",
-      "cardId": "1014370",
-      "title": "Determined to Fight",
-      "name": "Goku (Kaioken)",
-      "trend": "same"
-     },
-     {
       "id": "1031431",
       "cardId": "1031430",
       "title": "Terrifying Zero Mortals Plan",
       "name": "Goku Black (Super Saiyan Rosé) + Zamasu",
+      "trend": "same"
+     },
+     {
+      "id": "1014371",
+      "cardId": "1014370",
+      "title": "Determined to Fight",
+      "name": "Goku (Kaioken)",
       "trend": "same"
      },
      {
@@ -613,17 +613,17 @@
       "trend": "same"
      },
      {
-      "id": "1030941",
-      "cardId": "1030940",
-      "title": "Final Battle at the Highest Level",
-      "name": "Cell (Perfect Form)",
-      "trend": "same"
-     },
-     {
       "id": "1013771",
       "cardId": "1013770",
       "title": "Global Harmony Through Destruction",
       "name": "Beerus & Whis",
+      "trend": "same"
+     },
+     {
+      "id": "1030941",
+      "cardId": "1030940",
+      "title": "Final Battle at the Highest Level",
+      "name": "Cell (Perfect Form)",
       "trend": "same"
      },
      {
@@ -676,17 +676,17 @@
       "trend": "same"
      },
      {
-      "id": "1033591",
-      "cardId": "1033590",
-      "title": "Super Saiyan God of Successive Mutations",
-      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
-      "trend": "same"
-     },
-     {
       "id": "1024141",
       "cardId": "1024140",
       "title": "Desperate Onslaught",
       "name": "Goku & Piccolo/Piccolo",
+      "trend": "same"
+     },
+     {
+      "id": "1033591",
+      "cardId": "1033590",
+      "title": "Super Saiyan God of Successive Mutations",
+      "name": "Super Saiyan God Vegeta (Ultra Supervillain)",
       "trend": "same"
      }
     ]
@@ -694,7 +694,7 @@
   ],
   "source": "DokkanStats",
   "url": "https://dokkanstats.com/en/tierlists/community-tierlist/",
-  "updated": "2026-11-24T17:07:57.942Z"
+  "updated": "2026-11-24T20:07:57.918Z"
  },
  "events": {
   "items": [
@@ -5241,7 +5241,7 @@
   "url": "https://dokkan.fyi/news",
   "updated": "2026-11-24T11:31:58.351Z"
  },
- "generated": "2026-11-24T17:07:58.630Z",
+ "generated": "2026-11-24T20:07:58.639Z",
  "summons": {
   "items": [
    {
