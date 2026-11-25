@@ -782,3 +782,7 @@ main > h2 > a, h2 > a { font-family: system-ui, -apple-system, "Segoe UI", Robot
 .tile .flag.eza { background: #e9e2ff; }
 .tier-badge { background: var(--accent); box-shadow: none; font-size: 18px; }
 .status.live { box-shadow: none; }
+
+/* Card page: the same card at other rarities */
+.versions { margin: -4px 0 12px; }
+.versions .subtabs { margin: 2px 0 0; }

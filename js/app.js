@@ -275,10 +275,53 @@ function wishRow(b, list) {
 }
 
 // ----- "Mejores compañeros": the cards that share the most Link Skills with a card -----
+// The same card at other rarities (a UR that Dokkan-awakens into an LR, for example),
+// joined through "awakensFrom". Returns every version, lowest rarity first, or [c] alone.
+const RARITY_ORDER = { N: 0, R: 1, SR: 2, SSR: 3, UR: 4, LR: 5 };
+let versionsCache = { cards: null, size: 0, groups: new Map() };
+function versionsOf(c) {
+  if (versionsCache.cards !== store.cards || versionsCache.size !== store.cards.size) {
+    const byKey = new Map();
+    for (const d of store.cards.values()) { byKey.set(String(d.id), d); byKey.set(String(d.page), d); }
+    const parent = new Map();
+    const find = (p) => { while (parent.has(p) && parent.get(p) !== p) p = parent.get(p); return p; };
+    for (const d of store.cards.values()) {
+      for (const e of d.awakensFrom || []) {
+        const o = byKey.get(String(e));
+        if (!o || o === d) continue;
+        for (const p of [d.page, o.page]) if (!parent.has(p)) parent.set(p, p);
+        parent.set(find(d.page), find(o.page));
+      }
+    }
+    const groups = new Map();
+    for (const d of store.cards.values()) {
+      if (!parent.has(d.page)) continue;
+      const root = find(d.page);
+      groups.set(root, [...(groups.get(root) || []), d]);
+    }
+    const byPage = new Map();
+    for (const list of groups.values()) {
+      if (list.length < 2) continue;
+      list.sort((a, b) => (RARITY_ORDER[a.rarity] ?? 9) - (RARITY_ORDER[b.rarity] ?? 9) || String(a.released || '').localeCompare(String(b.released || '')));
+      for (const d of list) byPage.set(d.page, list);
+    }
+    versionsCache = { cards: store.cards, size: store.cards.size, groups: byPage };
+  }
+  return versionsCache.groups.get(c.page) || [c];
+}
+// Tabs on a card page to jump between its versions (SSR / UR / LR).
+function versionTabs(c) {
+  const list = versionsOf(c);
+  if (list.length < 2) return '';
+  const label = (d) => list.filter((x) => x.rarity === d.rarity).length > 1 ? `${d.rarity} · ${d.title}` : d.rarity;
+  return `<div class="versions"><span class="muted small">Otras rarezas de esta carta</span>${subTabs(list.map((d) => [`#/card/${enc(d.page)}`, esc(label(d))]), `#/card/${enc(c.page)}`)}</div>`;
+}
+
 function bestMates(c, mineOnly = false, limit = 12) {
   const best = new Map(); // one version per character name
+  const same = new Set(versionsOf(c).map((d) => d.page)); // the card itself at other rarities
   for (const d of store.cards.values()) {
-    if (d.page === c.page || d.name === c.name || !T.isFighter(d) || (mineOnly && !owned.has(d.page))) continue;
+    if (same.has(d.page) || d.page === c.page || d.name === c.name || !T.isFighter(d) || (mineOnly && !owned.has(d.page))) continue;
     const links = T.sharedLinks(c, d);
     if (links.length < 2) continue;
     const cats = d.categories.filter((k) => c.categories.includes(k)).length;
@@ -654,7 +697,7 @@ views.card = (params, page) => {
   return {
     title: esc(c.name),
     back: true,
-    html: `
+    html: `${versionTabs(c)}
       <div class="hero k-${esc(t)}">${thumbTag(c, '')}
         <div><div class="t">${esc(c.title)}</div><div class="n">${esc(c.name)}</div>
         <div class="badges"><span class="badge ${esc((c.rarity || '').toLowerCase())}">${esc(c.rarity)}</span><span class="badge t-${esc(t)}">${esc(c.cls)} ${esc(c.type)}</span>

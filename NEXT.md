@@ -10,3 +10,5 @@ pasan a CHANGELOG.md y este archivo se vacía. Ver RELEASING.md. -->
   - Los accesos rápidos ahora son Mis cartas, Deseadas y Equipos.
   - En Banners, el contador de Dragon Stones va después de los banners activos.
 - **Aspecto nuevo:** fondo azul noche, títulos en letra condensada (Barlow Condensed), tarjetas planas sin sombras ni degradados, y el naranja solo para lo importante (pestaña actual, botón principal, filtro activo). La letra se guarda para funcionar sin conexión.
+- **Misma carta en otras rarezas:** si una carta tiene otra versión en la base de datos (por ejemplo la UR que se Dokkan-despierta en LR), arriba de la carta salen pestañas «UR / LR» para pasar de una a otra.
+  - En «Mejores compañeros» ya no sale la propia carta en su otra rareza.
