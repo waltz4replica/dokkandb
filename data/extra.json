@@ -5098,6 +5098,30 @@
  "news": {
   "items": [
    {
+    "id": "107520",
+    "title": "A New Dokkan Event Is Coming Soon!",
+    "url": "https://dokkan.fyi/news/107520",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1525_C2.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 25, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-25T08:00:00.000Z"
+   },
+   {
+    "id": "107519",
+    "title": "Information on Upcoming Content!",
+    "url": "https://dokkan.fyi/news/107519",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 25, 2026, 8:00 AM GMT+0",
+    "iso": "2026-11-25T08:00:00.000Z"
+   },
+   {
     "id": "107516",
     "title": "Quest Dokkan Story Raging All-Out Battle Campaign!",
     "url": "https://dokkan.fyi/news/107516",
@@ -5211,37 +5235,13 @@
     ],
     "date": "Nov 19, 2026, 1:00 AM GMT+0",
     "iso": "2026-11-19T01:00:00.000Z"
-   },
-   {
-    "id": "107502",
-    "title": "Black Friday Dokkan Festival Packs!",
-    "url": "https://dokkan.fyi/news/107502",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_spshop_20261119_small_A.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 19, 2026, 1:00 AM GMT+0",
-    "iso": "2026-11-19T01:00:00.000Z"
-   },
-   {
-    "id": "107507",
-    "title": "Black Friday Campaign 2026!",
-    "url": "https://dokkan.fyi/news/107507",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261119_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 19, 2026, 12:00 AM GMT+0",
-    "iso": "2026-11-19T00:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-24T11:31:58.351Z"
+  "updated": "2026-11-25T08:30:48.210Z"
  },
- "generated": "2026-11-25T02:08:01.984Z",
+ "generated": "2026-11-25T08:30:48.212Z",
  "summons": {
   "items": [
    {
