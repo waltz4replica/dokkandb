@@ -9,6 +9,17 @@ Formato: **MAYOR.MENOR.CORRECCIÓN**
 Las actualizaciones automáticas de datos ("Datos actualizados") no cambian la versión: son contenido, no código.
 Las novedades que todavía están en la beta van en [NEXT.md](NEXT.md). Cómo se publica: [RELEASING.md](RELEASING.md).
 
+## 2.10.0 — 2026-11-25
+- **Apartados reorganizados:** la barra de abajo pasa de 6 a 5 pestañas: Inicio, Cartas, Banners, Eventos y Equipos.
+  - La **Tier list** está ahora dentro de **Cartas** (pestañas «Todas» y «Tier list» arriba).
+  - Banners (Lista / Calendario) y Eventos (Eventos / Noticias) usan las mismas pestañas de arriba. Cambiar de pestaña no llena el botón Atrás.
+- **Inicio nuevo:** arriba, «Se puede invocar ahora» con los banners abiertos en tarjetas grandes que se deslizan de lado, ordenados por cuál termina antes y con la cuenta atrás bien visible (en rojo si quedan menos de 3 días). Al final del carrusel, un acceso al calendario.
+  - Los accesos rápidos ahora son Mis cartas, Deseadas y Equipos.
+  - En Banners, el contador de Dragon Stones va después de los banners activos.
+- **Aspecto nuevo:** fondo azul noche, títulos en letra condensada (Barlow Condensed), tarjetas planas sin sombras ni degradados, y el naranja solo para lo importante (pestaña actual, botón principal, filtro activo). La letra se guarda para funcionar sin conexión.
+- **Misma carta en otras rarezas:** si una carta tiene otra versión en la base de datos (por ejemplo la UR que se Dokkan-despierta en LR), arriba de la carta salen pestañas «UR / LR» para pasar de una a otra.
+  - En «Mejores compañeros» ya no sale la propia carta en su otra rareza.
+
 ## 2.9.0 — 2026-11-24
 - **Lista de deseos:**
   - Botón **♡ La quiero** en cada carta. Las que quieres llevan un ♥ y se filtran con **♥ Deseadas** en Cartas.
