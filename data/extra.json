@@ -5098,6 +5098,18 @@
  "news": {
   "items": [
    {
+    "id": "107524",
+    "title": "Explosive Heat! Wintertime Campaign!",
+    "url": "https://dokkan.fyi/news/107524",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261128_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 27, 2026, 12:00 AM GMT+0",
+    "iso": "2026-11-27T00:00:00.000Z"
+   },
+   {
     "id": "107505",
     "title": "Dokkan Pass [Trial] Is Here!",
     "url": "https://dokkan.fyi/news/107505",
@@ -5224,24 +5236,13 @@
     ],
     "date": "Nov 19, 2026, 1:00 AM GMT+0",
     "iso": "2026-11-19T01:00:00.000Z"
-   },
-   {
-    "id": "107513",
-    "title": "Strike x Impact!",
-    "url": "https://dokkan.fyi/news/107513",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1783_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 19, 2026, 1:00 AM GMT+0",
-    "iso": "2026-11-19T01:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-26T13:48:56.614Z"
+  "updated": "2026-11-27T01:45:32.463Z"
  },
- "generated": "2026-11-26T23:07:56.927Z",
+ "generated": "2026-11-27T01:45:32.465Z",
  "summons": {
   "items": [
    {
