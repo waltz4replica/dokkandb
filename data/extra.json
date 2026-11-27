@@ -5098,151 +5098,152 @@
  "news": {
   "items": [
    {
-    "id": "107524",
-    "title": "Explosive Heat! Wintertime Campaign!",
-    "url": "https://dokkan.fyi/news/107524",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261128_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 27, 2026, 12:00 AM GMT+0",
-    "iso": "2026-11-27T00:00:00.000Z"
-   },
-   {
-    "id": "107505",
-    "title": "Dokkan Pass [Trial] Is Here!",
-    "url": "https://dokkan.fyi/news/107505",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/pass_small_banner_trial_01.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 26, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-26T08:00:00.000Z"
-   },
-   {
-    "id": "107504",
-    "title": "Dokkan Pass Is Here!",
-    "url": "https://dokkan.fyi/news/107504",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_pass_20261126_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 26, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-26T08:00:00.000Z"
-   },
-   {
-    "id": "107391",
-    "title": "Ultimate Red Zone: RE [Dragon Ball Super: Beerus Edition]!",
-    "url": "https://dokkan.fyi/news/107391",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1784_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 16, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-16T05:00:00.000Z"
-   },
-   {
-    "id": "107520",
-    "title": "A New Dokkan Event Is Coming Soon!",
-    "url": "https://dokkan.fyi/news/107520",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1525_C2.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 25, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-25T08:00:00.000Z"
-   },
-   {
-    "id": "107519",
-    "title": "Information on Upcoming Content!",
-    "url": "https://dokkan.fyi/news/107519",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_notice_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 25, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-25T08:00:00.000Z"
-   },
-   {
-    "id": "107516",
-    "title": "Quest Dokkan Story Raging All-Out Battle Campaign!",
-    "url": "https://dokkan.fyi/news/107516",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261124_small.png",
-    "tags": [
-     "Campaign",
-     "News"
-    ],
-    "date": "Nov 24, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-24T05:00:00.000Z"
-   },
-   {
-    "id": "107387",
-    "title": "Quest Dokkan Story Area 43 Is Here!",
-    "url": "https://dokkan.fyi/news/107387",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_adventure_43_2_small.png",
-    "tags": [
-     "Event"
-    ],
-    "date": "Nov 24, 2026, 5:00 AM GMT+0",
-    "iso": "2026-11-24T05:00:00.000Z"
-   },
-   {
-    "id": "107572",
-    "title": "Regarding an Issue with Rank EXP from Quest Stages",
-    "url": "https://dokkan.fyi/news/107572",
+    "id": "107573",
+    "title": "Regarding an Issue with Dokkan Frontier",
+    "url": "https://dokkan.fyi/news/107573",
     "image": "",
     "tags": [
      "Other",
      "Check"
     ],
-    "date": "Nov 23, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-23T08:00:00.000Z"
+    "date": "Nov 27, 2026, 10:00 AM GMT+0",
+    "iso": "2026-11-27T10:00:00.000Z"
    },
    {
-    "id": "107313",
-    "title": "\"Golden Weekend Missions\" Gloriously Arrive!",
-    "url": "https://dokkan.fyi/news/107313",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261010_mission_A_small.png",
+    "id": "107545",
+    "title": "Select Characters Dokkan Festival!",
+    "url": "https://dokkan.fyi/news/107545",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_select_dokkan_20260822_2_small.png",
     "tags": [
      "Campaign",
      "News"
     ],
-    "date": "Nov 21, 2026, 12:00 AM GMT+0",
-    "iso": "2026-11-21T00:00:00.000Z"
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
    },
    {
-    "id": "107515",
-    "title": "Virtual Dokkan Ultimate Clash Ver. 3.0 [Black Friday Special Edition]!",
-    "url": "https://dokkan.fyi/news/107515",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_dairansen_112_small.png",
+    "id": "107533",
+    "title": "Limited-Time Character Boost Campaign!",
+    "url": "https://dokkan.fyi/news/107533",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_plain_camp_20261028_strengthen_small_1.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "107532",
+    "title": "Venture into the Snowfield! Goku's Gratitude!",
+    "url": "https://dokkan.fyi/news/107532",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1232_small.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 19, 2026, 8:00 AM GMT+0",
-    "iso": "2026-11-19T08:00:00.000Z"
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
    },
    {
-    "id": "107514",
-    "title": "Renewal and Reopening of Burst Mode!",
-    "url": "https://dokkan.fyi/news/107514",
-    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_burst_01_small.png",
+    "id": "107530",
+    "title": "Beast of Rancor! Hirudegarn!",
+    "url": "https://dokkan.fyi/news/107530",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1786_small.png",
     "tags": [
      "Event"
     ],
-    "date": "Nov 19, 2026, 1:00 AM GMT+0",
-    "iso": "2026-11-19T01:00:00.000Z"
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "107529",
+    "title": "Explosive Heat! Wintertime Campaign Baba's Shop!",
+    "url": "https://dokkan.fyi/news/107529",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_snow_20261127_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "107526",
+    "title": "Lineup Update! Legendary Summon Carnival [Summon Point Ticket]!",
+    "url": "https://dokkan.fyi/news/107526",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_gasha_12646_small.png",
+    "tags": [
+     "Campaign",
+     "Summon"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "107525",
+    "title": "Lineup Update! Dokkan Festival [Summon Point Ticket]!",
+    "url": "https://dokkan.fyi/news/107525",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_gasha_12644_small.png",
+    "tags": [
+     "Campaign",
+     "Summon"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "107522",
+    "title": "Dokkan Festival Is Now On!",
+    "url": "https://dokkan.fyi/news/107522",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_gasha_12638_small.png",
+    "tags": [
+     "Campaign",
+     "Summon"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "107521",
+    "title": "Dokkan Festival Packs Up for Sale!",
+    "url": "https://dokkan.fyi/news/107521",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_spshop_dokkan_fes_pack_small.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "106853",
+    "title": "Seriously Serious! All-Out Battles 2!",
+    "url": "https://dokkan.fyi/news/106853",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_event_1751_small_20260302042143.png",
+    "tags": [
+     "Event"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
+   },
+   {
+    "id": "105986",
+    "title": "Exchange Summon Points for Summon Point Tickets!",
+    "url": "https://dokkan.fyi/news/105986",
+    "image": "https://cdn.dokkan.fyi/assets/en/banners/en/news/news_banner_trade_20250530_D_20260421020901.png",
+    "tags": [
+     "Campaign",
+     "News"
+    ],
+    "date": "Nov 27, 2026, 5:00 AM GMT+0",
+    "iso": "2026-11-27T05:00:00.000Z"
    }
   ],
   "source": "DOKKAN.FYI",
   "url": "https://dokkan.fyi/news",
-  "updated": "2026-11-27T01:45:32.463Z"
+  "updated": "2026-11-27T12:14:52.326Z"
  },
- "generated": "2026-11-27T01:45:32.465Z",
+ "generated": "2026-11-27T12:14:52.328Z",
  "summons": {
   "items": [
    {
